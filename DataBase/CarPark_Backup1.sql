@@ -2,12 +2,12 @@
 -- PostgreSQL database dump
 --
 
-\restrict qi8eFloJGXfZkiDTEPsaPmc2ufzHtxOAObsZChZSbT0f0eiAdHvGYlo6qrj0y7e
+\restrict KCG3K7c3d9ZMgmKaaqG3dQdSxIq1v0ECTcX3KaJKaCbIS7zTIgUlThEBbRXUsxu
 
 -- Dumped from database version 18.3
 -- Dumped by pg_dump version 18.3
 
--- Started on 2026-03-28 01:03:33
+-- Started on 2026-03-28 22:46:28
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -31,9 +31,9 @@ CREATE DATABASE "CarPark" WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PRO
 
 ALTER DATABASE "CarPark" OWNER TO postgres;
 
-\unrestrict qi8eFloJGXfZkiDTEPsaPmc2ufzHtxOAObsZChZSbT0f0eiAdHvGYlo6qrj0y7e
+\unrestrict KCG3K7c3d9ZMgmKaaqG3dQdSxIq1v0ECTcX3KaJKaCbIS7zTIgUlThEBbRXUsxu
 \connect "CarPark"
-\restrict qi8eFloJGXfZkiDTEPsaPmc2ufzHtxOAObsZChZSbT0f0eiAdHvGYlo6qrj0y7e
+\restrict KCG3K7c3d9ZMgmKaaqG3dQdSxIq1v0ECTcX3KaJKaCbIS7zTIgUlThEBbRXUsxu
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -57,7 +57,7 @@ COMMENT ON DATABASE "CarPark" IS 'База данных автопарка ко�
 
 
 --
--- TOC entry 5 (class 2615 OID 17447)
+-- TOC entry 5 (class 2615 OID 17872)
 -- Name: public; Type: SCHEMA; Schema: -; Owner: postgres
 --
 
@@ -71,7 +71,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 219 (class 1259 OID 17448)
+-- TOC entry 219 (class 1259 OID 17873)
 -- Name: drivers; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -94,7 +94,7 @@ CREATE TABLE public.drivers (
 ALTER TABLE public.drivers OWNER TO postgres;
 
 --
--- TOC entry 220 (class 1259 OID 17466)
+-- TOC entry 220 (class 1259 OID 17891)
 -- Name: fuel_refuels; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -114,7 +114,7 @@ CREATE TABLE public.fuel_refuels (
 ALTER TABLE public.fuel_refuels OWNER TO postgres;
 
 --
--- TOC entry 221 (class 1259 OID 17483)
+-- TOC entry 221 (class 1259 OID 17909)
 -- Name: fuel_types; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -128,7 +128,7 @@ CREATE TABLE public.fuel_types (
 ALTER TABLE public.fuel_types OWNER TO postgres;
 
 --
--- TOC entry 222 (class 1259 OID 17494)
+-- TOC entry 222 (class 1259 OID 17920)
 -- Name: insurance_policies; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -146,7 +146,7 @@ CREATE TABLE public.insurance_policies (
 ALTER TABLE public.insurance_policies OWNER TO postgres;
 
 --
--- TOC entry 223 (class 1259 OID 17508)
+-- TOC entry 223 (class 1259 OID 17934)
 -- Name: maintenance; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -167,7 +167,7 @@ CREATE TABLE public.maintenance (
 ALTER TABLE public.maintenance OWNER TO postgres;
 
 --
--- TOC entry 224 (class 1259 OID 17528)
+-- TOC entry 224 (class 1259 OID 17954)
 -- Name: maintenance_type; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -182,7 +182,7 @@ CREATE TABLE public.maintenance_type (
 ALTER TABLE public.maintenance_type OWNER TO postgres;
 
 --
--- TOC entry 225 (class 1259 OID 17540)
+-- TOC entry 225 (class 1259 OID 17966)
 -- Name: trips; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -203,7 +203,7 @@ CREATE TABLE public.trips (
 ALTER TABLE public.trips OWNER TO postgres;
 
 --
--- TOC entry 226 (class 1259 OID 17559)
+-- TOC entry 226 (class 1259 OID 17985)
 -- Name: vehicle_statuses; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -217,7 +217,7 @@ CREATE TABLE public.vehicle_statuses (
 ALTER TABLE public.vehicle_statuses OWNER TO postgres;
 
 --
--- TOC entry 227 (class 1259 OID 17570)
+-- TOC entry 227 (class 1259 OID 17996)
 -- Name: vehicle_types; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -231,7 +231,7 @@ CREATE TABLE public.vehicle_types (
 ALTER TABLE public.vehicle_types OWNER TO postgres;
 
 --
--- TOC entry 228 (class 1259 OID 17581)
+-- TOC entry 228 (class 1259 OID 18007)
 -- Name: vehicles; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -254,7 +254,7 @@ CREATE TABLE public.vehicles (
 ALTER TABLE public.vehicles OWNER TO postgres;
 
 --
--- TOC entry 5088 (class 0 OID 17448)
+-- TOC entry 5088 (class 0 OID 17873)
 -- Dependencies: 219
 -- Data for Name: drivers; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -262,7 +262,7 @@ ALTER TABLE public.vehicles OWNER TO postgres;
 
 
 --
--- TOC entry 5089 (class 0 OID 17466)
+-- TOC entry 5089 (class 0 OID 17891)
 -- Dependencies: 220
 -- Data for Name: fuel_refuels; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -270,7 +270,7 @@ ALTER TABLE public.vehicles OWNER TO postgres;
 
 
 --
--- TOC entry 5090 (class 0 OID 17483)
+-- TOC entry 5090 (class 0 OID 17909)
 -- Dependencies: 221
 -- Data for Name: fuel_types; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -278,7 +278,7 @@ ALTER TABLE public.vehicles OWNER TO postgres;
 
 
 --
--- TOC entry 5091 (class 0 OID 17494)
+-- TOC entry 5091 (class 0 OID 17920)
 -- Dependencies: 222
 -- Data for Name: insurance_policies; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -286,7 +286,7 @@ ALTER TABLE public.vehicles OWNER TO postgres;
 
 
 --
--- TOC entry 5092 (class 0 OID 17508)
+-- TOC entry 5092 (class 0 OID 17934)
 -- Dependencies: 223
 -- Data for Name: maintenance; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -294,7 +294,7 @@ ALTER TABLE public.vehicles OWNER TO postgres;
 
 
 --
--- TOC entry 5093 (class 0 OID 17528)
+-- TOC entry 5093 (class 0 OID 17954)
 -- Dependencies: 224
 -- Data for Name: maintenance_type; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -302,7 +302,7 @@ ALTER TABLE public.vehicles OWNER TO postgres;
 
 
 --
--- TOC entry 5094 (class 0 OID 17540)
+-- TOC entry 5094 (class 0 OID 17966)
 -- Dependencies: 225
 -- Data for Name: trips; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -310,7 +310,7 @@ ALTER TABLE public.vehicles OWNER TO postgres;
 
 
 --
--- TOC entry 5095 (class 0 OID 17559)
+-- TOC entry 5095 (class 0 OID 17985)
 -- Dependencies: 226
 -- Data for Name: vehicle_statuses; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -318,7 +318,7 @@ ALTER TABLE public.vehicles OWNER TO postgres;
 
 
 --
--- TOC entry 5096 (class 0 OID 17570)
+-- TOC entry 5096 (class 0 OID 17996)
 -- Dependencies: 227
 -- Data for Name: vehicle_types; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -326,7 +326,7 @@ ALTER TABLE public.vehicles OWNER TO postgres;
 
 
 --
--- TOC entry 5097 (class 0 OID 17581)
+-- TOC entry 5097 (class 0 OID 18007)
 -- Dependencies: 228
 -- Data for Name: vehicles; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -334,7 +334,7 @@ ALTER TABLE public.vehicles OWNER TO postgres;
 
 
 --
--- TOC entry 4892 (class 2606 OID 17465)
+-- TOC entry 4892 (class 2606 OID 17890)
 -- Name: drivers drivers_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -343,7 +343,7 @@ ALTER TABLE ONLY public.drivers
 
 
 --
--- TOC entry 4895 (class 2606 OID 17480)
+-- TOC entry 4895 (class 2606 OID 17906)
 -- Name: fuel_refuels fuel_refuels_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -352,7 +352,7 @@ ALTER TABLE ONLY public.fuel_refuels
 
 
 --
--- TOC entry 4900 (class 2606 OID 17493)
+-- TOC entry 4900 (class 2606 OID 17919)
 -- Name: fuel_types fuel_types_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -361,7 +361,7 @@ ALTER TABLE ONLY public.fuel_types
 
 
 --
--- TOC entry 4903 (class 2606 OID 17506)
+-- TOC entry 4903 (class 2606 OID 17932)
 -- Name: insurance_policies insurance_policies_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -370,7 +370,7 @@ ALTER TABLE ONLY public.insurance_policies
 
 
 --
--- TOC entry 4907 (class 2606 OID 17525)
+-- TOC entry 4907 (class 2606 OID 17951)
 -- Name: maintenance maintenance_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -379,7 +379,7 @@ ALTER TABLE ONLY public.maintenance
 
 
 --
--- TOC entry 4912 (class 2606 OID 17539)
+-- TOC entry 4912 (class 2606 OID 17965)
 -- Name: maintenance_type maintenance_type_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -388,7 +388,7 @@ ALTER TABLE ONLY public.maintenance_type
 
 
 --
--- TOC entry 4915 (class 2606 OID 17556)
+-- TOC entry 4915 (class 2606 OID 17982)
 -- Name: trips trips_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -397,7 +397,7 @@ ALTER TABLE ONLY public.trips
 
 
 --
--- TOC entry 4920 (class 2606 OID 17569)
+-- TOC entry 4920 (class 2606 OID 17995)
 -- Name: vehicle_statuses vehicle_statuses_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -406,7 +406,7 @@ ALTER TABLE ONLY public.vehicle_statuses
 
 
 --
--- TOC entry 4923 (class 2606 OID 17580)
+-- TOC entry 4923 (class 2606 OID 18006)
 -- Name: vehicle_types vehicle_types_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -415,7 +415,7 @@ ALTER TABLE ONLY public.vehicle_types
 
 
 --
--- TOC entry 4926 (class 2606 OID 17597)
+-- TOC entry 4926 (class 2606 OID 18023)
 -- Name: vehicles vehicles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -424,7 +424,7 @@ ALTER TABLE ONLY public.vehicles
 
 
 --
--- TOC entry 4896 (class 1259 OID 17481)
+-- TOC entry 4896 (class 1259 OID 17907)
 -- Name: xif1Заправки; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -432,7 +432,7 @@ CREATE INDEX "xif1Заправки" ON public.fuel_refuels USING btree (vehicle_
 
 
 --
--- TOC entry 4904 (class 1259 OID 17507)
+-- TOC entry 4904 (class 1259 OID 17933)
 -- Name: xif1Страховки; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -440,7 +440,7 @@ CREATE INDEX "xif1Страховки" ON public.insurance_policies USING btree (
 
 
 --
--- TOC entry 4908 (class 1259 OID 17526)
+-- TOC entry 4908 (class 1259 OID 17952)
 -- Name: xif1Техобслуживание; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -448,7 +448,7 @@ CREATE INDEX "xif1Техобслуживание" ON public.maintenance USING bt
 
 
 --
--- TOC entry 4927 (class 1259 OID 17598)
+-- TOC entry 4927 (class 1259 OID 18024)
 -- Name: xif1Транспортные_средства; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -456,7 +456,7 @@ CREATE INDEX "xif1Транспортные_средства" ON public.vehicles 
 
 
 --
--- TOC entry 4897 (class 1259 OID 17482)
+-- TOC entry 4897 (class 1259 OID 17908)
 -- Name: xif2Заправки; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -464,7 +464,7 @@ CREATE INDEX "xif2Заправки" ON public.fuel_refuels USING btree (driver_i
 
 
 --
--- TOC entry 4916 (class 1259 OID 17557)
+-- TOC entry 4916 (class 1259 OID 17983)
 -- Name: xif2Поездки; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -472,7 +472,7 @@ CREATE INDEX "xif2Поездки" ON public.trips USING btree (driver_id);
 
 
 --
--- TOC entry 4909 (class 1259 OID 17527)
+-- TOC entry 4909 (class 1259 OID 17953)
 -- Name: xif2Техобслуживание; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -480,7 +480,7 @@ CREATE INDEX "xif2Техобслуживание" ON public.maintenance USING bt
 
 
 --
--- TOC entry 4917 (class 1259 OID 17558)
+-- TOC entry 4917 (class 1259 OID 17984)
 -- Name: xif3Поездки; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -488,7 +488,7 @@ CREATE INDEX "xif3Поездки" ON public.trips USING btree (vehicle_id);
 
 
 --
--- TOC entry 4928 (class 1259 OID 17599)
+-- TOC entry 4928 (class 1259 OID 18025)
 -- Name: xif3Транспортные_средства; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -496,7 +496,7 @@ CREATE INDEX "xif3Транспортные_средства" ON public.vehicles 
 
 
 --
--- TOC entry 4929 (class 1259 OID 17600)
+-- TOC entry 4929 (class 1259 OID 18026)
 -- Name: xif4Транспортные_средства; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -504,7 +504,7 @@ CREATE INDEX "xif4Транспортные_средства" ON public.vehicles 
 
 
 --
--- TOC entry 4913 (class 1259 OID 17536)
+-- TOC entry 4913 (class 1259 OID 17962)
 -- Name: xpkВиды_ТО; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -512,7 +512,7 @@ CREATE UNIQUE INDEX "xpkВиды_ТО" ON public.maintenance_type USING btree (m
 
 
 --
--- TOC entry 4893 (class 1259 OID 17462)
+-- TOC entry 4893 (class 1259 OID 17887)
 -- Name: xpkВодители; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -520,7 +520,7 @@ CREATE UNIQUE INDEX "xpkВодители" ON public.drivers USING btree (driver_
 
 
 --
--- TOC entry 4898 (class 1259 OID 17477)
+-- TOC entry 4898 (class 1259 OID 17902)
 -- Name: xpkЗаправки; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -528,7 +528,7 @@ CREATE UNIQUE INDEX "xpkЗаправки" ON public.fuel_refuels USING btree (re
 
 
 --
--- TOC entry 4918 (class 1259 OID 17553)
+-- TOC entry 4918 (class 1259 OID 17979)
 -- Name: xpkПоездки; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -536,7 +536,7 @@ CREATE UNIQUE INDEX "xpkПоездки" ON public.trips USING btree (trip_id);
 
 
 --
--- TOC entry 4921 (class 1259 OID 17566)
+-- TOC entry 4921 (class 1259 OID 17992)
 -- Name: xpkСтатусы_ТС; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -544,7 +544,7 @@ CREATE UNIQUE INDEX "xpkСтатусы_ТС" ON public.vehicle_statuses USING bt
 
 
 --
--- TOC entry 4905 (class 1259 OID 17503)
+-- TOC entry 4905 (class 1259 OID 17929)
 -- Name: xpkСтраховки; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -552,7 +552,7 @@ CREATE UNIQUE INDEX "xpkСтраховки" ON public.insurance_policies USING b
 
 
 --
--- TOC entry 4910 (class 1259 OID 17522)
+-- TOC entry 4910 (class 1259 OID 17948)
 -- Name: xpkТехобслуживание; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -560,7 +560,7 @@ CREATE UNIQUE INDEX "xpkТехобслуживание" ON public.maintenance US
 
 
 --
--- TOC entry 4924 (class 1259 OID 17577)
+-- TOC entry 4924 (class 1259 OID 18003)
 -- Name: xpkТипы_ТС; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -568,7 +568,7 @@ CREATE UNIQUE INDEX "xpkТипы_ТС" ON public.vehicle_types USING btree (type
 
 
 --
--- TOC entry 4901 (class 1259 OID 17490)
+-- TOC entry 4901 (class 1259 OID 17916)
 -- Name: xpkТипы_Топлива; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -576,7 +576,7 @@ CREATE UNIQUE INDEX "xpkТипы_Топлива" ON public.fuel_types USING btre
 
 
 --
--- TOC entry 4930 (class 1259 OID 17594)
+-- TOC entry 4930 (class 1259 OID 18020)
 -- Name: xpkТранспортные_средства; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -584,7 +584,7 @@ CREATE UNIQUE INDEX "xpkТранспортные_средства" ON public.veh
 
 
 --
--- TOC entry 4931 (class 2606 OID 17606)
+-- TOC entry 4931 (class 2606 OID 18032)
 -- Name: fuel_refuels fuel_refuels_driver_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -593,7 +593,7 @@ ALTER TABLE ONLY public.fuel_refuels
 
 
 --
--- TOC entry 4932 (class 2606 OID 17601)
+-- TOC entry 4932 (class 2606 OID 18027)
 -- Name: fuel_refuels fuel_refuels_vehicle_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -602,7 +602,7 @@ ALTER TABLE ONLY public.fuel_refuels
 
 
 --
--- TOC entry 4933 (class 2606 OID 17611)
+-- TOC entry 4933 (class 2606 OID 18037)
 -- Name: insurance_policies insurance_policies_vehicle_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -611,7 +611,7 @@ ALTER TABLE ONLY public.insurance_policies
 
 
 --
--- TOC entry 4934 (class 2606 OID 17616)
+-- TOC entry 4934 (class 2606 OID 18042)
 -- Name: maintenance maintenance_maint_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -620,7 +620,7 @@ ALTER TABLE ONLY public.maintenance
 
 
 --
--- TOC entry 4935 (class 2606 OID 17621)
+-- TOC entry 4935 (class 2606 OID 18047)
 -- Name: maintenance maintenance_vehicle_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -629,7 +629,7 @@ ALTER TABLE ONLY public.maintenance
 
 
 --
--- TOC entry 4936 (class 2606 OID 17626)
+-- TOC entry 4936 (class 2606 OID 18052)
 -- Name: trips trips_driver_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -638,7 +638,7 @@ ALTER TABLE ONLY public.trips
 
 
 --
--- TOC entry 4937 (class 2606 OID 17631)
+-- TOC entry 4937 (class 2606 OID 18057)
 -- Name: trips trips_vehicle_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -647,7 +647,7 @@ ALTER TABLE ONLY public.trips
 
 
 --
--- TOC entry 4938 (class 2606 OID 17646)
+-- TOC entry 4938 (class 2606 OID 18072)
 -- Name: vehicles vehicles_fuel_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -656,7 +656,7 @@ ALTER TABLE ONLY public.vehicles
 
 
 --
--- TOC entry 4939 (class 2606 OID 17641)
+-- TOC entry 4939 (class 2606 OID 18067)
 -- Name: vehicles vehicles_status_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -665,7 +665,7 @@ ALTER TABLE ONLY public.vehicles
 
 
 --
--- TOC entry 4940 (class 2606 OID 17636)
+-- TOC entry 4940 (class 2606 OID 18062)
 -- Name: vehicles vehicles_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -682,11 +682,11 @@ ALTER TABLE ONLY public.vehicles
 REVOKE USAGE ON SCHEMA public FROM PUBLIC;
 
 
--- Completed on 2026-03-28 01:03:34
+-- Completed on 2026-03-28 22:46:28
 
 --
 -- PostgreSQL database dump complete
 --
 
-\unrestrict qi8eFloJGXfZkiDTEPsaPmc2ufzHtxOAObsZChZSbT0f0eiAdHvGYlo6qrj0y7e
+\unrestrict KCG3K7c3d9ZMgmKaaqG3dQdSxIq1v0ECTcX3KaJKaCbIS7zTIgUlThEBbRXUsxu
 
