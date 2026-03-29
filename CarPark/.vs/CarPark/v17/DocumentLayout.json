@@ -1,0 +1,343 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\user\\source\\repos\\CarPark\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|c:\\users\\user\\source\\repos\\carpark\\carpark\\domain\\entities\\insurance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|solutionrelative:carpark\\domain\\entities\\insurance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|c:\\users\\user\\source\\repos\\carpark\\carpark\\domain\\entities\\maintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|solutionrelative:carpark\\domain\\entities\\maintenance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|c:\\users\\user\\source\\repos\\carpark\\carpark\\domain\\entities\\fueltype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|solutionrelative:carpark\\domain\\entities\\fueltype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|c:\\users\\user\\source\\repos\\carpark\\carpark\\domain\\entities\\driver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|solutionrelative:carpark\\domain\\entities\\driver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|c:\\users\\user\\source\\repos\\carpark\\carpark\\domain\\interfaces\\ivehicleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|solutionrelative:carpark\\domain\\interfaces\\ivehicleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|c:\\users\\user\\source\\repos\\carpark\\carpark\\domain\\entities\\maintenancetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|solutionrelative:carpark\\domain\\entities\\maintenancetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|c:\\users\\user\\source\\repos\\carpark\\carpark\\domain\\entities\\refueling.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|solutionrelative:carpark\\domain\\entities\\refueling.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|c:\\users\\user\\source\\repos\\carpark\\carpark\\domain\\entities\\vehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|solutionrelative:carpark\\domain\\entities\\vehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|c:\\users\\user\\source\\repos\\carpark\\carpark\\domain\\entities\\vehiclestatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|solutionrelative:carpark\\domain\\entities\\vehiclestatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|c:\\users\\user\\source\\repos\\carpark\\carpark\\domain\\interfaces\\idriverrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|solutionrelative:carpark\\domain\\interfaces\\idriverrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|c:\\users\\user\\source\\repos\\carpark\\carpark\\domain\\interfaces\\iinsurancerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|solutionrelative:carpark\\domain\\interfaces\\iinsurancerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|c:\\users\\user\\source\\repos\\carpark\\carpark\\domain\\interfaces\\imaintenancerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|solutionrelative:carpark\\domain\\interfaces\\imaintenancerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|c:\\users\\user\\source\\repos\\carpark\\carpark\\domain\\interfaces\\imaintenanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|solutionrelative:carpark\\domain\\interfaces\\imaintenanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|c:\\users\\user\\source\\repos\\carpark\\carpark\\domain\\interfaces\\irefuelingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|solutionrelative:carpark\\domain\\interfaces\\irefuelingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|c:\\users\\user\\source\\repos\\carpark\\carpark\\domain\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|solutionrelative:carpark\\domain\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|c:\\users\\user\\source\\repos\\carpark\\carpark\\domain\\interfaces\\ivehiclerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|solutionrelative:carpark\\domain\\interfaces\\ivehiclerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|c:\\users\\user\\source\\repos\\carpark\\carpark\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|solutionrelative:carpark\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|c:\\users\\user\\source\\repos\\carpark\\carpark\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|solutionrelative:carpark\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|c:\\users\\user\\source\\repos\\carpark\\carpark\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0448BF1D-BF11-40CE-9275-AFCA25ADA9A6}|CarPark\\CarPark.csproj|solutionrelative:carpark\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Maintenance.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Entities\\Maintenance.cs",
+              "RelativeDocumentMoniker": "CarPark\\Domain\\Entities\\Maintenance.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Entities\\Maintenance.cs",
+              "RelativeToolTip": "CarPark\\Domain\\Entities\\Maintenance.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:34:24.637Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Insurance.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Entities\\Insurance.cs",
+              "RelativeDocumentMoniker": "CarPark\\Domain\\Entities\\Insurance.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Entities\\Insurance.cs",
+              "RelativeToolTip": "CarPark\\Domain\\Entities\\Insurance.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:43:22.442Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FuelType.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Entities\\FuelType.cs",
+              "RelativeDocumentMoniker": "CarPark\\Domain\\Entities\\FuelType.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Entities\\FuelType.cs",
+              "RelativeToolTip": "CarPark\\Domain\\Entities\\FuelType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:31:29.57Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Driver.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Entities\\Driver.cs",
+              "RelativeDocumentMoniker": "CarPark\\Domain\\Entities\\Driver.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Entities\\Driver.cs",
+              "RelativeToolTip": "CarPark\\Domain\\Entities\\Driver.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:39:06.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IVehicleService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Interfaces\\IVehicleService.cs",
+              "RelativeDocumentMoniker": "CarPark\\Domain\\Interfaces\\IVehicleService.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Interfaces\\IVehicleService.cs",
+              "RelativeToolTip": "CarPark\\Domain\\Interfaces\\IVehicleService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T15:12:07.513Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MaintenanceType.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Entities\\MaintenanceType.cs",
+              "RelativeDocumentMoniker": "CarPark\\Domain\\Entities\\MaintenanceType.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Entities\\MaintenanceType.cs",
+              "RelativeToolTip": "CarPark\\Domain\\Entities\\MaintenanceType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:33:07.829Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Refueling.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Entities\\Refueling.cs",
+              "RelativeDocumentMoniker": "CarPark\\Domain\\Entities\\Refueling.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Entities\\Refueling.cs",
+              "RelativeToolTip": "CarPark\\Domain\\Entities\\Refueling.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:35:27.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Vehicle.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Entities\\Vehicle.cs",
+              "RelativeDocumentMoniker": "CarPark\\Domain\\Entities\\Vehicle.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Entities\\Vehicle.cs",
+              "RelativeToolTip": "CarPark\\Domain\\Entities\\Vehicle.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAQwC4AAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:19:43.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "VehicleStatus.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Entities\\VehicleStatus.cs",
+              "RelativeDocumentMoniker": "CarPark\\Domain\\Entities\\VehicleStatus.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Entities\\VehicleStatus.cs",
+              "RelativeToolTip": "CarPark\\Domain\\Entities\\VehicleStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:30:47.946Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IDriverRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Interfaces\\IDriverRepository.cs",
+              "RelativeDocumentMoniker": "CarPark\\Domain\\Interfaces\\IDriverRepository.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Interfaces\\IDriverRepository.cs",
+              "RelativeToolTip": "CarPark\\Domain\\Interfaces\\IDriverRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:49:11.881Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IInsuranceRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Interfaces\\IInsuranceRepository.cs",
+              "RelativeDocumentMoniker": "CarPark\\Domain\\Interfaces\\IInsuranceRepository.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Interfaces\\IInsuranceRepository.cs",
+              "RelativeToolTip": "CarPark\\Domain\\Interfaces\\IInsuranceRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:50:51.936Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IMaintenanceRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Interfaces\\IMaintenanceRepository.cs",
+              "RelativeDocumentMoniker": "CarPark\\Domain\\Interfaces\\IMaintenanceRepository.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Interfaces\\IMaintenanceRepository.cs",
+              "RelativeToolTip": "CarPark\\Domain\\Interfaces\\IMaintenanceRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:47:55.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IMaintenanceService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Interfaces\\IMaintenanceService.cs",
+              "RelativeDocumentMoniker": "CarPark\\Domain\\Interfaces\\IMaintenanceService.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Interfaces\\IMaintenanceService.cs",
+              "RelativeToolTip": "CarPark\\Domain\\Interfaces\\IMaintenanceService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T15:11:10.009Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IRefuelingRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Interfaces\\IRefuelingRepository.cs",
+              "RelativeDocumentMoniker": "CarPark\\Domain\\Interfaces\\IRefuelingRepository.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Interfaces\\IRefuelingRepository.cs",
+              "RelativeToolTip": "CarPark\\Domain\\Interfaces\\IRefuelingRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:48:37.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Interfaces\\IRepository.cs",
+              "RelativeDocumentMoniker": "CarPark\\Domain\\Interfaces\\IRepository.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Interfaces\\IRepository.cs",
+              "RelativeToolTip": "CarPark\\Domain\\Interfaces\\IRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:44:49.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IVehicleRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Interfaces\\IVehicleRepository.cs",
+              "RelativeDocumentMoniker": "CarPark\\Domain\\Interfaces\\IVehicleRepository.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Domain\\Interfaces\\IVehicleRepository.cs",
+              "RelativeToolTip": "CarPark\\Domain\\Interfaces\\IVehicleRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T14:45:47.781Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\appsettings.json",
+              "RelativeDocumentMoniker": "CarPark\\appsettings.json",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\appsettings.json",
+              "RelativeToolTip": "CarPark\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-29T19:04:53.824Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "WeatherForecast.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\WeatherForecast.cs",
+              "RelativeDocumentMoniker": "CarPark\\WeatherForecast.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\WeatherForecast.cs",
+              "RelativeToolTip": "CarPark\\WeatherForecast.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T15:15:07.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Program.cs",
+              "RelativeDocumentMoniker": "CarPark\\Program.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\Program.cs",
+              "RelativeToolTip": "CarPark\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T15:15:00.454Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
