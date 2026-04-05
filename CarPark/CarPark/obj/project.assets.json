@@ -453,11 +453,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\CarPark.csproj",
+      "projectUniqueName": "C:\\Users\\user\\Desktop\\CarPark\\CarPark\\CarPark\\CarPark.csproj",
       "projectName": "CarPark",
-      "projectPath": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\CarPark.csproj",
+      "projectPath": "C:\\Users\\user\\Desktop\\CarPark\\CarPark\\CarPark\\CarPark.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\source\\repos\\CarPark\\CarPark\\obj\\",
+      "outputPath": "C:\\Users\\user\\Desktop\\CarPark\\CarPark\\CarPark\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
