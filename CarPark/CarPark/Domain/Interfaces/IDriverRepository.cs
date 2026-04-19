@@ -1,4 +1,5 @@
 ﻿using CarPark.Domain.Entities;
+
 namespace CarPark.Domain.Interfaces;
 
 public interface IDriverRepository : IRepository<Driver>
