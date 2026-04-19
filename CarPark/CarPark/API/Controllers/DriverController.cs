@@ -13,6 +13,13 @@ public class DriverController(
     IMapper mapper)
     : BaseController<Driver, DriverDto>(repository, mapper)
 {
+    /// <summary>
+    /// Берёт всех водителей из БД
+    /// Преобразует Entity в DTO
+    /// (HTTP 200 + список водителей (200 успешно)
+    /// </summary>
+    /// <param name="ct"></param>
+    /// <returns></returns>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<DriverDto>>> GetAll(CancellationToken ct)
     {
@@ -20,6 +27,14 @@ public class DriverController(
         return Ok(_mapper.Map<IEnumerable<DriverDto>>(data));
     }
 
+    /// <summary>
+    /// Получает водителя по id
+    /// Если не найден то NotFound
+    /// Возвращает одного водителя
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="ct"></param>
+    /// <returns></returns>
     [HttpGet("{id}")]
     public async Task<ActionResult<DriverDto>> Get(int id, CancellationToken ct)
     {

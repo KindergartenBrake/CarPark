@@ -13,6 +13,15 @@ public abstract class BaseController<TEntity, TDto>(
     protected readonly IRepository<TEntity> _repository = repository;
     protected readonly IMapper _mapper = mapper;
 
+    /// <summary>
+    /// 1) Проверяет вход
+    /// 2) Преобразует DTO в Entity
+    /// 3) Сохраняет в БД через репозиторий
+    /// 4) Возвращает: HTTP 204 — успешно, но без тела ответа
+    /// </summary>
+    /// <param name="dto"></param>
+    /// <param name="ct"></param>
+    /// <returns></returns>
     [HttpPost]
     public virtual async Task<IActionResult> Add(TDto dto, CancellationToken ct)
     {
@@ -24,7 +33,14 @@ public abstract class BaseController<TEntity, TDto>(
 
         return NoContent();
     }
-
+    /// <summary>
+    /// Получает id из URL
+    /// Удаляет запись через репозиторий
+    /// Возвращает 204
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="ct"></param>
+    /// <returns></returns>
     [HttpDelete("{id:int}")]
     public virtual async Task<IActionResult> Delete(int id, CancellationToken ct)
     {
