@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\CarParker.csproj": {}
+    "C:\\Users\\Alexandr\\Desktop\\CarPark\\CarParker\\CarParker\\CarParker.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\CarParker.csproj": {
+    "C:\\Users\\Alexandr\\Desktop\\CarPark\\CarParker\\CarParker\\CarParker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\CarParker.csproj",
+        "projectUniqueName": "C:\\Users\\Alexandr\\Desktop\\CarPark\\CarParker\\CarParker\\CarParker.csproj",
         "projectName": "CarParker",
-        "projectPath": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\CarParker.csproj",
-        "packagesPath": "C:\\Users\\ChelikQ\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\obj\\",
+        "projectPath": "C:\\Users\\Alexandr\\Desktop\\CarPark\\CarParker\\CarParker\\CarParker.csproj",
+        "packagesPath": "C:\\Users\\Alexandr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Alexandr\\Desktop\\CarPark\\CarParker\\CarParker\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ChelikQ\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Alexandr\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -68,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

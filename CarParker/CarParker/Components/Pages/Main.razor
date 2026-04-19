@@ -5,10 +5,15 @@
     <div class="sidebar">
         <div class="block">Личная информация</div>
 
-        <button @onclick="GoCreate">Заявки</button>
-        <button @onclick="GoDriver">Автомобили</button>
+        <button>Заявки</button>
+        <button>Автомобили</button>
         <button>Водители</button>
-        <button>Статистика</button>
+
+        <!-- Кнопка Сотрудник - ведет на страницу заявок -->
+        <button onclick="location.href='/create'">Сотрудник</button>
+
+        <!-- Кнопка Водитель - ведет на страницу автомобилей -->
+        <button onclick="location.href='/driver'">Водитель</button>
     </div>
 
     <div class="main-content">
@@ -21,10 +26,4 @@
 
         <button class="full-btn">Во весь экран</button>
     </div>
-     @code {
-            [Inject] NavigationManager Nav { get; set; }
-
-            void GoCreate() => Nav.NavigateTo("/create");
-            void GoDriver() => Nav.NavigateTo("/driver");
-        }
 </div>
