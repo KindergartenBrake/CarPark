@@ -1,0 +1,30 @@
+﻿@page "/"
+
+<div class="main-grid">
+
+    <div class="sidebar">
+        <div class="block">Личная информация</div>
+
+        <button @onclick="GoCreate">Заявки</button>
+        <button @onclick="GoDriver">Автомобили</button>
+        <button>Водители</button>
+        <button>Статистика</button>
+    </div>
+
+    <div class="main-content">
+        <div class="news">Последние новости</div>
+        <div class="viewer">Окно просмотра</div>
+
+        <div class="big-view">
+            Окно просмотра информации
+        </div>
+
+        <button class="full-btn">Во весь экран</button>
+    </div>
+     @code {
+            [Inject] NavigationManager Nav { get; set; }
+
+            void GoCreate() => Nav.NavigateTo("/create");
+            void GoDriver() => Nav.NavigateTo("/driver");
+        }
+</div>

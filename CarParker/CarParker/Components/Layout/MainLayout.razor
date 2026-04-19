@@ -1,0 +1,23 @@
+﻿@inherits LayoutComponentBase
+
+<div class="app">
+    <header class="header">
+        <button @onclick="@(() => Navigate("/"))">Кнопка 1</button>
+        <div class="title">Автопарк для компании</div>
+        <button @onclick="@(() => Navigate("/driver"))">Кнопка 2</button>
+        <div class="logo">Лого</div>
+    </header>
+
+    <div class="content">
+        @Body
+    </div>
+</div>
+
+@code {
+    [Inject] NavigationManager Nav { get; set; }
+
+    void Navigate(string url)
+    {
+        Nav.NavigateTo(url);
+    }
+}

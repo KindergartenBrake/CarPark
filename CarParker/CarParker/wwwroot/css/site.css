@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #eee;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #c94c4c;
+    color: white;
+}
+
+.content {
+    padding: 10px;
+}
+
+/* MAIN */
+.main-grid {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 10px;
+}
+
+.sidebar {
+    background: #c94c4c;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.main-content {
+    background: #c94c4c;
+    padding: 10px;
+}
+
+/* DRIVER */
+.driver-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 10px;
+}
+
+.left, .right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.block {
+    background: #ddd;
+    padding: 20px;
+}
+
+.big {
+    height: 200px;
+}
+
+.map {
+    background: #b55;
+    height: 200px;
+}
+
+.history {
+    background: #b55;
+    height: 200px;
+    padding: 10px;
+}
+
+/* CREATE */
+.create-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.form {
+    background: #ddd;
+    height: 150px;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.footer {
+    grid-column: span 1;
+    background: #b55;
+    padding: 20px;
+}
+
+.support {
+    grid-column: span 1;
+    background: #b55;
+    padding: 20px;
+}

@@ -1,0 +1,189 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9822AEC8-BAFC-43F8-BE98-C07FB4BA4162}|CarParker\\CarParker.csproj|c:\\users\\chelikq\\desktop\\carparker\\carparker\\components\\pages\\main.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9822AEC8-BAFC-43F8-BE98-C07FB4BA4162}|CarParker\\CarParker.csproj|solutionrelative:carparker\\components\\pages\\main.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9822AEC8-BAFC-43F8-BE98-C07FB4BA4162}|CarParker\\CarParker.csproj|c:\\users\\chelikq\\desktop\\carparker\\carparker\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9822AEC8-BAFC-43F8-BE98-C07FB4BA4162}|CarParker\\CarParker.csproj|solutionrelative:carparker\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9822AEC8-BAFC-43F8-BE98-C07FB4BA4162}|CarParker\\CarParker.csproj|c:\\users\\chelikq\\desktop\\carparker\\carparker\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9822AEC8-BAFC-43F8-BE98-C07FB4BA4162}|CarParker\\CarParker.csproj|solutionrelative:carparker\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9822AEC8-BAFC-43F8-BE98-C07FB4BA4162}|CarParker\\CarParker.csproj|c:\\users\\chelikq\\desktop\\carparker\\carparker\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9822AEC8-BAFC-43F8-BE98-C07FB4BA4162}|CarParker\\CarParker.csproj|solutionrelative:carparker\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9822AEC8-BAFC-43F8-BE98-C07FB4BA4162}|CarParker\\CarParker.csproj|c:\\users\\chelikq\\desktop\\carparker\\carparker\\components\\pages\\createrequest.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9822AEC8-BAFC-43F8-BE98-C07FB4BA4162}|CarParker\\CarParker.csproj|solutionrelative:carparker\\components\\pages\\createrequest.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9822AEC8-BAFC-43F8-BE98-C07FB4BA4162}|CarParker\\CarParker.csproj|c:\\users\\chelikq\\desktop\\carparker\\carparker\\components\\pages\\driver.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9822AEC8-BAFC-43F8-BE98-C07FB4BA4162}|CarParker\\CarParker.csproj|solutionrelative:carparker\\components\\pages\\driver.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9822AEC8-BAFC-43F8-BE98-C07FB4BA4162}|CarParker\\CarParker.csproj|c:\\users\\chelikq\\desktop\\carparker\\carparker\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9822AEC8-BAFC-43F8-BE98-C07FB4BA4162}|CarParker\\CarParker.csproj|solutionrelative:carparker\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9822AEC8-BAFC-43F8-BE98-C07FB4BA4162}|CarParker\\CarParker.csproj|c:\\users\\chelikq\\desktop\\carparker\\carparker\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{9822AEC8-BAFC-43F8-BE98-C07FB4BA4162}|CarParker\\CarParker.csproj|solutionrelative:carparker\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9822AEC8-BAFC-43F8-BE98-C07FB4BA4162}|CarParker\\CarParker.csproj|c:\\users\\chelikq\\desktop\\carparker\\carparker\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9822AEC8-BAFC-43F8-BE98-C07FB4BA4162}|CarParker\\CarParker.csproj|solutionrelative:carparker\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9822AEC8-BAFC-43F8-BE98-C07FB4BA4162}|CarParker\\CarParker.csproj|c:\\users\\chelikq\\desktop\\carparker\\carparker\\carparker.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{9822AEC8-BAFC-43F8-BE98-C07FB4BA4162}|CarParker\\CarParker.csproj|solutionrelative:carparker\\carparker.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\Components\\_Imports.razor",
+              "RelativeDocumentMoniker": "CarParker\\Components\\_Imports.razor",
+              "ToolTip": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\Components\\_Imports.razor",
+              "RelativeToolTip": "CarParker\\Components\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-19T14:52:50.81Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Routes.razor",
+              "DocumentMoniker": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\Components\\Routes.razor",
+              "RelativeDocumentMoniker": "CarParker\\Components\\Routes.razor",
+              "ToolTip": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\Components\\Routes.razor",
+              "RelativeToolTip": "CarParker\\Components\\Routes.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-19T14:52:11.646Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\Components\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "CarParker\\Components\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "CarParker\\Components\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-19T14:49:25.989Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\Components\\App.razor",
+              "RelativeDocumentMoniker": "CarParker\\Components\\App.razor",
+              "ToolTip": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\Components\\App.razor",
+              "RelativeToolTip": "CarParker\\Components\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-19T14:45:49.084Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "CarParker\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "CarParker\\Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-19T14:44:20.496Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "CarParker\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "CarParker\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-04-19T14:43:15.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CarParker",
+              "DocumentMoniker": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\CarParker.csproj",
+              "RelativeDocumentMoniker": "CarParker\\CarParker.csproj",
+              "ToolTip": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\CarParker.csproj",
+              "RelativeToolTip": "CarParker\\CarParker.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-04-19T14:43:02.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CreateRequest.razor",
+              "DocumentMoniker": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\Components\\Pages\\CreateRequest.razor",
+              "RelativeDocumentMoniker": "CarParker\\Components\\Pages\\CreateRequest.razor",
+              "ToolTip": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\Components\\Pages\\CreateRequest.razor",
+              "RelativeToolTip": "CarParker\\Components\\Pages\\CreateRequest.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-19T14:42:35.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Driver.razor",
+              "DocumentMoniker": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\Components\\Pages\\Driver.razor",
+              "RelativeDocumentMoniker": "CarParker\\Components\\Pages\\Driver.razor",
+              "ToolTip": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\Components\\Pages\\Driver.razor",
+              "RelativeToolTip": "CarParker\\Components\\Pages\\Driver.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-19T14:42:20.274Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Main.razor",
+              "DocumentMoniker": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\Components\\Pages\\Main.razor",
+              "RelativeDocumentMoniker": "CarParker\\Components\\Pages\\Main.razor",
+              "ToolTip": "C:\\Users\\ChelikQ\\Desktop\\CarParker\\CarParker\\Components\\Pages\\Main.razor*",
+              "RelativeToolTip": "CarParker\\Components\\Pages\\Main.razor*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-19T14:42:04.221Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
