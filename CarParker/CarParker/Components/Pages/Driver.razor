@@ -1,21 +1,134 @@
 ﻿@page "/driver"
 
+<div class="page-header">
+    <h1>👨‍✈️ Управление водителями</h1>
+    <p>Информация о водителях и закрепленных автомобилях</p>
+</div>
+
 <div class="driver-grid">
-
     <div class="left">
-        <div class="block">Карточка водителя</div>
-        <div class="block">Закрепленный автомобиль</div>
+        <div class="card driver-card">
+            <h3>👤 Карточка водителя</h3>
+            <div class="driver-info">
+                <div class="driver-avatar">👨‍✈️</div>
+                <div class="driver-details">
+                    <div><strong>ФИО:</strong> <span id="driverName">Алексей Смирнов</span></div>
+                    <div><strong>Стаж:</strong> 8 лет</div>
+                    <div><strong>Категория:</strong> D, C, E</div>
+                    <div><strong>Телефон:</strong> +7 (999) 123-45-67</div>
+                    <div><strong>Рейтинг:</strong> ⭐⭐⭐⭐⭐ (4.8)</div>
+                </div>
+            </div>
+            <select id="driverSelector" onchange="changeDriver()" class="driver-select">
+                <option value="Алексей Смирнов">Алексей Смирнов</option>
+                <option value="Дмитрий Кузнецов">Дмитрий Кузнецов</option>
+                <option value="Сергей Васильев">Сергей Васильев</option>
+                <option value="Андрей Попов">Андрей Попов</option>
+            </select>
+        </div>
 
-        <div class="block big">Взаимодействие с заявками</div>
-    </div>
+        <div class="card car-card">
+            <h3>🚗 Закрепленный автомобиль</h3>
+            <div class="car-info">
+                <div class="car-icon">🚛</div>
+                <div class="car-details">
+                    <div><strong>Модель:</strong> <span id="carModel">Mercedes-Benz Actros</span></div>
+                    <div><strong>Госномер:</strong> А123BC 777</div>
+                    <div><strong>Пробег:</strong> 124,500 км</div>
+                    <div><strong>Состояние:</strong> <span class="status-badge good">✅ Исправен</span></div>
+                </div>
+            </div>
+        </div>
 
-    <div class="right">
-        <div class="map">Карта</div>
-
-        <div class="history">
-            История заявок
-            <button>Выгрузка</button>
+        <div class="card big requests-card">
+            <h3>📋 Взаимодействие с заявками</h3>
+            <div class="requests-list" id="requestsList">
+                <div class="request-item">
+                    <span class="request-id">#1245</span>
+                    <span>Грузоперевозка Москва→СПб</span>
+                    <span class="status-badge in-progress">В пути</span>
+                </div>
+                <div class="request-item">
+                    <span class="request-id">#1244</span>
+                    <span>Пассажирский рейс</span>
+                    <span class="status-badge completed">✅ Выполнен</span>
+                </div>
+            </div>
+            <button class="btn-secondary" onclick="acceptNewRequest()">
+                ✅ Принять новую заявку
+            </button>
         </div>
     </div>
 
+    <div class="right">
+        <div class="card map-card-large">
+            <h3>🗺️ Карта маршрута водителя</h3>
+            <div class="route-info">
+                <div class="route-point start">
+                    <span class="point-icon">📍</span>
+                    <span id="routeStart">Москва, ул. Ленина, 1</span>
+                </div>
+                <div class="route-line">🚗 ➡️ 705 км ➡️</div>
+                <div class="route-point end">
+                    <span class="point-icon">🏁</span>
+                    <span id="routeEnd">Санкт-Петербург, Невский пр., 100</span>
+                </div>
+            </div>
+            <div class="route-stats">
+                <span>⏱️ Прогноз: 8ч 30мин</span>
+                <span>⛽ Расход: ~90л</span>
+                <span>💰 Оплата: 5000₽</span>
+            </div>
+        </div>
+
+        <div class="card history-card">
+            <h3>📜 История заявок</h3>
+            <div class="history-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Дата</th>
+                            <th>Маршрут</th>
+                            <th>Статус</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyTable">
+                        <tr><td>1243</td><td>10.05.2024</td><td>Москва→Тверь</td><td class="completed">Выполнен</td></tr>
+                        <tr><td>1242</td><td>09.05.2024</td><td>Москва→Владимир</td><td class="completed">Выполнен</td></tr>
+                        <tr><td>1241</td><td>08.05.2024</td><td>Москва→Рязань</td><td class="completed">Выполнен</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn-export" onclick="exportHistory()">
+                📥 Выгрузка истории (Excel)
+            </button>
+        </div>
+    </div>
 </div>
+
+<script>
+    const drivers = {
+        'Алексей Смирнов': { car: 'Mercedes-Benz Actros', plate: 'А123BC 777', start: 'Москва, ул. Ленина, 1', end: 'Санкт-Петербург, Невский пр., 100' },
+        'Дмитрий Кузнецов': { car: 'Ford Transit', plate: 'В456DE 777', start: 'Москва, Ленинградский пр., 50', end: 'Нижний Новгород, ул. Белинского, 20' },
+        'Сергей Васильев': { car: 'Toyota Camry', plate: 'С789FG 777', start: 'Москва, Кутузовский пр., 30', end: 'Калуга, ул. Кирова, 15' },
+        'Андрей Попов': { car: 'MAN TGS', plate: 'Е012HI 777', start: 'Москва, МКАД 45км', end: 'Тула, пр. Ленина, 10' }
+    };
+
+    function changeDriver() {
+        const name = document.getElementById('driverSelector').value;
+        const data = drivers[name];
+        document.getElementById('driverName').innerText = name;
+        document.getElementById('carModel').innerText = data.car;
+        document.getElementById('routeStart').innerText = data.start;
+        document.getElementById('routeEnd').innerText = data.end;
+    }
+
+    function acceptNewRequest() {
+        alert('✅ Новая заявка принята! Маршрут: Москва → Казань');
+    }
+
+    function exportHistory() {
+        alert('📥 История выгружена в формате Excel');
+    }
+</script>

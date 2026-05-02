@@ -1,29 +1,114 @@
 ﻿@page "/"
 
 <div class="main-grid">
-
+    <!-- Боковая панель -->
     <div class="sidebar">
-        <div class="block">Личная информация</div>
-
-        <button>Заявки</button>
-        <button>Автомобили</button>
-        <button>Водители</button>
-
-        <!-- Кнопка Сотрудник - ведет на страницу заявок -->
-        <button onclick="location.href='/create'">Сотрудник</button>
-
-        <!-- Кнопка Водитель - ведет на страницу автомобилей -->
-        <button onclick="location.href='/driver'">Водитель</button>
-    </div>
-
-    <div class="main-content">
-        <div class="news">Последние новости</div>
-        <div class="viewer">Окно просмотра</div>
-
-        <div class="big-view">
-            Окно просмотра информации
+        <div class="card">
+            <h3>👤 Личная информация</h3>
+            <div class="info-item">
+                <strong>Имя:</strong> Иван Петров
+            </div>
+            <div class="info-item">
+                <strong>Должность:</strong> Старший диспетчер
+            </div>
+            <div class="info-item">
+                <strong>Отдел:</strong> Управление автопарком
+            </div>
+            <div class="info-item">
+                <strong>Стаж:</strong> 5 лет
+            </div>
         </div>
 
-        <button class="full-btn">Во весь экран</button>
+        <div class="card stats-card">
+            <h3>📊 Статистика</h3>
+            <div class="stat">
+                <span>Активные заявки:</span>
+                <span class="stat-value">12</span>
+            </div>
+            <div class="stat">
+                <span>Автомобили:</span>
+                <span class="stat-value">8</span>
+            </div>
+            <div class="stat">
+                <span>Водители:</span>
+                <span class="stat-value">6</span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn-primary" onclick="location.href='/create'">
+                📝 Создать заявку
+            </button>
+            <button class="btn-secondary" onclick="location.href='/driver'">
+                🚗 Управление авто
+            </button>
+            <button class="btn-secondary" onclick="location.href='/employee'">
+                👥 Сотрудники
+            </button>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="main-content">
+        <div class="card news-card">
+            <h3>📰 Последние новости</h3>
+            <div class="news-item">
+                <span class="news-date">Сегодня</span>
+                <p>Новое обновление системы автопарка!</p>
+            </div>
+            <div class="news-item">
+                <span class="news-date">Вчера</span>
+                <p>Добавлены 3 новых автомобиля в парк</p>
+            </div>
+            <div class="news-item">
+                <span class="news-date">2 дня назад</span>
+                <p>Изменение графика работы диспетчеров</p>
+            </div>
+        </div>
+
+        <div class="card viewer-card">
+            <h3>👁️ Окно просмотра</h3>
+            <div class="viewer-content">
+                <p>Текущая активность в системе:</p>
+                <ul>
+                    <li>🚚 Заявка #1245 - в пути</li>
+                    <li>🚗 Автомобиль A123BC - на мойке</li>
+                    <li>👨‍✈️ Водитель Сидоров - в рейсе</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card big-view-card">
+            <h3>📋 Детальная информация</h3>
+            <p>Статус автопарка на сегодня:</p>
+            <div class="status-grid">
+                <div class="status-item">
+                    <span class="status-dot green"></span>
+                    Активные: 5
+                </div>
+                <div class="status-item">
+                    <span class="status-dot yellow"></span>
+                    В ремонте: 2
+                </div>
+                <div class="status-item">
+                    <span class="status-dot red"></span>
+                    Нарушения: 1
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-fullscreen" onclick="toggleFullscreen()">
+            🖥️ Во весь экран
+        </button>
     </div>
 </div>
+
+<script>
+    function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
+    }
+</script>

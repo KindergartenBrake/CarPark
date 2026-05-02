@@ -1,0 +1,29 @@
+﻿@page "/"
+
+<div class="main-grid">
+
+    <div class="sidebar">
+        <div class="block">Личная информация</div>
+
+        <button>Заявки</button>
+        <button>Автомобили</button>
+        <button>Водители</button>
+
+        <!-- Кнопка Сотрудник - ведет на страницу заявок -->
+        <button onclick="location.href='/create'">Сотрудник</button>
+
+        <!-- Кнопка Водитель - ведет на страницу автомобилей -->
+        <button onclick="location.href='/driver'">Водитель</button>
+    </div>
+
+    <div class="main-content">
+        <div class="news">Последние новости</div>
+        <div class="viewer">Окно просмотра</div>
+
+        <div class="big-view">
+            Окно просмотра информации
+        </div>
+
+        <button class="full-btn">Во весь экран</button>
+    </div>
+</div>

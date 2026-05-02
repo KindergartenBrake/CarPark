@@ -2,11 +2,22 @@
 
 <div class="app">
     <header class="header">
-        <div class="title">Автопарк для компании</div>
-        <div class="logo">Лого</div>
+        <div class="logo-section">
+            <div class="logo-icon">🚗</div>
+            <div class="logo-text">AutoFleet<span>Pro</span></div>
+        </div>
+        <nav class="nav-menu">
+            <NavLink href="/" Match="NavLinkMatch.All">🏠 Главная</NavLink>
+            <NavLink href="/create">📝 Заявки</NavLink>
+            <NavLink href="/driver">👨‍✈️ Водители</NavLink>
+            <NavLink href="/employee">👔 Сотрудники</NavLink>
+        </nav>
+        <div class="user-info">
+            <div class="avatar">👤</div>
+            <span>Иван Петров</span>
+        </div>
     </header>
-
-    <div class="content">
+    <main class="content">
         @Body
-    </div>
+    </main>
 </div>
