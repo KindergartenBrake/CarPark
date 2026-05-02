@@ -1,0 +1,33 @@
+@inherits LayoutComponentBase
+
+<RadzenComponents />
+
+<RadzenLayout style="background: url('images/login.jpg'); background-size: cover; background-position: center; min-height: 100vh;">
+    <RadzenBody>
+        <RadzenStack JustifyContent="Radzen.JustifyContent.Center" AlignItems="Radzen.AlignItems.Center" Class="rz-mx-auto rz-p-4" Style="min-height: 100vh;">
+            <RadzenCard class="rz-shadow-3 rz-border-radius-4" style="padding: 0; overflow: hidden; background-color: var(--rz-base-background-color); max-width: 1000px; width: 100%; backdrop-filter: blur(2px);">
+                <RadzenRow Gap="0">
+                    <!-- Левая панель с приветствием -->
+                    <RadzenColumn Size="12" SizeSM="6" Class="rz-background-color-primary rz-p-12" style="background: linear-gradient(135deg, var(--rz-primary) 0%, var(--rz-primary-darker) 100%); position: relative; display: flex; flex-direction: column; justify-content: center;">
+                        <RadzenIcon Icon="directions_car" style="font-size: 64px; color: white; margin-bottom: 24px;" />
+                        <RadzenText Text="Добро пожаловать!" TextStyle="Radzen.Blazor.TextStyle.H2" class="rz-mb-4 rz-color-on-primary" style="color: white; font-weight: 600;" />
+                        <RadzenText TextStyle="Radzen.Blazor.TextStyle.Body1" class="rz-color-on-primary" style="color: rgba(255,255,255,0.9); line-height: 1.6;">
+                            Система управления транспортом
+                        </RadzenText>
+                        <RadzenText TextStyle="Radzen.Blazor.TextStyle.Body2" class="rz-mt-4 rz-color-on-primary" style="color: rgba(255,255,255,0.7); margin-top: 16px;">
+                            Войдите, чтобы продолжить работу
+                        </RadzenText>
+                    </RadzenColumn>
+                    
+                    <!-- Правая панель с формой -->
+                    <RadzenColumn Size="12" SizeSM="6" class="rz-p-12" style="background: white;">
+                        @Body
+                    </RadzenColumn>
+                </RadzenRow>
+            </RadzenCard>
+            
+            <!-- Футер -->
+            <RadzenText Text="CPC v1.0.0, Copyright Ⓒ 2026" TextStyle="Radzen.Blazor.TextStyle.Caption" TextAlign="Radzen.TextAlign.Center" Style="width: 100%; margin-top: 20px; color: rgba(255,255,255,0.7);" TagName="Radzen.Blazor.TagName.P"/>
+        </RadzenStack>
+    </RadzenBody>
+</RadzenLayout>

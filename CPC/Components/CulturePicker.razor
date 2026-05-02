@@ -1,0 +1,2 @@
+<RadzenDropDown @bind-Value="@culture" TValue="string" Data="@(new [] { new { Text = "русский (Россия)", Value = "ru-RU" }, new { Text = "English", Value = "en" } })"
+    TextProperty="Text" ValueProperty="Value" Change="@ChangeCulture" />

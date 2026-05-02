@@ -1,0 +1,17 @@
+@inherits LayoutComponentBase
+
+<RadzenComponents />
+
+<div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);">
+    <div style="text-align: center; padding: 40px;">
+        <RadzenIcon Icon="error_outline" Style="font-size: 80px; color: #f56565;" />
+        <h1 style="font-size: 120px; margin: 20px 0 0; color: white; font-weight: 700;">404</h1>
+        <p style="font-size: 20px; color: #a0aec0; margin: 10px 0 30px;">Страница не найдена</p>
+        <RadzenButton Text="На главную" Click="@(() => NavigationManager.NavigateTo("/"))" ButtonStyle="Radzen.ButtonStyle.Primary" />
+    </div>
+</div>
+
+@code {
+    [Inject]
+    protected NavigationManager NavigationManager { get; set; }
+}
