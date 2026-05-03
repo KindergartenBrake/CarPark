@@ -2,28 +2,29 @@
 
 <div class="main-grid">
 
-    <div class="sidebar">
-        <div class="block">Личная информация</div>
+    <div class="sidebar-panel">
+        <div class="sidebar-header">Меню</div>
+        <div class="block info-block">Личная информация</div>
 
-        <button>Заявки</button>
-        <button>Автомобили</button>
-        <button>Водители</button>
-
-        <!-- Кнопка Сотрудник - ведет на страницу заявок -->
-        <button onclick="location.href='/create'">Сотрудник</button>
-
-        <!-- Кнопка Водитель - ведет на страницу автомобилей -->
-        <button onclick="location.href='/driver'">Водитель</button>
+        <div class="sidebar-buttons">
+            <button class="menu-btn">Кнопка - заявки</button>
+            <button class="menu-btn">Кнопка - автомобили</button>
+            <button class="menu-btn" onclick="location.href='/driver'">Кнопка - водители</button>
+            <button class="menu-btn">Кнопка - Статистика</button>
+        </div>
     </div>
 
-    <div class="main-content">
-        <div class="news">Последние новости</div>
-        <div class="viewer">Окно просмотра</div>
-
-        <div class="big-view">
-            Окно просмотра информации
+    <div class="content-panel">
+        <div class="news-wrapper">
+            <div class="news-header">Последние новости</div>
+            <div class="news-viewer">Окно просмотра</div>
         </div>
 
-        <button class="full-btn">Во весь экран</button>
+        <div class="big-view-wrapper">
+            <div class="big-viewer">
+                Окно просмотра информации, по кнопкам слева
+            </div>
+            <button class="fullscreen-btn">Кнопка - во весь экран</button>
+        </div>
     </div>
 </div>

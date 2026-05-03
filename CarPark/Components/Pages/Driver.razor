@@ -2,20 +2,21 @@
 
 <div class="driver-grid">
 
-    <div class="left">
-        <div class="block">Карточка водителя</div>
-        <div class="block">Закрепленный автомобиль</div>
-
-        <div class="block big">Взаимодействие с заявками</div>
+    <div class="driver-left-col">
+        <div class="driver-card block">Карточка водителя</div>
+        <div class="driver-car block">Закрепленный автомобиль</div>
+        <div class="driver-interact block">Взаимодействие с заявками</div>
     </div>
 
-    <div class="right">
-        <div class="map">Карта</div>
-
-        <div class="history">
-            История заявок
-            <button>Выгрузка</button>
+    <div class="driver-right-col">
+        <div class="driver-map block">Карта</div>
+        <div class="driver-history block">
+            <span>История заявок</span>
+            <button class="export-btn">Кнопка - выгрузка заявок</button>
         </div>
     </div>
 
+    <div style="grid-column: 1/-1; text-align: center; margin-top: 20px;">
+        <button onclick="location.href='/'">← На главную</button>
+    </div>
 </div>

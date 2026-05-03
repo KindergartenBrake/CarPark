@@ -1,32 +1,38 @@
 ﻿@page "/employee"
 
-<div class="create-grid">
+<div class="employee-grid">
 
-    <div class="left">
-        <div class="block">
-            <div>Окно просмотра</div>
-            <div>Окно просмотра</div>
+    <div class="emp-left-col">
+        <div class="emp-col-title">Выбор машины и водителя</div>
+
+        <div class="emp-selectors">
+            <div class="emp-view window">Окно просмотра</div>
+            <div class="emp-view window">Окно просмотра</div>
         </div>
 
-        <button>Подтвердить</button>
+        <button class="confirm-btn">Кнопка подтвердить</button>
     </div>
 
-    <div class="right">
-        <div class="form">Окно ввода данных</div>
-        <div class="map">Карта</div>
+    <div class="emp-right-col">
+        <div class="emp-col-title">Создать заявку на поездку</div>
 
-        <div class="actions">
-            <button>Отправить</button>
-            <button>Стереть</button>
+        <div class="emp-form window">Окно ввода данных для поездки</div>
+        <div class="emp-map window">Карта</div>
+
+        <div class="emp-actions">
+            <button class="send-btn">Кнопка - отправить</button>
+            <button class="clear-btn">Кнопка - стереть</button>
         </div>
     </div>
 
-    <div class="footer">
-        Ими гордится наша компания
+  
+    <div class="footer-row">
+        <div class="footer-company block">Ими гордиться наша компания</div>
+        <div class="footer-support block">Тех. поддержка</div>
     </div>
 
-    <div class="support">
-        Тех. поддержка
+    
+    <div style="grid-column: 1/-1; text-align: center; margin-top: 10px;">
+        <button onclick="location.href='/'">← На главную</button>
     </div>
-
 </div>
