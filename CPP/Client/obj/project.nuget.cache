@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "A8vmoSWrbwg=",
+  "dgSpecHash": "OvlUMg0b/KY=",
   "success": true,
-  "projectFilePath": "/Users/egorsusorov/Desktop/Client/CP.Client.csproj",
+  "projectFilePath": "/Users/egorsusorov/Desktop/CarPark/CPP/Client/CP.Client.csproj",
   "expectedPackageFiles": [
     "/Users/egorsusorov/.nuget/packages/microsoft.aspnetcore.app.internal.assets/10.0.6/microsoft.aspnetcore.app.internal.assets.10.0.6.nupkg.sha512",
     "/Users/egorsusorov/.nuget/packages/microsoft.aspnetcore.authorization/10.0.7/microsoft.aspnetcore.authorization.10.0.7.nupkg.sha512",

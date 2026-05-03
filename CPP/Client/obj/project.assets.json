@@ -2838,11 +2838,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/egorsusorov/Desktop/Client/CP.Client.csproj",
+      "projectUniqueName": "/Users/egorsusorov/Desktop/CarPark/CPP/Client/CP.Client.csproj",
       "projectName": "CP.Client",
-      "projectPath": "/Users/egorsusorov/Desktop/Client/CP.Client.csproj",
+      "projectPath": "/Users/egorsusorov/Desktop/CarPark/CPP/Client/CP.Client.csproj",
       "packagesPath": "/Users/egorsusorov/.nuget/packages/",
-      "outputPath": "/Users/egorsusorov/Desktop/Client/obj/",
+      "outputPath": "/Users/egorsusorov/Desktop/CarPark/CPP/Client/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/egorsusorov/.nuget/NuGet/NuGet.Config"

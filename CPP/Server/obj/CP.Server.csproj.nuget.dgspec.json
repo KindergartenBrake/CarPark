@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/egorsusorov/Desktop/Server/CP.Server.csproj": {}
+    "/Users/egorsusorov/Desktop/CarPark/CPP/Server/CP.Server.csproj": {}
   },
   "projects": {
-    "/Users/egorsusorov/Desktop/Client/CP.Client.csproj": {
+    "/Users/egorsusorov/Desktop/CarPark/CPP/Client/CP.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/egorsusorov/Desktop/Client/CP.Client.csproj",
+        "projectUniqueName": "/Users/egorsusorov/Desktop/CarPark/CPP/Client/CP.Client.csproj",
         "projectName": "CP.Client",
-        "projectPath": "/Users/egorsusorov/Desktop/Client/CP.Client.csproj",
+        "projectPath": "/Users/egorsusorov/Desktop/CarPark/CPP/Client/CP.Client.csproj",
         "packagesPath": "/Users/egorsusorov/.nuget/packages/",
-        "outputPath": "/Users/egorsusorov/Desktop/Client/obj/",
+        "outputPath": "/Users/egorsusorov/Desktop/CarPark/CPP/Client/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/egorsusorov/.nuget/NuGet/NuGet.Config"
@@ -393,14 +393,14 @@
         }
       }
     },
-    "/Users/egorsusorov/Desktop/Server/CP.Server.csproj": {
+    "/Users/egorsusorov/Desktop/CarPark/CPP/Server/CP.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/egorsusorov/Desktop/Server/CP.Server.csproj",
+        "projectUniqueName": "/Users/egorsusorov/Desktop/CarPark/CPP/Server/CP.Server.csproj",
         "projectName": "CP.Server",
-        "projectPath": "/Users/egorsusorov/Desktop/Server/CP.Server.csproj",
+        "projectPath": "/Users/egorsusorov/Desktop/CarPark/CPP/Server/CP.Server.csproj",
         "packagesPath": "/Users/egorsusorov/.nuget/packages/",
-        "outputPath": "/Users/egorsusorov/Desktop/Server/obj/",
+        "outputPath": "/Users/egorsusorov/Desktop/CarPark/CPP/Server/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/egorsusorov/.nuget/NuGet/NuGet.Config"
@@ -415,8 +415,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "/Users/egorsusorov/Desktop/Client/CP.Client.csproj": {
-                "projectPath": "/Users/egorsusorov/Desktop/Client/CP.Client.csproj"
+              "/Users/egorsusorov/Desktop/CarPark/CPP/Client/CP.Client.csproj": {
+                "projectPath": "/Users/egorsusorov/Desktop/CarPark/CPP/Client/CP.Client.csproj"
               }
             }
           }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nBvCZF/Q8mc=",
+  "dgSpecHash": "AyxODlnUnL4=",
   "success": true,
-  "projectFilePath": "/Users/egorsusorov/Desktop/Server/CP.Server.csproj",
+  "projectFilePath": "/Users/egorsusorov/Desktop/CarPark/CPP/Server/CP.Server.csproj",
   "expectedPackageFiles": [
     "/Users/egorsusorov/.nuget/packages/documentformat.openxml/2.20.0/documentformat.openxml.2.20.0.nupkg.sha512",
     "/Users/egorsusorov/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",

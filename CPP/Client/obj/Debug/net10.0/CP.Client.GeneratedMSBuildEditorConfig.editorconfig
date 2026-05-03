@@ -6,6 +6,8 @@ build_property.IncludeAllContentForSelfExtract =
 build_property.VerifyReferenceTrimCompatibility = 
 build_property.VerifyReferenceAotCompatibility = 
 build_property.TargetFramework = net10.0
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v10.0
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = 
 build_property.ProjectTypeGuids = 
@@ -15,81 +17,85 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = CP.Client
 build_property.RootNamespace = CP.Client
-build_property.ProjectDir = /Users/egorsusorov/Desktop/CPP/Client/
-build_property.RazorLangVersion = 7.0
+build_property.ProjectDir = /Users/egorsusorov/Desktop/CarPark/CPP/Client/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/egorsusorov/Desktop/CPP/Client
+build_property.MSBuildProjectDirectory = /Users/egorsusorov/Desktop/CarPark/CPP/Client
 build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 10.0
+build_property.EnableCodeStyleSeverity = 
 
-[/Users/egorsusorov/Desktop/CPP/Client/Layout/LoginLayout.razor]
+[/Users/egorsusorov/Desktop/CarPark/CPP/Client/Layout/LoginLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0L0xvZ2luTGF5b3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/egorsusorov/Desktop/CPP/Client/Layout/MainLayout.razor]
+[/Users/egorsusorov/Desktop/CarPark/CPP/Client/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0L01haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/egorsusorov/Desktop/CPP/Client/Layout/NotFoundLayout.razor]
+[/Users/egorsusorov/Desktop/CarPark/CPP/Client/Layout/NotFoundLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0L05vdEZvdW5kTGF5b3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/egorsusorov/Desktop/CPP/Client/Pages/AddApplicationRole.razor]
+[/Users/egorsusorov/Desktop/CarPark/CPP/Client/Pages/AddApplicationRole.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRkQXBwbGljYXRpb25Sb2xlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/egorsusorov/Desktop/CPP/Client/Pages/AddApplicationUser.razor]
+[/Users/egorsusorov/Desktop/CarPark/CPP/Client/Pages/AddApplicationUser.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRkQXBwbGljYXRpb25Vc2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/egorsusorov/Desktop/CPP/Client/Pages/ApplicationRoles.razor]
+[/Users/egorsusorov/Desktop/CarPark/CPP/Client/Pages/ApplicationRoles.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXBwbGljYXRpb25Sb2xlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/egorsusorov/Desktop/CPP/Client/Pages/ApplicationUsers.razor]
+[/Users/egorsusorov/Desktop/CarPark/CPP/Client/Pages/ApplicationUsers.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXBwbGljYXRpb25Vc2Vycy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/egorsusorov/Desktop/CPP/Client/Pages/EditApplicationUser.razor]
+[/Users/egorsusorov/Desktop/CarPark/CPP/Client/Pages/EditApplicationUser.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRWRpdEFwcGxpY2F0aW9uVXNlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/egorsusorov/Desktop/CPP/Client/Pages/Index.razor]
+[/Users/egorsusorov/Desktop/CarPark/CPP/Client/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/egorsusorov/Desktop/CPP/Client/Pages/Login.razor]
+[/Users/egorsusorov/Desktop/CarPark/CPP/Client/Pages/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/egorsusorov/Desktop/CPP/Client/Pages/NotFound.razor]
+[/Users/egorsusorov/Desktop/CarPark/CPP/Client/Pages/NotFound.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTm90Rm91bmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/egorsusorov/Desktop/CPP/Client/Pages/Profile.razor]
+[/Users/egorsusorov/Desktop/CarPark/CPP/Client/Pages/Profile.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJvZmlsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/egorsusorov/Desktop/CPP/Client/Pages/SecurityCode.razor]
+[/Users/egorsusorov/Desktop/CarPark/CPP/Client/Pages/SecurityCode.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2VjdXJpdHlDb2RlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/egorsusorov/Desktop/CPP/Client/Pages/Unauthorized.razor]
+[/Users/egorsusorov/Desktop/CarPark/CPP/Client/Pages/Unauthorized.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVW5hdXRob3JpemVkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/egorsusorov/Desktop/CPP/Client/Pages/_Imports.razor]
+[/Users/egorsusorov/Desktop/CarPark/CPP/Client/Pages/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/egorsusorov/Desktop/CPP/Client/RedirectToLogin.razor]
+[/Users/egorsusorov/Desktop/CarPark/CPP/Client/RedirectToLogin.razor]
 build_metadata.AdditionalFiles.TargetPath = UmVkaXJlY3RUb0xvZ2luLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/egorsusorov/Desktop/CPP/Client/Routes.razor]
+[/Users/egorsusorov/Desktop/CarPark/CPP/Client/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Um91dGVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/egorsusorov/Desktop/CPP/Client/_Imports.razor]
+[/Users/egorsusorov/Desktop/CarPark/CPP/Client/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
