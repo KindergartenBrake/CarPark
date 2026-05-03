@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
+namespace CP.Server.Models.CarPark
+{
+    [Table("AspNetUsers", Schema = "public")]
+    public partial class AspNetUser
+    {
+        [Key]
+        [Required]
+        public string Id { get; set; }
+
+        [Required]
+        public int AccessFailedCount { get; set; }
+
+        public string ConcurrencyStamp { get; set; }
+
+        [MaxLength(256)]
+        public string Email { get; set; }
+
+        public bool EmailConfirmed { get; set; }
+
+        public bool LockoutEnabled { get; set; }
+
+        public DateTime? LockoutEnd { get; set; }
+
+        [MaxLength(256)]
+        public string NormalizedEmail { get; set; }
+
+        [MaxLength(256)]
+        public string NormalizedUserName { get; set; }
+
+        public string PasswordHash { get; set; }
+
+        public string PhoneNumber { get; set; }
+
+        public bool PhoneNumberConfirmed { get; set; }
+
+        public string SecurityStamp { get; set; }
+
+        public bool TwoFactorEnabled { get; set; }
+
+        [MaxLength(256)]
+        public string UserName { get; set; }
+
+        public ICollection<AspNetUserToken> AspNetUserTokens { get; set; }
+
+        public ICollection<AspNetUserRole> AspNetUserRoles { get; set; }
+
+        public ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
+
+        public ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
+    }
+}
