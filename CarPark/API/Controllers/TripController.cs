@@ -28,7 +28,7 @@ public class TripController(
 
         return Ok(_mapper.Map<TripDto>(trip));
     }
-
+    // 1
     [HttpGet("driver/{driverId}")]
     public async Task<ActionResult<IEnumerable<TripDto>>> GetByDriver(int driverId, CancellationToken ct)
     {
