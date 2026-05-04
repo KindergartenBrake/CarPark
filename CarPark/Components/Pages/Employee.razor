@@ -2,37 +2,65 @@
 
 <div class="employee-grid">
 
+  
     <div class="emp-left-col">
         <div class="emp-col-title">Выбор машины и водителя</div>
 
         <div class="emp-selectors">
-            <div class="emp-view window">Окно просмотра</div>
-            <div class="emp-view window">Окно просмотра</div>
+            <div class="emp-view window">Окно просмотра машины</div>
+            <div class="emp-view window">Окно просмотра водителя</div>
         </div>
 
-        <button class="confirm-btn">Кнопка подтвердить</button>
-    </div>
-
-    <div class="emp-right-col">
-        <div class="emp-col-title">Создать заявку на поездку</div>
-
-        <div class="emp-form window">Окно ввода данных для поездки</div>
-        <div class="emp-map window">Карта</div>
-
-        <div class="emp-actions">
-            <button class="send-btn">Кнопка - отправить</button>
-            <button class="clear-btn">Кнопка - стереть</button>
-        </div>
-    </div>
-
-  
-    <div class="footer-row">
-        <div class="footer-company block">Ими гордиться наша компания</div>
-        <div class="footer-support block">Тех. поддержка</div>
+        <button class="confirm-btn">Подтвердить</button>
     </div>
 
     
-    <div style="grid-column: 1/-1; text-align: center; margin-top: 10px;">
+    <div class="emp-right-col">
+        <div class="emp-col-title">Создать заявку на поездку</div>
+
+        <div class="emp-form window">
+            <form>
+                <label>Откуда:</label>
+                <input type="text" placeholder="Введите адрес отправления" />
+
+                <label>Куда:</label>
+                <input type="text" placeholder="Введите адрес назначения" />
+
+                <label>Дата поездки:</label>
+                <input type="date" />
+
+                <label>Время:</label>
+                <input type="time" />
+
+                <label>Комментарий:</label>
+                <textarea placeholder="Дополнительная информация"></textarea>
+            </form>
+        </div>
+
+        
+        <div class="emp-map window">
+            <iframe src="https://yandex.ru/map-widget/v1/?ll=8.6821%2C50.1109&z=10"
+                    width="100%"
+                    height="100%"
+                    frameborder="0"
+                    allowfullscreen="true">
+            </iframe>
+        </div>
+
+        <div class="emp-actions">
+            <button class="send-btn">Отправить</button>
+            <button class="clear-btn">Стереть</button>
+        </div>
+    </div>
+
+ 
+    <div class="footer-row">
+        <div class="footer-company block">Ими гордится наша компания</div>
+        <div class="footer-support block">Тех. поддержка</div>
+    </div>
+
+    <div class="back-home">
         <button onclick="location.href='/'">← На главную</button>
     </div>
+
 </div>
