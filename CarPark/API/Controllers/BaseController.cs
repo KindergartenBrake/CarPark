@@ -44,7 +44,37 @@ public abstract class BaseController<TEntity, TDto>(
     [HttpDelete("{id:int}")]
     public virtual async Task<IActionResult> Delete(int id, CancellationToken ct)
     {
+        var existing = await _repository.Get(id, ct);
+        if (existing == null)
+            return NotFound();
+
         await _repository.Delete(id, ct);
+
         return NoContent();
+    }
+    /// <summary>
+    /// Обновление существующей записи
+    /// Проверяется вход, если ничего - 400
+    /// Получает объект из бд
+    /// Проверяет на существование объект, если нет - ошибка
+    /// Обновляет данные mapper, перезаписывает поля в existing(объект)
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="dto"></param>
+    /// <param name="ct"></param>
+    /// <returns></returns>
+    [HttpPut("{id}")]
+    public virtual async Task<IActionResult> Update(int id, TDto dto, CancellationToken ct)
+    {
+        if (dto == null)
+            return BadRequest();
+
+        var existing = await _repository.Get(id, ct);
+        if (existing == null)
+            return NotFound();
+
+        _mapper.Map(dto, existing);
+
+        return Ok(_mapper.Map<TDto>(existing));
     }
 }

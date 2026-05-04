@@ -8,39 +8,59 @@ namespace CarPark.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class DriverController(
-    IDriverRepository repository,
-    IMapper mapper)
-    : BaseController<Driver, DriverDto>(repository, mapper)
+public class DriverController : ControllerBase
 {
-    /// <summary>
-    /// Берёт всех водителей из БД
-    /// Преобразует Entity в DTO
-    /// (HTTP 200 + список водителей (200 успешно)
-    /// </summary>
-    /// <param name="ct"></param>
-    /// <returns></returns>
+    private readonly IDriverService _service;
+    private readonly IMapper _mapper;
+
+    public DriverController(IDriverService service, IMapper mapper)
+    {
+        _service = service;
+        _mapper = mapper;
+    }
+
     [HttpGet]
     public async Task<ActionResult<IEnumerable<DriverDto>>> GetAll(CancellationToken ct)
     {
-        var data = await repository.GetAll(ct);
+        var data = await _service.GetAllDrivers(ct);
         return Ok(_mapper.Map<IEnumerable<DriverDto>>(data));
     }
 
-    /// <summary>
-    /// Получает водителя по id
-    /// Если не найден то NotFound
-    /// Возвращает одного водителя
-    /// </summary>
-    /// <param name="id"></param>
-    /// <param name="ct"></param>
-    /// <returns></returns>
     [HttpGet("{id}")]
     public async Task<ActionResult<DriverDto>> Get(int id, CancellationToken ct)
     {
-        var driver = await repository.Get(id, ct);
-        if (driver == null) return NotFound();
+        var driver = await _service.GetDriver(id, ct);
+
+        if (driver == null)
+            return NotFound();
 
         return Ok(_mapper.Map<DriverDto>(driver));
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Add(DriverDto dto, CancellationToken ct)
+    {
+        if (dto == null)
+            return BadRequest();
+
+        var entity = _mapper.Map<Driver>(dto);
+
+        var result = await _service.CreateDriver(entity, ct);
+
+        return Ok(_mapper.Map<DriverDto>(result));
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id, CancellationToken ct)
+    {
+        try
+        {
+            await _service.DeleteDriver(id, ct);
+            return NoContent();
+        }
+        catch
+        {
+            return NotFound();
+        }
     }
 }

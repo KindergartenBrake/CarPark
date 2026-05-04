@@ -20,7 +20,7 @@
     ]
   },
   {
-    "ContainingType": "CarPark.API.Controllers.BaseController\u00602[[CarPark.Domain.Entities.Driver, CarPark, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[CarPark.API.DTO.DriverDto, CarPark, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "CarPark.API.Controllers.DriverController",
     "Method": "Add",
     "RelativePath": "api/Driver",
     "HttpMethod": "POST",
@@ -62,7 +62,7 @@
     ]
   },
   {
-    "ContainingType": "CarPark.API.Controllers.BaseController\u00602[[CarPark.Domain.Entities.Driver, CarPark, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[CarPark.API.DTO.DriverDto, CarPark, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "ContainingType": "CarPark.API.Controllers.DriverController",
     "Method": "Delete",
     "RelativePath": "api/Driver/{id}",
     "HttpMethod": "DELETE",
@@ -150,6 +150,27 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarPark.API.Controllers.BaseController\u00602[[CarPark.Domain.Entities.Trip, CarPark, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[CarPark.API.DTO.TripDto, CarPark, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "Update",
+    "RelativePath": "api/Trip/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "CarPark.API.DTO.TripDto",
         "IsRequired": true
       }
     ],
@@ -228,6 +249,27 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarPark.API.Controllers.BaseController\u00602[[CarPark.Domain.Entities.TripRequest, CarPark, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[CarPark.API.DTO.TripRequestDto, CarPark, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "Update",
+    "RelativePath": "api/TripRequest/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "CarPark.API.DTO.TripRequestDto",
         "IsRequired": true
       }
     ],
@@ -332,6 +374,27 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarPark.API.Controllers.BaseController\u00602[[CarPark.Domain.Entities.Vehicle, CarPark, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[CarPark.API.DTO.VehicleDto, CarPark, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "Update",
+    "RelativePath": "api/Vehicle/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "CarPark.API.DTO.VehicleDto",
         "IsRequired": true
       }
     ],
