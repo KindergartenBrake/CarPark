@@ -48,6 +48,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRkQXBwbGljYXRpb25Vc2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/egorsusorov/Desktop/CarPark/CPP/Client/Pages/Admin.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRtaW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/egorsusorov/Desktop/CarPark/CPP/Client/Pages/ApplicationRoles.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXBwbGljYXRpb25Sb2xlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

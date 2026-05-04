@@ -220,7 +220,7 @@ namespace CP.Client
         }
         public async Task ChangePassword(string oldPassword, string newPassword)
         {
-            var uri =  new Uri($"{navigationManager.BaseUri}Account/ChangePassword");
+            var uri = new Uri($"{navigationManager.BaseUri}Account/ChangePassword");
 
             var content = new FormUrlEncodedContent(new Dictionary<string, string> {
                 { "oldPassword", oldPassword },
@@ -235,6 +235,20 @@ namespace CP.Client
 
                 throw new ApplicationException(message);
             }
+        }
+        
+        public async Task RedirectByRole(NavigationManager navigation)
+        {
+            await Task.Delay(500);
+            
+            if (IsInRole("Admin"))
+                navigation.NavigateTo("/admin", true);
+            else if (IsInRole("Employee"))
+                navigation.NavigateTo("/employee/dashboard", true);
+            else if (IsInRole("Driver"))
+                navigation.NavigateTo("/driver/dashboard", true);
+            else
+                navigation.NavigateTo("/", true);
         }
     }
 }

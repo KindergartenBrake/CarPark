@@ -1,5 +1,7 @@
 @layout LoginLayout
 @page "/login"
+@using CP.Client
+@inject NavigationManager Navigation
 
 <PageTitle>Login</PageTitle>
 <RadzenText Text="Login" TextStyle="Radzen.Blazor.TextStyle.H5" class="mb-4" TagName="Radzen.Blazor.TagName.H2" />
@@ -9,8 +11,21 @@
             Method="post">
             <RadzenAlert Shade="Radzen.Shade.Lighter" Variant="Radzen.Variant.Flat" Size="Radzen.AlertSize.Small" AlertStyle="Radzen.AlertStyle.Danger" Visible="@errorVisible">@error</RadzenAlert>
             <RadzenAlert Shade="Radzen.Shade.Lighter" Variant="Radzen.Variant.Flat" Size="Radzen.AlertSize.Small" AlertStyle="Radzen.AlertStyle.Info" Visible="@infoVisible">@info</RadzenAlert>
-            <RadzenLogin AllowResetPassword="false" AllowRegister="false" FormFieldVariant="Variant.Filled"
-            />
+            <RadzenLogin AllowResetPassword="false" AllowRegister="false" FormFieldVariant="Variant.Filled" />
         </RadzenTemplateForm>
     </RadzenColumn>
 </RadzenRow>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Проверяем, если пользователь уже авторизован - редиректим по роли
+            if (Security.IsAuthenticated())
+            {
+                await Security.RedirectByRole(Navigation);
+            }
+        }
+    }
+}
