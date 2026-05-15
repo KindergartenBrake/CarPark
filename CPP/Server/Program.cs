@@ -27,11 +27,6 @@ builder.Services.AddDbContext<CP.Server.Data.CarParkContext>(options =>
 builder.Services.AddControllers().AddOData(opt =>
 {
     var oDataBuilderCarPark = new ODataConventionModelBuilder();
-    oDataBuilderCarPark.EntitySet<CP.Server.Models.CarPark.Driver>("Drivers");
-    oDataBuilderCarPark.EntitySet<CP.Server.Models.CarPark.TripRequest>("TripRequests");
-    oDataBuilderCarPark.EntitySet<CP.Server.Models.CarPark.Trip>("Trips");
-    oDataBuilderCarPark.EntitySet<CP.Server.Models.CarPark.User>("Users");
-    oDataBuilderCarPark.EntitySet<CP.Server.Models.CarPark.Vehicle>("Vehicles");
     oDataBuilderCarPark.EntitySet<CP.Server.Models.CarPark.AspNetRoleClaim>("AspNetRoleClaims");
     oDataBuilderCarPark.EntitySet<CP.Server.Models.CarPark.AspNetRole>("AspNetRoles");
     oDataBuilderCarPark.EntitySet<CP.Server.Models.CarPark.AspNetUserClaim>("AspNetUserClaims");
@@ -39,11 +34,6 @@ builder.Services.AddControllers().AddOData(opt =>
     oDataBuilderCarPark.EntitySet<CP.Server.Models.CarPark.AspNetUserRole>("AspNetUserRoles").EntityType.HasKey(entity => new { entity.UserId, entity.RoleId });
     oDataBuilderCarPark.EntitySet<CP.Server.Models.CarPark.AspNetUser>("AspNetUsers");
     oDataBuilderCarPark.EntitySet<CP.Server.Models.CarPark.AspNetUserToken>("AspNetUserTokens").EntityType.HasKey(entity => new { entity.UserId, entity.LoginProvider, entity.Name });
-    oDataBuilderCarPark.Function("VDrivers").Returns<CP.Server.Models.CarPark.VDriver>();
-    oDataBuilderCarPark.Function("VTripRequests").Returns<CP.Server.Models.CarPark.VTripRequest>();
-    oDataBuilderCarPark.Function("VTrips").Returns<CP.Server.Models.CarPark.VTrip>();
-    oDataBuilderCarPark.Function("VUsers").Returns<CP.Server.Models.CarPark.VUser>();
-    oDataBuilderCarPark.Function("VVehicles").Returns<CP.Server.Models.CarPark.VVehicle>();
     opt.AddRouteComponents("odata/CarPark", oDataBuilderCarPark.GetEdmModel()).Count().Filter().OrderBy().Expand().Select().SetMaxTop(null).TimeZone = TimeZoneInfo.Utc;
 });
 builder.Services.AddScoped<CP.Client.CarParkService>();
@@ -93,8 +83,6 @@ app.UseHttpsRedirection();
 app.MapControllers();
 app.UseHeaderPropagation();
 app.MapStaticAssets();
-
-
 var dbContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<ApplicationIdentityDbContext>();
 if (dbContext.Database.CanConnect())
 {
