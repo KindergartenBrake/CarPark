@@ -1,6 +1,6 @@
-﻿using CarPark.Domain.Entities;
-using CarPark.Domain.Interfaces;
-namespace CarPark.DAL.Repository;
+﻿using CP.Server.Interfaces;
+
+namespace CP.Server.Data.Repository;
 
 public class DriverRepository : IDriverRepository
 {
