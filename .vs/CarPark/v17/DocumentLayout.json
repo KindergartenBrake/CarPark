@@ -178,8 +178,7 @@
               "RelativeToolTip": "CarPark\\Domain\\Interfaces\\IDriverService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-04T09:17:06.892Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-04T09:17:06.892Z"
             },
             {
               "$type": "Document",
@@ -191,8 +190,7 @@
               "RelativeToolTip": "CarPark\\Services\\DriverService.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAowDMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-04T09:19:20.354Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-04T09:19:20.354Z"
             },
             {
               "$type": "Document",
@@ -204,8 +202,7 @@
               "RelativeToolTip": "CarPark\\Domain\\Interfaces\\ITripRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-03T15:29:57.03Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-03T15:29:57.03Z"
             },
             {
               "$type": "Document",
@@ -217,8 +214,7 @@
               "RelativeToolTip": "CarPark\\Domain\\Interfaces\\IVehicleService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-03T15:30:16.747Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-03T15:30:16.747Z"
             },
             {
               "$type": "Document",
@@ -230,8 +226,7 @@
               "RelativeToolTip": "CarPark\\Domain\\Interfaces\\ITripRequestRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-03T15:30:03.158Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-03T15:30:03.158Z"
             },
             {
               "$type": "Document",
@@ -243,8 +238,7 @@
               "RelativeToolTip": "CarPark\\API\\Controllers\\DriverController.cs",
               "ViewState": "AgIAACYAAAAAAAAAAAAwwBkAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-03T15:25:42.951Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-03T15:25:42.951Z"
             },
             {
               "$type": "Document",
@@ -256,8 +250,7 @@
               "RelativeToolTip": "CarPark\\Domain\\Entities\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-03T15:29:02.545Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-03T15:29:02.545Z"
             },
             {
               "$type": "Document",
@@ -269,8 +262,7 @@
               "RelativeToolTip": "CarPark\\Domain\\Interfaces\\IDriverRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-03T15:29:22.812Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-03T15:29:22.812Z"
             },
             {
               "$type": "Document",
@@ -282,8 +274,7 @@
               "RelativeToolTip": "CarPark\\DAL\\Repository\\DriverRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-04T09:51:55.128Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-04T09:51:55.128Z"
             },
             {
               "$type": "Document",
@@ -308,8 +299,7 @@
               "RelativeToolTip": "CarPark\\Domain\\Entities\\Driver.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAA5wBsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-03T15:28:42.199Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-03T15:28:42.199Z"
             },
             {
               "$type": "Document",
@@ -321,8 +311,7 @@
               "RelativeToolTip": "CarPark\\API\\Controllers\\TripController.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAwwCQAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-03T15:26:11.547Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-03T15:26:11.547Z"
             },
             {
               "$type": "Document",
@@ -334,8 +323,7 @@
               "RelativeToolTip": "CarPark\\API\\Controllers\\TripRequestController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-03T15:26:17.73Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-03T15:26:17.73Z"
             },
             {
               "$type": "Document",
@@ -347,8 +335,7 @@
               "RelativeToolTip": "CarPark\\Domain\\Interfaces\\IVehicleRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-03T15:30:11.882Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-03T15:30:11.882Z"
             },
             {
               "$type": "Document",
@@ -360,8 +347,7 @@
               "RelativeToolTip": "CarPark\\Domain\\Interfaces\\IRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-03T15:29:36.766Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-03T15:29:36.766Z"
             },
             {
               "$type": "Document",
@@ -373,8 +359,7 @@
               "RelativeToolTip": "CarPark\\Components\\Pages\\Employee.razor",
               "ViewState": "AgIAABIAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-02T20:07:08.705Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-02T20:07:08.705Z"
             },
             {
               "$type": "Document",
@@ -386,8 +371,7 @@
               "RelativeToolTip": "CarPark\\Components\\Pages\\Driver.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-02T20:06:59.733Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-02T20:06:59.733Z"
             },
             {
               "$type": "Document",
@@ -399,8 +383,7 @@
               "RelativeToolTip": "CarPark\\Components\\Routes.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-02T19:59:42.618Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-02T19:59:42.618Z"
             },
             {
               "$type": "Document",
@@ -412,8 +395,7 @@
               "RelativeToolTip": "CarPark\\Components\\App.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-02T19:59:31.767Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-02T19:59:31.767Z"
             },
             {
               "$type": "Document",
@@ -425,8 +407,7 @@
               "RelativeToolTip": "CarPark\\Components\\_Imports.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-02T19:59:22.632Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-02T19:59:22.632Z"
             },
             {
               "$type": "Document",
@@ -438,8 +419,7 @@
               "RelativeToolTip": "CarPark\\Components\\Layout\\NavMenu.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-02T20:08:00.813Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-02T20:08:00.813Z"
             },
             {
               "$type": "Document",
@@ -451,8 +431,7 @@
               "RelativeToolTip": "CarPark\\Components\\Layout\\MainLayout.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-02T20:06:37.482Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-02T20:06:37.482Z"
             },
             {
               "$type": "Document",
@@ -464,8 +443,7 @@
               "RelativeToolTip": "CarPark\\API\\DTO\\VehicleDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-03T15:26:57.459Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-03T15:26:57.459Z"
             },
             {
               "$type": "Document",
@@ -477,8 +455,7 @@
               "RelativeToolTip": "CarPark\\API\\DTO\\TripRequestDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-03T15:26:52.1Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-03T15:26:52.1Z"
             },
             {
               "$type": "Document",
@@ -490,8 +467,7 @@
               "RelativeToolTip": "CarPark\\API\\DTO\\TripDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-03T15:26:46.763Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-03T15:26:46.763Z"
             },
             {
               "$type": "Document",
@@ -503,8 +479,7 @@
               "RelativeToolTip": "CarPark\\API\\DTO\\DriverDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-04T09:13:45.997Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-04T09:13:45.997Z"
             },
             {
               "$type": "Document",
@@ -516,8 +491,7 @@
               "RelativeToolTip": "CarPark\\Domain\\Entities\\Vehicle.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAQwBsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-03T15:29:06.452Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-03T15:29:06.452Z"
             },
             {
               "$type": "Document",
@@ -529,8 +503,7 @@
               "RelativeToolTip": "CarPark\\Domain\\Entities\\TripRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-03T15:28:56.806Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-03T15:28:56.806Z"
             },
             {
               "$type": "Document",
@@ -542,8 +515,7 @@
               "RelativeToolTip": "CarPark\\Domain\\Entities\\Trip.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-03T15:28:50.93Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-03T15:28:50.93Z"
             },
             {
               "$type": "Document",

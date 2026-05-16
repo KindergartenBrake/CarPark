@@ -1,24 +1,31 @@
 namespace CP.Server.Models.CarPark;
-/// <summary>
-/// 1) Идентификатор пользователя
-/// 2) Дата создания
-/// 3) Описание
-/// 4) Статус
-/// </summary>
-/// <param name="userId"></param>
-/// <param name="createdAt"></param>
-/// <param name="description"></param>
-/// <param name="status"></param>
-public class TripRequest(
-    int userId,
-    DateTime createdAt,
-    string description,
-    string status)
+
+public class TripRequest
 {
-    public int Id { get; set; }
-    public int UserId { get; set; } = userId;
-    public DateTime CreatedAt { get; set; } = createdAt;
-    public string Description { get; set; } = description;
-    public string Status { get; set; } = status;
+    public int RequestId { get; set; }
+    
+    public string CreatedByUserId { get; set; } = string.Empty;
+    public AspNetUser? CreatedByUser { get; set; }
+    
+    public string? VehicleType { get; set; }
+    
+    public DateTime TripDate { get; set; }
+    public DateTime? StartTime { get; set; }
+    public DateTime? EndTime { get; set; }
+    
+    public string? Description { get; set; }
+    
+    public int? VehicleId { get; set; }
+    public Vehicle? Vehicle { get; set; }
+    
+    public int? DriverId { get; set; }
+    public Driver? Driver { get; set; }
+    
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    
+    public string Status { get; set; } = "Pending";
+    
+    public string? RejectionReason { get; set; }
+    
     public Trip? Trip { get; set; }
 }

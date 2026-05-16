@@ -15,7 +15,7 @@ public class DriverRepository : IDriverRepository
 
     public Task<Driver?> Get(int id, CancellationToken ct)
     {
-        return Task.FromResult(_drivers.FirstOrDefault(x => x.Id == id));
+        return Task.FromResult(_drivers.FirstOrDefault(x => x.DriverId == id));
     }
 
     public Task<IEnumerable<Driver>> GetAll(CancellationToken ct)
@@ -25,7 +25,7 @@ public class DriverRepository : IDriverRepository
 
     public Task Delete(int id, CancellationToken ct)
     {
-        var item = _drivers.FirstOrDefault(x => x.Id == id);
+        var item = _drivers.FirstOrDefault(x => x.DriverId == id);
         if (item != null)
             _drivers.Remove(item);
 
