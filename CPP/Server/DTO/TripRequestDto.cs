@@ -1,4 +1,4 @@
-﻿namespace CP.Server.DTO;
+namespace CP.Server.DTO;
 
 public record TripRequestDto(
     int Id,

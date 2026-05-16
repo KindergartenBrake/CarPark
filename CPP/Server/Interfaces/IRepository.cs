@@ -1,4 +1,4 @@
-﻿namespace CP.Server.Interfaces;
+namespace CP.Server.Interfaces;
 
 /// <summary>
 /// База

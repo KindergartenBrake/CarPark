@@ -1,4 +1,6 @@
-﻿namespace CP.Server.Interfaces;
+using CP.Server.Models.CarPark;
+
+namespace CP.Server.Interfaces;
 
 public interface ITripRepository : IRepository<Trip>
 {

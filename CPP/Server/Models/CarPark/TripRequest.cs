@@ -20,7 +20,5 @@ public class TripRequest(
     public DateTime CreatedAt { get; set; } = createdAt;
     public string Description { get; set; } = description;
     public string Status { get; set; } = status;
-
-    public User? User { get; set; }
     public Trip? Trip { get; set; }
 }

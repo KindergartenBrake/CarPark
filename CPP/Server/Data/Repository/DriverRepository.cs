@@ -1,4 +1,5 @@
-﻿using CP.Server.Interfaces;
+using CP.Server.Interfaces;
+using CP.Server.Models.CarPark;
 
 namespace CP.Server.Data.Repository;
 
