@@ -1,57 +1,156 @@
 @inherits LayoutComponentBase
 @inject CookieThemeService CookieThemeService
+@inject SecurityService Security
+
 <RadzenComponents />
+
+<style>
+    /* Брутальный синий стиль */
+    :root {
+        --brutal-bg: linear-gradient(135deg, #0a1928 0%, #0d2b3e 50%, #0a1928 100%);
+        --brutal-card-bg: linear-gradient(135deg, #1a2a3a 0%, #16212e 100%);
+        --brutal-border: #2a4a6e;
+        --brutal-text: #e0e8f0;
+        --brutal-text-muted: #8aa0b5;
+        --brutal-accent: #2b7abf;
+        --brutal-sidebar: linear-gradient(135deg, #0a121a 0%, #0d1620 100%);
+    }
+    
+    .rz-panel-menu-item {
+        color: var(--brutal-text-muted) !important;
+        transition: all 0.3s ease !important;
+        border-radius: 8px !important;
+        margin: 4px 8px !important;
+    }
+    
+    .rz-panel-menu-item:hover {
+        color: var(--brutal-text) !important;
+        background: rgba(42,74,110,0.3) !important;
+    }
+    
+    .rz-panel-menu-item-active {
+        color: var(--brutal-text) !important;
+        background: linear-gradient(135deg, #1e5799 0%, #2b7abf 100%) !important;
+        border-left: 3px solid #5aa5dd !important;
+    }
+    
+    .rz-header {
+        background: var(--brutal-card-bg) !important;
+        border-bottom: 1px solid var(--brutal-border) !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+        padding: 0 20px !important;
+    }
+    
+    .rz-sidebar {
+        background: var(--brutal-sidebar) !important;
+        border-right: 1px solid var(--brutal-border) !important;
+    }
+    
+    .rz-body {
+        background: var(--brutal-bg) !important;
+    }
+    
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        color: #e0e8f0;
+    }
+    
+    .user-name {
+        font-weight: bold;
+        color: #e0e8f0;
+    }
+    
+    .user-role {
+        font-size: 12px;
+        color: #2b7abf;
+        background: rgba(43,122,191,0.2);
+        padding: 4px 8px;
+        border-radius: 20px;
+    }
+    
+    .logout-btn {
+        background: transparent;
+        border: 1px solid #2a4a6e;
+        color: #e0e8f0;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    .logout-btn:hover {
+        background: rgba(220,53,69,0.2);
+        border-color: #dc3545;
+        color: #dc3545;
+    }
+    
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: #0a121a;
+        border-radius: 5px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: #2a4a6e;
+        border-radius: 5px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: #3a8bc5;
+    }
+</style>
 
 <RadzenLayout>
     <RadzenHeader>
         <RadzenRow JustifyContent="JustifyContent.Start" AlignItems="AlignItems.Center" Gap="0">
             <RadzenColumn Size="5">
-                <RadzenSidebarToggle Click="@SidebarToggleClick"></RadzenSidebarToggle>
+                <RadzenSidebarToggle Click="@SidebarToggleClick" Style="color: #8aa0b5;" />
             </RadzenColumn>
             <RadzenColumn Size="7">
-                <RadzenStack AlignItems="AlignItems.Center" Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.End" Gap="0.5rem" class="rz-px-2">
-                    <RadzenAppearanceToggle />
-                    <RadzenProfileMenu Visible="@Security.IsAuthenticated()" Click="@ProfileMenuClick">
-                        <ChildContent>
-
-                            <RadzenProfileMenuItem Path="profile" Icon="settings" Text="Profile" />
-                            <RadzenProfileMenuItem Path="application-users" Icon="person" Text="Users" />
-                            <RadzenProfileMenuItem Path="application-roles" Icon="security" Text="Roles" />
-                            <RadzenProfileMenuItem Text="Logout" Value="Logout" Icon="power_settings_new" />
-                        </ChildContent>
-                        <Template>
-                            @Security.User?.Name
-                            <RadzenGravatar Email="@Security.User?.Name" />
-                        </Template>
-                    </RadzenProfileMenu>
-                </RadzenStack>
+                <div class="user-info" style="display: flex; justify-content: flex-end; align-items: center; gap: 15px;">
+                    <div>
+                        <span class="user-name">@(Security?.User?.Name ?? "Сотрудник")</span>
+                        <span class="user-role">Сотрудник</span>
+                    </div>
+                    <button class="logout-btn" @onclick="Logout">Выход</button>
+                </div>
             </RadzenColumn>
         </RadzenRow>
     </RadzenHeader>
+    
     <RadzenBody Expanded="@sidebarExpanded">
         <RadzenRow class="rz-mx-auto rz-px-4 rz-pt-2 rz-pt-md-4 rz-pt-lg-6 rz-pt-xl-12 rz-pb-2 rz-pb-lg-12" Style="max-width: 1440px;">
             <RadzenColumn Size="12">
-            @Body
+                @Body
             </RadzenColumn>
         </RadzenRow>
     </RadzenBody>
+    
     <RadzenSidebar @bind-Expanded="@sidebarExpanded">
-        <RadzenStack AlignItems="Radzen.AlignItems.Center" class="rz-py-4 rz-py-lg-6" Style="padding: var(--rz-panel-menu-item-padding); border-bottom: var(--rz-panel-menu-item-border);">
-            <RadzenImage Path="images/logo.png"  style="width: 48px; height: 48px;" AlternateText="Application logo"></RadzenImage>
-            <RadzenText Text="CP" TextStyle="Radzen.Blazor.TextStyle.Subtitle1" class="rz-mb-0" style="color: var(--rz-sidebar-color);" />
+        <!-- Логотип -->
+        <RadzenStack AlignItems="Radzen.AlignItems.Center" class="rz-py-4 rz-py-lg-6" Style="padding: var(--rz-panel-menu-item-padding); border-bottom: 1px solid #2a4a6e;">
+            <RadzenImage Path="images/logo.png" style="width: 48px; height: 48px; filter: brightness(0) invert(1);" AlternateText="Logo"></RadzenImage>
+            <RadzenText Text="CARPARK" TextStyle="Radzen.Blazor.TextStyle.Subtitle1" class="rz-mb-0" style="color: #e0e8f0; font-weight: bold; letter-spacing: 2px;" />
         </RadzenStack>
+        
+        <!-- Меню сотрудника -->
         <RadzenPanelMenu>
-            <RadzenPanelMenuItem Text="Home" Path="" />
-            <RadzenPanelMenuItem Text="Employee" Path="employee" />
-            <RadzenPanelMenuItem Text="Driver" Path="driver" />
-            <RadzenPanelMenuItem Text="Zayavki" Path="zayavki" />
-            <RadzenPanelMenuItem Text="Cars" Path="cars" />
-            <RadzenPanelMenuItem Text="Voditeli" Path="voditeli" />
-            <RadzenPanelMenuItem Text="Statistika" Path="statistika" />
+            <RadzenPanelMenuItem Text="Главная" Path="/employee/dashboard" />
+            <RadzenPanelMenuItem Text="Мои заявки" Path="/employee/trip-requests" />
+            <RadzenPanelMenuItem Text="Доступные автомобили" Path="/employee/vehicles" />
+            <RadzenPanelMenuItem Text="Профиль" Path="/employee/profile" />
         </RadzenPanelMenu>
-        <RadzenStack AlignItems="Radzen.AlignItems.Center" Gap="0" class="rz-py-4 rz-py-lg-6" Style="padding: var(--rz-panel-menu-item-padding);">
-            <RadzenText Text="CP v1.0.0" TextStyle="Radzen.Blazor.TextStyle.Caption" TagName="Radzen.Blazor.TagName.P" TextAlign="Radzen.TextAlign.Center" />
-            <RadzenText Text="Copyright Ⓒ 2026" TextStyle="Radzen.Blazor.TextStyle.Caption" class="rz-mb-0" TagName="Radzen.Blazor.TagName.P" TextAlign="Radzen.TextAlign.Center" />
+        
+        <!-- Футер -->
+        <RadzenStack AlignItems="Radzen.AlignItems.Center" Gap="0" class="rz-py-4 rz-py-lg-6" Style="padding: var(--rz-panel-menu-item-padding); border-top: 1px solid #2a4a6e; margin-top: auto;">
+            <RadzenText Text="CP v1.0.0" TextStyle="Radzen.Blazor.TextStyle.Caption" TextAlign="Radzen.TextAlign.Center" style="color: #5a7a9a;" />
+            <RadzenText Text="Copyright Ⓒ 2026" TextStyle="Radzen.Blazor.TextStyle.Caption" class="rz-mb-0" TextAlign="Radzen.TextAlign.Center" style="color: #5a7a9a;" />
         </RadzenStack>
     </RadzenSidebar>
 </RadzenLayout>

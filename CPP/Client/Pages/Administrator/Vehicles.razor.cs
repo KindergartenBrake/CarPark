@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
 
-namespace CP.Client.Pages
+namespace CP.Client.Pages.Administrator
 {
-    public partial class Employee
+    public partial class Vehicles
     {
         [Inject]
         protected IJSRuntime JSRuntime { get; set; }
