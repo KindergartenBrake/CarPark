@@ -1,10 +1,450 @@
-@page "/administrator/trip-request2"
+@page "/administrator/trip-requests2"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Administrator")]
 
-@attribute [Authorize]
+<PageTitle>Administrator - Заявки на поездки</PageTitle>
 
-<PageTitle>TripRequest</PageTitle>
-<RadzenRow>
-    <RadzenColumn Size="12">
-        <RadzenText Text="TripRequest" TextStyle="TextStyle.H3" TagName="TagName.H1" />
-    </RadzenColumn>
-</RadzenRow>
+<div style="min-height: 100vh; background: linear-gradient(135deg, #071226 0%, #0b1d3d 40%, #102b5c 100%); padding: 24px;">
+    <div style="max-width: 1800px; margin: 0 auto;">
+
+        <!-- HEADER -->
+        <div style="margin-bottom: 32px;">
+            <div style="color: #eaf4ff; font-size: 34px; font-weight: 800; letter-spacing: 2px;">
+                ЗАЯВКИ НА ПОЕЗДКИ
+            </div>
+            <div style="color: #7ea7d8; font-size: 15px; margin-top: 10px;">
+                Управление заявками сотрудников, назначением транспорта и водителей
+            </div>
+        </div>
+
+        <!-- TABS -->
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; border-bottom: 2px solid #295ba7;">
+            @foreach (var tab in tabs)
+            {
+                var currentTab = tab;
+                <button @onclick="() => SelectTab(currentTab)"
+                        style="background:@(selectedTab == currentTab ? "#2f6fd6" : "transparent");
+                               color:@(selectedTab == currentTab ? "white" : "#7ea7d8");
+                               border:none;
+                               padding:14px 24px;
+                               border-radius:10px 10px 0 0;
+                               cursor:pointer;
+                               font-weight:700;
+                               font-size:14px;
+                               transition:all 0.3s ease;">
+                    @currentTab
+                </button>
+            }
+        </div>
+
+        <!-- TABLE -->
+        <div style="background: rgba(9, 25, 52, 0.95);
+                    border: 1px solid #295ba7;
+                    border-radius: 16px;
+                    overflow: hidden;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
+
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; min-width: 1600px;">
+                    <thead style="background: linear-gradient(90deg, #14376d, #1e4d91);">
+                        <tr>
+                            <th class="th-style">ID</th>
+                            <th class="th-style">Сотрудник</th>
+                            <th class="th-style">Дата создания</th>
+                            <th class="th-style">Плановая дата</th>
+                            <th class="th-style">Тип авто</th>
+                            <th class="th-style">Статус</th>
+                            <th class="th-style">Водитель</th>
+                            <th class="th-style">Автомобиль</th>
+                            <th class="th-style">Действия</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var request in FilteredRequests)
+                        {
+                            <tr style="border-bottom: 1px solid #1d3f74;">
+                                <td class="td-style">#@request.Id</td>
+                                <td class="td-style">@request.EmployeeName</td>
+                                <td class="td-style">@request.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
+                                <td class="td-style">@request.PlannedTripDate.ToString("dd.MM.yyyy HH:mm")</td>
+                                <td class="td-style">@request.VehicleType</td>
+
+                                <td class="td-style">
+                                    <span style="@GetStatusStyle(request.Status)">
+                                        @request.Status
+                                    </span>
+                                </td>
+
+                                <td class="td-style">
+                                    @(string.IsNullOrEmpty(request.DriverName) ? "-" : request.DriverName)
+                                </td>
+
+                                <td class="td-style">
+                                    @(string.IsNullOrEmpty(request.VehicleName) ? "-" : request.VehicleName)
+                                </td>
+
+                                <td class="td-style">
+                                    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+
+                                        @if (request.Status == "Pending")
+                                        {
+                                            <button @onclick="() => OpenAssignModal(request)"
+                                                    class="action-btn primary-btn">
+                                                Назначить
+                                            </button>
+
+                                            <button @onclick="() => OpenRejectModal(request)"
+                                                    class="action-btn danger-btn">
+                                                Отклонить
+                                            </button>
+                                        }
+
+                                        @if (request.Status == "Approved" && !request.TripStarted)
+                                        {
+                                            <button @onclick="() => OpenAssignModal(request)"
+                                                    class="action-btn warning-btn">
+                                                Изменить
+                                            </button>
+                                        }
+
+                                        <button @onclick="() => OpenDetailsModal(request)"
+                                                class="action-btn info-btn">
+                                            Детали
+                                        </button>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- EMPTY -->
+        @if (!FilteredRequests.Any())
+        {
+            <div style="margin-top:30px;
+                        text-align:center;
+                        padding:70px;
+                        border:1px dashed #295ba7;
+                        border-radius:14px;
+                        background:#0b1d3d;">
+                <div style="font-size:64px;">📄</div>
+                <div style="color:#eaf4ff; font-size:20px; font-weight:700; margin-top:14px;">
+                    Нет заявок
+                </div>
+                <div style="color:#7ea7d8; margin-top:8px;">
+                    Для выбранного статуса заявки отсутствуют
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<!-- ASSIGN MODAL -->
+@if (showAssignModal && selectedRequest != null)
+{
+    <div class="modal-overlay">
+        <div class="modal-window">
+            <h2>Назначение заявки #@selectedRequest.Id</h2>
+
+            <div class="form-group">
+                <label>Автомобиль</label>
+                <select @bind="selectedVehicleId">
+                    @foreach (var group in availableVehicles.GroupBy(v => v.VehicleType))
+                    {
+                        <optgroup label="@group.Key">
+                            @foreach (var vehicle in group)
+                            {
+                                <option value="@vehicle.Id">
+                                    @vehicle.Brand @vehicle.Model (@vehicle.LicensePlate) | Осн. водитель: @vehicle.PrimaryDriverName
+                                </option>
+                            }
+                        </optgroup>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Водитель</label>
+                <select @bind="selectedDriverId">
+                    @foreach (var driver in availableDrivers)
+                    {
+                        <option value="@driver.Id">@driver.FullName</option>
+                    }
+                </select>
+            </div>
+
+            <div style="display:flex; gap:12px; margin-top:24px;">
+                <button @onclick="AssignTrip" class="primary-btn modal-btn">
+                    Назначить
+                </button>
+
+                <button @onclick="CloseModals" class="secondary-btn modal-btn">
+                    Отмена
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- REJECT MODAL -->
+@if (showRejectModal && selectedRequest != null)
+{
+    <div class="modal-overlay">
+        <div class="modal-window">
+            <h2>Отклонение заявки #@selectedRequest.Id</h2>
+
+            <div class="form-group">
+                <label>Причина (опционально)</label>
+                <textarea @bind="rejectReason"></textarea>
+            </div>
+
+            <div style="display:flex; gap:12px; margin-top:24px;">
+                <button @onclick="RejectTrip" class="danger-btn modal-btn">
+                    Отклонить
+                </button>
+
+                <button @onclick="CloseModals" class="secondary-btn modal-btn">
+                    Отмена
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- DETAILS MODAL -->
+@if (showDetailsModal && selectedRequest != null)
+{
+    <div class="modal-overlay">
+        <div class="modal-window" style="max-width:900px;">
+            <h2>Детали заявки #@selectedRequest.Id</h2>
+
+            <div class="details-grid">
+                <div><strong>Сотрудник:</strong> @selectedRequest.EmployeeName</div>
+                <div><strong>Тип авто:</strong> @selectedRequest.VehicleType</div>
+                <div><strong>Дата создания:</strong> @selectedRequest.CreatedAt</div>
+                <div><strong>Плановая поездка:</strong> @selectedRequest.PlannedTripDate</div>
+                <div><strong>Статус:</strong> @selectedRequest.Status</div>
+                <div><strong>Водитель:</strong> @selectedRequest.DriverName</div>
+                <div><strong>Автомобиль:</strong> @selectedRequest.VehicleName</div>
+                <div><strong>Trip ID:</strong> @(selectedRequest.TripId?.ToString() ?? "-")</div>
+            </div>
+
+            <button @onclick="CloseModals"
+                    class="secondary-btn modal-btn"
+                    style="margin-top:24px;">
+                Закрыть
+            </button>
+        </div>
+    </div>
+}
+
+<style>
+    .th-style {
+        color: white;
+        padding: 18px;
+        text-align: left;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .td-style {
+        padding: 16px;
+        color: #dcecff;
+        font-size: 14px;
+    }
+
+    .action-btn {
+        border: none;
+        padding: 8px 14px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 12px;
+        transition: all 0.25s ease;
+    }
+
+    .primary-btn { background: #2f6fd6; color: white; }
+    .danger-btn { background: #c62828; color: white; }
+    .warning-btn { background: #f9a825; color: black; }
+    .info-btn { background: #1565c0; color: white; }
+    .secondary-btn { background: #394b63; color: white; }
+
+    .action-btn:hover,
+    .modal-btn:hover,
+    button:hover {
+        transform: translateY(-2px);
+        opacity: 0.92;
+    }
+
+    .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.75);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+    }
+
+    .modal-window {
+        background: linear-gradient(135deg, #0b1d3d, #102b5c);
+        border: 1px solid #295ba7;
+        border-radius: 16px;
+        padding: 32px;
+        width: 100%;
+        max-width: 650px;
+        color: white;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    }
+
+    .form-group {
+        margin-top: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .form-group select,
+    .form-group textarea {
+        background: #081426;
+        color: white;
+        border: 1px solid #295ba7;
+        border-radius: 8px;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .form-group textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    .modal-btn {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .details-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        margin-top: 20px;
+        color: #dcecff;
+    }
+</style>
+
+@code {
+    private List<string> tabs = new() { "Все", "Pending", "Approved", "Completed", "Rejected" };
+    private string selectedTab = "Все";
+
+    private bool showAssignModal;
+    private bool showRejectModal;
+    private bool showDetailsModal;
+
+    private string rejectReason = "";
+
+    private int selectedVehicleId;
+    private int selectedDriverId;
+
+    private TripRequest? selectedRequest;
+
+    private List<TripRequest> requests = new();
+    private List<Vehicle> availableVehicles = new();
+    private List<Driver> availableDrivers = new();
+
+    private IEnumerable<TripRequest> FilteredRequests =>
+        selectedTab == "Все"
+            ? requests
+            : requests.Where(x => x.Status == selectedTab);
+
+    private void SelectTab(string tab)
+    {
+        selectedTab = tab;
+    }
+
+    private void OpenAssignModal(TripRequest request)
+    {
+        selectedRequest = request;
+        showAssignModal = true;
+    }
+
+    private void OpenRejectModal(TripRequest request)
+    {
+        selectedRequest = request;
+        showRejectModal = true;
+    }
+
+    private void OpenDetailsModal(TripRequest request)
+    {
+        selectedRequest = request;
+        showDetailsModal = true;
+    }
+
+    private void CloseModals()
+    {
+        showAssignModal = false;
+        showRejectModal = false;
+        showDetailsModal = false;
+        rejectReason = "";
+    }
+
+    private async Task AssignTrip()
+    {
+        // PUT /api/trip-requests/{id}/assign
+        CloseModals();
+    }
+
+    private async Task RejectTrip()
+    {
+        // PUT /api/trip-requests/{id}/reject
+        CloseModals();
+    }
+
+    private string GetStatusStyle(string status) => status switch
+    {
+        "Pending" => "background:#f9a825;color:black;padding:6px 12px;border-radius:20px;font-weight:700;",
+        "Approved" => "background:#2e7d32;color:white;padding:6px 12px;border-radius:20px;font-weight:700;",
+        "Completed" => "background:#1565c0;color:white;padding:6px 12px;border-radius:20px;font-weight:700;",
+        "Rejected" => "background:#c62828;color:white;padding:6px 12px;border-radius:20px;font-weight:700;",
+        _ => "background:#455a64;color:white;padding:6px 12px;border-radius:20px;font-weight:700;"
+    };
+
+    public class TripRequest
+    {
+        public int Id { get; set; }
+        public string EmployeeName { get; set; } = "";
+        public DateTime CreatedAt { get; set; }
+        public DateTime PlannedTripDate { get; set; }
+        public string VehicleType { get; set; } = "";
+        public string Status { get; set; } = "";
+        public string? DriverName { get; set; }
+        public string? VehicleName { get; set; }
+        public bool TripStarted { get; set; }
+        public int? TripId { get; set; }
+    }
+
+    public class Vehicle
+    {
+        public int Id { get; set; }
+        public string Brand { get; set; } = "";
+        public string Model { get; set; } = "";
+        public string LicensePlate { get; set; } = "";
+        public string VehicleType { get; set; } = "";
+        public string PrimaryDriverName { get; set; } = "";
+    }
+
+    public class Driver
+    {
+        public int Id { get; set; }
+        public string FullName { get; set; } = "";
+    }
+}
