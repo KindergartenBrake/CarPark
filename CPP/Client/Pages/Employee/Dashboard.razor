@@ -184,7 +184,7 @@
             
             <div class="info-card">
                 <div class="section-title">Быстрое действие</div>
-                <button class="btn-create" @onclick="GoToCreateRequest">+ СОЗДАТЬ ЗАЯВКУ</button>
+                <button class="btn-create" @onclick='() => NavigationManager.NavigateTo("/employee/trip-requests")'>+ СОЗДАТЬ ЗАЯВКУ</button>
             </div>
         </div>
         
@@ -194,23 +194,9 @@
                 Нет заявок
             </div>
             <div style="margin-top: 15px; text-align: center;">
-                <button class="btn-link" @onclick="GoToAllRequests">Все заявки →</button>
+                <button class="btn-link" @onclick='() => NavigationManager.NavigateTo("/employee/trip-requests")'>Все заявки →</button>
             </div>
         </div>
     </div>
 </div>
 
-@code {
-    [Inject]
-    protected NavigationManager Navigation { get; set; }
-    
-    private void GoToCreateRequest()
-    {
-        Navigation.NavigateTo("/employee/trip-requests/create");
-    }
-    
-    private void GoToAllRequests()
-    {
-        Navigation.NavigateTo("/employee/trip-requests");
-    }
-}

@@ -7,7 +7,6 @@
 <div style="min-height: 100vh; background: linear-gradient(135deg, #071226 0%, #0b1d3d 40%, #102b5c 100%); padding: 24px;">
     <div style="max-width: 1800px; margin: 0 auto;">
 
-        <!-- HEADER -->
         <div style="margin-bottom: 32px;">
             <div style="color: #eaf4ff; font-size: 34px; font-weight: 800; letter-spacing: 2px;">
                 ЗАЯВКИ НА ПОЕЗДКИ
@@ -17,7 +16,6 @@
             </div>
         </div>
 
-        <!-- TABS -->
         <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; border-bottom: 2px solid #295ba7;">
             @foreach (var tab in tabs)
             {
@@ -37,7 +35,6 @@
             }
         </div>
 
-        <!-- TABLE -->
         <div style="background: rgba(9, 25, 52, 0.95);
                     border: 1px solid #295ba7;
                     border-radius: 16px;
@@ -122,7 +119,6 @@
             </div>
         </div>
 
-        <!-- EMPTY -->
         @if (!FilteredRequests.Any())
         {
             <div style="margin-top:30px;
@@ -144,7 +140,6 @@
     </div>
 </div>
 
-<!-- ASSIGN MODAL -->
 @if (showAssignModal && selectedRequest != null)
 {
     <div class="modal-overlay">
@@ -191,7 +186,6 @@
     </div>
 }
 
-<!-- REJECT MODAL -->
 @if (showRejectModal && selectedRequest != null)
 {
     <div class="modal-overlay">
@@ -216,7 +210,6 @@
     </div>
 }
 
-<!-- DETAILS MODAL -->
 @if (showDetailsModal && selectedRequest != null)
 {
     <div class="modal-overlay">
