@@ -7,13 +7,11 @@
 <div style="min-height: 100vh; background: linear-gradient(135deg, #0a1628 0%, #0d1f3e 100%); padding: 20px;">
     <div style="max-width: 1400px; margin: 0 auto;">
         
-        <!-- Заголовок -->
         <div style="margin-bottom: 30px;">
             <div style="color: #e0e8f0; font-size: 28px; font-weight: 700;">ДОСТУПНЫЕ АВТОМОБИЛИ</div>
             <div style="color: #8aa8cc; font-size: 14px; margin-top: 8px;">Просмотр каталога автомобилей для выбора типа в заявке</div>
         </div>
 
-        <!-- Вкладки -->
         <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 30px; border-bottom: 2px solid #2a4a8e; padding-bottom: 0;">
             @foreach (var type in types)
             {
@@ -33,7 +31,6 @@
             }
         </div>
 
-        <!-- Сетка карточек -->
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px;">
             @foreach (var vehicle in filteredVehicles)
             {
@@ -44,24 +41,20 @@
                            transition: all 0.3s ease;
                            cursor: pointer;">
                     
-                    <!-- Фото-заглушка -->
                     <div style="text-align: center; margin-bottom: 20px; padding: 20px; background: rgba(42, 74, 142, 0.2); border-radius: 12px;">
                         <div style="font-size: 64px;">@GetCarIcon(vehicle.VehicleType)</div>
                     </div>
 
-                    <!-- Марка и модель -->
                     <div style="margin-bottom: 16px;">
                         <div style="color: #e0e8f0; font-size: 20px; font-weight: 700;">@vehicle.Brand @vehicle.Model</div>
                         <div style="color: #8aa8cc; font-size: 14px; margin-top: 4px;">@vehicle.Year год</div>
                     </div>
 
-                    <!-- Госномер -->
                     <div style="background: rgba(0, 0, 0, 0.3); padding: 8px 12px; border-radius: 6px; margin-bottom: 16px;">
                         <div style="color: #8aa8cc; font-size: 11px; letter-spacing: 1px;">ГОСУДАРСТВЕННЫЙ НОМЕР</div>
                         <div style="color: #e0e8f0; font-size: 18px; font-weight: 700; font-family: monospace;">@vehicle.LicensePlate</div>
                     </div>
 
-                    <!-- Тип и статус -->
                     <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #2a4a8e; padding-top: 16px;">
                         <div style="background: #1a2a4a; padding: 4px 12px; border-radius: 20px;">
                             <div style="color: #8aa8cc; font-size: 12px;">@vehicle.VehicleType</div>
@@ -86,7 +79,6 @@
             }
         </div>
 
-        <!-- Если нет автомобилей -->
         @if (!filteredVehicles.Any())
         {
             <div style="text-align: center; padding: 80px 20px; background: #0d1f3e; border-radius: 12px; border: 1px dashed #2a4a8e;">
@@ -96,7 +88,6 @@
             </div>
         }
 
-        <!-- Подсказка -->
         <div style="margin-top: 30px; padding: 16px; background: rgba(58, 123, 213, 0.1); border-left: 4px solid #3a7bd5; border-radius: 8px;">
             <div style="color: #8aa8cc; font-size: 13px;">
                 ℹ <strong>Информация:</strong> При создании заявки вы сможете выбрать только тип автомобиля. Конкретный автомобиль будет назначен диспетчером.

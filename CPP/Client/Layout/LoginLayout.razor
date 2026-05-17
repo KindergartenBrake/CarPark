@@ -3,7 +3,6 @@
 <RadzenComponents />
 
 <style>
-    /* Брутальный синий фон */
     .brutal-page {
         min-height: 100vh;
         background: linear-gradient(135deg, #0a1928 0%, #0d2b3e 50%, #0a1928 100%);
@@ -13,7 +12,6 @@
         padding: 20px;
     }
     
-    /* Тёмная карточка */
     .brutal-card {
         max-width: 1000px;
         width: 100%;
@@ -24,7 +22,6 @@
         border: 1px solid #2a4a6e;
     }
     
-    /* Левая панель — ещё темнее */
     .brand-side {
         background: linear-gradient(135deg, #0a121a 0%, #0d1620 100%);
         padding: 48px;
@@ -32,21 +29,18 @@
         border-right: 1px solid #2a4a6e;
     }
     
-    /* Правая панель */
     .form-side {
         background: linear-gradient(135deg, #141f2b 0%, #111a24 100%);
         padding: 48px;
         height: 100%;
     }
     
-    /* Логотип */
     .logo {
         width: 64px;
         margin-bottom: 32px;
         filter: brightness(0) invert(1);
     }
     
-    /* Заголовок */
     h2 {
         color: #e0e8f0;
         font-size: 28px;
@@ -61,7 +55,6 @@
         line-height: 1.5;
     }
     
-    /* Разделитель */
     hr {
         border: none;
         height: 1px;
@@ -69,13 +62,11 @@
         margin: 32px 0 20px;
     }
     
-    /* Версия */
     .version {
         font-size: 12px;
         color: #5a7a9a;
     }
     
-    /* Стили для форм */
     .brutal-input {
         background: #0f1a24 !important;
         border: 1px solid #2a4a6e !important;
@@ -119,7 +110,6 @@
         box-shadow: 0 4px 12px rgba(30,87,153,0.4);
     }
     
-    /* Мобильная адаптация */
     @@media (max-width: 768px) {
         .brand-side, .form-side {
             padding: 32px;
@@ -139,8 +129,7 @@
 <div class="brutal-page">
     <div class="brutal-card">
         <div style="display: flex; flex-wrap: wrap;">
-            
-            <!-- Левая часть -->
+        
             <div style="flex: 1; min-width: 250px;" class="brand-side">
                 <img src="images/logo-login.png" alt="Logo" class="logo" />
                 <h2>CarPark</h2>
@@ -149,7 +138,6 @@
                 <div class="version">v1.0.0</div>
             </div>
             
-            <!-- Правая часть с формой -->
             <div style="flex: 1; min-width: 280px;" class="form-side">
                 @Body
             </div>

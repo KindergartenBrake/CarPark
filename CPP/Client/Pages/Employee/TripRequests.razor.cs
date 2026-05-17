@@ -9,7 +9,7 @@ public partial class TripRequests
     [Inject] protected CP.Client.CarParkService CarParkService { get; set; } = default!;
 
     private List<string> statuses = new() { "Все", "Pending", "Approved", "Completed", "Rejected" };
-    private List<string> vehicleTypes = new() { "Седан", "Универсал", "Микроавтобус", "Грузовой" };
+    private List<string> vehicleTypes = new() { "легковой", "спецтехника", "грузовой" };
 
     private string selectedStatus = "Все";
     private bool showCreateModal = false;
