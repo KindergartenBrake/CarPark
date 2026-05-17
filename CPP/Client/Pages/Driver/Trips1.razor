@@ -1,9 +1,10 @@
 @page "/driver/trips1"
+
 @using Microsoft.AspNetCore.Authorization
 @using System.ComponentModel.DataAnnotations
 @using System.Net.Http.Json
 
-<PageTitle>Employee - Мои поездки</PageTitle>
+<PageTitle>Driver - Мои поездки</PageTitle>
 
 <div style="min-height: 100vh; background: linear-gradient(135deg, #071226 0%, #0d1f3e 50%, #123a78 100%); padding: 24px;">
     <div style="max-width: 1600px; margin: 0 auto;">
@@ -271,10 +272,42 @@
         "Completed"
     };
 
-    protected override async Task OnInitializedAsync()
+private Task LoadTripsStub()
     {
-        trips = await Http.GetFromJsonAsync<List<TripDto>>("/api/trips/my") ?? new();
+        trips = new List<TripDto>
+        {
+            new TripDto
+            {
+                Id = 1,
+                ScheduledDate = DateTime.Today.AddDays(3),
+                VehicleName = "Mercedes Sprinter",
+                Status = "Approved",
+                StartOdometer = 125000,
+                EndOdometer = 125450
+            },
+            new TripDto
+            {
+                Id = 2,
+                ScheduledDate = DateTime.Today.AddDays(7),
+                VehicleName = "Volkswagen Crafter",
+                Status = "Pending",
+                StartOdometer = null,
+                EndOdometer = null
+            },
+            new TripDto
+            {
+                Id = 3,
+                ScheduledDate = DateTime.Today.AddDays(-10),
+                VehicleName = "Ford Transit",
+                Status = "Completed",
+                StartOdometer = 98200,
+                EndOdometer = 98810
+            }
+        };
+
+        return Task.CompletedTask;
     }
+
 
     private IEnumerable<TripDto> filteredTrips =>
         selectedFilter == "All"
