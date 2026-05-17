@@ -1,10 +1,355 @@
-@page "/employee/trip-request"
+@page "/employee/trip-requests"
+@using Microsoft.AspNetCore.Authorization
+@using System.ComponentModel.DataAnnotations
+@attribute [Authorize(Roles = "Employee")]
 
-@attribute [Authorize]
+<PageTitle>Employee - Мои заявки</PageTitle>
 
-<PageTitle>TripRequest</PageTitle>
-<RadzenRow>
-    <RadzenColumn Size="12">
-        <RadzenText Text="TripRequest" TextStyle="TextStyle.H3" TagName="TagName.H1" />
-    </RadzenColumn>
-</RadzenRow>
+<div style="min-height: 100vh; background: linear-gradient(135deg, #07111f 0%, #0b1f3d 50%, #102a54 100%); padding: 20px;">
+    <div style="max-width: 1600px; margin: 0 auto;">
+
+        <!-- Заголовок -->
+        <div style="margin-bottom: 30px;">
+            <div style="color: #dfefff; font-size: 30px; font-weight: 800; letter-spacing: 1px;">
+                МОИ ЗАЯВКИ
+            </div>
+            <div style="color: #7fa6d9; font-size: 14px; margin-top: 8px;">
+                Управление поездками, создание новых заявок и отслеживание статусов
+            </div>
+        </div>
+
+        <!-- Панель управления -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; margin-bottom: 25px;">
+            
+            <!-- Фильтры -->
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; border-bottom: 2px solid #2e5ea7; padding-bottom: 0;">
+                @foreach (var status in statuses)
+                {
+                    var currentStatus = status;
+                    <button @onclick="() => SelectStatus(currentStatus)"
+                            style="background: @(selectedStatus == currentStatus ? "#2f6edb" : "transparent");
+                                   color: @(selectedStatus == currentStatus ? "white" : "#8fb5e8");
+                                   border: none;
+                                   padding: 12px 22px;
+                                   border-radius: 8px 8px 0 0;
+                                   cursor: pointer;
+                                   font-weight: 700;
+                                   transition: all 0.3s ease;">
+                        @currentStatus
+                    </button>
+                }
+            </div>
+
+            <!-- Кнопка создания -->
+            <button @onclick="OpenCreateModal"
+                    style="background: linear-gradient(135deg, #2f6edb, #1c4fa3);
+                           color: white;
+                           border: none;
+                           padding: 14px 24px;
+                           border-radius: 10px;
+                           font-weight: 700;
+                           cursor: pointer;
+                           box-shadow: 0 4px 16px rgba(47,110,219,0.4);">
+                + СОЗДАТЬ ЗАЯВКУ
+            </button>
+        </div>
+
+        <!-- Таблица -->
+        <div style="background: rgba(10, 25, 50, 0.95);
+                   border: 1px solid #2e5ea7;
+                   border-radius: 14px;
+                   overflow: hidden;
+                   box-shadow: 0 8px 32px rgba(0,0,0,0.35);">
+
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead style="background: linear-gradient(135deg, #163a70, #0f2a52);">
+                    <tr>
+                        <th style="padding: 18px; color: #dfefff; text-align: left;">ID</th>
+                        <th style="padding: 18px; color: #dfefff; text-align: left;">Дата создания</th>
+                        <th style="padding: 18px; color: #dfefff; text-align: left;">Дата поездки</th>
+                        <th style="padding: 18px; color: #dfefff; text-align: left;">Тип авто</th>
+                        <th style="padding: 18px; color: #dfefff; text-align: left;">Статус</th>
+                        <th style="padding: 18px; color: #dfefff; text-align: center;">Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var request in filteredRequests)
+                    {
+                        <tr style="border-bottom: 1px solid rgba(46,94,167,0.25);
+                                   transition: all 0.3s ease;">
+                            <td style="padding: 18px; color: #e8f2ff; font-weight: 700;">
+                                #@request.Id
+                            </td>
+                            <td style="padding: 18px; color: #9bbbe8;">
+                                @request.CreatedAt.ToString("dd.MM.yyyy HH:mm")
+                            </td>
+                            <td style="padding: 18px; color: #9bbbe8;">
+                                @request.StartDate.ToString("dd.MM.yyyy HH:mm")
+                            </td>
+                            <td style="padding: 18px; color: #dfefff;">
+                                @request.VehicleType
+                            </td>
+                            <td style="padding: 18px;">
+                                <span style="padding: 6px 14px;
+                                            border-radius: 20px;
+                                            font-size: 12px;
+                                            font-weight: 700;
+                                            background: @GetStatusBackground(request.Status);
+                                            color: @GetStatusColor(request.Status);">
+                                    @request.Status
+                                </span>
+                            </td>
+                            <td style="padding: 18px; text-align: center;">
+                                <button @onclick="() => OpenDetails(request)"
+                                        style="background: transparent;
+                                               border: 1px solid #2f6edb;
+                                               color: #8fb5e8;
+                                               padding: 8px 14px;
+                                               border-radius: 8px;
+                                               cursor: pointer;">
+                                    Подробнее
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @if (!filteredRequests.Any())
+            {
+                <div style="padding: 60px; text-align: center;">
+                    <div style="font-size: 64px;">📄</div>
+                    <div style="color: #dfefff; font-size: 20px; font-weight: 700;">
+                        Заявки отсутствуют
+                    </div>
+                    <div style="color: #7fa6d9; margin-top: 8px;">
+                        Создайте новую заявку для поездки
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
+
+<!-- Модальное окно создания -->
+@if (showCreateModal)
+{
+    <div class="modal-overlay">
+        <div class="modal-box">
+            <h2>Создание заявки</h2>
+
+            <EditForm Model="newRequest" OnValidSubmit="SubmitRequest">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+
+                <div class="form-group">
+                    <label>Тип автомобиля</label>
+                    <InputSelect @bind-Value="newRequest.VehicleType" class="form-control">
+                        <option value="">Выберите тип</option>
+                        @foreach (var type in vehicleTypes)
+                        {
+                            <option value="@type">@type</option>
+                        }
+                    </InputSelect>
+                </div>
+
+                <div class="form-group">
+                    <label>Дата и время начала</label>
+                    <InputDate @bind-Value="newRequest.StartDate" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>Дата и время окончания</label>
+                    <InputDate @bind-Value="newRequest.EndDate" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>Описание</label>
+                    <InputTextArea @bind-Value="newRequest.Description" class="form-control" />
+                </div>
+
+                <div style="display:flex; gap:12px; margin-top:20px;">
+                    <button type="submit" class="submit-btn">Отправить</button>
+                    <button type="button" @onclick="CloseCreateModal" class="close-btn">Отмена</button>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+}
+
+<!-- Модальное окно деталей -->
+@if (selectedRequest is not null)
+{
+    <div class="modal-overlay">
+        <div class="modal-box">
+            <h2>Детали заявки #@selectedRequest.Id</h2>
+
+            <div class="details-grid">
+                <div><strong>Тип:</strong> @selectedRequest.VehicleType</div>
+                <div><strong>Начало:</strong> @selectedRequest.StartDate</div>
+                <div><strong>Окончание:</strong> @selectedRequest.EndDate</div>
+                <div><strong>Описание:</strong> @selectedRequest.Description</div>
+                <div><strong>Статус:</strong> @selectedRequest.Status</div>
+            </div>
+
+            @if (selectedRequest.Status == "Approved")
+            {
+                <div style="margin-top:20px; padding:16px; background: rgba(47,110,219,0.1); border-left: 4px solid #2f6edb;">
+                    <div><strong>Автомобиль:</strong> Toyota Camry</div>
+                    <div><strong>Госномер:</strong> A123BC77</div>
+                    <div><strong>Водитель:</strong> Иван Петров</div>
+                    <div><strong>Телефон:</strong> +7 (999) 123-45-67</div>
+                </div>
+            }
+
+            <button @onclick="CloseDetails" class="close-btn" style="margin-top:20px;">Закрыть</button>
+        </div>
+    </div>
+}
+
+<style>
+    button:hover {
+        transform: translateY(-2px);
+        opacity: 0.95;
+    }
+
+    tr:hover {
+        background: rgba(47,110,219,0.08);
+    }
+
+    .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.75);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+    }
+
+    .modal-box {
+        background: linear-gradient(135deg, #0b1f3d, #07111f);
+        border: 1px solid #2e5ea7;
+        border-radius: 14px;
+        padding: 30px;
+        width: 100%;
+        max-width: 650px;
+        color: white;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+    }
+
+    .form-group {
+        margin-bottom: 16px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #2e5ea7;
+        background: #10284d;
+        color: white;
+    }
+
+    .submit-btn {
+        background: #2f6edb;
+        color: white;
+        border: none;
+        padding: 12px 18px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .close-btn {
+        background: #243b5e;
+        color: white;
+        border: none;
+        padding: 12px 18px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .details-grid {
+        display: grid;
+        gap: 12px;
+        margin-top: 20px;
+    }
+</style>
+
+@code {
+    private List<string> statuses = new() { "Все", "Ожидают", "Одобрены", "Завершены", "Отклонены" };
+    private List<string> vehicleTypes = new() { "Седан", "Универсал", "Микроавтобус", "Грузовой" };
+
+    private string selectedStatus = "Все";
+    private bool showCreateModal = false;
+
+    private TripRequest1? selectedRequest;
+    private CreateTripRequestModel newRequest = new();
+
+    private List<TripRequest1> requests = new();
+
+    private IEnumerable<TripRequest1> filteredRequests =>
+        selectedStatus == "Все"
+            ? requests
+            : requests.Where(x => x.Status == selectedStatus);
+
+    private void SelectStatus(string status) => selectedStatus = status;
+    private void OpenCreateModal() => showCreateModal = true;
+    private void CloseCreateModal() => showCreateModal = false;
+
+    private void OpenDetails(TripRequest1 request) => selectedRequest = request;
+    private void CloseDetails() => selectedRequest = null;
+
+    private async Task SubmitRequest()
+    {
+        if (newRequest.StartDate < DateTime.Now || newRequest.EndDate <= newRequest.StartDate)
+            return;
+
+        // POST /api/trip-requests
+        showCreateModal = false;
+    }
+
+    private string GetStatusColor(string status) => status switch
+    {
+        "Ожидают" => "#ffd54f",
+        "Одобрены" => "#4caf50",
+        "Завершены" => "#42a5f5",
+        "Отклонены" => "#ef5350",
+        _ => "#ffffff"
+    };
+
+    private string GetStatusBackground(string status) => status switch
+    {
+        "Ожидают" => "rgba(255,213,79,0.15)",
+        "Одобрены" => "rgba(76,175,80,0.15)",
+        "Завершены" => "rgba(66,165,245,0.15)",
+        "Отклонены" => "rgba(239,83,80,0.15)",
+        _ => "rgba(255,255,255,0.08)"
+    };
+
+    public class TripRequest1
+    {
+        public int Id { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string VehicleType { get; set; } = "";
+        public string Status { get; set; } = "";
+        public string Description { get; set; } = "";
+    }
+
+    public class CreateTripRequestModel
+    {
+        [Required]
+        public string VehicleType { get; set; } = "";
+
+        [Required]
+        public DateTime StartDate { get; set; } = DateTime.Now;
+
+        [Required]
+        public DateTime EndDate { get; set; } = DateTime.Now.AddHours(1);
+
+        public string Description { get; set; } = "";
+    }
+}

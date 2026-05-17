@@ -15,7 +15,7 @@ public partial class Vehicles
             ? vehicles
             : vehicles.Where(v => v.VehicleType == selectedType).ToList();
 
-    private readonly string[] types = { null!, "Седан", "Универсал", "Микроавтобус", "Грузовой" };
+    private readonly string[] types = { null!, "легковой", "спецтехника", "грузовой" };
 
     protected override async Task OnInitializedAsync()
     {
