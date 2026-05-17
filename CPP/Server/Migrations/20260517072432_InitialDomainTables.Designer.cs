@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CP.Server.Migrations
 {
     [DbContext(typeof(CarParkContext))]
-    [Migration("20260516195307_AddDomainEntities")]
-    partial class AddDomainEntities
+    [Migration("20260517072432_InitialDomainTables")]
+    partial class InitialDomainTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
