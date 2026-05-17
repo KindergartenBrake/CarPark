@@ -360,9 +360,8 @@ namespace CP.Server.Migrations
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<string>("CreatedByUserId")
-                        .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("created_by_user_id");
+                        .HasColumnName("user_id");
 
                     b.Property<string>("Description")
                         .HasColumnType("text")
@@ -445,8 +444,7 @@ namespace CP.Server.Migrations
                         .HasColumnName("insurance");
 
                     b.Property<DateTime?>("InsuranceExpiryDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("insurance_expiry_date");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("LicensePlate")
                         .IsRequired()
@@ -608,8 +606,7 @@ namespace CP.Server.Migrations
                     b.HasOne("CP.Server.Models.CarPark.AspNetUser", "CreatedByUser")
                         .WithMany()
                         .HasForeignKey("CreatedByUserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("CP.Server.Models.CarPark.Driver", "Driver")
                         .WithMany("TripRequests")
