@@ -7,11 +7,15 @@ using CP.Server.Data;
 using Microsoft.AspNetCore.Identity;
 using CP.Server.Models;
 using Microsoft.AspNetCore.Components.Authorization;
+using CP.Server.Services;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents().AddInteractiveWebAssemblyComponents();
 builder.Services.AddControllers();
+builder.Services.AddScoped<IVehicleService, VehicleService>();
 builder.Services.AddRadzenComponents();
 builder.Services.AddRadzenCookieThemeService(options =>
 {

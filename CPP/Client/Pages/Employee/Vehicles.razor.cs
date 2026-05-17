@@ -1,36 +1,30 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.JSInterop;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using Radzen;
-using Radzen.Blazor;
+using CP.Server.DTO;
 
-namespace CP.Client.Pages.Employee
+namespace CP.Client.Pages.Employee;
+
+public partial class Vehicles
 {
-    public partial class Vehicles
+    [Inject] protected CP.Client.CarParkService CarParkService { get; set; } = default!;
+
+    private List<VehicleDto> vehicles = new();
+    private string? selectedType = null;
+
+    private List<VehicleDto> filteredVehicles =>
+        selectedType == null
+            ? vehicles
+            : vehicles.Where(v => v.VehicleType == selectedType).ToList();
+
+    private readonly string[] types = { null!, "Седан", "Универсал", "Микроавтобус", "Грузовой" };
+
+    protected override async Task OnInitializedAsync()
     {
-        [Inject]
-        protected IJSRuntime JSRuntime { get; set; }
+        vehicles = await CarParkService.GetVehiclesAsync();
+    }
 
-        [Inject]
-        protected NavigationManager NavigationManager { get; set; }
-
-        [Inject]
-        protected DialogService DialogService { get; set; }
-
-        [Inject]
-        protected TooltipService TooltipService { get; set; }
-
-        [Inject]
-        protected ContextMenuService ContextMenuService { get; set; }
-
-        [Inject]
-        protected NotificationService NotificationService { get; set; }
-
-        [Inject]
-        protected SecurityService Security { get; set; }
+    private async Task SelectType(string? type)
+    {
+        selectedType = type;
+        vehicles = await CarParkService.GetVehiclesAsync(type);
     }
 }

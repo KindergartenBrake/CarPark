@@ -12,7 +12,10 @@ using System.Text.Json;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
+using System.Net.Http.Json;
 using Radzen;
+
+using CP.Server.DTO;
 
 namespace CP.Client
 {
@@ -45,13 +48,13 @@ namespace CP.Client
 
         public async Task<Radzen.ODataServiceResult<CP.Server.Models.CarPark.AspNetRoleClaim>> GetAspNetRoleClaims(Query query)
         {
-            return await GetAspNetRoleClaims(filter:$"{query.Filter}", orderby:$"{query.OrderBy}", top:query.Top, skip:query.Skip, count:query.Top != null && query.Skip != null);
+            return await GetAspNetRoleClaims(filter: $"{query.Filter}", orderby: $"{query.OrderBy}", top: query.Top, skip: query.Skip, count: query.Top != null && query.Skip != null);
         }
 
         public async Task<Radzen.ODataServiceResult<CP.Server.Models.CarPark.AspNetRoleClaim>> GetAspNetRoleClaims(string filter = default(string), string orderby = default(string), string expand = default(string), int? top = default(int?), int? skip = default(int?), bool? count = default(bool?), string format = default(string), string select = default(string), string apply = default(string))
         {
             var uri = new Uri(baseUri, $"AspNetRoleClaims");
-            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter:filter, top:top, skip:skip, orderby:orderby, expand:expand, select:select, count:count, apply:apply);
+            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter: filter, top: top, skip: skip, orderby: orderby, expand: expand, select: select, count: count, apply: apply);
 
             var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
 
@@ -98,7 +101,7 @@ namespace CP.Client
         {
             var uri = new Uri(baseUri, $"AspNetRoleClaims({id})");
 
-            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter:null, top:null, skip:null, orderby:null, expand:expand, select:null, count:null);
+            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter: null, top: null, skip: null, orderby: null, expand: expand, select: null, count: null);
 
             var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
 
@@ -110,7 +113,7 @@ namespace CP.Client
         }
 
         partial void OnUpdateAspNetRoleClaim(HttpRequestMessage requestMessage);
-        
+
         public async Task<HttpResponseMessage> UpdateAspNetRoleClaim(int id = default(int), CP.Server.Models.CarPark.AspNetRoleClaim aspNetRoleClaim = default(CP.Server.Models.CarPark.AspNetRoleClaim))
         {
             var uri = new Uri(baseUri, $"AspNetRoleClaims({id})");
@@ -139,13 +142,13 @@ namespace CP.Client
 
         public async Task<Radzen.ODataServiceResult<CP.Server.Models.CarPark.AspNetRole>> GetAspNetRoles(Query query)
         {
-            return await GetAspNetRoles(filter:$"{query.Filter}", orderby:$"{query.OrderBy}", top:query.Top, skip:query.Skip, count:query.Top != null && query.Skip != null);
+            return await GetAspNetRoles(filter: $"{query.Filter}", orderby: $"{query.OrderBy}", top: query.Top, skip: query.Skip, count: query.Top != null && query.Skip != null);
         }
 
         public async Task<Radzen.ODataServiceResult<CP.Server.Models.CarPark.AspNetRole>> GetAspNetRoles(string filter = default(string), string orderby = default(string), string expand = default(string), int? top = default(int?), int? skip = default(int?), bool? count = default(bool?), string format = default(string), string select = default(string), string apply = default(string))
         {
             var uri = new Uri(baseUri, $"AspNetRoles");
-            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter:filter, top:top, skip:skip, orderby:orderby, expand:expand, select:select, count:count, apply:apply);
+            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter: filter, top: top, skip: skip, orderby: orderby, expand: expand, select: select, count: count, apply: apply);
 
             var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
 
@@ -192,7 +195,7 @@ namespace CP.Client
         {
             var uri = new Uri(baseUri, $"AspNetRoles('{Uri.EscapeDataString(id.Trim().Replace("'", "''"))}')");
 
-            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter:null, top:null, skip:null, orderby:null, expand:expand, select:null, count:null);
+            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter: null, top: null, skip: null, orderby: null, expand: expand, select: null, count: null);
 
             var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
 
@@ -204,7 +207,7 @@ namespace CP.Client
         }
 
         partial void OnUpdateAspNetRole(HttpRequestMessage requestMessage);
-        
+
         public async Task<HttpResponseMessage> UpdateAspNetRole(string id = default(string), CP.Server.Models.CarPark.AspNetRole aspNetRole = default(CP.Server.Models.CarPark.AspNetRole))
         {
             var uri = new Uri(baseUri, $"AspNetRoles('{Uri.EscapeDataString(id.Trim().Replace("'", "''"))}')");
@@ -233,13 +236,13 @@ namespace CP.Client
 
         public async Task<Radzen.ODataServiceResult<CP.Server.Models.CarPark.AspNetUserClaim>> GetAspNetUserClaims(Query query)
         {
-            return await GetAspNetUserClaims(filter:$"{query.Filter}", orderby:$"{query.OrderBy}", top:query.Top, skip:query.Skip, count:query.Top != null && query.Skip != null);
+            return await GetAspNetUserClaims(filter: $"{query.Filter}", orderby: $"{query.OrderBy}", top: query.Top, skip: query.Skip, count: query.Top != null && query.Skip != null);
         }
 
         public async Task<Radzen.ODataServiceResult<CP.Server.Models.CarPark.AspNetUserClaim>> GetAspNetUserClaims(string filter = default(string), string orderby = default(string), string expand = default(string), int? top = default(int?), int? skip = default(int?), bool? count = default(bool?), string format = default(string), string select = default(string), string apply = default(string))
         {
             var uri = new Uri(baseUri, $"AspNetUserClaims");
-            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter:filter, top:top, skip:skip, orderby:orderby, expand:expand, select:select, count:count, apply:apply);
+            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter: filter, top: top, skip: skip, orderby: orderby, expand: expand, select: select, count: count, apply: apply);
 
             var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
 
@@ -286,7 +289,7 @@ namespace CP.Client
         {
             var uri = new Uri(baseUri, $"AspNetUserClaims({id})");
 
-            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter:null, top:null, skip:null, orderby:null, expand:expand, select:null, count:null);
+            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter: null, top: null, skip: null, orderby: null, expand: expand, select: null, count: null);
 
             var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
 
@@ -298,7 +301,7 @@ namespace CP.Client
         }
 
         partial void OnUpdateAspNetUserClaim(HttpRequestMessage requestMessage);
-        
+
         public async Task<HttpResponseMessage> UpdateAspNetUserClaim(int id = default(int), CP.Server.Models.CarPark.AspNetUserClaim aspNetUserClaim = default(CP.Server.Models.CarPark.AspNetUserClaim))
         {
             var uri = new Uri(baseUri, $"AspNetUserClaims({id})");
@@ -327,13 +330,13 @@ namespace CP.Client
 
         public async Task<Radzen.ODataServiceResult<CP.Server.Models.CarPark.AspNetUserLogin>> GetAspNetUserLogins(Query query)
         {
-            return await GetAspNetUserLogins(filter:$"{query.Filter}", orderby:$"{query.OrderBy}", top:query.Top, skip:query.Skip, count:query.Top != null && query.Skip != null);
+            return await GetAspNetUserLogins(filter: $"{query.Filter}", orderby: $"{query.OrderBy}", top: query.Top, skip: query.Skip, count: query.Top != null && query.Skip != null);
         }
 
         public async Task<Radzen.ODataServiceResult<CP.Server.Models.CarPark.AspNetUserLogin>> GetAspNetUserLogins(string filter = default(string), string orderby = default(string), string expand = default(string), int? top = default(int?), int? skip = default(int?), bool? count = default(bool?), string format = default(string), string select = default(string), string apply = default(string))
         {
             var uri = new Uri(baseUri, $"AspNetUserLogins");
-            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter:filter, top:top, skip:skip, orderby:orderby, expand:expand, select:select, count:count, apply:apply);
+            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter: filter, top: top, skip: skip, orderby: orderby, expand: expand, select: select, count: count, apply: apply);
 
             var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
 
@@ -380,7 +383,7 @@ namespace CP.Client
         {
             var uri = new Uri(baseUri, $"AspNetUserLogins(LoginProvider='{Uri.EscapeDataString(loginProvider.Trim().Replace("'", "''"))}',ProviderKey='{Uri.EscapeDataString(providerKey.Trim().Replace("'", "''"))}')");
 
-            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter:null, top:null, skip:null, orderby:null, expand:expand, select:null, count:null);
+            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter: null, top: null, skip: null, orderby: null, expand: expand, select: null, count: null);
 
             var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
 
@@ -392,7 +395,7 @@ namespace CP.Client
         }
 
         partial void OnUpdateAspNetUserLogin(HttpRequestMessage requestMessage);
-        
+
         public async Task<HttpResponseMessage> UpdateAspNetUserLogin(string loginProvider = default(string), string providerKey = default(string), CP.Server.Models.CarPark.AspNetUserLogin aspNetUserLogin = default(CP.Server.Models.CarPark.AspNetUserLogin))
         {
             var uri = new Uri(baseUri, $"AspNetUserLogins(LoginProvider='{Uri.EscapeDataString(loginProvider.Trim().Replace("'", "''"))}',ProviderKey='{Uri.EscapeDataString(providerKey.Trim().Replace("'", "''"))}')");
@@ -421,13 +424,13 @@ namespace CP.Client
 
         public async Task<Radzen.ODataServiceResult<CP.Server.Models.CarPark.AspNetUserRole>> GetAspNetUserRoles(Query query)
         {
-            return await GetAspNetUserRoles(filter:$"{query.Filter}", orderby:$"{query.OrderBy}", top:query.Top, skip:query.Skip, count:query.Top != null && query.Skip != null);
+            return await GetAspNetUserRoles(filter: $"{query.Filter}", orderby: $"{query.OrderBy}", top: query.Top, skip: query.Skip, count: query.Top != null && query.Skip != null);
         }
 
         public async Task<Radzen.ODataServiceResult<CP.Server.Models.CarPark.AspNetUserRole>> GetAspNetUserRoles(string filter = default(string), string orderby = default(string), string expand = default(string), int? top = default(int?), int? skip = default(int?), bool? count = default(bool?), string format = default(string), string select = default(string), string apply = default(string))
         {
             var uri = new Uri(baseUri, $"AspNetUserRoles");
-            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter:filter, top:top, skip:skip, orderby:orderby, expand:expand, select:select, count:count, apply:apply);
+            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter: filter, top: top, skip: skip, orderby: orderby, expand: expand, select: select, count: count, apply: apply);
 
             var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
 
@@ -474,7 +477,7 @@ namespace CP.Client
         {
             var uri = new Uri(baseUri, $"AspNetUserRoles(UserId='{Uri.EscapeDataString(userId.Trim().Replace("'", "''"))}',RoleId='{Uri.EscapeDataString(roleId.Trim().Replace("'", "''"))}')");
 
-            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter:null, top:null, skip:null, orderby:null, expand:expand, select:null, count:null);
+            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter: null, top: null, skip: null, orderby: null, expand: expand, select: null, count: null);
 
             var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
 
@@ -486,7 +489,7 @@ namespace CP.Client
         }
 
         partial void OnUpdateAspNetUserRole(HttpRequestMessage requestMessage);
-        
+
         public async Task<HttpResponseMessage> UpdateAspNetUserRole(string userId = default(string), string roleId = default(string), CP.Server.Models.CarPark.AspNetUserRole aspNetUserRole = default(CP.Server.Models.CarPark.AspNetUserRole))
         {
             var uri = new Uri(baseUri, $"AspNetUserRoles(UserId='{Uri.EscapeDataString(userId.Trim().Replace("'", "''"))}',RoleId='{Uri.EscapeDataString(roleId.Trim().Replace("'", "''"))}')");
@@ -515,13 +518,13 @@ namespace CP.Client
 
         public async Task<Radzen.ODataServiceResult<CP.Server.Models.CarPark.AspNetUser>> GetAspNetUsers(Query query)
         {
-            return await GetAspNetUsers(filter:$"{query.Filter}", orderby:$"{query.OrderBy}", top:query.Top, skip:query.Skip, count:query.Top != null && query.Skip != null);
+            return await GetAspNetUsers(filter: $"{query.Filter}", orderby: $"{query.OrderBy}", top: query.Top, skip: query.Skip, count: query.Top != null && query.Skip != null);
         }
 
         public async Task<Radzen.ODataServiceResult<CP.Server.Models.CarPark.AspNetUser>> GetAspNetUsers(string filter = default(string), string orderby = default(string), string expand = default(string), int? top = default(int?), int? skip = default(int?), bool? count = default(bool?), string format = default(string), string select = default(string), string apply = default(string))
         {
             var uri = new Uri(baseUri, $"AspNetUsers");
-            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter:filter, top:top, skip:skip, orderby:orderby, expand:expand, select:select, count:count, apply:apply);
+            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter: filter, top: top, skip: skip, orderby: orderby, expand: expand, select: select, count: count, apply: apply);
 
             var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
 
@@ -568,7 +571,7 @@ namespace CP.Client
         {
             var uri = new Uri(baseUri, $"AspNetUsers('{Uri.EscapeDataString(id.Trim().Replace("'", "''"))}')");
 
-            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter:null, top:null, skip:null, orderby:null, expand:expand, select:null, count:null);
+            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter: null, top: null, skip: null, orderby: null, expand: expand, select: null, count: null);
 
             var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
 
@@ -580,7 +583,7 @@ namespace CP.Client
         }
 
         partial void OnUpdateAspNetUser(HttpRequestMessage requestMessage);
-        
+
         public async Task<HttpResponseMessage> UpdateAspNetUser(string id = default(string), CP.Server.Models.CarPark.AspNetUser aspNetUser = default(CP.Server.Models.CarPark.AspNetUser))
         {
             var uri = new Uri(baseUri, $"AspNetUsers('{Uri.EscapeDataString(id.Trim().Replace("'", "''"))}')");
@@ -609,13 +612,13 @@ namespace CP.Client
 
         public async Task<Radzen.ODataServiceResult<CP.Server.Models.CarPark.AspNetUserToken>> GetAspNetUserTokens(Query query)
         {
-            return await GetAspNetUserTokens(filter:$"{query.Filter}", orderby:$"{query.OrderBy}", top:query.Top, skip:query.Skip, count:query.Top != null && query.Skip != null);
+            return await GetAspNetUserTokens(filter: $"{query.Filter}", orderby: $"{query.OrderBy}", top: query.Top, skip: query.Skip, count: query.Top != null && query.Skip != null);
         }
 
         public async Task<Radzen.ODataServiceResult<CP.Server.Models.CarPark.AspNetUserToken>> GetAspNetUserTokens(string filter = default(string), string orderby = default(string), string expand = default(string), int? top = default(int?), int? skip = default(int?), bool? count = default(bool?), string format = default(string), string select = default(string), string apply = default(string))
         {
             var uri = new Uri(baseUri, $"AspNetUserTokens");
-            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter:filter, top:top, skip:skip, orderby:orderby, expand:expand, select:select, count:count, apply:apply);
+            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter: filter, top: top, skip: skip, orderby: orderby, expand: expand, select: select, count: count, apply: apply);
 
             var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
 
@@ -662,7 +665,7 @@ namespace CP.Client
         {
             var uri = new Uri(baseUri, $"AspNetUserTokens(UserId='{Uri.EscapeDataString(userId.Trim().Replace("'", "''"))}',LoginProvider='{Uri.EscapeDataString(loginProvider.Trim().Replace("'", "''"))}',Name='{Uri.EscapeDataString(name.Trim().Replace("'", "''"))}')");
 
-            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter:null, top:null, skip:null, orderby:null, expand:expand, select:null, count:null);
+            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter: null, top: null, skip: null, orderby: null, expand: expand, select: null, count: null);
 
             var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
 
@@ -674,7 +677,7 @@ namespace CP.Client
         }
 
         partial void OnUpdateAspNetUserToken(HttpRequestMessage requestMessage);
-        
+
         public async Task<HttpResponseMessage> UpdateAspNetUserToken(string userId = default(string), string loginProvider = default(string), string name = default(string), CP.Server.Models.CarPark.AspNetUserToken aspNetUserToken = default(CP.Server.Models.CarPark.AspNetUserToken))
         {
             var uri = new Uri(baseUri, $"AspNetUserTokens(UserId='{Uri.EscapeDataString(userId.Trim().Replace("'", "''"))}',LoginProvider='{Uri.EscapeDataString(loginProvider.Trim().Replace("'", "''"))}',Name='{Uri.EscapeDataString(name.Trim().Replace("'", "''"))}')");
@@ -687,6 +690,15 @@ namespace CP.Client
             OnUpdateAspNetUserToken(httpRequestMessage);
 
             return await httpClient.SendAsync(httpRequestMessage);
+        }
+
+        public async Task<List<CP.Server.DTO.VehicleDto>> GetVehiclesAsync(string? type = null)
+        {
+            var query = string.IsNullOrEmpty(type) ? "" : $"?type={Uri.EscapeDataString(type)}";
+            var request = new HttpRequestMessage(HttpMethod.Get, $"api/vehicles{query}");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<List<CP.Server.DTO.VehicleDto>>() ?? new();
         }
 
     }

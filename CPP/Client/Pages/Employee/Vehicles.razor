@@ -15,26 +15,27 @@
 
         <!-- Вкладки -->
         <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 30px; border-bottom: 2px solid #2a4a8e; padding-bottom: 0;">
-            @foreach (var tab in tabs)
+            @foreach (var type in types)
             {
-                <button onclick="@(() => selectedTab = tab.Id)" 
-                        style="background: @(selectedTab == tab.Id ? "#3a7bd5" : "transparent"); 
+                var currentType = type;
+                <button @onclick="() => SelectType(currentType)" 
+                        style="background: @(selectedType == currentType ? "#3a7bd5" : "transparent"); 
                                border: none; 
-                               color: @(selectedTab == tab.Id ? "white" : "#8aa8cc"); 
+                               color: @(selectedType == currentType ? "white" : "#8aa8cc"); 
                                padding: 12px 28px; 
                                border-radius: 8px 8px 0 0; 
                                cursor: pointer; 
                                font-weight: 600; 
                                font-size: 14px;
                                transition: all 0.3s ease;">
-                    @tab.Name
+                    @(currentType ?? "Все")
                 </button>
             }
         </div>
 
         <!-- Сетка карточек -->
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px;">
-            @foreach (var car in filteredCars)
+            @foreach (var vehicle in filteredVehicles)
             {
                 <div style="background: linear-gradient(135deg, #0d1f3e 0%, #0a1628 100%); 
                            border: 1px solid #2a4a8e; 
@@ -45,28 +46,28 @@
                     
                     <!-- Фото-заглушка -->
                     <div style="text-align: center; margin-bottom: 20px; padding: 20px; background: rgba(42, 74, 142, 0.2); border-radius: 12px;">
-                        <div style="font-size: 64px;">@GetCarIcon(car.Type)</div>
+                        <div style="font-size: 64px;">@GetCarIcon(vehicle.VehicleType)</div>
                     </div>
 
                     <!-- Марка и модель -->
                     <div style="margin-bottom: 16px;">
-                        <div style="color: #e0e8f0; font-size: 20px; font-weight: 700;">@car.Brand @car.Model</div>
-                        <div style="color: #8aa8cc; font-size: 14px; margin-top: 4px;">@car.Year год</div>
+                        <div style="color: #e0e8f0; font-size: 20px; font-weight: 700;">@vehicle.Brand @vehicle.Model</div>
+                        <div style="color: #8aa8cc; font-size: 14px; margin-top: 4px;">@vehicle.Year год</div>
                     </div>
 
                     <!-- Госномер -->
                     <div style="background: rgba(0, 0, 0, 0.3); padding: 8px 12px; border-radius: 6px; margin-bottom: 16px;">
                         <div style="color: #8aa8cc; font-size: 11px; letter-spacing: 1px;">ГОСУДАРСТВЕННЫЙ НОМЕР</div>
-                        <div style="color: #e0e8f0; font-size: 18px; font-weight: 700; font-family: monospace;">@car.LicensePlate</div>
+                        <div style="color: #e0e8f0; font-size: 18px; font-weight: 700; font-family: monospace;">@vehicle.LicensePlate</div>
                     </div>
 
                     <!-- Тип и статус -->
                     <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #2a4a8e; padding-top: 16px;">
                         <div style="background: #1a2a4a; padding: 4px 12px; border-radius: 20px;">
-                            <div style="color: #8aa8cc; font-size: 12px;">@car.Type</div>
+                            <div style="color: #8aa8cc; font-size: 12px;">@vehicle.VehicleType</div>
                         </div>
                         
-                        @if (car.IsAvailable)
+                        @if (vehicle.IsAvailable)
                         {
                             <div style="display: flex; align-items: center; gap: 8px;">
                                 <div style="width: 10px; height: 10px; background: #4caf50; border-radius: 50%; box-shadow: 0 0 8px #4caf50;"></div>
@@ -77,7 +78,7 @@
                         {
                             <div style="display: flex; align-items: center; gap: 8px;">
                                 <div style="width: 10px; height: 10px; background: #9e9e9e; border-radius: 50%;"></div>
-                                <div style="color: #9e9e9e; font-size: 14px; font-weight: 600;">@car.UnavailableReason</div>
+                                <div style="color: #9e9e9e; font-size: 14px; font-weight: 600;">@vehicle.UnavailableReason</div>
                             </div>
                         }
                     </div>
@@ -86,10 +87,10 @@
         </div>
 
         <!-- Если нет автомобилей -->
-        @if (!filteredCars.Any())
+        @if (!filteredVehicles.Any())
         {
             <div style="text-align: center; padding: 80px 20px; background: #0d1f3e; border-radius: 12px; border: 1px dashed #2a4a8e;">
-                <div style="font-size: 64px; margin-bottom: 16px;">Абоба</div>
+                <div style="font-size: 64px; margin-bottom: 16px;">🚗</div>
                 <div style="color: #e0e8f0; font-size: 18px; font-weight: 600;">Нет автомобилей выбранного типа</div>
                 <div style="color: #8aa8cc; font-size: 14px; margin-top: 8px;">Попробуйте выбрать другой тип автомобиля</div>
             </div>
@@ -118,73 +119,12 @@
 </style>
 
 @code {
-    private int selectedTab = 0;
-    
-    private List<TabItem> tabs = new()
-    {
-        new TabItem { Id = 0, Name = "Все" },
-        new TabItem { Id = 1, Name = "Седан" },
-        new TabItem { Id = 2, Name = "Универсал" },
-        new TabItem { Id = 3, Name = "Микроавтобус" },
-        new TabItem { Id = 4, Name = "Грузовой" }
-    };
-    
-    // Демо-данные автомобилей
-    private List<Car> cars = new()
-    {
-        new Car { Brand = "Toyota", Model = "Camry", Year = 2022, LicensePlate = "A123BC77", Type = "Седан", IsAvailable = true, UnavailableReason = "" },
-        new Car { Brand = "Honda", Model = "Accord", Year = 2021, LicensePlate = "B456DE77", Type = "Седан", IsAvailable = false, UnavailableReason = "В ремонте" },
-        new Car { Brand = "Kia", Model = "K5", Year = 2023, LicensePlate = "C789FG77", Type = "Седан", IsAvailable = true, UnavailableReason = "" },
-        new Car { Brand = "Volkswagen", Model = "Passat", Year = 2022, LicensePlate = "D012HI77", Type = "Универсал", IsAvailable = true, UnavailableReason = "" },
-        new Car { Brand = "Skoda", Model = "Octavia", Year = 2021, LicensePlate = "E345JK77", Type = "Универсал", IsAvailable = false, UnavailableReason = "Занят" },
-        new Car { Brand = "Ford", Model = "Focus", Year = 2022, LicensePlate = "F678LM77", Type = "Универсал", IsAvailable = true, UnavailableReason = "" },
-        new Car { Brand = "Mercedes-Benz", Model = "Sprinter", Year = 2021, LicensePlate = "G901NO77", Type = "Микроавтобус", IsAvailable = true, UnavailableReason = "" },
-        new Car { Brand = "Ford", Model = "Transit", Year = 2022, LicensePlate = "H234PQ77", Type = "Микроавтобус", IsAvailable = false, UnavailableReason = "В ремонте" },
-        new Car { Brand = "Renault", Model = "Trafic", Year = 2021, LicensePlate = "I567RS77", Type = "Микроавтобус", IsAvailable = true, UnavailableReason = "" },
-        new Car { Brand = "Volvo", Model = "FH16", Year = 2022, LicensePlate = "J890TU77", Type = "Грузовой", IsAvailable = true, UnavailableReason = "" },
-        new Car { Brand = "MAN", Model = "TGX", Year = 2021, LicensePlate = "K123VW77", Type = "Грузовой", IsAvailable = false, UnavailableReason = "Занят" },
-        new Car { Brand = "Scania", Model = "R500", Year = 2023, LicensePlate = "L456XY77", Type = "Грузовой", IsAvailable = true, UnavailableReason = "" }
-    };
-    
-    private List<Car> filteredCars
-    {
-        get
-        {
-            return selectedTab switch
-            {
-                0 => cars,
-                1 => cars.Where(c => c.Type == "Седан").ToList(),
-                2 => cars.Where(c => c.Type == "Универсал").ToList(),
-                3 => cars.Where(c => c.Type == "Микроавтобус").ToList(),
-                4 => cars.Where(c => c.Type == "Грузовой").ToList(),
-                _ => cars
-            };
-        }
-    }
-    
     private string GetCarIcon(string type) => type switch
     {
-        "Седан" => "!",
-        "Универсал" => "?",    
-        "Микроавтобус" => "!!",
-        "Грузовой" => "??",
-        _ => "!!??"
+        "Седан" => "🚗",
+        "Универсал" => "🚙",    
+        "Микроавтобус" => "🚐",
+        "Грузовой" => "🚛",
+        _ => "🚗"
     };
-    
-    public class TabItem
-    {
-        public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-    }
-    
-    public class Car
-    {
-        public string Brand { get; set; } = string.Empty;
-        public string Model { get; set; } = string.Empty;
-        public int Year { get; set; }
-        public string LicensePlate { get; set; } = string.Empty;
-        public string Type { get; set; } = string.Empty;
-        public bool IsAvailable { get; set; }
-        public string UnavailableReason { get; set; } = string.Empty;
-    }
 }

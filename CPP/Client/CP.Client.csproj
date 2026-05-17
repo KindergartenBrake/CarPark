@@ -13,6 +13,7 @@
     <PackageReference Include="Microsoft.Extensions.Http" Version="10.*-*" />
     <PackageReference Include="Radzen.Blazor" Version="*" />
     <Compile Include="../Server/Models/**/*.cs" />
+    <Compile Include="../Server/DTO/**/*.cs" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.*-*" />
   </ItemGroup>
   <ItemGroup>
