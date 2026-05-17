@@ -1,6 +1,6 @@
 @page "/administrator/trip-requests2"
 @using Microsoft.AspNetCore.Authorization
-@attribute [Authorize(Roles = "Administrator")]
+
 
 <PageTitle>Administrator - Заявки на поездки</PageTitle>
 
@@ -343,6 +343,9 @@
 </style>
 
 @code {
+    [Inject]
+    protected HttpClient Http { get; set; }
+
     private List<string> tabs = new() { "Все", "Pending", "Approved", "Completed", "Rejected" };
     private string selectedTab = "Все";
 
@@ -355,35 +358,87 @@
     private int selectedVehicleId;
     private int selectedDriverId;
 
-    private TripRequest? selectedRequest;
+    private TripRequestForAdmin? selectedRequest;
 
-    private List<TripRequest> requests = new();
-    private List<Vehicle> availableVehicles = new();
-    private List<Driver> availableDrivers = new();
+    private List<TripRequestForAdmin> requests = new();
+    private List<AvailableVehicle> availableVehicles = new();
+    private List<AvailableDriver> availableDrivers = new();
 
-    private IEnumerable<TripRequest> FilteredRequests =>
+    private IEnumerable<TripRequestForAdmin> FilteredRequests =>
         selectedTab == "Все"
             ? requests
             : requests.Where(x => x.Status == selectedTab);
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadData();
+    }
+
+    private async Task LoadData()
+    {
+        await LoadRequests();
+        await LoadAvailableVehicles();
+        await LoadAvailableDrivers();
+    }
+
+    private async Task LoadRequests()
+    {
+        try
+        {
+            // ИСПРАВЛЕНО: api/triprequests/all → api/admin/triprequests/all
+            requests = await Http.GetFromJsonAsync<List<TripRequestForAdmin>>("api/admin/triprequests/all") ?? new();
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка загрузки заявок: {ex.Message}");
+        }
+    }
+
+    private async Task LoadAvailableVehicles()
+    {
+        try
+        {
+            // ИСПРАВЛЕНО: api/triprequests/available-vehicles → api/admin/triprequests/available-vehicles
+            availableVehicles = await Http.GetFromJsonAsync<List<AvailableVehicle>>("api/admin/triprequests/available-vehicles") ?? new();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка загрузки автомобилей: {ex.Message}");
+        }
+    }
+
+    private async Task LoadAvailableDrivers()
+    {
+        try
+        {
+            // ИСПРАВЛЕНО: api/triprequests/available-drivers → api/admin/triprequests/available-drivers
+            availableDrivers = await Http.GetFromJsonAsync<List<AvailableDriver>>("api/admin/triprequests/available-drivers") ?? new();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка загрузки водителей: {ex.Message}");
+        }
+    }
 
     private void SelectTab(string tab)
     {
         selectedTab = tab;
     }
 
-    private void OpenAssignModal(TripRequest request)
+    private void OpenAssignModal(TripRequestForAdmin request)
     {
         selectedRequest = request;
         showAssignModal = true;
     }
 
-    private void OpenRejectModal(TripRequest request)
+    private void OpenRejectModal(TripRequestForAdmin request)
     {
         selectedRequest = request;
         showRejectModal = true;
     }
 
-    private void OpenDetailsModal(TripRequest request)
+    private void OpenDetailsModal(TripRequestForAdmin request)
     {
         selectedRequest = request;
         showDetailsModal = true;
@@ -399,14 +454,38 @@
 
     private async Task AssignTrip()
     {
-        // PUT /api/trip-requests/{id}/assign
-        CloseModals();
+        if (selectedRequest == null) return;
+
+        try
+        {
+            var dto = new { VehicleId = selectedVehicleId, DriverId = selectedDriverId };
+            // ИСПРАВЛЕНО: api/triprequests → api/admin/triprequests
+            await Http.PutAsJsonAsync($"api/admin/triprequests/{selectedRequest.Id}/assign", dto);
+            CloseModals();
+            await LoadRequests(); // Перезагружаем данные
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка назначения: {ex.Message}");
+        }
     }
 
     private async Task RejectTrip()
     {
-        // PUT /api/trip-requests/{id}/reject
-        CloseModals();
+        if (selectedRequest == null) return;
+
+        try
+        {
+            var dto = new { Reason = rejectReason };
+            // ИСПРАВЛЕНО: api/triprequests → api/admin/triprequests
+            await Http.PutAsJsonAsync($"api/admin/triprequests/{selectedRequest.Id}/reject", dto);
+            CloseModals();
+            await LoadRequests();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка отклонения: {ex.Message}");
+        }
     }
 
     private string GetStatusStyle(string status) => status switch
@@ -418,21 +497,27 @@
         _ => "background:#455a64;color:white;padding:6px 12px;border-radius:20px;font-weight:700;"
     };
 
-    public class TripRequest
+    // Классы для типизации
+    public class TripRequestForAdmin
     {
         public int Id { get; set; }
         public string EmployeeName { get; set; } = "";
+        public string EmployeeEmail { get; set; } = "";
         public DateTime CreatedAt { get; set; }
         public DateTime PlannedTripDate { get; set; }
         public string VehicleType { get; set; } = "";
         public string Status { get; set; } = "";
         public string? DriverName { get; set; }
         public string? VehicleName { get; set; }
+        public string? VehicleBrand { get; set; }
+        public string? VehicleModel { get; set; }
+        public string? LicensePlate { get; set; }
         public bool TripStarted { get; set; }
         public int? TripId { get; set; }
+        public string? Description { get; set; }
     }
 
-    public class Vehicle
+    public class AvailableVehicle
     {
         public int Id { get; set; }
         public string Brand { get; set; } = "";
@@ -440,11 +525,15 @@
         public string LicensePlate { get; set; } = "";
         public string VehicleType { get; set; } = "";
         public string PrimaryDriverName { get; set; } = "";
+        public bool IsAvailable { get; set; }
     }
 
-    public class Driver
+    public class AvailableDriver
     {
         public int Id { get; set; }
         public string FullName { get; set; } = "";
+        public string? Phone { get; set; }
+        public string? Email { get; set; }
+        public bool IsAvailable { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace CP.Server.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize(Roles = "Employee")]
+[Authorize]
 public class TripRequestsController : ControllerBase
 {
     private readonly ITripRequestService _service;
