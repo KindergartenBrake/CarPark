@@ -701,5 +701,23 @@ namespace CP.Client
             return await response.Content.ReadFromJsonAsync<List<CP.Server.DTO.VehicleDto>>() ?? new();
         }
 
+        public async Task<List<CP.Server.DTO.TripRequestDto>> GetMyTripRequestsAsync()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, "api/triprequests/my");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<List<CP.Server.DTO.TripRequestDto>>() ?? new();
+        }
+
+        public async Task CreateTripRequestAsync(CP.Server.DTO.CreateTripRequestDto dto)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post, "api/triprequests")
+            {
+                Content = JsonContent.Create(dto)
+            };
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+        }
+
     }
 }
