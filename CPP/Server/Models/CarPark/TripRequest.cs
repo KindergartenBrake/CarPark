@@ -4,8 +4,8 @@ public class TripRequest
 {
     public int RequestId { get; set; }
     
-    public string CreatedByUserId { get; set; } = string.Empty;
-    public AspNetUser? CreatedByUser { get; set; }
+    public string UserId { get; set; } = string.Empty;
+    public AspNetUser? User { get; set; }
     
     public string? VehicleType { get; set; }
     

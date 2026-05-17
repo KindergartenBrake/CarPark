@@ -25,7 +25,7 @@ public class TripRequestService : ITripRequestService
         return await _context.TripRequests
             .Include(r => r.Vehicle)
             .Include(r => r.Driver)
-            .Where(r => r.CreatedByUserId == userId)
+            .Where(r => r.UserId == userId)
             .OrderByDescending(r => r.CreatedAt)
             .Select(r => new TripRequestDto
             {
@@ -77,11 +77,11 @@ public class TripRequestService : ITripRequestService
     {
         var entity = new Models.CarPark.TripRequest
         {
-            CreatedByUserId = userId,
+            UserId = userId,
             VehicleType = dto.VehicleType,
-            TripDate = dto.TripDate,
-            StartTime = dto.StartTime,
-            EndTime = dto.EndTime,
+            TripDate = DateTime.SpecifyKind(dto.TripDate, DateTimeKind.Utc),
+            StartTime = dto.StartTime.HasValue ? DateTime.SpecifyKind(dto.StartTime.Value, DateTimeKind.Utc) : null,
+            EndTime = dto.EndTime.HasValue ? DateTime.SpecifyKind(dto.EndTime.Value, DateTimeKind.Utc) : null,
             Description = dto.Description,
             Status = "Pending",
             CreatedAt = DateTime.UtcNow

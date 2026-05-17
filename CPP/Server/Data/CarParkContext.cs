@@ -138,7 +138,7 @@ namespace CP.Server.Data
         entity.ToTable("trip_requests", "public");
         entity.HasKey(e => e.RequestId);
         entity.Property(e => e.RequestId).HasColumnName("request_id");
-        entity.Property(e => e.CreatedByUserId).HasColumnName("user_id");
+        entity.Property(e => e.UserId).HasColumnName("user_id").IsRequired();
         entity.Property(e => e.DriverId).HasColumnName("driver_id");
         entity.Property(e => e.VehicleId).HasColumnName("vehicle_id");
         entity.Property(e => e.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("CURRENT_TIMESTAMP");
@@ -152,9 +152,9 @@ namespace CP.Server.Data
         entity.Property(e => e.EndTime).HasColumnName("end_time");
         entity.Property(e => e.RejectionReason).HasColumnName("rejection_reason");
 
-        entity.HasOne(e => e.CreatedByUser)
+        entity.HasOne(e => e.User)
                     .WithMany()
-                    .HasForeignKey(e => e.CreatedByUserId)
+                    .HasForeignKey(e => e.UserId)
                     .OnDelete(DeleteBehavior.Restrict);
 
         entity.HasOne(e => e.Vehicle)
