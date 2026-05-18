@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using CP.Server.Models;
 using Microsoft.AspNetCore.Components.Authorization;
 using CP.Server.Services;
-
+using CP.Server.Services.Interfaces;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +18,7 @@ builder.Services.AddRazorComponents().AddInteractiveWebAssemblyComponents();
 builder.Services.AddControllers();
 builder.Services.AddScoped<IVehicleService, VehicleService>();
 builder.Services.AddScoped<ITripRequestService, TripRequestService>();
+builder.Services.AddScoped<IDriverTripService, DriverTripService>();
 builder.Services.AddRadzenComponents();
 builder.Services.AddRadzenCookieThemeService(options =>
 {

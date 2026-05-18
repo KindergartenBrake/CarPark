@@ -25,7 +25,7 @@ public class Driver
     // Статус активности
     public bool IsActive { get; set; } = true;
     
-    // Закреплённый автомобиль (основной)
+    // Закреплённый автомобиль
     public int? VehicleId { get; set; }
     public Vehicle? Vehicle { get; set; }
     

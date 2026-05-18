@@ -272,41 +272,24 @@
         "Completed"
     };
 
-private Task LoadTripsStub()
+protected override async Task OnInitializedAsync()
     {
-        trips = new List<TripDto>
-        {
-            new TripDto
-            {
-                Id = 1,
-                ScheduledDate = DateTime.Today.AddDays(3),
-                VehicleName = "Mercedes Sprinter",
-                Status = "Approved",
-                StartOdometer = 125000,
-                EndOdometer = 125450
-            },
-            new TripDto
-            {
-                Id = 2,
-                ScheduledDate = DateTime.Today.AddDays(7),
-                VehicleName = "Volkswagen Crafter",
-                Status = "Pending",
-                StartOdometer = null,
-                EndOdometer = null
-            },
-            new TripDto
-            {
-                Id = 3,
-                ScheduledDate = DateTime.Today.AddDays(-10),
-                VehicleName = "Ford Transit",
-                Status = "Completed",
-                StartOdometer = 98200,
-                EndOdometer = 98810
-            }
-        };
-
-        return Task.CompletedTask;
+        await LoadTrips();
     }
+private async Task LoadTrips()
+{
+    try
+    {
+        var result = await Http.GetFromJsonAsync<List<TripDto>>("api/driver/trips/my");
+
+        if (result != null)
+            trips = result;
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error loading trips: {ex.Message}");
+    }
+}
 
 
     private IEnumerable<TripDto> filteredTrips =>

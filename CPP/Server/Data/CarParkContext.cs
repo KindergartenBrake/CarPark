@@ -22,7 +22,7 @@ namespace CP.Server.Data
     {
       base.OnModelCreating(builder);
 
-      // ========== Identity ==========
+      // Identity 
       builder.Entity<CP.Server.Models.CarPark.AspNetUserLogin>().HasKey(table => new
       {
         table.LoginProvider,
@@ -183,7 +183,7 @@ namespace CP.Server.Data
         entity.Property(e => e.EndOdometer).HasColumnName("end_odometer").HasPrecision(12, 1);
         entity.Property(e => e.Status).HasColumnName("status").HasMaxLength(20).HasDefaultValue("Scheduled");
 
-        // Если есть DriverId (по вашему коду)
+        // Если есть DriverId 
         entity.Property(e => e.DriverId).HasColumnName("driver_id");
 
         entity.HasOne(e => e.TripRequest)
