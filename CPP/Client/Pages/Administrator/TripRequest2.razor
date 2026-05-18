@@ -127,7 +127,7 @@
                         border:1px dashed #295ba7;
                         border-radius:14px;
                         background:#0b1d3d;">
-                <div style="font-size:64px;">📄</div>
+                <div style="font-size:64px;"></div>
                 <div style="color:#eaf4ff; font-size:20px; font-weight:700; margin-top:14px;">
                     Нет заявок
                 </div>
@@ -378,7 +378,6 @@
     {
         try
         {
-            // ИСПРАВЛЕНО: api/triprequests/all → api/admin/triprequests/all
             requests = await Http.GetFromJsonAsync<List<TripRequestForAdmin>>("api/admin/triprequests/all") ?? new();
             StateHasChanged();
         }
@@ -392,7 +391,6 @@
     {
         try
         {
-            // ИСПРАВЛЕНО: api/triprequests/available-vehicles → api/admin/triprequests/available-vehicles
             availableVehicles = await Http.GetFromJsonAsync<List<AvailableVehicle>>("api/admin/triprequests/available-vehicles") ?? new();
         }
         catch (Exception ex)
@@ -405,7 +403,6 @@
     {
         try
         {
-            // ИСПРАВЛЕНО: api/triprequests/available-drivers → api/admin/triprequests/available-drivers
             availableDrivers = await Http.GetFromJsonAsync<List<AvailableDriver>>("api/admin/triprequests/available-drivers") ?? new();
         }
         catch (Exception ex)
@@ -452,10 +449,9 @@
         try
         {
             var dto = new { VehicleId = selectedVehicleId, DriverId = selectedDriverId };
-            // ИСПРАВЛЕНО: api/triprequests → api/admin/triprequests
             await Http.PutAsJsonAsync($"api/admin/triprequests/{selectedRequest.Id}/assign", dto);
             CloseModals();
-            await LoadRequests(); // Перезагружаем данные
+            await LoadRequests(); 
         }
         catch (Exception ex)
         {
@@ -470,7 +466,6 @@
         try
         {
             var dto = new { Reason = rejectReason };
-            // ИСПРАВЛЕНО: api/triprequests → api/admin/triprequests
             await Http.PutAsJsonAsync($"api/admin/triprequests/{selectedRequest.Id}/reject", dto);
             CloseModals();
             await LoadRequests();
@@ -490,7 +485,6 @@
         _ => "background:#455a64;color:white;padding:6px 12px;border-radius:20px;font-weight:700;"
     };
 
-    // Классы для типизации
     public class TripRequestForAdmin
     {
         public int Id { get; set; }
