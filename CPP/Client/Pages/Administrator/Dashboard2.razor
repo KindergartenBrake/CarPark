@@ -1,10 +1,859 @@
 @page "/administrator/dashboard2"
 
-@attribute [Authorize]
+@using Microsoft.AspNetCore.Authorization
 
-<PageTitle>Dashboard1</PageTitle>
-<RadzenRow>
-    <RadzenColumn Size="12">
-        <RadzenText Text="Dashboard2" TextStyle="TextStyle.H3" TagName="TagName.H1" />
-    </RadzenColumn>
-</RadzenRow>
+<PageTitle>Fleet Dashboard</PageTitle>
+
+<div style="min-height:100vh;
+            background:linear-gradient(135deg,#071120 0%,#0b1f3d 100%);
+            padding:24px;">
+
+    <div style="max-width:1800px;
+                margin:0 auto;">
+
+        <!-- HEADER -->
+        <div style="display:flex;
+                    justify-content:space-between;
+                    align-items:center;
+                    flex-wrap:wrap;
+                    gap:16px;
+                    margin-bottom:32px;">
+
+            <div>
+
+                <div style="font-size:36px;
+                            font-weight:900;
+                            color:#edf4ff;
+                            letter-spacing:1px;">
+
+                    FLEET CONTROL CENTER
+
+                </div>
+
+                <div style="margin-top:8px;
+                            color:#89a7cf;
+                            font-size:14px;">
+
+                    Оперативный контроль заявок, поездок и автопарка
+
+                </div>
+
+            </div>
+
+            <button class="main-action-btn"
+                    @onclick="GoToRequests">
+
+                ПЕРЕЙТИ КО ВСЕМ ЗАЯВКАМ
+
+            </button>
+
+        </div>
+
+        <!-- STAT CARDS -->
+        <div style="display:grid;
+                    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+                    gap:22px;
+                    margin-bottom:32px;">
+
+            <!-- Pending -->
+            <div class="dashboard-card">
+
+                <div class="card-top">
+
+                    <div class="card-title">
+                        Ожидают назначения
+                    </div>
+
+                    <div class="card-icon">
+                        ⏳
+                    </div>
+
+                </div>
+
+                <div class="card-value">
+                    @PendingRequests
+                </div>
+
+                <div class="card-subtitle">
+                    Pending заявки
+                </div>
+
+            </div>
+
+            <!-- Active Trips -->
+            <div class="dashboard-card">
+
+                <div class="card-top">
+
+                    <div class="card-title">
+                        Активных поездок
+                    </div>
+
+                    <div class="card-icon">
+                        🚘
+                    </div>
+
+                </div>
+
+                <div class="card-value">
+                    @ActiveTrips
+                </div>
+
+                <div class="card-subtitle">
+                    Статус InProgress
+                </div>
+
+            </div>
+
+            <!-- Free Vehicles -->
+            <div class="dashboard-card">
+
+                <div class="card-top">
+
+                    <div class="card-title">
+                        Свободных автомобилей
+                    </div>
+
+                    <div class="card-icon">
+                        🚗
+                    </div>
+
+                </div>
+
+                <div class="card-value">
+                    @AvailableVehicles
+                </div>
+
+                <div class="card-subtitle">
+                    Доступны к назначению
+                </div>
+
+            </div>
+
+            <!-- Active Drivers -->
+            <div class="dashboard-card">
+
+                <div class="card-top">
+
+                    <div class="card-title">
+                        Активных водителей
+                    </div>
+
+                    <div class="card-icon">
+                        👨‍✈️
+                    </div>
+
+                </div>
+
+                <div class="card-value">
+                    @ActiveDrivers
+                </div>
+
+                <div class="card-subtitle">
+                    Scheduled / InProgress
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- MAIN GRID -->
+        <div style="display:grid;
+                    grid-template-columns:2fr 1fr;
+                    gap:24px;
+                    align-items:start;">
+
+            <!-- REQUEST TABLE -->
+            <div style="background:#0c1c33;
+                        border:1px solid #1d4278;
+                        border-radius:20px;
+                        overflow:hidden;">
+
+                <div style="padding:24px;
+                            border-bottom:1px solid #17365f;">
+
+                    <div style="font-size:24px;
+                                font-weight:800;
+                                color:#edf4ff;">
+
+                        ПОСЛЕДНИЕ ЗАЯВКИ
+
+                    </div>
+
+                    <div style="margin-top:8px;
+                                color:#7f9dc7;
+                                font-size:14px;">
+
+                        Быстрое назначение и отклонение заявок
+
+                    </div>
+
+                </div>
+
+                <div style="overflow-x:auto;">
+
+                    <table style="width:100%;
+                                  border-collapse:collapse;">
+
+                        <thead style="background:#11284a;">
+
+                            <tr>
+
+                                <th class="tbl-head">
+                                    ID
+                                </th>
+
+                                <th class="tbl-head">
+                                    Сотрудник
+                                </th>
+
+                                <th class="tbl-head">
+                                    Дата поездки
+                                </th>
+
+                                <th class="tbl-head">
+                                    Тип авто
+                                </th>
+
+                                <th class="tbl-head">
+                                    Статус
+                                </th>
+
+                                <th class="tbl-head">
+                                    Действия
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            @foreach (var request in requests)
+                            {
+                                <tr class="table-row">
+
+                                    <td class="tbl-cell">
+                                        #@request.Id
+                                    </td>
+
+                                    <td class="tbl-cell">
+                                        @request.Employee
+                                    </td>
+
+                                    <td class="tbl-cell">
+                                        @request.TripDate.ToString("dd.MM.yyyy")
+                                    </td>
+
+                                    <td class="tbl-cell">
+
+                                        <div class="vehicle-type-badge">
+                                            @request.VehicleType
+                                        </div>
+
+                                    </td>
+
+                                    <td class="tbl-cell">
+
+                                        @switch (request.Status)
+                                        {
+                                            case "Pending":
+
+                                                <div class="status-pending">
+                                                    ● Pending
+                                                </div>
+
+                                                break;
+
+                                            case "Approved":
+
+                                                <div class="status-approved">
+                                                    ● Approved
+                                                </div>
+
+                                                break;
+
+                                            case "Rejected":
+
+                                                <div class="status-rejected">
+                                                    ● Rejected
+                                                </div>
+
+                                                break;
+                                        }
+
+                                    </td>
+
+                                    <td class="tbl-cell">
+
+                                        <div style="display:flex;
+                                                    gap:10px;
+                                                    flex-wrap:wrap;">
+
+                                            @if (request.Status == "Pending")
+                                            {
+                                                <button class="assign-btn"
+                                                        @onclick="() => AssignRequest(request)">
+
+                                                    Назначить
+
+                                                </button>
+
+                                                <button class="reject-btn"
+                                                        @onclick="() => OpenRejectModal(request)">
+
+                                                    Отклонить
+
+                                                </button>
+                                            }
+
+                                            else
+                                            {
+                                                <div style="color:#5f7ea8;
+                                                            font-size:13px;">
+
+                                                    Нет действий
+
+                                                </div>
+                                            }
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+            <!-- ACTIVITY -->
+            <div style="display:flex;
+                        flex-direction:column;
+                        gap:24px;">
+
+                <!-- CHART -->
+                <div style="background:#0c1c33;
+                            border:1px solid #1d4278;
+                            border-radius:20px;
+                            padding:24px;">
+
+                    <div style="font-size:22px;
+                                font-weight:800;
+                                color:#edf4ff;
+                                margin-bottom:24px;">
+
+                        АКТИВНОСТЬ ПОЕЗДОК
+
+                    </div>
+
+                    <div style="display:flex;
+                                align-items:flex-end;
+                                justify-content:space-between;
+                                height:260px;
+                                gap:14px;">
+
+                        @foreach (var point in chartData)
+                        {
+                            <div style="flex:1;
+                                        display:flex;
+                                        flex-direction:column;
+                                        align-items:center;
+                                        justify-content:flex-end;
+                                        height:100%;">
+
+                                <div style="
+                                    width:100%;
+                                    background:linear-gradient(180deg,#3b82f6 0%,#1d4ed8 100%);
+                                    border-radius:12px 12px 0 0;
+                                    height:@($"{point.Value * 18}px");
+                                    box-shadow:0 0 18px rgba(59,130,246,0.45);">
+
+                                </div>
+
+                                <div style="margin-top:10px;
+                                            color:#8aa8cc;
+                                            font-size:12px;">
+
+                                    @point.Day
+
+                                </div>
+
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+
+                <!-- QUICK STATS -->
+                <div style="background:#0c1c33;
+                            border:1px solid #1d4278;
+                            border-radius:20px;
+                            padding:24px;">
+
+                    <div style="font-size:22px;
+                                font-weight:800;
+                                color:#edf4ff;
+                                margin-bottom:20px;">
+
+                        СИСТЕМА
+
+                    </div>
+
+                    <div class="system-row">
+
+                        <span>
+                            Всего автомобилей
+                        </span>
+
+                        <strong>
+                            48
+                        </strong>
+
+                    </div>
+
+                    <div class="system-row">
+
+                        <span>
+                            В ремонте
+                        </span>
+
+                        <strong style="color:#ffb74d;">
+                            4
+                        </strong>
+
+                    </div>
+
+                    <div class="system-row">
+
+                        <span>
+                            Завершено поездок сегодня
+                        </span>
+
+                        <strong style="color:#66bb6a;">
+                            27
+                        </strong>
+
+                    </div>
+
+                    <div class="system-row">
+
+                        <span>
+                            Средняя загрузка
+                        </span>
+
+                        <strong>
+                            74%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- REJECT MODAL -->
+@if (showRejectModal && selectedRequest is not null)
+{
+    <div style="position:fixed;
+                inset:0;
+                background:rgba(0,0,0,0.72);
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                z-index:999;">
+
+        <div style="width:520px;
+                    background:#0d1b30;
+                    border:1px solid #27508e;
+                    border-radius:20px;
+                    padding:28px;">
+
+            <div style="font-size:26px;
+                        font-weight:900;
+                        color:#edf4ff;
+                        margin-bottom:18px;">
+
+                ОТКЛОНЕНИЕ ЗАЯВКИ
+
+            </div>
+
+            <div style="color:#8aa8cc;
+                        margin-bottom:20px;">
+
+                Заявка #@selectedRequest.Id будет отклонена.
+
+            </div>
+
+            <textarea @bind="rejectReason"
+                      class="blue-input"
+                      rows="5"
+                      placeholder="Причина отклонения...">
+            </textarea>
+
+            <div style="display:flex;
+                        justify-content:flex-end;
+                        gap:14px;
+                        margin-top:24px;">
+
+                <button class="cancel-modal-btn"
+                        @onclick="CloseRejectModal">
+
+                    Отмена
+
+                </button>
+
+                <button class="confirm-modal-btn"
+                        @onclick="RejectRequest">
+
+                    Отклонить
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+}
+
+<style>
+
+    .dashboard-card{
+        background:linear-gradient(145deg,#0d1c34 0%,#0a1628 100%);
+        border:1px solid #1f4781;
+        border-radius:20px;
+        padding:24px;
+        transition:0.25s;
+        position:relative;
+        overflow:hidden;
+    }
+
+    .dashboard-card:hover{
+        transform:translateY(-4px);
+        box-shadow:0 12px 30px rgba(0,0,0,0.35);
+        border-color:#3474d6;
+    }
+
+    .dashboard-card::before{
+        content:'';
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:4px;
+        background:linear-gradient(90deg,#3b82f6,#2563eb);
+    }
+
+    .card-top{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+    }
+
+    .card-title{
+        color:#8aa8cc;
+        font-size:14px;
+        font-weight:700;
+    }
+
+    .card-icon{
+        font-size:28px;
+    }
+
+    .card-value{
+        color:#edf4ff;
+        font-size:46px;
+        font-weight:900;
+        margin-top:20px;
+    }
+
+    .card-subtitle{
+        color:#5f82b5;
+        margin-top:8px;
+        font-size:13px;
+    }
+
+    .tbl-head{
+        padding:18px;
+        text-align:left;
+        color:#8eb5ef;
+        font-size:13px;
+        letter-spacing:1px;
+    }
+
+    .tbl-cell{
+        padding:18px;
+        color:#e1edff;
+        font-size:14px;
+    }
+
+    .table-row{
+        border-top:1px solid #183a66;
+        transition:0.2s;
+    }
+
+    .table-row:hover{
+        background:rgba(52,116,214,0.08);
+    }
+
+    .vehicle-type-badge{
+        display:inline-block;
+        background:#132849;
+        color:#9ec5ff;
+        padding:8px 14px;
+        border-radius:10px;
+        font-size:13px;
+        font-weight:700;
+    }
+
+    .status-pending,
+    .status-approved,
+    .status-rejected{
+        display:inline-block;
+        padding:7px 14px;
+        border-radius:20px;
+        font-size:13px;
+        font-weight:700;
+    }
+
+    .status-pending{
+        background:rgba(255,152,0,0.15);
+        color:#ffbe5c;
+    }
+
+    .status-approved{
+        background:rgba(76,175,80,0.15);
+        color:#6dff9b;
+    }
+
+    .status-rejected{
+        background:rgba(244,67,54,0.15);
+        color:#ff8d8d;
+    }
+
+    .assign-btn,
+    .reject-btn{
+        border:none;
+        padding:10px 14px;
+        border-radius:10px;
+        cursor:pointer;
+        font-size:13px;
+        font-weight:700;
+        transition:0.2s;
+    }
+
+    .assign-btn{
+        background:#1565c0;
+        color:white;
+    }
+
+    .reject-btn{
+        background:#5b1f1f;
+        color:#ffaaaa;
+    }
+
+    .assign-btn:hover,
+    .reject-btn:hover,
+    .main-action-btn:hover{
+        transform:translateY(-2px);
+        opacity:0.93;
+    }
+
+    .main-action-btn{
+        background:linear-gradient(135deg,#2563eb,#1d4ed8);
+        border:none;
+        color:white;
+        padding:14px 22px;
+        border-radius:12px;
+        cursor:pointer;
+        font-weight:800;
+        font-size:14px;
+        transition:0.2s;
+    }
+
+    .system-row{
+        display:flex;
+        justify-content:space-between;
+        padding:14px 0;
+        border-bottom:1px solid #17365f;
+        color:#8aa8cc;
+    }
+
+    .system-row strong{
+        color:#edf4ff;
+    }
+
+    .blue-input{
+        width:100%;
+        background:#08111f;
+        border:1px solid #27508e;
+        border-radius:12px;
+        padding:14px;
+        color:#edf4ff;
+        font-size:14px;
+        resize:none;
+    }
+
+    .cancel-modal-btn,
+    .confirm-modal-btn{
+        border:none;
+        padding:12px 18px;
+        border-radius:10px;
+        cursor:pointer;
+        font-weight:700;
+    }
+
+    .cancel-modal-btn{
+        background:#16263e;
+        color:#8eb5ef;
+    }
+
+    .confirm-modal-btn{
+        background:#b3261e;
+        color:white;
+    }
+
+</style>
+
+@code {
+
+    private bool showRejectModal;
+
+    private string rejectReason = "";
+
+    private RequestModel? selectedRequest;
+
+    private int PendingRequests => requests.Count(x => x.Status == "Pending");
+
+    private int ActiveTrips => 12;
+
+    private int AvailableVehicles => 21;
+
+    private int ActiveDrivers => 9;
+
+    private List<RequestModel> requests = new()
+    {
+        new()
+        {
+            Id = 1045,
+            Employee = "Иван Петров",
+            TripDate = DateTime.Today,
+            VehicleType = "Седан",
+            Status = "Pending"
+        },
+
+        new()
+        {
+            Id = 1046,
+            Employee = "Алексей Смирнов",
+            TripDate = DateTime.Today.AddDays(1),
+            VehicleType = "Микроавтобус",
+            Status = "Approved"
+        },
+
+        new()
+        {
+            Id = 1047,
+            Employee = "Мария Волкова",
+            TripDate = DateTime.Today.AddDays(2),
+            VehicleType = "Грузовой",
+            Status = "Pending"
+        },
+
+        new()
+        {
+            Id = 1048,
+            Employee = "Сергей Иванов",
+            TripDate = DateTime.Today,
+            VehicleType = "Универсал",
+            Status = "Rejected"
+        },
+
+        new()
+        {
+            Id = 1049,
+            Employee = "Дмитрий Соколов",
+            TripDate = DateTime.Today.AddDays(3),
+            VehicleType = "Седан",
+            Status = "Pending"
+        }
+    };
+
+    private List<ActivityPoint> chartData = new()
+    {
+        new() { Day = "ПН", Value = 6 },
+        new() { Day = "ВТ", Value = 9 },
+        new() { Day = "СР", Value = 11 },
+        new() { Day = "ЧТ", Value = 8 },
+        new() { Day = "ПТ", Value = 14 },
+        new() { Day = "СБ", Value = 5 },
+        new() { Day = "ВС", Value = 3 }
+    };
+
+    private void AssignRequest(RequestModel request)
+    {
+        request.Status = "Approved";
+    }
+
+    private void OpenRejectModal(RequestModel request)
+    {
+        selectedRequest = request;
+        showRejectModal = true;
+    }
+
+    private void CloseRejectModal()
+    {
+        showRejectModal = false;
+        rejectReason = "";
+        selectedRequest = null;
+    }
+
+    private void RejectRequest()
+    {
+        if (selectedRequest is not null)
+        {
+            selectedRequest.Status = "Rejected";
+        }
+
+        CloseRejectModal();
+    }
+
+    private void GoToRequests()
+    {
+
+    }
+
+    public class RequestModel
+    {
+        public int Id { get; set; }
+
+        public string Employee { get; set; } = "";
+
+        public DateTime TripDate { get; set; }
+
+        public string VehicleType { get; set; } = "";
+
+        public string Status { get; set; } = "";
+    }
+
+    public class ActivityPoint
+    {
+        public string Day { get; set; } = "";
+
+        public int Value { get; set; }
+    }
+
+}

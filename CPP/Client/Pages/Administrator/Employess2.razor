@@ -1,10 +1,667 @@
 @page "/administrator/employess2"
+@using Microsoft.AspNetCore.Authorization
 
-@attribute [Authorize]
 
-<PageTitle>Employess</PageTitle>
-<RadzenRow>
-    <RadzenColumn Size="12">
-        <RadzenText Text="Employess" TextStyle="TextStyle.H3" TagName="TagName.H1" />
-    </RadzenColumn>
-</RadzenRow>
+<PageTitle>Employees Management</PageTitle>
+
+<div style="min-height:100vh;
+            background:linear-gradient(135deg, #071120 0%, #0b1d38 100%);
+            padding:24px;">
+
+    <div style="max-width:1600px; margin:0 auto;">
+
+        <div style="display:flex;
+                    justify-content:space-between;
+                    align-items:center;
+                    margin-bottom:30px;">
+
+            <div>
+
+                <div style="color:#eaf2ff;
+                            font-size:32px;
+                            font-weight:800;
+                            letter-spacing:1px;">
+
+                    EMPLOYEES MANAGEMENT
+
+                </div>
+
+                <div style="color:#7f9cc7;
+                            margin-top:8px;
+                            font-size:14px;">
+
+                    Список сотрудников системы и их активности
+
+                </div>
+
+            </div>
+
+            <div style="display:flex; gap:14px;">
+
+                <div class="stat-card">
+
+                    <div class="stat-number">
+                        @employees.Count
+                    </div>
+
+                    <div class="stat-title">
+                        Всего сотрудников
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-number">
+                        @employees.Count(x => x.IsActive)
+                    </div>
+
+                    <div class="stat-title">
+                        Активных
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div style="background:#0c1b31;
+                    border:1px solid #1f4479;
+                    border-radius:14px;
+                    padding:18px;
+                    margin-bottom:24px;">
+
+            <input @bind="search"
+                   placeholder="Поиск по ФИО или Email..."
+                   style="width:100%;
+                          background:#071120;
+                          border:1px solid #27508d;
+                          border-radius:10px;
+                          padding:14px;
+                          color:#dce9ff;
+                          font-size:14px;" />
+
+        </div>
+
+        <div style="overflow-x:auto;
+                    background:#0c1b31;
+                    border-radius:18px;
+                    border:1px solid #1d3f73;">
+
+            <table style="width:100%;
+                          border-collapse:collapse;">
+
+                <thead style="background:#11284b;">
+
+                    <tr>
+
+                        <th class="tbl-head">
+                            ФИО
+                        </th>
+
+                        <th class="tbl-head">
+                            Email
+                        </th>
+
+                        <th class="tbl-head">
+                            Всего заявок
+                        </th>
+
+                        <th class="tbl-head">
+                            Активных заявок
+                        </th>
+
+                        <th class="tbl-head">
+                            Статус
+                        </th>
+
+                        <th class="tbl-head">
+                            Действия
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @foreach (var employee in FilteredEmployees)
+                    {
+                        <tr class="table-row">
+
+                            <td class="tbl-cell">
+
+                                <div style="display:flex;
+                                            flex-direction:column;">
+
+                                    <span style="font-weight:700;
+                                                 color:#f1f6ff;">
+
+                                        @employee.FullName
+
+                                    </span>
+
+                                    <span style="font-size:12px;
+                                                 color:#6f92c4;">
+
+                                        Employee
+
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+                            <td class="tbl-cell">
+                                @employee.Email
+                            </td>
+
+                            <td class="tbl-cell">
+
+                                <div class="count-box">
+                                    @employee.TotalRequests
+                                </div>
+
+                            </td>
+
+                            <td class="tbl-cell">
+
+                                <div class="active-count-box">
+                                    @employee.ActiveRequests
+                                </div>
+
+                            </td>
+
+                            <td class="tbl-cell">
+
+                                @if (employee.IsActive)
+                                {
+                                    <div class="status-active">
+                                        ● Активен
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="status-inactive">
+                                        ● Деактивирован
+                                    </div>
+                                }
+
+                            </td>
+
+                            <td class="tbl-cell">
+
+                                <div style="display:flex;
+                                            gap:10px;
+                                            flex-wrap:wrap;">
+
+                                    <button class="details-btn"
+                                            @onclick="() => OpenDetails(employee)">
+
+                                        Детали
+
+                                    </button>
+
+                                    @if (employee.IsActive)
+                                    {
+                                        <button class="deactivate-btn"
+                                                @onclick="() => Deactivate(employee)">
+
+                                            Деактивировать
+
+                                        </button>
+                                    }
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        @if (!FilteredEmployees.Any())
+        {
+            <div style="margin-top:24px;
+                        text-align:center;
+                        padding:70px 20px;
+                        background:#0c1b31;
+                        border-radius:16px;
+                        border:1px dashed #2a4a8e;">
+
+                <div style="font-size:60px;">
+                    👤
+                </div>
+
+                <div style="color:#e0e8f0;
+                            font-size:22px;
+                            font-weight:700;
+                            margin-top:16px;">
+
+                    Сотрудники не найдены
+
+                </div>
+
+                <div style="color:#7f9cc7;
+                            margin-top:8px;">
+
+                    Попробуйте изменить параметры поиска
+
+                </div>
+
+            </div>
+        }
+
+        @if (selectedEmployee is not null)
+        {
+            <div style="margin-top:30px;
+                        background:#0c1b31;
+                        border:1px solid #1d3f73;
+                        border-radius:18px;
+                        padding:28px;">
+
+                <div style="display:flex;
+                            justify-content:space-between;
+                            align-items:center;
+                            margin-bottom:24px;">
+
+                    <div>
+
+                        <div style="font-size:28px;
+                                    font-weight:800;
+                                    color:#f1f6ff;">
+
+                            @selectedEmployee.FullName
+
+                        </div>
+
+                        <div style="margin-top:6px;
+                                    color:#8aa8cc;">
+
+                            @selectedEmployee.Email
+
+                        </div>
+
+                    </div>
+
+                    <button @onclick="CloseDetails"
+                            style="background:#152842;
+                                   border:none;
+                                   color:#9abfff;
+                                   padding:12px 18px;
+                                   border-radius:10px;
+                                   cursor:pointer;
+                                   font-weight:700;">
+
+                        Закрыть
+
+                    </button>
+
+                </div>
+
+                <div style="display:grid;
+                            grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+                            gap:18px;
+                            margin-bottom:30px;">
+
+                    <div class="detail-stat">
+
+                        <div class="detail-number">
+                            @selectedEmployee.TotalRequests
+                        </div>
+
+                        <div class="detail-label">
+                            Всего заявок
+                        </div>
+
+                    </div>
+
+                    <div class="detail-stat">
+
+                        <div class="detail-number">
+                            @selectedEmployee.ActiveRequests
+                        </div>
+
+                        <div class="detail-label">
+                            Активных заявок
+                        </div>
+
+                    </div>
+
+                    <div class="detail-stat">
+
+                        <div class="detail-number">
+                            @(selectedEmployee.IsActive ? "ON" : "OFF")
+                        </div>
+
+                        <div class="detail-label">
+                            Статус аккаунта
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <div style="font-size:20px;
+                                color:#f1f6ff;
+                                font-weight:700;
+                                margin-bottom:18px;">
+
+                        Список заявок сотрудника
+
+                    </div>
+
+                    <div style="display:flex;
+                                flex-direction:column;
+                                gap:14px;">
+
+                        @foreach (var request in selectedEmployee.Requests)
+                        {
+                            <div style="background:#08111f;
+                                        border:1px solid #1b3968;
+                                        border-radius:14px;
+                                        padding:18px;">
+
+                                <div style="display:flex;
+                                            justify-content:space-between;
+                                            align-items:center;">
+
+                                    <div>
+
+                                        <div style="color:#f1f6ff;
+                                                    font-size:17px;
+                                                    font-weight:700;">
+
+                                            Заявка #@request.Id
+
+                                        </div>
+
+                                        <div style="margin-top:6px;
+                                                    color:#89a7d4;
+                                                    font-size:14px;">
+
+                                            @request.Route
+
+                                        </div>
+
+                                    </div>
+
+                                    @if (request.IsActive)
+                                    {
+                                        <div class="status-active">
+                                            Активна
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="status-inactive">
+                                            Завершена
+                                        </div>
+                                    }
+
+                                </div>
+
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>
+
+<style>
+
+    .tbl-head{
+        padding:18px;
+        text-align:left;
+        color:#8fb7f0;
+        font-size:13px;
+        letter-spacing:1px;
+    }
+
+    .tbl-cell{
+        padding:18px;
+        color:#dce9ff;
+        font-size:14px;
+    }
+
+    .table-row{
+        border-top:1px solid #18345f;
+        transition:0.2s;
+    }
+
+    .table-row:hover{
+        background:rgba(31,68,121,0.18);
+    }
+
+    .status-active{
+        display:inline-block;
+        background:rgba(76, 175, 80, 0.12);
+        color:#66ff99;
+        padding:6px 14px;
+        border-radius:20px;
+        font-size:13px;
+        font-weight:700;
+    }
+
+    .status-inactive{
+        display:inline-block;
+        background:rgba(150,150,150,0.12);
+        color:#b5b5b5;
+        padding:6px 14px;
+        border-radius:20px;
+        font-size:13px;
+        font-weight:700;
+    }
+
+    .details-btn{
+        background:#1565c0;
+        border:none;
+        color:white;
+        padding:10px 14px;
+        border-radius:8px;
+        cursor:pointer;
+        font-size:13px;
+        font-weight:700;
+        transition:0.2s;
+    }
+
+    .details-btn:hover{
+        transform:translateY(-2px);
+        opacity:0.9;
+    }
+
+    .deactivate-btn{
+        background:#4a1f1f;
+        border:none;
+        color:#ff8a8a;
+        padding:10px 14px;
+        border-radius:8px;
+        cursor:pointer;
+        font-size:13px;
+        font-weight:700;
+        transition:0.2s;
+    }
+
+    .deactivate-btn:hover{
+        transform:translateY(-2px);
+        opacity:0.9;
+    }
+
+    .count-box{
+        display:inline-block;
+        background:#132746;
+        color:#9fc8ff;
+        padding:8px 14px;
+        border-radius:10px;
+        font-weight:700;
+        min-width:50px;
+        text-align:center;
+    }
+
+    .active-count-box{
+        display:inline-block;
+        background:rgba(41,121,255,0.16);
+        color:#6eb1ff;
+        padding:8px 14px;
+        border-radius:10px;
+        font-weight:700;
+        min-width:50px;
+        text-align:center;
+    }
+
+    .stat-card{
+        background:#0c1b31;
+        border:1px solid #1d3f73;
+        border-radius:14px;
+        padding:16px 24px;
+        min-width:180px;
+    }
+
+    .stat-number{
+        color:#4da3ff;
+        font-size:28px;
+        font-weight:800;
+    }
+
+    .stat-title{
+        margin-top:6px;
+        color:#89a7d4;
+        font-size:13px;
+    }
+
+    .detail-stat{
+        background:#08111f;
+        border:1px solid #1b3968;
+        border-radius:16px;
+        padding:24px;
+    }
+
+    .detail-number{
+        color:#4da3ff;
+        font-size:30px;
+        font-weight:800;
+    }
+
+    .detail-label{
+        margin-top:8px;
+        color:#8ba8d4;
+        font-size:14px;
+    }
+
+</style>
+
+@code {
+
+    private string search = "";
+
+    private EmployeeModel? selectedEmployee;
+
+    private List<EmployeeModel> employees = new()
+    {
+        new()
+        {
+            FullName = "Иванов Иван Сергеевич",
+            Email = "ivanov@company.local",
+            TotalRequests = 34,
+            ActiveRequests = 4,
+            IsActive = true,
+
+            Requests = new()
+            {
+                new()
+                {
+                    Id = 1024,
+                    Route = "Москва → Санкт-Петербург",
+                    IsActive = true
+                },
+
+                new()
+                {
+                    Id = 1001,
+                    Route = "Москва → Казань",
+                    IsActive = false
+                }
+            }
+        },
+
+        new()
+        {
+            FullName = "Петров Алексей",
+            Email = "petrov@company.local",
+            TotalRequests = 19,
+            ActiveRequests = 0,
+            IsActive = false,
+
+            Requests = new()
+            {
+                new()
+                {
+                    Id = 945,
+                    Route = "Сочи → Краснодар",
+                    IsActive = false
+                }
+            }
+        }
+    };
+
+    private IEnumerable<EmployeeModel> FilteredEmployees =>
+        employees.Where(x =>
+            string.IsNullOrWhiteSpace(search)
+            || x.FullName.Contains(search, StringComparison.OrdinalIgnoreCase)
+            || x.Email.Contains(search, StringComparison.OrdinalIgnoreCase));
+
+    private void OpenDetails(EmployeeModel employee)
+    {
+        selectedEmployee = employee;
+    }
+
+    private void CloseDetails()
+    {
+        selectedEmployee = null;
+    }
+
+    private void Deactivate(EmployeeModel employee)
+    {
+        employee.IsActive = false;
+    }
+
+    public class EmployeeModel
+    {
+        public string FullName { get; set; } = "";
+
+        public string Email { get; set; } = "";
+
+        public int TotalRequests { get; set; }
+
+        public int ActiveRequests { get; set; }
+
+        public bool IsActive { get; set; }
+
+        public List<RequestModel> Requests { get; set; } = new();
+    }
+
+    public class RequestModel
+    {
+        public int Id { get; set; }
+
+        public string Route { get; set; } = "";
+
+        public bool IsActive { get; set; }
+    }
+
+}

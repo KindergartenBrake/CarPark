@@ -1,10 +1,603 @@
 @page "/driver/profile1"
 
-@attribute [Authorize]
+@using Microsoft.AspNetCore.Authorization
 
-<PageTitle>Profile</PageTitle>
-<RadzenRow>
-    <RadzenColumn Size="12">
-        <RadzenText Text="Profile" TextStyle="TextStyle.H3" TagName="TagName.H1" />
-    </RadzenColumn>
-</RadzenRow>
+<PageTitle>Профиль водителя</PageTitle>
+
+<div style="min-height:100vh;
+            background:linear-gradient(135deg,#071120 0%,#0b1f3d 100%);
+            padding:24px;">
+
+    <div style="max-width:1500px;
+                margin:0 auto;">
+
+        <!-- HEADER -->
+        <div style="margin-bottom:32px;">
+
+            <div style="font-size:36px;
+                        font-weight:900;
+                        color:#edf4ff;
+                        letter-spacing:1px;">
+
+                ПРОФИЛЬ ВОДИТЕЛЯ
+
+            </div>
+
+            <div style="margin-top:10px;
+                        color:#89a7cf;
+                        font-size:14px;">
+
+                Управление личными данными и настройками аккаунта
+
+            </div>
+
+        </div>
+
+        <div style="display:grid;
+                    grid-template-columns:380px 1fr;
+                    gap:28px;
+                    align-items:start;">
+
+            <!-- LEFT SIDEBAR -->
+            <div style="display:flex;
+                        flex-direction:column;
+                        gap:24px;">
+
+                <!-- PROFILE CARD -->
+                <div style="background:linear-gradient(145deg,#0d1c34 0%,#091423 100%);
+                            border:1px solid #21467c;
+                            border-radius:24px;
+                            padding:30px;">
+
+                    <div style="display:flex;
+                                justify-content:center;
+                                margin-bottom:24px;">
+
+                        <div style="width:140px;
+                                    height:140px;
+                                    border-radius:50%;
+                                    background:radial-gradient(circle,#2563eb 0%,#0b1f3d 100%);
+                                    display:flex;
+                                    align-items:center;
+                                    justify-content:center;
+                                    box-shadow:0 0 30px rgba(37,99,235,0.45);
+                                    border:4px solid #2b5ea8;">
+
+                            <div style="font-size:62px;">
+                                👨‍✈️
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div style="text-align:center;">
+
+                        <div style="font-size:28px;
+                                    font-weight:900;
+                                    color:#edf4ff;">
+
+                            @profile.FullName
+
+                        </div>
+
+                        <div style="margin-top:10px;
+                                    color:#8db4ef;
+                                    font-size:15px;">
+
+                            @profile.Email
+
+                        </div>
+
+                    </div>
+
+                    <div style="margin-top:28px;
+                                padding-top:22px;
+                                border-top:1px solid #1d3f6d;">
+
+                        @if (profile.IsActive)
+                        {
+                            <div style="display:flex;
+                                        align-items:center;
+                                        justify-content:center;
+                                        gap:10px;
+                                        color:#65d98c;
+                                        font-weight:800;
+                                        font-size:16px;">
+
+                                <div style="width:12px;
+                                            height:12px;
+                                            border-radius:50%;
+                                            background:#65d98c;
+                                            box-shadow:0 0 10px #65d98c;">
+                                </div>
+
+                                АКТИВЕН
+
+                            </div>
+                        }
+                        else
+                        {
+                            <div style="display:flex;
+                                        align-items:center;
+                                        justify-content:center;
+                                        gap:10px;
+                                        color:#ff7f7f;
+                                        font-weight:800;
+                                        font-size:16px;">
+
+                                <div style="width:12px;
+                                            height:12px;
+                                            border-radius:50%;
+                                            background:#ff5252;">
+                                </div>
+
+                                НЕАКТИВЕН
+
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+
+                <!-- QUICK ACTIONS -->
+                <div style="background:linear-gradient(145deg,#0d1c34 0%,#091423 100%);
+                            border:1px solid #21467c;
+                            border-radius:24px;
+                            padding:24px;">
+
+                    <div style="font-size:22px;
+                                font-weight:800;
+                                color:#edf4ff;
+                                margin-bottom:22px;">
+
+                        БЫСТРЫЕ ДЕЙСТВИЯ
+
+                    </div>
+
+                    <div style="display:flex;
+                                flex-direction:column;
+                                gap:16px;">
+
+                        <button class="blue-btn"
+                                @onclick="OpenPasswordModal">
+
+                            🔐 Сменить пароль
+
+                        </button>
+
+                        <button class="secondary-btn"
+                                @onclick="TogglePhoneEdit">
+
+                            ✏ Редактировать телефон
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- MAIN CONTENT -->
+            <div style="display:flex;
+                        flex-direction:column;
+                        gap:24px;">
+
+                <!-- PERSONAL DATA -->
+                <div style="background:linear-gradient(145deg,#0d1c34 0%,#091423 100%);
+                            border:1px solid #21467c;
+                            border-radius:24px;
+                            padding:30px;">
+
+                    <div style="font-size:28px;
+                                font-weight:900;
+                                color:#edf4ff;
+                                margin-bottom:30px;">
+
+                        ЛИЧНЫЕ ДАННЫЕ
+
+                    </div>
+
+                    <div style="display:grid;
+                                grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+                                gap:24px;">
+
+                        <!-- FULL NAME -->
+                        <div class="profile-field">
+
+                            <div class="field-label">
+                                ИМЯ
+                            </div>
+
+                            <div class="field-value">
+                                @profile.FullName
+                            </div>
+
+                        </div>
+
+                        <!-- EMAIL -->
+                        <div class="profile-field">
+
+                            <div class="field-label">
+                                EMAIL
+                            </div>
+
+                            <div class="field-value">
+                                @profile.Email
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- DRIVER DATA -->
+                <div style="background:linear-gradient(145deg,#0d1c34 0%,#091423 100%);
+                            border:1px solid #21467c;
+                            border-radius:24px;
+                            padding:30px;">
+
+                    <div style="font-size:28px;
+                                font-weight:900;
+                                color:#edf4ff;
+                                margin-bottom:30px;">
+
+                        ДАННЫЕ ВОДИТЕЛЯ
+
+                    </div>
+
+                    <div style="display:grid;
+                                grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+                                gap:24px;">
+
+                        <!-- LICENSE -->
+                        <div class="profile-field">
+
+                            <div class="field-label">
+                                НОМЕР ВОДИТЕЛЬСКОГО УДОСТОВЕРЕНИЯ
+                            </div>
+
+                            <div class="field-value monospace">
+                                @profile.DriverLicenseNumber
+                            </div>
+
+                        </div>
+
+                        <!-- EXPIRATION -->
+                        <div class="profile-field">
+
+                            <div class="field-label">
+                                СРОК ДЕЙСТВИЯ ПРАВ
+                            </div>
+
+                            <div class="field-value">
+                                @profile.LicenseExpiration.ToString("dd.MM.yyyy")
+                            </div>
+
+                        </div>
+
+                        <!-- PHONE -->
+                        <div class="profile-field">
+
+                            <div class="field-label">
+                                ТЕЛЕФОН
+                            </div>
+
+                            @if (allowPhoneEdit)
+                            {
+                                <input class="profile-input"
+                                       @bind="profile.Phone" />
+                            }
+                            else
+                            {
+                                <div class="field-value">
+                                    @profile.Phone
+                                </div>
+                            }
+
+                        </div>
+
+                        <!-- STATUS -->
+                        <div class="profile-field">
+
+                            <div class="field-label">
+                                СТАТУС АКТИВНОСТИ
+                            </div>
+
+                            @if (profile.IsActive)
+                            {
+                                <div class="active-status">
+                                    ● Активен
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="inactive-status">
+                                    ● Неактивен
+                                </div>
+                            }
+
+                        </div>
+
+                    </div>
+
+                    @if (allowPhoneEdit)
+                    {
+                        <div style="display:flex;
+                                    justify-content:flex-end;
+                                    gap:14px;
+                                    margin-top:30px;">
+
+                            <button class="secondary-btn"
+                                    @onclick="CancelPhoneEdit">
+
+                                Отмена
+
+                            </button>
+
+                            <button class="blue-btn"
+                                    @onclick="SavePhone">
+
+                                Сохранить
+
+                            </button>
+
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- PASSWORD MODAL -->
+@if (showPasswordModal)
+{
+    <div style="position:fixed;
+                inset:0;
+                background:rgba(0,0,0,0.75);
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                z-index:999;">
+
+        <div style="width:520px;
+                    background:#0d1b30;
+                    border:1px solid #27508e;
+                    border-radius:24px;
+                    padding:30px;">
+
+            <div style="font-size:30px;
+                        font-weight:900;
+                        color:#edf4ff;
+                        margin-bottom:24px;">
+
+                СМЕНА ПАРОЛЯ
+
+            </div>
+
+            <div style="display:flex;
+                        flex-direction:column;
+                        gap:18px;">
+
+                <input type="password"
+                       class="profile-input"
+                       placeholder="Текущий пароль"
+                       @bind="currentPassword" />
+
+                <input type="password"
+                       class="profile-input"
+                       placeholder="Новый пароль"
+                       @bind="newPassword" />
+
+                <input type="password"
+                       class="profile-input"
+                       placeholder="Повторите новый пароль"
+                       @bind="confirmPassword" />
+
+            </div>
+
+            <div style="display:flex;
+                        justify-content:flex-end;
+                        gap:14px;
+                        margin-top:30px;">
+
+                <button class="secondary-btn"
+                        @onclick="ClosePasswordModal">
+
+                    Отмена
+
+                </button>
+
+                <button class="blue-btn"
+                        @onclick="ChangePassword">
+
+                    Сменить пароль
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+}
+
+<style>
+
+    .profile-field{
+        background:#08111d;
+        border:1px solid #1d3f6d;
+        border-radius:18px;
+        padding:22px;
+        transition:0.25s;
+    }
+
+    .profile-field:hover{
+        transform:translateY(-3px);
+        border-color:#3474d6;
+        box-shadow:0 10px 24px rgba(0,0,0,0.35);
+    }
+
+    .field-label{
+        color:#7fa4d6;
+        font-size:12px;
+        letter-spacing:1px;
+        margin-bottom:14px;
+    }
+
+    .field-value{
+        color:#edf4ff;
+        font-size:22px;
+        font-weight:800;
+    }
+
+    .monospace{
+        font-family:monospace;
+        font-size:18px;
+    }
+
+    .profile-input{
+        width:100%;
+        background:#07101b;
+        border:1px solid #27508e;
+        border-radius:14px;
+        padding:14px 16px;
+        color:#edf4ff;
+        font-size:15px;
+        outline:none;
+    }
+
+    .profile-input:focus{
+        border-color:#4d8eff;
+        box-shadow:0 0 12px rgba(77,142,255,0.35);
+    }
+
+    .blue-btn,
+    .secondary-btn{
+        border:none;
+        border-radius:14px;
+        padding:14px 20px;
+        cursor:pointer;
+        font-weight:800;
+        font-size:14px;
+        transition:0.2s;
+    }
+
+    .blue-btn{
+        background:linear-gradient(135deg,#2563eb,#1d4ed8);
+        color:white;
+    }
+
+    .secondary-btn{
+        background:#16263e;
+        color:#9ec5ff;
+    }
+
+    .blue-btn:hover,
+    .secondary-btn:hover{
+        transform:translateY(-2px);
+        opacity:0.93;
+    }
+
+    .active-status,
+    .inactive-status{
+        display:inline-block;
+        padding:10px 16px;
+        border-radius:999px;
+        font-size:14px;
+        font-weight:800;
+    }
+
+    .active-status{
+        background:rgba(76,175,80,0.15);
+        color:#6dff9b;
+    }
+
+    .inactive-status{
+        background:rgba(244,67,54,0.15);
+        color:#ff9090;
+    }
+
+</style>
+
+@code {
+
+    private bool showPasswordModal;
+
+    private bool allowPhoneEdit;
+
+    private string currentPassword = "";
+
+    private string newPassword = "";
+
+    private string confirmPassword = "";
+
+    private DriverProfile profile = new()
+    {
+        FullName = "Александр Воронов",
+        Email = "driver@fleet.local",
+        DriverLicenseNumber = "77 AB 345672",
+        LicenseExpiration = DateTime.Today.AddYears(3),
+        Phone = "+7 (999) 123-45-67",
+        IsActive = true
+    };
+
+    private void OpenPasswordModal()
+    {
+        showPasswordModal = true;
+    }
+
+    private void ClosePasswordModal()
+    {
+        showPasswordModal = false;
+
+        currentPassword = "";
+        newPassword = "";
+        confirmPassword = "";
+    }
+
+    private void ChangePassword()
+    {
+
+    }
+
+    private void TogglePhoneEdit()
+    {
+        allowPhoneEdit = true;
+    }
+
+    private void CancelPhoneEdit()
+    {
+        allowPhoneEdit = false;
+    }
+
+    private void SavePhone()
+    {
+        allowPhoneEdit = false;
+    }
+
+    public class DriverProfile
+    {
+        public string FullName { get; set; } = "";
+
+        public string Email { get; set; } = "";
+
+        public string DriverLicenseNumber { get; set; } = "";
+
+        public DateTime LicenseExpiration { get; set; }
+
+        public string Phone { get; set; } = "";
+
+        public bool IsActive { get; set; }
+    }
+
+}

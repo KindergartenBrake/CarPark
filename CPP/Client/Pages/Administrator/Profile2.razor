@@ -1,10 +1,551 @@
 @page "/administrator/profile2"
+@using Microsoft.AspNetCore.Authorization
+@using System.ComponentModel.DataAnnotations
 
-@attribute [Authorize]
 
-<PageTitle>Profile</PageTitle>
-<RadzenRow>
-    <RadzenColumn Size="12">
-        <RadzenText Text="Profile" TextStyle="TextStyle.H3" TagName="TagName.H1" />
-    </RadzenColumn>
-</RadzenRow>
+<PageTitle>Admin - Профиль</PageTitle>
+
+<div style="min-height: 100vh; background: linear-gradient(135deg, #081120 0%, #0d1f3e 45%, #13376b 100%); padding: 24px;">
+
+    <div style="max-width: 1400px; margin: 0 auto;">
+
+        <!-- HEADER -->
+        <div style="margin-bottom: 32px;">
+            <div style="
+                color: #f1f5ff;
+                font-size: 34px;
+                font-weight: 800;
+                letter-spacing: 1px;">
+
+                ПРОФИЛЬ АДМИНИСТРАТОРА
+            </div>
+
+            <div style="
+                color: #8aa8cc;
+                font-size: 14px;
+                margin-top: 8px;">
+
+                Управление личными данными и безопасностью аккаунта
+            </div>
+        </div>
+
+        <!-- MAIN GRID -->
+        <div style="
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 24px;">
+
+            <!-- LEFT PANEL -->
+            <div style="
+                background: linear-gradient(180deg, #102544 0%, #0a1628 100%);
+                border: 1px solid #214d91;
+                border-radius: 18px;
+                overflow: hidden;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.45);">
+
+                <!-- PROFILE TOP -->
+                <div style="
+                    padding: 40px 20px;
+                    border-bottom: 1px solid #1d3d72;
+                    background: linear-gradient(135deg, rgba(58,123,213,0.22), rgba(0,0,0,0));">
+
+                    <div style="
+                        width: 120px;
+                        height: 120px;
+                        margin: 0 auto;
+                        border-radius: 50%;
+                        background: linear-gradient(135deg, #3a7bd5, #1f56a5);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 42px;
+                        font-weight: 800;
+                        color: white;
+                        border: 4px solid rgba(255,255,255,0.08);
+                        box-shadow: 0 0 24px rgba(58,123,213,0.45);">
+
+                        @GetInitials()
+                    </div>
+
+                    <div style="
+                        text-align: center;
+                        color: #f1f5ff;
+                        font-size: 24px;
+                        font-weight: 700;
+                        margin-top: 18px;">
+
+                        @profile.FullName
+                    </div>
+
+                    <div style="
+                        text-align: center;
+                        color: #8aa8cc;
+                        font-size: 14px;
+                        margin-top: 8px;">
+
+                        Системный администратор
+                    </div>
+                </div>
+
+                <!-- STATUS -->
+                <div style="padding: 24px;">
+
+                    <div style="
+                        background: rgba(58,123,213,0.12);
+                        border: 1px solid #214d91;
+                        border-radius: 14px;
+                        padding: 18px;">
+
+                        <div style="
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;">
+
+                            <div>
+                                <div style="
+                                    color: #8aa8cc;
+                                    font-size: 12px;
+                                    margin-bottom: 6px;">
+
+                                    СТАТУС
+                                </div>
+
+                                <div style="
+                                    color: #4caf50;
+                                    font-size: 15px;
+                                    font-weight: 700;">
+
+                                    Активен
+                                </div>
+                            </div>
+
+                            <div style="
+                                width: 14px;
+                                height: 14px;
+                                border-radius: 50%;
+                                background: #4caf50;
+                                box-shadow: 0 0 14px #4caf50;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QUICK INFO -->
+                    <div style="
+                        margin-top: 18px;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 14px;">
+
+                        <div style="
+                            background: rgba(0,0,0,0.25);
+                            border: 1px solid #1c396a;
+                            border-radius: 12px;
+                            padding: 14px;">
+
+                            <div style="
+                                color: #8aa8cc;
+                                font-size: 11px;
+                                margin-bottom: 6px;">
+
+                                EMAIL
+                            </div>
+
+                            <div style="
+                                color: #f1f5ff;
+                                font-size: 14px;
+                                font-weight: 600;">
+
+                                @profile.Email
+                            </div>
+                        </div>
+
+                        <div style="
+                            background: rgba(0,0,0,0.25);
+                            border: 1px solid #1c396a;
+                            border-radius: 12px;
+                            padding: 14px;">
+
+                            <div style="
+                                color: #8aa8cc;
+                                font-size: 11px;
+                                margin-bottom: 6px;">
+
+                                ТЕЛЕФОН
+                            </div>
+
+                            <div style="
+                                color: #f1f5ff;
+                                font-size: 14px;
+                                font-weight: 600;">
+
+                                @profile.PhoneNumber
+                            </div>
+                        </div>
+
+                        <div style="
+                            background: rgba(0,0,0,0.25);
+                            border: 1px solid #1c396a;
+                            border-radius: 12px;
+                            padding: 14px;">
+
+                            <div style="
+                                color: #8aa8cc;
+                                font-size: 11px;
+                                margin-bottom: 6px;">
+
+                                РОЛЬ
+                            </div>
+
+                            <div style="
+                                color: #f1f5ff;
+                                font-size: 14px;
+                                font-weight: 700;">
+
+                                ADMIN
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT CONTENT -->
+            <div style="
+                display: flex;
+                flex-direction: column;
+                gap: 24px;">
+
+                <!-- PROFILE FORM -->
+                <div style="
+                    background: linear-gradient(180deg, #102544 0%, #0a1628 100%);
+                    border: 1px solid #214d91;
+                    border-radius: 18px;
+                    padding: 28px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.45);">
+
+                    <div style="
+                        color: #f1f5ff;
+                        font-size: 24px;
+                        font-weight: 700;
+                        margin-bottom: 28px;">
+
+                        ЛИЧНЫЕ ДАННЫЕ
+                    </div>
+
+                    <EditForm Model="@profile" OnValidSubmit="SaveProfile">
+
+                        <DataAnnotationsValidator />
+
+                        <div style="
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                            gap: 20px;">
+
+                            <!-- USERNAME -->
+                            <div>
+                                <label style="@GetLabelStyle()">
+                                    ИМЯ ПОЛЬЗОВАТЕЛЯ
+                                </label>
+
+                                <InputText @bind-Value="profile.UserName"
+                                           disabled
+                                           style="@GetDisabledInputStyle()" />
+                            </div>
+
+                            <!-- EMAIL -->
+                            <div>
+                                <label style="@GetLabelStyle()">
+                                    EMAIL
+                                </label>
+
+                                <InputText @bind-Value="profile.Email"
+                                           disabled
+                                           style="@GetDisabledInputStyle()" />
+                            </div>
+
+                            <!-- PHONE -->
+                            <div>
+                                <label style="@GetLabelStyle()">
+                                    ТЕЛЕФОН
+                                </label>
+
+                                <InputText @bind-Value="profile.PhoneNumber"
+                                           style="@GetInputStyle()" />
+                            </div>
+
+                            <!-- ROLE -->
+                            <div>
+                                <label style="@GetLabelStyle()">
+                                    РОЛЬ
+                                </label>
+
+                                <input value="Administrator"
+                                       disabled
+                                       style="@GetDisabledInputStyle()" />
+                            </div>
+                        </div>
+
+                        <div style="
+                            margin-top: 30px;
+                            display: flex;
+                            justify-content: flex-end;">
+
+                            <button type="submit"
+                                    style="@GetPrimaryButtonStyle()">
+
+                                СОХРАНИТЬ ИЗМЕНЕНИЯ
+                            </button>
+                        </div>
+                    </EditForm>
+                </div>
+
+                <!-- PASSWORD -->
+                <div style="
+                    background: linear-gradient(180deg, #102544 0%, #0a1628 100%);
+                    border: 1px solid #214d91;
+                    border-radius: 18px;
+                    padding: 28px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.45);">
+
+                    <div style="
+                        color: #f1f5ff;
+                        font-size: 24px;
+                        font-weight: 700;
+                        margin-bottom: 28px;">
+
+                        СМЕНА ПАРОЛЯ
+                    </div>
+
+                    <EditForm Model="@passwordModel" OnValidSubmit="ChangePassword">
+
+                        <DataAnnotationsValidator />
+
+                        <div style="
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                            gap: 20px;">
+
+                            <!-- OLD PASSWORD -->
+                            <div>
+                                <label style="@GetLabelStyle()">
+                                    СТАРЫЙ ПАРОЛЬ
+                                </label>
+
+                                <InputText type="password"
+                                           @bind-Value="passwordModel.OldPassword"
+                                           style="@GetInputStyle()" />
+                            </div>
+
+                            <!-- NEW PASSWORD -->
+                            <div>
+                                <label style="@GetLabelStyle()">
+                                    НОВЫЙ ПАРОЛЬ
+                                </label>
+
+                                <InputText type="password"
+                                           @bind-Value="passwordModel.NewPassword"
+                                           style="@GetInputStyle()" />
+                            </div>
+
+                            <!-- CONFIRM -->
+                            <div>
+                                <label style="@GetLabelStyle()">
+                                    ПОДТВЕРЖДЕНИЕ ПАРОЛЯ
+                                </label>
+
+                                <InputText type="password"
+                                           @bind-Value="passwordModel.ConfirmPassword"
+                                           style="@GetInputStyle()" />
+                            </div>
+                        </div>
+
+                        <div style="
+                            margin-top: 30px;
+                            display: flex;
+                            justify-content: flex-end;">
+
+                            <button type="submit"
+                                    style="@GetSecondaryButtonStyle()">
+
+                                СМЕНИТЬ ПАРОЛЬ
+                            </button>
+                        </div>
+                    </EditForm>
+                </div>
+
+                <!-- SECURITY INFO -->
+                <div style="
+                    background: rgba(58,123,213,0.12);
+                    border-left: 4px solid #3a7bd5;
+                    border-radius: 12px;
+                    padding: 18px 20px;">
+
+                    <div style="
+                        color: #dce8ff;
+                        font-size: 14px;
+                        line-height: 1.6;">
+
+                        <strong>Безопасность:</strong>
+                        После изменения пароля рекомендуется завершить все активные сессии и повторно авторизоваться.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    button:hover {
+        transform: translateY(-2px);
+        opacity: 0.95;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #3a7bd5 !important;
+        box-shadow: 0 0 14px rgba(58,123,213,0.45);
+    }
+
+    @@media(max-width: 1000px) {
+
+        div[style*="grid-template-columns: 380px 1fr"] {
+            grid-template-columns: 1fr !important;
+        }
+    }
+
+</style>
+
+@code {
+
+    private AdminProfileModel profile = new()
+    {
+        FullName = "Александр Волков",
+        UserName = "admin.volkov",
+        Email = "admin@fleet-system.local",
+        PhoneNumber = "+7 (999) 321-45-67"
+    };
+
+    private ChangePasswordModel passwordModel = new();
+
+    private async Task SaveProfile()
+    {
+        await Task.Delay(400);
+
+        // save profile logic
+    }
+
+    private async Task ChangePassword()
+    {
+        await Task.Delay(400);
+
+        // change password logic
+    }
+
+    private string GetInitials()
+    {
+        if (string.IsNullOrWhiteSpace(profile.FullName))
+            return "AD";
+
+        var parts = profile.FullName
+            .Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+        if (parts.Length == 1)
+            return parts[0][0].ToString().ToUpper();
+
+        return $"{parts[0][0]}{parts[1][0]}".ToUpper();
+    }
+
+    private string GetInputStyle()
+    {
+        return @"
+            width: 100%;
+            background: rgba(0,0,0,0.30);
+            border: 1px solid #214d91;
+            border-radius: 12px;
+            color: #f1f5ff;
+            padding: 14px;
+            font-size: 14px;
+            transition: all 0.25s ease;
+        ";
+    }
+
+    private string GetDisabledInputStyle()
+    {
+        return @"
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #1f3f74;
+            border-radius: 12px;
+            color: #8aa8cc;
+            padding: 14px;
+            font-size: 14px;
+        ";
+    }
+
+    private string GetLabelStyle()
+    {
+        return @"
+            display: block;
+            color: #8aa8cc;
+            font-size: 12px;
+            margin-bottom: 8px;
+            letter-spacing: 0.6px;
+        ";
+    }
+
+    private string GetPrimaryButtonStyle()
+    {
+        return @"
+            background: linear-gradient(135deg, #3a7bd5, #2358a8);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.25s ease;
+            box-shadow: 0 0 18px rgba(58,123,213,0.45);
+        ";
+    }
+
+    private string GetSecondaryButtonStyle()
+    {
+        return @"
+            background: linear-gradient(135deg, #163f7d, #0f2e5e);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.25s ease;
+            box-shadow: 0 0 18px rgba(22,63,125,0.45);
+        ";
+    }
+
+    public class AdminProfileModel
+    {
+        public string FullName { get; set; } = string.Empty;
+
+        public string UserName { get; set; } = string.Empty;
+
+        public string Email { get; set; } = string.Empty;
+
+        public string PhoneNumber { get; set; } = string.Empty;
+    }
+
+    public class ChangePasswordModel
+    {
+        [Required]
+        public string OldPassword { get; set; } = string.Empty;
+
+        [Required]
+        public string NewPassword { get; set; } = string.Empty;
+
+        [Required]
+        public string ConfirmPassword { get; set; } = string.Empty;
+    }
+}
