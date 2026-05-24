@@ -9,6 +9,7 @@ using CP.Server.Models;
 using Microsoft.AspNetCore.Components.Authorization;
 using CP.Server.Services;
 using CP.Server.Services.Interfaces;
+using CP.Server.Data.Repositories;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,15 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IVehicleService, VehicleService>();
 builder.Services.AddScoped<ITripRequestService, TripRequestService>();
 builder.Services.AddScoped<IDriverTripService, DriverTripService>();
+builder.Services.AddScoped<ITripRequestService, TripRequestService>();
+builder.Services.AddScoped<IDriverTripService, DriverTripService>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<ITripRequestRepository, TripRequestRepository>();
+builder.Services.AddScoped<IVehicleRepository, VehicleRepository>();
+builder.Services.AddScoped<IDriverRepository, DriverRepository>();
+builder.Services.AddScoped<ITripRepository, TripRepository>();
+builder.Services.AddScoped<ITripRequestService, TripRequestService>();
+
 builder.Services.AddRadzenComponents();
 builder.Services.AddRadzenCookieThemeService(options =>
 {

@@ -1,6 +1,6 @@
 using CP.Server.Models.CarPark;
 
-namespace CP.Server.Interfaces;
+namespace CP.Server.Services.Interfaces;
 
 public interface IDriverService
 {

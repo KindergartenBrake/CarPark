@@ -15,13 +15,11 @@ namespace CP.Server.Controllers
             this.environment = environment;
         }
 
-        // Single file upload
         [HttpPost("upload/single")]
         public IActionResult Single(IFormFile file)
         {
             try
             {
-                // Put your code here
                 return StatusCode(200);
             }
             catch (Exception ex)
@@ -30,13 +28,11 @@ namespace CP.Server.Controllers
             }
         }
 
-        // Multiple files upload
         [HttpPost("upload/multiple")]
         public IActionResult Multiple(IFormFile[] files)
         {
             try
             {
-                // Put your code here
                 return StatusCode(200);
             }
             catch (Exception ex)
@@ -45,13 +41,11 @@ namespace CP.Server.Controllers
             }
         }
 
-        // Multiple files upload with parameter
         [HttpPost("upload/{id}")]
         public IActionResult Post(IFormFile[] files, int id)
         {
             try
             {
-                // Put your code here
                 return StatusCode(200);
             }
             catch (Exception ex)
@@ -60,7 +54,6 @@ namespace CP.Server.Controllers
             }
         }
 
-        // Image file upload (used by HtmlEditor components)
         [HttpPost("upload/image")]
         public IActionResult Image(IFormFile file)
         {
@@ -70,10 +63,8 @@ namespace CP.Server.Controllers
 
                 using (var stream = new FileStream(Path.Combine(environment.WebRootPath, fileName), FileMode.Create))
                 {
-                    // Save the file
                     file.CopyTo(stream);
 
-                    // Return the URL of the file
                     var url = Url.Content($"~/{fileName}");
 
                     return Ok(new { Url = url });

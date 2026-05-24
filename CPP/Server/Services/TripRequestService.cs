@@ -1,6 +1,6 @@
-using CP.Server.Data;
 using CP.Server.DTO;
-using Microsoft.EntityFrameworkCore;
+using CP.Server.Data.Repositories;
+using CP.Server.Models.CarPark;
 
 namespace CP.Server.Services;
 
@@ -18,69 +18,73 @@ public interface ITripRequestService
 
 public class TripRequestService : ITripRequestService
 {
-    private readonly CarParkContext _context;
+    private readonly ITripRequestRepository _tripRequestRepo;
+    private readonly IVehicleRepository _vehicleRepo;
+    private readonly IDriverRepository _driverRepo;
+    private readonly ITripRepository _tripRepo;
 
-    public TripRequestService(CarParkContext context)
+    public TripRequestService(
+        ITripRequestRepository tripRequestRepo,
+        IVehicleRepository vehicleRepo,
+        IDriverRepository driverRepo,
+        ITripRepository tripRepo)
     {
-        _context = context;
+        _tripRequestRepo = tripRequestRepo;
+        _vehicleRepo = vehicleRepo;
+        _driverRepo = driverRepo;
+        _tripRepo = tripRepo;
     }
 
     public async Task<List<TripRequestDto>> GetMyRequestsAsync(string userId)
     {
-        return await _context.TripRequests
-            .Include(r => r.Vehicle)
-            .Include(r => r.Driver)
-            .Where(r => r.UserId == userId)
-            .OrderByDescending(r => r.CreatedAt)
-            .Select(r => new TripRequestDto
-            {
-                RequestId = r.RequestId,
-                CreatedAt = r.CreatedAt,
-                TripDate = r.TripDate,
-                StartTime = r.StartTime,
-                EndTime = r.EndTime,
-                VehicleType = r.VehicleType,
-                Status = r.Status,
-                Description = r.Description,
-                RejectionReason = r.RejectionReason,
-                VehicleBrand = r.Vehicle != null ? r.Vehicle.Brand : null,
-                VehicleModel = r.Vehicle != null ? r.Vehicle.Model : null,
-                LicensePlate = r.Vehicle != null ? r.Vehicle.LicensePlate : null,
-                DriverName = r.Driver != null ? $"{r.Driver.LastName} {r.Driver.FirstName}" : null,
-                DriverPhone = r.Driver != null ? r.Driver.Phone : null
-            })
-            .ToListAsync();
+        var requests = await _tripRequestRepo.GetByUserIdAsync(userId);
+
+        return requests.Select(r => new TripRequestDto
+        {
+            RequestId = r.RequestId,
+            CreatedAt = r.CreatedAt,
+            TripDate = r.TripDate,
+            StartTime = r.StartTime,
+            EndTime = r.EndTime,
+            VehicleType = r.VehicleType,
+            Status = r.Status,
+            Description = r.Description,
+            RejectionReason = r.RejectionReason,
+            VehicleBrand = r.Vehicle?.Brand,
+            VehicleModel = r.Vehicle?.Model,
+            LicensePlate = r.Vehicle?.LicensePlate,
+            DriverName = r.Driver != null ? $"{r.Driver.LastName} {r.Driver.FirstName}" : null,
+            DriverPhone = r.Driver?.Phone
+        }).ToList();
     }
 
     public async Task<TripRequestDto?> GetByIdAsync(int id)
     {
-        return await _context.TripRequests
-            .Include(r => r.Vehicle)
-            .Include(r => r.Driver)
-            .Where(r => r.RequestId == id)
-            .Select(r => new TripRequestDto
-            {
-                RequestId = r.RequestId,
-                CreatedAt = r.CreatedAt,
-                TripDate = r.TripDate,
-                StartTime = r.StartTime,
-                EndTime = r.EndTime,
-                VehicleType = r.VehicleType,
-                Status = r.Status,
-                Description = r.Description,
-                RejectionReason = r.RejectionReason,
-                VehicleBrand = r.Vehicle != null ? r.Vehicle.Brand : null,
-                VehicleModel = r.Vehicle != null ? r.Vehicle.Model : null,
-                LicensePlate = r.Vehicle != null ? r.Vehicle.LicensePlate : null,
-                DriverName = r.Driver != null ? $"{r.Driver.LastName} {r.Driver.FirstName}" : null,
-                DriverPhone = r.Driver != null ? r.Driver.Phone : null
-            })
-            .FirstOrDefaultAsync();
+        var r = await _tripRequestRepo.GetByIdWithDetailsAsync(id);
+        if (r == null) return null;
+
+        return new TripRequestDto
+        {
+            RequestId = r.RequestId,
+            CreatedAt = r.CreatedAt,
+            TripDate = r.TripDate,
+            StartTime = r.StartTime,
+            EndTime = r.EndTime,
+            VehicleType = r.VehicleType,
+            Status = r.Status,
+            Description = r.Description,
+            RejectionReason = r.RejectionReason,
+            VehicleBrand = r.Vehicle?.Brand,
+            VehicleModel = r.Vehicle?.Model,
+            LicensePlate = r.Vehicle?.LicensePlate,
+            DriverName = r.Driver != null ? $"{r.Driver.LastName} {r.Driver.FirstName}" : null,
+            DriverPhone = r.Driver?.Phone
+        };
     }
 
     public async Task<TripRequestDto> CreateAsync(CreateTripRequestDto dto, string userId)
     {
-        var entity = new Models.CarPark.TripRequest
+        var entity = new TripRequest
         {
             UserId = userId,
             VehicleType = dto.VehicleType,
@@ -92,8 +96,8 @@ public class TripRequestService : ITripRequestService
             CreatedAt = DateTime.UtcNow
         };
 
-        _context.TripRequests.Add(entity);
-        await _context.SaveChangesAsync();
+        await _tripRequestRepo.AddAsync(entity);
+        await _tripRequestRepo.SaveChangesAsync();
 
         return new TripRequestDto
         {
@@ -107,56 +111,47 @@ public class TripRequestService : ITripRequestService
             Description = entity.Description
         };
     }
+
     public async Task<List<TripRequestForAdminDto>> GetAllRequestsAsync()
     {
-        return await _context.TripRequests
-            .Include(r => r.User)
-            .Include(r => r.Vehicle)
-            .Include(r => r.Driver)
-            .OrderByDescending(r => r.CreatedAt)
-            .Select(r => new TripRequestForAdminDto
-            {
-                Id = r.RequestId,
-                EmployeeName = r.User != null ? r.User.UserName ?? r.User.Email : "Неизвестный",
-                EmployeeEmail = r.User != null ? r.User.Email ?? "" : "",
-                CreatedAt = r.CreatedAt,
-                PlannedTripDate = r.TripDate,
-                VehicleType = r.VehicleType ?? "Не указан",
-                Status = r.Status ?? "Pending",
-                DriverName = r.Driver != null ? $"{r.Driver.LastName} {r.Driver.FirstName}" : null,
-                VehicleName = r.Vehicle != null ? $"{r.Vehicle.Brand} {r.Vehicle.Model}" : null,
-                VehicleBrand = r.Vehicle != null ? r.Vehicle.Brand : null,
-                VehicleModel = r.Vehicle != null ? r.Vehicle.Model : null,
-                LicensePlate = r.Vehicle != null ? r.Vehicle.LicensePlate : null,
-                TripStarted = r.Trip != null && r.Trip.Status == "InProgress",
-                TripId = r.Trip != null ? r.Trip.TripId : null,
-                Description = r.Description
-            })
-            .ToListAsync();
+        var requests = await _tripRequestRepo.GetAllWithDetailsAsync();
+
+        return requests.Select(r => new TripRequestForAdminDto
+        {
+            Id = r.RequestId,
+            EmployeeName = r.User != null ? r.User.UserName ?? r.User.Email : "Неизвестный",
+            EmployeeEmail = r.User?.Email ?? "",
+            CreatedAt = r.CreatedAt,
+            PlannedTripDate = r.TripDate,
+            VehicleType = r.VehicleType ?? "Не указан",
+            Status = r.Status ?? "Pending",
+            DriverName = r.Driver != null ? $"{r.Driver.LastName} {r.Driver.FirstName}" : null,
+            VehicleName = r.Vehicle != null ? $"{r.Vehicle.Brand} {r.Vehicle.Model}" : null,
+            VehicleBrand = r.Vehicle?.Brand,
+            VehicleModel = r.Vehicle?.Model,
+            LicensePlate = r.Vehicle?.LicensePlate,
+            TripStarted = r.Trip != null && r.Trip.Status == "InProgress",
+            TripId = r.Trip?.TripId,
+            Description = r.Description
+        }).ToList();
     }
 
     public async Task<bool> AssignTripAsync(int requestId, int vehicleId, int driverId)
     {
-        var request = await _context.TripRequests
-            .Include(r => r.Trip)
-            .FirstOrDefaultAsync(r => r.RequestId == requestId);
-
+        var request = await _tripRequestRepo.GetByIdAsync(requestId);
         if (request == null || request.Status != "Pending")
             return false;
 
-        var vehicle = await _context.Vehicles.FindAsync(vehicleId);
-        var driver = await _context.Drivers.FindAsync(driverId);
-
+        var vehicle = await _vehicleRepo.GetByIdAsync(vehicleId);
+        var driver = await _driverRepo.GetByIdAsync(driverId);
         if (vehicle == null || driver == null)
             return false;
 
-        // Обновляем статус заявки
         request.Status = "Approved";
         request.VehicleId = vehicleId;
         request.DriverId = driverId;
 
-        // Создаём поездку
-        var trip = new Models.CarPark.Trip
+        var trip = new Trip
         {
             RequestId = requestId,
             VehicleId = vehicleId,
@@ -167,59 +162,52 @@ public class TripRequestService : ITripRequestService
             Status = "Scheduled"
         };
 
-        _context.Trips.Add(trip);
-
-        // Обновляем статус автомобиля (делаем его занятым)
+        await _tripRepo.AddAsync(trip);
         vehicle.Status = "InUse";
 
-        await _context.SaveChangesAsync();
+        await _tripRequestRepo.SaveChangesAsync();
         return true;
     }
 
     public async Task<bool> RejectTripAsync(int requestId, string? reason)
     {
-        var request = await _context.TripRequests.FindAsync(requestId);
-        
+        var request = await _tripRequestRepo.GetByIdAsync(requestId);
         if (request == null || request.Status != "Pending")
             return false;
 
         request.Status = "Rejected";
         request.RejectionReason = reason;
-
-        await _context.SaveChangesAsync();
+        await _tripRequestRepo.SaveChangesAsync();
         return true;
     }
 
     public async Task<List<AvailableVehicleDto>> GetAvailableVehiclesAsync()
     {
-        return await _context.Vehicles
-            .Include(v => v.Driver)
-            .Where(v => v.Status == "Available")
-            .Select(v => new AvailableVehicleDto
-            {
-                Id = v.VehicleId,
-                Brand = v.Brand,
-                Model = v.Model,
-                LicensePlate = v.LicensePlate,
-                VehicleType = v.VehicleType ?? "Не указан",
-                PrimaryDriverName = v.Driver != null ? $"{v.Driver.LastName} {v.Driver.FirstName}" : "Не назначен",
-                IsAvailable = v.Status == "Available"
-            })
-            .ToListAsync();
+        var vehicles = await _vehicleRepo.GetAvailableWithDriverAsync();
+
+        return vehicles.Select(v => new AvailableVehicleDto
+        {
+            Id = v.VehicleId,
+            Brand = v.Brand,
+            Model = v.Model,
+            LicensePlate = v.LicensePlate,
+            VehicleType = v.VehicleType ?? "Не указан",
+            PrimaryDriverName = v.Driver != null ? $"{v.Driver.LastName} {v.Driver.FirstName}" : "Не назначен",
+            IsAvailable = v.Status == "Available"
+        }).ToList();
     }
 
     public async Task<List<AvailableDriverDto>> GetAvailableDriversAsync()
     {
-        return await _context.Drivers
-            .Where(d => d.IsActive)
-            .Select(d => new AvailableDriverDto
-            {
-                Id = d.DriverId,
-                FullName = $"{d.LastName} {d.FirstName} {d.MiddleName}".Trim(),
-                Phone = d.Phone,
-                Email = d.Email,
-                IsAvailable = true
-            })
-            .ToListAsync();
+        var drivers = await _driverRepo.GetActiveDriversAsync();
+
+        return drivers.Select(d => new AvailableDriverDto
+        {
+            Id = d.DriverId,
+            FullName = $"{d.LastName} {d.FirstName} {d.MiddleName}".Trim(),
+            Phone = d.Phone,
+            Email = d.Email,
+            IsAvailable = true
+        }).ToList();
     }
 }
