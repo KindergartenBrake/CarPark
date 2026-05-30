@@ -14,6 +14,8 @@ public interface ITripRequestService
     Task<bool> RejectTripAsync(int requestId, string? reason);
     Task<List<AvailableVehicleDto>> GetAvailableVehiclesAsync();
     Task<List<AvailableDriverDto>> GetAvailableDriversAsync();
+    Task<EmployeeDashboardDto> GetEmployeeDashboardAsync(string userId);
+
 }
 
 public class TripRequestService : ITripRequestService
@@ -210,4 +212,41 @@ public class TripRequestService : ITripRequestService
             IsAvailable = true
         }).ToList();
     }
+
+    public async Task<EmployeeDashboardDto> GetEmployeeDashboardAsync(string userId)
+{
+    var requests = await _tripRequestRepo.GetByUserIdAsync(userId);
+    
+    var upcomingTrip = requests
+        .Where(r => r.Status == "Approved" && r.TripDate >= DateTime.UtcNow)
+        .OrderBy(r => r.TripDate)
+        .Select(r => new UpcomingTripDto
+        {
+            RequestId = r.RequestId,
+            TripDate = r.TripDate,
+            VehicleName = r.Vehicle != null ? $"{r.Vehicle.Brand} {r.Vehicle.Model}" : r.VehicleType ?? "—",
+            DriverName = r.Driver != null ? $"{r.Driver.LastName} {r.Driver.FirstName}" : "Не назначен",
+            Status = r.Status
+        })
+        .FirstOrDefault();
+    
+    return new EmployeeDashboardDto
+    {
+        PendingRequests = requests.Count(r => r.Status == "Pending"),
+        ApprovedRequests = requests.Count(r => r.Status == "Approved"),
+        CompletedRequests = requests.Count(r => r.Status == "Completed"),
+        RejectedRequests = requests.Count(r => r.Status == "Rejected"),
+        UpcomingTrip = upcomingTrip,
+        RecentRequests = requests
+            .OrderByDescending(r => r.CreatedAt)
+            .Take(5)
+            .Select(r => new RecentRequestDto
+            {
+                RequestId = r.RequestId,
+                TripDate = r.TripDate,
+                VehicleType = r.VehicleType ?? "—",
+                Status = r.Status ?? "Pending"
+            }).ToList()
+    };
+}
 }

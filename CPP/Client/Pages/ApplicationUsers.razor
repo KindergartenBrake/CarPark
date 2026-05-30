@@ -2,33 +2,214 @@
 @attribute [Authorize]
 
 <PageTitle>Users</PageTitle>
-<RadzenStack>
-    <RadzenRow AlignItems="AlignItems.Center">
-        <RadzenColumn Size="12" SizeMD="6">
-            <RadzenText Text="Users" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0" />
-        </RadzenColumn>
-        <RadzenColumn Size="12" SizeMD="6">
-            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
-                <RadzenButton Icon="add_circle_outline" Text="Add" Click="@AddClick" Variant="Variant.Flat" />
-            </RadzenStack>
-        </RadzenColumn>
-    </RadzenRow>
-    <RadzenRow>
-        <RadzenColumn SizeMD="12">
-            <RadzenAlert Size="AlertSize.Large" Shade="Shade.Light" AlertStyle="AlertStyle.Danger" Variant="Variant.Flat" Title="Cannot delete user" Visible="@errorVisible">@error</RadzenAlert>
-            <RadzenDataGrid @ref="grid0" AllowFiltering="true" AllowPaging="true" ShowPagingSummary="true" PageSizeOptions=@(new int[]{5, 10, 20, 30}) AllowSorting="true" Data="@users"
-                TItem="CP.Server.Models.ApplicationUser" RowSelect="@RowSelect">
-                <Columns>
-                    <RadzenDataGridColumn TItem="CP.Server.Models.ApplicationUser" Property="UserName" Title="User Name" />
-                    <RadzenDataGridColumn TItem="CP.Server.Models.ApplicationUser" Property="Email" Title="Email" />
-                    <RadzenDataGridColumn TItem="CP.Server.Models.ApplicationUser" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="70px">
-                        <Template Context="user">
-                            <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small"
-                                Variant="Variant.Flat" Shade="Shade.Lighter" Click="@(() => DeleteClick(user))" @onclick:stopPropagation="true" />
-                        </Template>
-                    </RadzenDataGridColumn>
-                </Columns>
-            </RadzenDataGrid>
-        </RadzenColumn>
-    </RadzenRow>
-</RadzenStack>
+
+<div style="min-height:100vh;
+            background:linear-gradient(135deg,#071120 0%,#0b1f3d 100%);
+            padding:24px;">
+    
+    <div style="width:100%;">
+        
+        <!-- HEADER -->
+        <div style="margin-bottom:32px;">
+            <div style="display:flex;
+                        justify-content:space-between;
+                        align-items:center;
+                        flex-wrap:wrap;
+                        gap:16px;">
+                
+                <div>
+                    <div style="font-size:36px;
+                                font-weight:900;
+                                color:#edf4ff;
+                                letter-spacing:1px;">
+                        ПОЛЬЗОВАТЕЛИ
+                    </div>
+                    <div style="margin-top:8px;
+                                color:#89a7cf;
+                                font-size:14px;">
+                        Управление пользователями системы
+                    </div>
+                </div>
+                
+                <button class="add-btn" @onclick="AddClick">
+                    + ДОБАВИТЬ
+                </button>
+                
+            </div>
+        </div>
+        
+        <!-- ERROR ALERT -->
+        @if (errorVisible)
+        {
+            <div style="background:rgba(220,38,38,0.15);
+                        border:1px solid #dc2626;
+                        border-radius:12px;
+                        padding:14px 18px;
+                        margin-bottom:24px;
+                        color:#fca5a5;">
+                @error
+            </div>
+        }
+        
+        <!-- USERS TABLE -->
+        <div style="overflow-x:auto;
+                    background:#0c1b31;
+                    border-radius:18px;
+                    border:1px solid #1d3f73;">
+            
+            <table style="width:100%;
+                          border-collapse:collapse;">
+                
+                <thead style="background:#11284b;">
+                    <tr>
+                        <th class="tbl-head">ID</th>
+                        <th class="tbl-head">GUID</th>
+                        <th class="tbl-head">Имя пользователя</th>
+                        <th class="tbl-head">Email</th>
+                        <th class="tbl-head">Роль</th>
+                        <th class="tbl-head">Действия</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    @foreach (var user in users)
+                    {
+                        <tr class="table-row" @onclick="() => RowSelect(user)" style="cursor:pointer;">
+                            <td class="tbl-cell">@GetShortId(user.Id)</td>
+                            <td class="tbl-cell" style="font-family:monospace; font-size:12px;">@user.Id</td>
+                            <td class="tbl-cell">@user.UserName</td>
+                            <td class="tbl-cell">@user.Email</td>
+                            <td class="tbl-cell">
+                                @{
+                                    var role = GetUserRole(user);
+                                    var roleStyle = role == "Администратор" ? "role-admin" : (role == "Водитель" ? "role-driver" : "role-employee");
+                                }
+                                <div class="@roleStyle">@role</div>
+                            </td>
+                            <td class="tbl-cell">
+                                <div style="display:flex; gap:10px;">
+                                    <button class="delete-btn" 
+                                            @onclick="() => DeleteClick(user)"
+                                            @onclick:stopPropagation="true">
+                                        Удалить
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                
+            </table>
+            
+        </div>
+        
+        @if (!users.Any())
+        {
+            <div style="margin-top:30px;
+                        text-align:center;
+                        padding:70px;
+                        border:2px dashed #1f4781;
+                        border-radius:20px;
+                        background:rgba(12,28,51,0.5);">
+                <div style="font-size:64px;">👥</div>
+                <div style="color:#edf4ff; font-size:24px; font-weight:700; margin-top:16px;">
+                    Нет пользователей
+                </div>
+                <div style="color:#8aa8cc; margin-top:8px;">
+                    Нажмите "Добавить" чтобы создать первого пользователя
+                </div>
+            </div>
+        }
+        
+    </div>
+    
+</div>
+
+<style>
+    .tbl-head {
+        padding: 18px;
+        text-align: left;
+        color: #8fb7f0;
+        font-size: 13px;
+        letter-spacing: 1px;
+    }
+
+    .tbl-cell {
+        padding: 18px;
+        color: #dce9ff;
+        font-size: 14px;
+    }
+
+    .table-row {
+        border-top: 1px solid #18345f;
+        transition: 0.2s;
+    }
+
+    .table-row:hover {
+        background: rgba(31, 68, 121, 0.15);
+    }
+
+    .add-btn {
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        border: none;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 14px;
+        transition: 0.2s;
+    }
+
+    .add-btn:hover {
+        transform: translateY(-2px);
+        opacity: 0.93;
+    }
+
+    .delete-btn {
+        background: #5c1f1f;
+        border: none;
+        color: #ff9a9a;
+        padding: 8px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 700;
+        transition: 0.2s;
+    }
+
+    .delete-btn:hover {
+        transform: translateY(-2px);
+        opacity: 0.92;
+    }
+
+    .role-admin {
+        display: inline-block;
+        background: rgba(239, 68, 68, 0.15);
+        color: #f87171;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .role-driver {
+        display: inline-block;
+        background: rgba(59, 130, 246, 0.15);
+        color: #60a5fa;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .role-employee {
+        display: inline-block;
+        background: rgba(34, 197, 94, 0.15);
+        color: #4ade80;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 700;
+    }
+</style>

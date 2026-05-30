@@ -17,13 +17,11 @@
 
             <div>
 
-                <div style="color:#eaf2ff;
-                            font-size:32px;
-                            font-weight:800;
+                <div style="font-size:36px;
+                            font-weight:900;
+                            color:#edf4ff;
                             letter-spacing:1px;">
-
-                    EMPLOYEES MANAGEMENT
-
+                СОТРУДНИКИ
                 </div>
 
                 <div style="color:#7f9cc7;
@@ -380,7 +378,7 @@
                                                     font-size:17px;
                                                     font-weight:700;">
 
-                                            Заявка #@request.Id
+                                            Заявка #@request.RequestId
 
                                         </div>
 
@@ -564,104 +562,3 @@
     }
 
 </style>
-
-@code {
-
-    private string search = "";
-
-    private EmployeeModel? selectedEmployee;
-
-    private List<EmployeeModel> employees = new()
-    {
-        new()
-        {
-            FullName = "Иванов Иван Сергеевич",
-            Email = "ivanov@company.local",
-            TotalRequests = 34,
-            ActiveRequests = 4,
-            IsActive = true,
-
-            Requests = new()
-            {
-                new()
-                {
-                    Id = 1024,
-                    Route = "Москва → Санкт-Петербург",
-                    IsActive = true
-                },
-
-                new()
-                {
-                    Id = 1001,
-                    Route = "Москва → Казань",
-                    IsActive = false
-                }
-            }
-        },
-
-        new()
-        {
-            FullName = "Петров Алексей",
-            Email = "petrov@company.local",
-            TotalRequests = 19,
-            ActiveRequests = 0,
-            IsActive = false,
-
-            Requests = new()
-            {
-                new()
-                {
-                    Id = 945,
-                    Route = "Сочи → Краснодар",
-                    IsActive = false
-                }
-            }
-        }
-    };
-
-    private IEnumerable<EmployeeModel> FilteredEmployees =>
-        employees.Where(x =>
-            string.IsNullOrWhiteSpace(search)
-            || x.FullName.Contains(search, StringComparison.OrdinalIgnoreCase)
-            || x.Email.Contains(search, StringComparison.OrdinalIgnoreCase));
-
-    private void OpenDetails(EmployeeModel employee)
-    {
-        selectedEmployee = employee;
-    }
-
-    private void CloseDetails()
-    {
-        selectedEmployee = null;
-    }
-
-    private void Deactivate(EmployeeModel employee)
-    {
-        employee.IsActive = false;
-    }
-
-    public class EmployeeModel
-    {
-        public string FullName { get; set; } = "";
-
-        public string Email { get; set; } = "";
-
-        public int TotalRequests { get; set; }
-
-        public int ActiveRequests { get; set; }
-
-        public bool IsActive { get; set; }
-
-        public List<RequestModel> Requests { get; set; } = new();
-    }
-
-    public class RequestModel
-    {
-        public int Id { get; set; }
-
-        public string Route { get; set; } = "";
-
-        public bool IsActive { get; set; }
-    }
-
-}

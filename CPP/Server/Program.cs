@@ -28,6 +28,17 @@ builder.Services.AddScoped<IVehicleRepository, VehicleRepository>();
 builder.Services.AddScoped<IDriverRepository, DriverRepository>();
 builder.Services.AddScoped<ITripRepository, TripRepository>();
 builder.Services.AddScoped<ITripRequestService, TripRequestService>();
+builder.Services.AddScoped<IAdminVehicleService, AdminVehicleService>();
+builder.Services.AddScoped<IAdminDriverService, AdminDriverService>();
+builder.Services.AddScoped<IAdminDashboardService, AdminDashboardService>();
+builder.Services.AddScoped<IAdminTripService, AdminTripService>();
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+
+
+
+
+
+
 
 builder.Services.AddRadzenComponents();
 builder.Services.AddRadzenCookieThemeService(options =>

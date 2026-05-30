@@ -1,8 +1,7 @@
 @page "/driver/dashboard1"
-
 @using Microsoft.AspNetCore.Authorization
 @using System.Timers
-
+@attribute [Authorize]
 
 <PageTitle>Driver Dashboard</PageTitle>
 
@@ -22,31 +21,22 @@
                     gap:20px;">
 
             <div>
-
                 <div style="font-size:38px;
                             font-weight:900;
                             color:#edf4ff;
                             letter-spacing:1px;">
-
                     ГЛАВНАЯ ПАНЕЛЬ
-
                 </div>
-
                 <div style="margin-top:8px;
                             color:#8ca9cf;
                             font-size:15px;">
-
                     Контроль текущих поездок и оперативная статистика
-
                 </div>
-
             </div>
 
             <button class="blue-btn"
                     @onclick="GoToTrips">
-
                 ВСЕ ПОЕЗДКИ →
-
             </button>
 
         </div>
@@ -68,36 +58,28 @@
                             gap:24px;">
 
                     <div style="flex:1;">
-
                         <div style="display:flex;
                                     align-items:center;
                                     gap:12px;
                                     margin-bottom:18px;">
-
                             <div style="width:14px;
                                         height:14px;
                                         border-radius:50%;
                                         background:#4caf50;
                                         box-shadow:0 0 12px #4caf50;">
                             </div>
-
                             <div style="color:#66d48c;
                                         font-weight:900;
                                         font-size:18px;">
-
                                 АКТИВНАЯ ПОЕЗДКА
-
                             </div>
-
                         </div>
 
                         <div style="font-size:32px;
                                     color:#edf4ff;
                                     font-weight:900;
                                     margin-bottom:18px;">
-
                             @activeTrip.Description
-
                         </div>
 
                         <div style="display:grid;
@@ -105,81 +87,47 @@
                                     gap:18px;">
 
                             <div class="info-card">
-
-                                <div class="info-label">
-                                    АВТОМОБИЛЬ
-                                </div>
-
-                                <div class="info-value">
-                                    @activeTrip.Vehicle
-                                </div>
-
+                                <div class="info-label">АВТОМОБИЛЬ</div>
+                                <div class="info-value">@activeTrip.VehicleName</div>
                             </div>
 
                             <div class="info-card">
-
-                                <div class="info-label">
-                                    ВРЕМЯ НАЧАЛА
-                                </div>
-
-                                <div class="info-value">
-                                    @activeTrip.StartTime.ToString("HH:mm")
-                                </div>
-
+                                <div class="info-label">ВРЕМЯ НАЧАЛА</div>
+                                <div class="info-value">@activeTrip.StartTime.ToString("HH:mm")</div>
                             </div>
 
                             <div class="info-card">
-
-                                <div class="info-label">
-                                    СТАРТОВЫЙ ОДОМЕТР
-                                </div>
-
-                                <div class="info-value">
-                                    @activeTrip.StartOdometer км
-                                </div>
-
+                                <div class="info-label">СТАРТОВЫЙ ОДОМЕТР</div>
+                                <div class="info-value">@activeTrip.StartOdometer км</div>
                             </div>
 
                         </div>
-
                     </div>
 
                     <div style="width:320px;">
-
                         <div style="background:#08111d;
                                     border:1px solid #295aa3;
                                     border-radius:24px;
                                     padding:26px;
                                     text-align:center;">
-
                             <div style="color:#7ea5dc;
                                         font-size:13px;
                                         letter-spacing:1px;
                                         margin-bottom:14px;">
-
                                 ДЛИТЕЛЬНОСТЬ ПОЕЗДКИ
-
                             </div>
-
                             <div style="font-size:44px;
                                         font-weight:900;
                                         color:#edf4ff;
                                         margin-bottom:22px;
                                         font-family:monospace;">
-
                                 @tripDuration
-
                             </div>
-
                             <button class="danger-btn"
                                     @onclick="OpenFinishModal">
-
                                 ЗАВЕРШИТЬ ПОЕЗДКУ
-
                             </button>
-
                         </div>
-
                     </div>
 
                 </div>
@@ -189,173 +137,99 @@
 
         <!-- UPCOMING TRIPS -->
         <div style="margin-bottom:32px;">
-
             <div style="font-size:28px;
                         font-weight:900;
                         color:#edf4ff;
                         margin-bottom:22px;">
-
                 БЛИЖАЙШИЕ ПОЕЗДКИ
-
             </div>
 
             <div style="display:grid;
                         grid-template-columns:repeat(auto-fill,minmax(380px,1fr));
                         gap:22px;">
-
                 @foreach (var trip in scheduledTrips)
                 {
                     <div class="trip-card">
-
                         <div style="display:flex;
                                     justify-content:space-between;
                                     align-items:flex-start;
                                     margin-bottom:18px;">
-
                             <div>
-
                                 <div style="font-size:24px;
                                             font-weight:900;
                                             color:#edf4ff;">
-
-                                    @trip.Vehicle
-
+                                    @trip.VehicleName
                                 </div>
-
                                 <div style="margin-top:6px;
                                             color:#8ba9d0;
                                             font-size:14px;">
-
                                     @trip.Description
-
                                 </div>
-
                             </div>
-
                             <div style="background:#14325e;
                                         color:#8fc1ff;
                                         padding:8px 14px;
                                         border-radius:999px;
                                         font-size:13px;
                                         font-weight:700;">
-
                                 Scheduled
-
                             </div>
-
                         </div>
 
                         <div style="display:grid;
                                     grid-template-columns:1fr 1fr;
                                     gap:16px;
                                     margin-bottom:22px;">
-
                             <div class="mini-info">
-
-                                <div class="mini-label">
-                                    ДАТА
-                                </div>
-
-                                <div class="mini-value">
-                                    @trip.StartTime.ToString("dd.MM.yyyy")
-                                </div>
-
+                                <div class="mini-label">ДАТА</div>
+                                <div class="mini-value">@trip.ScheduledDate.ToString("dd.MM.yyyy")</div>
                             </div>
-
                             <div class="mini-info">
-
-                                <div class="mini-label">
-                                    ВРЕМЯ
-                                </div>
-
-                                <div class="mini-value">
-                                    @trip.StartTime.ToString("HH:mm")
-                                </div>
-
+                                <div class="mini-label">ВРЕМЯ</div>
+                                <div class="mini-value">@trip.ScheduledDate.ToString("HH:mm")</div>
                             </div>
-
                         </div>
 
                         <button class="blue-btn full-width"
                                 @onclick="() => OpenStartTripModal(trip)">
-
                             НАЧАТЬ ПОЕЗДКУ
-
                         </button>
-
                     </div>
                 }
-
             </div>
-
         </div>
 
         <!-- STATS -->
         <div style="margin-bottom:32px;">
-
             <div style="font-size:28px;
                         font-weight:900;
                         color:#edf4ff;
                         margin-bottom:22px;">
-
                 СТАТИСТИКА ЗА МЕСЯЦ
-
             </div>
 
             <div style="display:grid;
                         grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
                         gap:22px;">
-
                 <div class="stat-card">
-
-                    <div class="stat-icon">
-                        🚘
-                    </div>
-
-                    <div class="stat-value">
-                        @completedTrips
-                    </div>
-
-                    <div class="stat-title">
-                        Завершённых поездок
-                    </div>
-
+                    <div class="stat-icon">🚘</div>
+                    <div class="stat-value">@completedTrips</div>
+                    <div class="stat-title">Завершённых поездок</div>
                 </div>
 
                 <div class="stat-card">
-
-                    <div class="stat-icon">
-                        📍
-                    </div>
-
-                    <div class="stat-value">
-                        @totalMileage км
-                    </div>
-
-                    <div class="stat-title">
-                        Общий пробег
-                    </div>
-
+                    <div class="stat-icon">📍</div>
+                    <div class="stat-value">@totalMileage км</div>
+                    <div class="stat-title">Общий пробег</div>
                 </div>
 
                 <div class="stat-card">
-
-                    <div class="stat-icon">
-                        ⏱
-                    </div>
-
-                    <div class="stat-value">
-                        @totalDriveTime
-                    </div>
-
-                    <div class="stat-title">
-                        Время за рулём
-                    </div>
-
+                    <div class="stat-icon">⏱</div>
+                    <div class="stat-value">@totalDriveTime</div>
+                    <div class="stat-title">Время за рулём</div>
                 </div>
 
             </div>
-
         </div>
 
         <!-- HISTORY -->
@@ -366,68 +240,38 @@
 
             <div style="padding:26px 28px;
                         border-bottom:1px solid #1b3964;">
-
                 <div style="font-size:28px;
                             font-weight:900;
                             color:#edf4ff;">
-
                     ПОСЛЕДНИЕ ЗАВЕРШЁННЫЕ ПОЕЗДКИ
-
                 </div>
-
             </div>
 
             <div style="overflow-x:auto;">
-
                 <table style="width:100%;
                               border-collapse:collapse;">
-
                     <thead>
-
                         <tr style="background:#0b1730;">
-
                             <th class="table-header">Дата</th>
                             <th class="table-header">Автомобиль</th>
                             <th class="table-header">Пробег</th>
                             <th class="table-header">Статус</th>
-
-                        </tr>
-
+                         </tr>
                     </thead>
-
                     <tbody>
-
                         @foreach (var item in recentTrips)
                         {
                             <tr class="table-row">
-
+                                <td class="table-cell">@item.Date.ToString("dd.MM.yyyy")</td>
+                                <td class="table-cell">@item.VehicleName</td>
+                                <td class="table-cell">@item.Mileage км</td>
                                 <td class="table-cell">
-                                    @item.Date.ToString("dd.MM.yyyy")
+                                    <span class="completed-status">Completed</span>
                                 </td>
-
-                                <td class="table-cell">
-                                    @item.Vehicle
-                                </td>
-
-                                <td class="table-cell">
-                                    @item.Mileage км
-                                </td>
-
-                                <td class="table-cell">
-
-                                    <span class="completed-status">
-                                        Completed
-                                    </span>
-
-                                </td>
-
-                            </tr>
+                             </tr>
                         }
-
                     </tbody>
-
-                </table>
-
+                 </table>
             </div>
 
         </div>
@@ -440,41 +284,20 @@
 @if (showFinishModal)
 {
     <div class="modal-overlay">
-
         <div class="modal-window">
-
-            <div class="modal-title">
-                ЗАВЕРШЕНИЕ ПОЕЗДКИ
-            </div>
-
+            <div class="modal-title">ЗАВЕРШЕНИЕ ПОЕЗДКИ</div>
             <input class="modal-input"
                    type="number"
                    placeholder="Конечный одометр"
                    @bind="endOdometer" />
-
             <div style="display:flex;
                         justify-content:flex-end;
                         gap:14px;
                         margin-top:26px;">
-
-                <button class="secondary-btn"
-                        @onclick="CloseFinishModal">
-
-                    Отмена
-
-                </button>
-
-                <button class="danger-btn"
-                        @onclick="FinishTrip">
-
-                    Завершить
-
-                </button>
-
+                <button class="secondary-btn" @onclick="CloseFinishModal">Отмена</button>
+                <button class="danger-btn" @onclick="FinishTrip">Завершить</button>
             </div>
-
         </div>
-
     </div>
 }
 
@@ -482,396 +305,202 @@
 @if (showStartModal)
 {
     <div class="modal-overlay">
-
         <div class="modal-window">
-
-            <div class="modal-title">
-                НАЧАТЬ ПОЕЗДКУ
-            </div>
-
-            <div style="color:#89a7cf;
-                        margin-bottom:18px;">
-
-                @selectedTrip?.Vehicle
-
-            </div>
-
+            <div class="modal-title">НАЧАТЬ ПОЕЗДКУ</div>
+            <div style="color:#89a7cf; margin-bottom:18px;">@selectedTrip?.VehicleName</div>
             <input class="modal-input"
                    type="number"
                    placeholder="Начальный одометр"
                    @bind="startOdometer" />
-
             <div style="display:flex;
                         justify-content:flex-end;
                         gap:14px;
                         margin-top:26px;">
-
-                <button class="secondary-btn"
-                        @onclick="CloseStartModal">
-
-                    Отмена
-
-                </button>
-
-                <button class="blue-btn"
-                        @onclick="StartTrip">
-
-                    Начать
-
-                </button>
-
+                <button class="secondary-btn" @onclick="CloseStartModal">Отмена</button>
+                <button class="blue-btn" @onclick="StartTrip">Начать</button>
             </div>
-
         </div>
-
     </div>
 }
 
 <style>
-
-    .trip-card{
-        background:linear-gradient(145deg,#0d1c34 0%,#08111d 100%);
-        border:1px solid #21467c;
-        border-radius:24px;
-        padding:24px;
-        transition:0.25s;
+    .trip-card {
+        background: linear-gradient(145deg, #0d1c34 0%, #08111d 100%);
+        border: 1px solid #21467c;
+        border-radius: 24px;
+        padding: 24px;
+        transition: 0.25s;
     }
 
-    .trip-card:hover{
-        transform:translateY(-4px);
-        border-color:#3c7de0;
-        box-shadow:0 12px 30px rgba(0,0,0,0.35);
+    .trip-card:hover {
+        transform: translateY(-4px);
+        border-color: #3c7de0;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
     }
 
-    .info-card{
-        background:#08111d;
-        border:1px solid #1c3d69;
-        border-radius:18px;
-        padding:18px;
+    .info-card {
+        background: #08111d;
+        border: 1px solid #1c3d69;
+        border-radius: 18px;
+        padding: 18px;
     }
 
     .info-label,
-    .mini-label{
-        color:#7da5d9;
-        font-size:12px;
-        letter-spacing:1px;
-        margin-bottom:10px;
+    .mini-label {
+        color: #7da5d9;
+        font-size: 12px;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
     }
 
-    .info-value{
-        color:#edf4ff;
-        font-size:20px;
-        font-weight:900;
+    .info-value {
+        color: #edf4ff;
+        font-size: 20px;
+        font-weight: 900;
     }
 
-    .mini-info{
-        background:#091423;
-        border-radius:16px;
-        padding:14px;
+    .mini-info {
+        background: #091423;
+        border-radius: 16px;
+        padding: 14px;
     }
 
-    .mini-value{
-        color:#edf4ff;
-        font-size:17px;
-        font-weight:700;
+    .mini-value {
+        color: #edf4ff;
+        font-size: 17px;
+        font-weight: 700;
     }
 
-    .stat-card{
-        background:linear-gradient(145deg,#0d1c34 0%,#08111d 100%);
-        border:1px solid #21467c;
-        border-radius:24px;
-        padding:28px;
+    .stat-card {
+        background: linear-gradient(145deg, #0d1c34 0%, #08111d 100%);
+        border: 1px solid #21467c;
+        border-radius: 24px;
+        padding: 28px;
     }
 
-    .stat-icon{
-        font-size:42px;
-        margin-bottom:16px;
+    .stat-icon {
+        font-size: 42px;
+        margin-bottom: 16px;
     }
 
-    .stat-value{
-        color:#edf4ff;
-        font-size:38px;
-        font-weight:900;
-        margin-bottom:10px;
+    .stat-value {
+        color: #edf4ff;
+        font-size: 38px;
+        font-weight: 900;
+        margin-bottom: 10px;
     }
 
-    .stat-title{
-        color:#8ca9cf;
-        font-size:15px;
+    .stat-title {
+        color: #8ca9cf;
+        font-size: 15px;
     }
 
-    .table-header{
-        padding:18px;
-        color:#7da5d9;
-        text-align:left;
-        font-size:13px;
-        letter-spacing:1px;
+    .table-header {
+        padding: 18px;
+        color: #7da5d9;
+        text-align: left;
+        font-size: 13px;
+        letter-spacing: 1px;
     }
 
-    .table-row{
-        border-top:1px solid #183458;
+    .table-row {
+        border-top: 1px solid #183458;
     }
 
-    .table-row:hover{
-        background:rgba(37,99,235,0.08);
+    .table-row:hover {
+        background: rgba(37, 99, 235, 0.08);
     }
 
-    .table-cell{
-        padding:20px 18px;
-        color:#edf4ff;
-        font-size:15px;
+    .table-cell {
+        padding: 20px 18px;
+        color: #edf4ff;
+        font-size: 15px;
     }
 
-    .completed-status{
-        background:rgba(76,175,80,0.18);
-        color:#6dff9b;
-        padding:8px 14px;
-        border-radius:999px;
-        font-size:13px;
-        font-weight:700;
+    .completed-status {
+        background: rgba(76, 175, 80, 0.18);
+        color: #6dff9b;
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 700;
     }
 
     .blue-btn,
     .danger-btn,
-    .secondary-btn{
-        border:none;
-        border-radius:14px;
-        padding:14px 20px;
-        cursor:pointer;
-        font-weight:800;
-        transition:0.2s;
+    .secondary-btn {
+        border: none;
+        border-radius: 14px;
+        padding: 14px 20px;
+        cursor: pointer;
+        font-weight: 800;
+        transition: 0.2s;
     }
 
-    .blue-btn{
-        background:linear-gradient(135deg,#2563eb,#1d4ed8);
-        color:white;
+    .blue-btn {
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        color: white;
     }
 
-    .danger-btn{
-        background:linear-gradient(135deg,#d32f2f,#a91f1f);
-        color:white;
+    .danger-btn {
+        background: linear-gradient(135deg, #d32f2f, #a91f1f);
+        color: white;
     }
 
-    .secondary-btn{
-        background:#16263e;
-        color:#9ec5ff;
+    .secondary-btn {
+        background: #16263e;
+        color: #9ec5ff;
     }
 
     .blue-btn:hover,
     .danger-btn:hover,
-    .secondary-btn:hover{
-        transform:translateY(-2px);
-        opacity:0.92;
+    .secondary-btn:hover {
+        transform: translateY(-2px);
+        opacity: 0.92;
     }
 
-    .full-width{
-        width:100%;
+    .full-width {
+        width: 100%;
     }
 
-    .modal-overlay{
-        position:fixed;
-        inset:0;
-        background:rgba(0,0,0,0.78);
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        z-index:999;
+    .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.78);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
     }
 
-    .modal-window{
-        width:480px;
-        background:#0d1c34;
-        border:1px solid #2b5ea8;
-        border-radius:24px;
-        padding:28px;
+    .modal-window {
+        width: 480px;
+        background: #0d1c34;
+        border: 1px solid #2b5ea8;
+        border-radius: 24px;
+        padding: 28px;
     }
 
-    .modal-title{
-        color:#edf4ff;
-        font-size:28px;
-        font-weight:900;
-        margin-bottom:22px;
+    .modal-title {
+        color: #edf4ff;
+        font-size: 28px;
+        font-weight: 900;
+        margin-bottom: 22px;
     }
 
-    .modal-input{
-        width:100%;
-        background:#08111d;
-        border:1px solid #2b5ea8;
-        border-radius:14px;
-        padding:14px 16px;
-        color:#edf4ff;
-        font-size:15px;
-        outline:none;
+    .modal-input {
+        width: 100%;
+        background: #08111d;
+        border: 1px solid #2b5ea8;
+        border-radius: 14px;
+        padding: 14px 16px;
+        color: #edf4ff;
+        font-size: 15px;
+        outline: none;
     }
 
-    .modal-input:focus{
-        border-color:#4f8fff;
-        box-shadow:0 0 14px rgba(79,143,255,0.35);
+    .modal-input:focus {
+        border-color: #4f8fff;
+        box-shadow: 0 0 14px rgba(79, 143, 255, 0.35);
     }
-
 </style>
-
-@code {
-
-    private System.Timers.Timer? timer;
-
-    private string tripDuration = "00:00:00";
-
-    private bool showFinishModal;
-
-    private bool showStartModal;
-
-    private int startOdometer;
-
-    private int endOdometer;
-
-    private TripCard? selectedTrip;
-
-    private int completedTrips = 18;
-
-    private int totalMileage = 4280;
-
-    private string totalDriveTime = "92 ч 14 мин";
-
-    private TripCard? activeTrip = new()
-    {
-        Id = 1,
-        Description = "Доставка документов в центральный офис",
-        Vehicle = "Toyota Camry А777АА",
-        StartTime = DateTime.Now.AddHours(-2).AddMinutes(-14),
-        StartOdometer = 152340
-    };
-
-    private List<TripCard> scheduledTrips = new()
-    {
-        new()
-        {
-            Id = 2,
-            Description = "Поездка в аэропорт",
-            Vehicle = "BMW X5 К123ОР",
-            StartTime = DateTime.Now.AddHours(3)
-        },
-
-        new()
-        {
-            Id = 3,
-            Description = "Встреча партнёров",
-            Vehicle = "Mercedes E200 М555ТТ",
-            StartTime = DateTime.Now.AddDays(1).AddHours(2)
-        }
-    };
-
-    private List<TripHistory> recentTrips = new()
-    {
-        new()
-        {
-            Date = DateTime.Today,
-            Vehicle = "Toyota Camry",
-            Mileage = 118
-        },
-
-        new()
-        {
-            Date = DateTime.Today.AddDays(-1),
-            Vehicle = "BMW X5",
-            Mileage = 76
-        },
-
-        new()
-        {
-            Date = DateTime.Today.AddDays(-2),
-            Vehicle = "Kia K5",
-            Mileage = 143
-        }
-    };
-
-    protected override void OnInitialized()
-    {
-        timer = new System.Timers.Timer(1000);
-
-        timer.Elapsed += UpdateTripDuration;
-
-        timer.Start();
-
-        UpdateDuration();
-    }
-
-    private void UpdateTripDuration(object? sender, ElapsedEventArgs e)
-    {
-        InvokeAsync(() =>
-        {
-            UpdateDuration();
-            StateHasChanged();
-        });
-    }
-
-    private void UpdateDuration()
-    {
-        if (activeTrip is null)
-            return;
-
-        var duration = DateTime.Now - activeTrip.StartTime;
-
-        tripDuration = duration.ToString(@"hh\:mm\:ss");
-    }
-
-    private void OpenFinishModal()
-    {
-        showFinishModal = true;
-    }
-
-    private void CloseFinishModal()
-    {
-        showFinishModal = false;
-    }
-
-    private void FinishTrip()
-    {
-
-    }
-
-    private void OpenStartTripModal(TripCard trip)
-    {
-        selectedTrip = trip;
-
-        showStartModal = true;
-    }
-
-    private void CloseStartModal()
-    {
-        showStartModal = false;
-    }
-
-    private void StartTrip()
-    {
-
-    }
-
-    private void GoToTrips()
-    {
-
-    }
-
-    public class TripCard
-    {
-        public int Id { get; set; }
-
-        public string Description { get; set; } = "";
-
-        public string Vehicle { get; set; } = "";
-
-        public DateTime StartTime { get; set; }
-
-        public int StartOdometer { get; set; }
-    }
-
-    public class TripHistory
-    {
-        public DateTime Date { get; set; }
-
-        public string Vehicle { get; set; } = "";
-
-        public int Mileage { get; set; }
-    }
-
-}

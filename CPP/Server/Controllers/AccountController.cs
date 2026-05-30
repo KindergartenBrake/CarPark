@@ -112,13 +112,41 @@ namespace CP.Server.Controllers
         }
 
         [HttpPost]
-        public ApplicationAuthenticationState CurrentUser()
+        public async Task<ApplicationAuthenticationState> CurrentUser()
         {
+            var user = await userManager.GetUserAsync(User);
+            
+            if (user == null)
+            {
+                return new ApplicationAuthenticationState
+                {
+                    IsAuthenticated = false,
+                    Name = "",
+                    Claims = Enumerable.Empty<ApplicationClaim>()
+                };
+            }
+            
+            var roles = await userManager.GetRolesAsync(user);
+            var role = roles.FirstOrDefault() ?? "Employee";
+            
+            var claims = new List<ApplicationClaim>();
+            
+            // Добавляем стандартные claims
+            claims.Add(new ApplicationClaim { Type = ClaimTypes.Name, Value = user.UserName ?? "" });
+            claims.Add(new ApplicationClaim { Type = ClaimTypes.NameIdentifier, Value = user.Id ?? "" });
+            claims.Add(new ApplicationClaim { Type = ClaimTypes.Email, Value = user.Email ?? "" });
+            
+            // Добавляем роль (важно!)
+            claims.Add(new ApplicationClaim { Type = ClaimTypes.Role, Value = role });
+            
+            // Добавляем все остальные claims пользователя
+            claims.AddRange(User.Claims.Select(c => new ApplicationClaim { Type = c.Type, Value = c.Value }));
+            
             return new ApplicationAuthenticationState
             {
-                IsAuthenticated = User.Identity.IsAuthenticated,
-                Name = User.Identity.Name,
-                Claims = User.Claims.Select(c => new ApplicationClaim { Type = c.Type, Value = c.Value })
+                IsAuthenticated = User.Identity?.IsAuthenticated == true,
+                Name = user.UserName,
+                Claims = claims
             };
         }
 

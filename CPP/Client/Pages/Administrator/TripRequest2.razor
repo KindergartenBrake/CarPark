@@ -1,49 +1,67 @@
 @page "/administrator/trip-requests2"
 @using Microsoft.AspNetCore.Authorization
-
+@attribute [Authorize]
 
 <PageTitle>Administrator - Заявки на поездки</PageTitle>
 
-<div style="min-height: 100vh; background: linear-gradient(135deg, #071226 0%, #0b1d3d 40%, #102b5c 100%); padding: 24px;">
+<div style="min-height: 100vh; 
+            background: linear-gradient(135deg, #071120 0%, #0b1f3d 100%); 
+            padding: 24px;">
+    
     <div style="max-width: 1800px; margin: 0 auto;">
 
+        <!-- HEADER -->
         <div style="margin-bottom: 32px;">
-            <div style="color: #eaf4ff; font-size: 34px; font-weight: 800; letter-spacing: 2px;">
+            <div style="font-size: 36px; 
+                        font-weight: 900; 
+                        color: #edf4ff; 
+                        letter-spacing: 1px;">
                 ЗАЯВКИ НА ПОЕЗДКИ
             </div>
-            <div style="color: #7ea7d8; font-size: 15px; margin-top: 10px;">
+            <div style="margin-top: 8px; 
+                        color: #89a7cf; 
+                        font-size: 14px;">
                 Управление заявками сотрудников, назначением транспорта и водителей
             </div>
         </div>
 
-        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; border-bottom: 2px solid #295ba7;">
+        <!-- TABS -->
+        <div style="display: flex; 
+                    gap: 10px; 
+                    flex-wrap: wrap; 
+                    margin-bottom: 28px; 
+                    border-bottom: 2px solid #1f4781;">
             @foreach (var tab in tabs)
             {
                 var currentTab = tab;
                 <button @onclick="() => SelectTab(currentTab)"
-                        style="background:@(selectedTab == currentTab ? "#2f6fd6" : "transparent");
-                               color:@(selectedTab == currentTab ? "white" : "#7ea7d8");
-                               border:none;
-                               padding:14px 24px;
-                               border-radius:10px 10px 0 0;
-                               cursor:pointer;
-                               font-weight:700;
-                               font-size:14px;
-                               transition:all 0.3s ease;">
-                    @currentTab
+                        style="background:@(selectedTab == currentTab ? "#2563eb" : "transparent");
+                               color:@(selectedTab == currentTab ? "white" : "#8aa8cc");
+                               border: none;
+                               padding: 14px 28px;
+                               border-radius: 12px 12px 0 0;
+                               cursor: pointer;
+                               font-weight: 700;
+                               font-size: 14px;
+                               transition: all 0.3s ease;">
+                    @(currentTab == "Все" ? "ВСЕ" : 
+                      currentTab == "Pending" ? "ОЖИДАЮТ" :
+                      currentTab == "Approved" ? "ОДОБРЕНЫ" :
+                      currentTab == "Completed" ? "ЗАВЕРШЕНЫ" : "ОТКЛОНЕНЫ")
                 </button>
             }
         </div>
 
-        <div style="background: rgba(9, 25, 52, 0.95);
-                    border: 1px solid #295ba7;
-                    border-radius: 16px;
+        <!-- TABLE -->
+        <div style="background: rgba(12, 28, 51, 0.95);
+                    border: 1px solid #1f4781;
+                    border-radius: 20px;
                     overflow: hidden;
                     box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
 
             <div style="overflow-x: auto;">
-                <table style="width: 100%; border-collapse: collapse; min-width: 1600px;">
-                    <thead style="background: linear-gradient(90deg, #14376d, #1e4d91);">
+                <table style="width: 100%; border-collapse: collapse; min-width: 1400px;">
+                    <thead style="background: linear-gradient(90deg, #0d1c34, #0a1628);">
                         <tr>
                             <th class="th-style">ID</th>
                             <th class="th-style">Сотрудник</th>
@@ -60,43 +78,41 @@
                     <tbody>
                         @foreach (var request in FilteredRequests)
                         {
-                            <tr style="border-bottom: 1px solid #1d3f74;">
+                            <tr style="border-bottom: 1px solid #1f4781;">
                                 <td class="td-style">#@request.Id</td>
-                                <td class="td-style">@request.EmployeeName</td>
+                                <td class="td-style">
+                                    <div style="font-weight: 600;">@request.EmployeeName</div>
+                                    <div style="font-size: 11px; color: #6f92c4;">@request.EmployeeEmail</div>
+                                </td>
                                 <td class="td-style">@request.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
                                 <td class="td-style">@request.PlannedTripDate.ToString("dd.MM.yyyy HH:mm")</td>
-                                <td class="td-style">@request.VehicleType</td>
-
+                                <td class="td-style">
+                                    <span class="vehicle-badge">@request.VehicleType</span>
+                                </td>
                                 <td class="td-style">
                                     <span style="@GetStatusStyle(request.Status)">
-                                        @request.Status
+                                        @GetStatusText(request.Status)
                                     </span>
                                 </td>
-
                                 <td class="td-style">
-                                    @(string.IsNullOrEmpty(request.DriverName) ? "-" : request.DriverName)
+                                    @(string.IsNullOrEmpty(request.DriverName) ? "—" : request.DriverName)
                                 </td>
-
                                 <td class="td-style">
-                                    @(string.IsNullOrEmpty(request.VehicleName) ? "-" : request.VehicleName)
+                                    @(string.IsNullOrEmpty(request.VehicleName) ? "—" : request.VehicleName)
                                 </td>
-
                                 <td class="td-style">
-                                    <div style="display:flex; gap:8px; flex-wrap:wrap;">
-
+                                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
                                         @if (request.Status == "Pending")
                                         {
                                             <button @onclick="() => OpenAssignModal(request)"
                                                     class="action-btn primary-btn">
                                                 Назначить
                                             </button>
-
                                             <button @onclick="() => OpenRejectModal(request)"
                                                     class="action-btn danger-btn">
                                                 Отклонить
                                             </button>
                                         }
-
                                         @if (request.Status == "Approved" && !request.TripStarted)
                                         {
                                             <button @onclick="() => OpenAssignModal(request)"
@@ -104,12 +120,10 @@
                                                 Изменить
                                             </button>
                                         }
-
                                         <button @onclick="() => OpenDetailsModal(request)"
                                                 class="action-btn info-btn">
                                             Детали
                                         </button>
-
                                     </div>
                                 </td>
                             </tr>
@@ -121,17 +135,17 @@
 
         @if (!FilteredRequests.Any())
         {
-            <div style="margin-top:30px;
-                        text-align:center;
-                        padding:70px;
-                        border:1px dashed #295ba7;
-                        border-radius:14px;
-                        background:#0b1d3d;">
-                <div style="font-size:64px;"></div>
-                <div style="color:#eaf4ff; font-size:20px; font-weight:700; margin-top:14px;">
+            <div style="margin-top: 30px;
+                        text-align: center;
+                        padding: 70px;
+                        border: 2px dashed #1f4781;
+                        border-radius: 20px;
+                        background: rgba(12, 28, 51, 0.5);">
+                <div style="font-size: 64px;">📋</div>
+                <div style="color: #edf4ff; font-size: 24px; font-weight: 700; margin-top: 16px;">
                     Нет заявок
                 </div>
-                <div style="color:#7ea7d8; margin-top:8px;">
+                <div style="color: #8aa8cc; margin-top: 8px;">
                     Для выбранного статуса заявки отсутствуют
                 </div>
             </div>
@@ -140,6 +154,7 @@
     </div>
 </div>
 
+<!-- ASSIGN MODAL -->
 @if (showAssignModal && selectedRequest != null)
 {
     <div class="modal-overlay">
@@ -173,19 +188,15 @@
                 </select>
             </div>
 
-            <div style="display:flex; gap:12px; margin-top:24px;">
-                <button @onclick="AssignTrip" class="primary-btn modal-btn">
-                    Назначить
-                </button>
-
-                <button @onclick="CloseModals" class="secondary-btn modal-btn">
-                    Отмена
-                </button>
+            <div style="display: flex; gap: 12px; margin-top: 24px;">
+                <button @onclick="AssignTrip" class="primary-btn modal-btn">Назначить</button>
+                <button @onclick="CloseModals" class="secondary-btn modal-btn">Отмена</button>
             </div>
         </div>
     </div>
 }
 
+<!-- REJECT MODAL -->
 @if (showRejectModal && selectedRequest != null)
 {
     <div class="modal-overlay">
@@ -194,62 +205,73 @@
 
             <div class="form-group">
                 <label>Причина (опционально)</label>
-                <textarea @bind="rejectReason"></textarea>
+                <textarea @bind="rejectReason" rows="4" placeholder="Укажите причину отклонения..."></textarea>
             </div>
 
-            <div style="display:flex; gap:12px; margin-top:24px;">
-                <button @onclick="RejectTrip" class="danger-btn modal-btn">
-                    Отклонить
-                </button>
-
-                <button @onclick="CloseModals" class="secondary-btn modal-btn">
-                    Отмена
-                </button>
+            <div style="display: flex; gap: 12px; margin-top: 24px;">
+                <button @onclick="RejectTrip" class="danger-btn modal-btn">Отклонить</button>
+                <button @onclick="CloseModals" class="secondary-btn modal-btn">Отмена</button>
             </div>
         </div>
     </div>
 }
 
+<!-- DETAILS MODAL -->
 @if (showDetailsModal && selectedRequest != null)
 {
     <div class="modal-overlay">
-        <div class="modal-window" style="max-width:900px;">
+        <div class="modal-window" style="max-width: 800px;">
             <h2>Детали заявки #@selectedRequest.Id</h2>
 
             <div class="details-grid">
                 <div><strong>Сотрудник:</strong> @selectedRequest.EmployeeName</div>
                 <div><strong>Тип авто:</strong> @selectedRequest.VehicleType</div>
-                <div><strong>Дата создания:</strong> @selectedRequest.CreatedAt</div>
-                <div><strong>Плановая поездка:</strong> @selectedRequest.PlannedTripDate</div>
+                <div><strong>Email:</strong> @selectedRequest.EmployeeEmail</div>
+                <div><strong>Плановая поездка:</strong> @selectedRequest.PlannedTripDate.ToString("dd.MM.yyyy HH:mm")</div>
                 <div><strong>Статус:</strong> @selectedRequest.Status</div>
-                <div><strong>Водитель:</strong> @selectedRequest.DriverName</div>
-                <div><strong>Автомобиль:</strong> @selectedRequest.VehicleName</div>
-                <div><strong>Trip ID:</strong> @(selectedRequest.TripId?.ToString() ?? "-")</div>
+                <div><strong>Водитель:</strong> @(selectedRequest.DriverName ?? "—")</div>
+                <div><strong>Автомобиль:</strong> @(selectedRequest.VehicleName ?? "—")</div>
+                <div><strong>Trip ID:</strong> @(selectedRequest.TripId?.ToString() ?? "—")</div>
             </div>
 
-            <button @onclick="CloseModals"
-                    class="secondary-btn modal-btn"
-                    style="margin-top:24px;">
-                Закрыть
-            </button>
+            @if (!string.IsNullOrEmpty(selectedRequest.Description))
+            {
+                <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid #1f4781;">
+                    <strong>Описание:</strong>
+                    <div style="margin-top: 8px; color: #dcecff;">@selectedRequest.Description</div>
+                </div>
+            }
+
+            <button @onclick="CloseModals" class="secondary-btn modal-btn" style="margin-top: 24px;">Закрыть</button>
         </div>
     </div>
 }
 
 <style>
     .th-style {
-        color: white;
+        color: #8eb5ef;
         padding: 18px;
         text-align: left;
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 700;
         text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
 
     .td-style {
         padding: 16px;
-        color: #dcecff;
+        color: #e1edff;
         font-size: 14px;
+    }
+
+    .vehicle-badge {
+        display: inline-block;
+        background: #132849;
+        color: #9ec5ff;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 600;
     }
 
     .action-btn {
@@ -259,18 +281,17 @@
         cursor: pointer;
         font-weight: 700;
         font-size: 12px;
-        transition: all 0.25s ease;
+        transition: all 0.2s ease;
     }
 
-    .primary-btn { background: #2f6fd6; color: white; }
-    .danger-btn { background: #c62828; color: white; }
-    .warning-btn { background: #f9a825; color: black; }
-    .info-btn { background: #1565c0; color: white; }
-    .secondary-btn { background: #394b63; color: white; }
+    .primary-btn { background: #2563eb; color: white; }
+    .danger-btn { background: #dc2626; color: white; }
+    .warning-btn { background: #f59e0b; color: black; }
+    .info-btn { background: #1e3a5f; color: #9ec5ff; }
+    .secondary-btn { background: #1e293b; color: #8aa8cc; }
 
     .action-btn:hover,
-    .modal-btn:hover,
-    button:hover {
+    .modal-btn:hover {
         transform: translateY(-2px);
         opacity: 0.92;
     }
@@ -278,7 +299,8 @@
     .modal-overlay {
         position: fixed;
         inset: 0;
-        background: rgba(0,0,0,0.75);
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(4px);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -286,52 +308,77 @@
     }
 
     .modal-window {
-        background: linear-gradient(135deg, #0b1d3d, #102b5c);
-        border: 1px solid #295ba7;
-        border-radius: 16px;
+        background: linear-gradient(145deg, #0d1c34 0%, #0a1628 100%);
+        border: 1px solid #1f4781;
+        border-radius: 20px;
         padding: 32px;
         width: 100%;
-        max-width: 650px;
-        color: white;
-        box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+        max-width: 600px;
+        color: #edf4ff;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-window h2 {
+        margin: 0 0 8px 0;
+        font-size: 24px;
+        font-weight: 800;
+        color: #edf4ff;
     }
 
     .form-group {
-        margin-top: 18px;
+        margin-top: 20px;
         display: flex;
         flex-direction: column;
         gap: 8px;
     }
 
+    .form-group label {
+        color: #8aa8cc;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+
     .form-group select,
     .form-group textarea {
-        background: #081426;
-        color: white;
-        border: 1px solid #295ba7;
-        border-radius: 8px;
+        background: #08111f;
+        color: #edf4ff;
+        border: 1px solid #1f4781;
+        border-radius: 10px;
         padding: 12px;
         font-size: 14px;
     }
 
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #3b82f6;
+    }
+
     .form-group textarea {
-        min-height: 120px;
         resize: vertical;
     }
 
     .modal-btn {
-        padding: 12px 20px;
+        padding: 10px 20px;
         border: none;
-        border-radius: 8px;
+        border-radius: 10px;
         font-weight: 700;
         cursor: pointer;
+        transition: all 0.2s ease;
     }
 
     .details-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
-        margin-top: 20px;
-        color: #dcecff;
+        gap: 16px;
+        margin-top: 24px;
+        color: #e1edff;
+    }
+
+    .details-grid div {
+        padding: 8px 0;
+        border-bottom: 1px solid #1f4781;
     }
 </style>
 
@@ -451,7 +498,7 @@
             var dto = new { VehicleId = selectedVehicleId, DriverId = selectedDriverId };
             await Http.PutAsJsonAsync($"api/admin/triprequests/{selectedRequest.Id}/assign", dto);
             CloseModals();
-            await LoadRequests(); 
+            await LoadRequests();
         }
         catch (Exception ex)
         {
@@ -478,11 +525,20 @@
 
     private string GetStatusStyle(string status) => status switch
     {
-        "Pending" => "background:#f9a825;color:black;padding:6px 12px;border-radius:20px;font-weight:700;",
-        "Approved" => "background:#2e7d32;color:white;padding:6px 12px;border-radius:20px;font-weight:700;",
-        "Completed" => "background:#1565c0;color:white;padding:6px 12px;border-radius:20px;font-weight:700;",
-        "Rejected" => "background:#c62828;color:white;padding:6px 12px;border-radius:20px;font-weight:700;",
-        _ => "background:#455a64;color:white;padding:6px 12px;border-radius:20px;font-weight:700;"
+        "Pending" => "background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 13px;",
+        "Approved" => "background: rgba(34, 197, 94, 0.15); color: #4ade80; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 13px;",
+        "Completed" => "background: rgba(59, 130, 246, 0.15); color: #60a5fa; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 13px;",
+        "Rejected" => "background: rgba(239, 68, 68, 0.15); color: #f87171; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 13px;",
+        _ => "background: rgba(100, 116, 139, 0.15); color: #94a3b8; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 13px;"
+    };
+
+    private string GetStatusText(string status) => status switch
+    {
+        "Pending" => "Ожидает",
+        "Approved" => "Одобрена",
+        "Completed" => "Завершена",
+        "Rejected" => "Отклонена",
+        _ => status
     };
 
     public class TripRequestForAdmin

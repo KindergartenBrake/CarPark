@@ -719,5 +719,234 @@ namespace CP.Client
             response.EnsureSuccessStatusCode();
         }
 
+        public async Task<List<AdminVehicleDto>> GetAdminVehiclesAsync(string? search = null)
+        {
+            var query = string.IsNullOrEmpty(search) ? "" : $"?search={Uri.EscapeDataString(search)}";
+            var request = new HttpRequestMessage(HttpMethod.Get, $"api/admin/vehicles{query}");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<List<AdminVehicleDto>>() ?? new();
+        }
+
+        public async Task CreateVehicleAsync(CreateVehicleDto dto)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post, "api/admin/vehicles")
+            {
+                Content = JsonContent.Create(dto)
+            };
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task UpdateVehicleAsync(int id, CreateVehicleDto dto)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Put, $"api/admin/vehicles/{id}")
+            {
+                Content = JsonContent.Create(dto)
+            };
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task DeleteVehicleAsync(int id)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Delete, $"api/admin/vehicles/{id}");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task DeactivateVehicleAsync(int id)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Put, $"api/admin/vehicles/{id}/deactivate");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task<List<AvailableDriverDto>> GetAvailableDriversAsync()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, "api/admin/trip-requests/drivers");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<List<AvailableDriverDto>>() ?? new();
+        }
+
+        public async Task<List<AdminDriverDto>> GetAdminDriversAsync(string? search = null)
+        {
+            var query = string.IsNullOrEmpty(search) ? "" : $"?search={Uri.EscapeDataString(search)}";
+            var request = new HttpRequestMessage(HttpMethod.Get, $"api/admin/drivers{query}");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<List<AdminDriverDto>>() ?? new();
+        }
+
+        public async Task CreateDriverAsync(CreateDriverDto dto)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post, "api/admin/drivers")
+            {
+                Content = JsonContent.Create(dto)
+            };
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task UpdateDriverAsync(int id, CreateDriverDto dto)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Put, $"api/admin/drivers/{id}")
+            {
+                Content = JsonContent.Create(dto)
+            };
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task DeactivateDriverAsync(int id)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Put, $"api/admin/drivers/{id}/deactivate");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task<DriverVehicleDto?> GetDriverVehicleAsync()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, "api/driver/trips/vehicle");
+            var response = await httpClient.SendAsync(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                return null;
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<DriverVehicleDto>();
+        }
+
+        public async Task<AdminDashboardDto> GetAdminDashboardStatsAsync()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, "api/admin/Dashboard/stats");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<AdminDashboardDto>() ?? new AdminDashboardDto();
+        }
+
+        public async Task RejectTripRequestAsync(int requestId, RejectTripRequestDto dto)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Put, $"api/admin/trip-requests/{requestId}/reject")
+            {
+                Content = JsonContent.Create(dto)
+            };
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task AssignTripRequestAsync(int requestId, AssignTripDto dto)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Put, $"api/admin/trip-requests/{requestId}/assign")
+            {
+                Content = JsonContent.Create(dto)
+            };
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task<List<TripDto>> GetAllTripsAsync()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, "api/admin/trips");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<List<TripDto>>() ?? new();
+        }
+
+        public async Task<List<string>> GetTripsDriversAsync()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, "api/admin/trips/drivers");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<List<string>>() ?? new();
+        }
+
+        public async Task<List<string>> GetTripsVehiclesAsync()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, "api/admin/trips/vehicles");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<List<string>>() ?? new();
+        }
+
+        public async Task ForceCompleteTripAsync(int tripId, string comment)
+        {
+            var dto = new { Comment = comment };
+            var request = new HttpRequestMessage(HttpMethod.Put, $"api/admin/trips/{tripId}/force-complete")
+            {
+                Content = JsonContent.Create(dto)
+            };
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task CancelTripAsync(int tripId)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Put, $"api/admin/trips/{tripId}/cancel");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task<List<EmployeeDto>> GetEmployeesAsync(string? search = null)
+        {
+            var query = string.IsNullOrEmpty(search) ? "" : $"?search={Uri.EscapeDataString(search)}";
+            var request = new HttpRequestMessage(HttpMethod.Get, $"api/admin/employees{query}");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<List<EmployeeDto>>() ?? new();
+        }
+
+        public async Task<EmployeeDto?> GetEmployeeByIdAsync(string userId)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, $"api/admin/employees/{userId}");
+            var response = await httpClient.SendAsync(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.NotFound) return null;
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<EmployeeDto>();
+        }
+
+        public async Task DeactivateEmployeeAsync(string userId)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Put, $"api/admin/employees/{userId}/deactivate");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task<DriverDashboardDto> GetDriverDashboardAsync()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, "api/driver/trips/dashboard");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<DriverDashboardDto>() ?? new();
+        }
+
+        public async Task StartTripAsync(int tripId, decimal startOdometer)
+        {
+            var dto = new { StartOdometer = startOdometer };
+            var request = new HttpRequestMessage(HttpMethod.Put, $"api/driver/trips/{tripId}/start")
+            {
+                Content = JsonContent.Create(dto)
+            };
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task EndTripAsync(int tripId, decimal endOdometer)
+        {
+            var dto = new { EndOdometer = endOdometer };
+            var request = new HttpRequestMessage(HttpMethod.Put, $"api/driver/trips/{tripId}/end")
+            {
+                Content = JsonContent.Create(dto)
+            };
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task<EmployeeDashboardDto> GetEmployeeDashboardAsync()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, "api/trip-requests/dashboard");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<EmployeeDashboardDto>() ?? new();
+        }
     }
 }

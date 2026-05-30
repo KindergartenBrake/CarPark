@@ -62,4 +62,25 @@ public class DriverTripsController : ControllerBase
 
         return Ok();
     }
+
+    [HttpGet("vehicle")]
+    public async Task<ActionResult<DriverVehicleDto>> GetMyVehicle()
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (string.IsNullOrEmpty(userId)) return Unauthorized();
+
+        var vehicle = await _service.GetDriverVehicleAsync(userId);
+        if (vehicle == null) return NotFound();
+        return Ok(vehicle);
+    }
+
+    [HttpGet("dashboard")]
+    public async Task<ActionResult<DriverDashboardDto>> GetDashboard()
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (string.IsNullOrEmpty(userId)) return Unauthorized();
+        
+        var dashboard = await _service.GetDriverDashboardAsync(userId);
+        return Ok(dashboard);
+    }
 }

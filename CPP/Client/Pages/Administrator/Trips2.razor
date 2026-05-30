@@ -1,7 +1,6 @@
 @page "/administrator/trips2"
-
 @using Microsoft.AspNetCore.Authorization
-
+@attribute [Authorize]
 
 <PageTitle>Trips Management</PageTitle>
 
@@ -9,28 +8,21 @@
             background:linear-gradient(135deg,#071120 0%, #0b1d38 100%);
             padding:24px;">
 
-    <div style="max-width:1850px; margin:0 auto;">
+    <div style="width:100%;">
 
         <!-- HEADER -->
         <div style="margin-bottom:30px;">
-
-            <div style="color:#edf4ff;
-                        font-size:34px;
-                        font-weight:800;
+            <div style="font-size:36px;
+                        font-weight:900;
+                        color:#edf4ff;
                         letter-spacing:1px;">
-
-                TRIPS MANAGEMENT
-
+                ПОЕЗДКИ
             </div>
-
             <div style="margin-top:8px;
                         color:#7f9cc7;
                         font-size:14px;">
-
                 Архив поездок, мониторинг выполнения и контроль статусов
-
             </div>
-
         </div>
 
         <!-- FILTERS -->
@@ -44,96 +36,47 @@
                         grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
                         gap:18px;">
 
-                <!-- STATUS -->
                 <div>
-
-                    <label class="filter-label">
-                        Статус
-                    </label>
-
-                    <select @bind="selectedStatus"
-                            class="blue-input">
-
+                    <label class="filter-label">Статус</label>
+                    <select @bind="selectedStatus" class="blue-input">
                         <option value="All">Все</option>
                         <option value="Scheduled">Scheduled</option>
                         <option value="InProgress">InProgress</option>
                         <option value="Completed">Completed</option>
                         <option value="Cancelled">Cancelled</option>
-
                     </select>
-
                 </div>
 
-                <!-- DRIVER -->
                 <div>
-
-                    <label class="filter-label">
-                        Водитель
-                    </label>
-
-                    <select @bind="selectedDriver"
-                            class="blue-input">
-
+                    <label class="filter-label">Водитель</label>
+                    <select @bind="selectedDriver" class="blue-input">
                         <option value="">Все водители</option>
-
                         @foreach (var driver in drivers)
                         {
-                            <option value="@driver">
-                                @driver
-                            </option>
+                            <option value="@driver">@driver</option>
                         }
-
                     </select>
-
                 </div>
 
-                <!-- VEHICLE -->
                 <div>
-
-                    <label class="filter-label">
-                        Автомобиль
-                    </label>
-
-                    <select @bind="selectedVehicle"
-                            class="blue-input">
-
+                    <label class="filter-label">Автомобиль</label>
+                    <select @bind="selectedVehicle" class="blue-input">
                         <option value="">Все автомобили</option>
-
                         @foreach (var vehicle in vehicles)
                         {
-                            <option value="@vehicle">
-                                @vehicle
-                            </option>
+                            <option value="@vehicle">@vehicle</option>
                         }
-
                     </select>
-
                 </div>
 
-                <!-- DATE FROM -->
                 <div>
-
-                    <label class="filter-label">
-                        Дата от
-                    </label>
-
-                    <input type="date"
-                           @bind="dateFrom"
-                           class="blue-input" />
-
+                    <label class="filter-label">Дата от</label>
+                    <input type="date" @bind="dateFrom" class="blue-input" />
                 </div>
 
-                <!-- DATE TO -->
                 <div>
-
-                    <label class="filter-label">
-                        Дата до
-                    </label>
-
-                    <input type="date"
-                           @bind="dateTo"
-                           class="blue-input" />
-
+                    <label class="filter-label">Дата до</label>
+                    <input type="date" @bind="dateTo" class="blue-input" />
                 </div>
 
             </div>
@@ -150,9 +93,7 @@
                           border-collapse:collapse;">
 
                 <thead style="background:#11284b;">
-
                     <tr>
-
                         <th class="tbl-head">ID поездки</th>
                         <th class="tbl-head">Заявка</th>
                         <th class="tbl-head">Водитель</th>
@@ -163,132 +104,60 @@
                         <th class="tbl-head">Пробег</th>
                         <th class="tbl-head">Статус</th>
                         <th class="tbl-head">Действия</th>
-
                     </tr>
-
                 </thead>
 
                 <tbody>
-
                     @foreach (var trip in FilteredTrips)
                     {
                         <tr class="table-row">
-
+                            <td class="tbl-cell">#@trip.TripId</td>
                             <td class="tbl-cell">
-                                #@trip.Id
+                                <div class="request-box">Request #@trip.RequestId</div>
                             </td>
-
+                            <td class="tbl-cell">@trip.DriverName</td>
+                            <td class="tbl-cell">@trip.VehicleName</td>
+                            <td class="tbl-cell">@trip.TripDate.ToShortDateString()</td>
+                            <td class="tbl-cell">@GetStartTimeString(trip.StartTime)</td>
+                            <td class="tbl-cell">@GetEndTimeString(trip.EndTime)</td>
                             <td class="tbl-cell">
-
-                                <div class="request-box">
-                                    Request #@trip.RequestId
-                                </div>
-
+                                <div class="mileage-box">@((int)((trip.EndOdometer ?? 0) - (trip.StartOdometer ?? 0))) KM</div>
                             </td>
-
                             <td class="tbl-cell">
-                                @trip.Driver
-                            </td>
-
-                            <td class="tbl-cell">
-                                @trip.Vehicle
-                            </td>
-
-                            <td class="tbl-cell">
-                                @trip.Date.ToShortDateString()
-                            </td>
-
-                            <td class="tbl-cell">
-                                @trip.StartTime
-                            </td>
-
-                            <td class="tbl-cell">
-                                @(trip.EndTime ?? "-")
-                            </td>
-
-                            <td class="tbl-cell">
-
-                                <div class="mileage-box">
-                                    @trip.Mileage KM
-                                </div>
-
-                            </td>
-
-                            <td class="tbl-cell">
-
                                 @switch (trip.Status)
                                 {
                                     case "Scheduled":
-                                        <div class="status-scheduled">
-                                            ● Scheduled
-                                        </div>
+                                        <div class="status-scheduled">● Scheduled</div>
                                         break;
-
                                     case "InProgress":
-                                        <div class="status-progress">
-                                            ● InProgress
-                                        </div>
+                                        <div class="status-progress">● InProgress</div>
                                         break;
-
                                     case "Completed":
-                                        <div class="status-completed">
-                                            ● Completed
-                                        </div>
+                                        <div class="status-completed">● Completed</div>
                                         break;
-
                                     default:
-                                        <div class="status-cancelled">
-                                            ● Cancelled
-                                        </div>
+                                        <div class="status-cancelled">● Cancelled</div>
                                         break;
                                 }
-
                             </td>
-
                             <td class="tbl-cell">
-
-                                <div style="display:flex;
-                                            gap:10px;
-                                            flex-wrap:wrap;">
-
-                                    <button class="details-btn"
-                                            @onclick="() => OpenDetails(trip)">
-
-                                        Детали
-
-                                    </button>
-
+                                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                                    <button class="details-btn" @onclick="() => OpenDetails(trip)">Детали</button>
                                     @if (trip.Status == "InProgress")
                                     {
-                                        <button class="force-btn"
-                                                @onclick="() => OpenForceComplete(trip)">
-
-                                            Завершить
-
-                                        </button>
+                                        <button class="force-btn" @onclick="() => OpenForceComplete(trip)">Завершить</button>
                                     }
-
                                     @if (trip.Status == "Scheduled")
                                     {
-                                        <button class="cancel-btn"
-                                                @onclick="() => CancelTrip(trip)">
-
-                                            Отменить
-
-                                        </button>
+                                        <button class="cancel-btn" @onclick="() => CancelTrip(trip)">Отменить</button>
                                     }
-
                                 </div>
-
                             </td>
-
                         </tr>
                     }
-
                 </tbody>
 
-            </table>
-
+             </table>
         </div>
 
         <!-- DETAILS -->
@@ -306,34 +175,17 @@
                             margin-bottom:28px;">
 
                     <div>
-
-                        <div style="font-size:30px;
-                                    font-weight:800;
-                                    color:#edf4ff;">
-
-                            TRIP #@selectedTrip.Id
-
+                        <div style="font-size:30px; font-weight:800; color:#edf4ff;">
+                            TRIP #@selectedTrip.TripId
                         </div>
-
-                        <div style="margin-top:8px;
-                                    color:#7f9cc7;">
-
+                        <div style="margin-top:8px; color:#7f9cc7;">
                             Полная информация о поездке и связанной заявке
-
                         </div>
-
                     </div>
 
                     <button @onclick="CloseDetails"
-                            style="background:#162844;
-                                   border:none;
-                                   color:#9cc3ff;
-                                   padding:12px 18px;
-                                   border-radius:10px;
-                                   cursor:pointer;">
-
+                            style="background:#162844; border:none; color:#9cc3ff; padding:12px 18px; border-radius:10px; cursor:pointer;">
                         Закрыть
-
                     </button>
 
                 </div>
@@ -342,57 +194,18 @@
                             grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
                             gap:20px;">
 
-                    <!-- INFO -->
                     <div class="info-card">
-
-                        <div class="info-title">
-                            Информация о поездке
-                        </div>
-
-                        <div class="info-row">
-                            <span>Водитель</span>
-                            <strong>@selectedTrip.Driver</strong>
-                        </div>
-
-                        <div class="info-row">
-                            <span>Автомобиль</span>
-                            <strong>@selectedTrip.Vehicle</strong>
-                        </div>
-
-                        <div class="info-row">
-                            <span>Пробег</span>
-                            <strong>@selectedTrip.Mileage KM</strong>
-                        </div>
-
-                        <div class="info-row">
-                            <span>Статус</span>
-                            <strong>@selectedTrip.Status</strong>
-                        </div>
-
+                        <div class="info-title">Информация о поездке</div>
+                        <div class="info-row"><span>Водитель</span><strong>@selectedTrip.DriverName</strong></div>
+                        <div class="info-row"><span>Автомобиль</span><strong>@selectedTrip.VehicleName</strong></div>
+                        <div class="info-row"><span>Пробег</span><strong>@((int)((selectedTrip.EndOdometer ?? 0) - (selectedTrip.StartOdometer ?? 0))) KM</strong></div>
+                        <div class="info-row"><span>Статус</span><strong>@selectedTrip.Status</strong></div>
                     </div>
 
-                    <!-- REQUEST -->
                     <div class="info-card">
-
-                        <div class="info-title">
-                            Информация о заявке
-                        </div>
-
-                        <div class="info-row">
-                            <span>ID заявки</span>
-                            <strong>#@selectedTrip.RequestId</strong>
-                        </div>
-
-                        <div class="info-row">
-                            <span>Маршрут</span>
-                            <strong>@selectedTrip.Route</strong>
-                        </div>
-
-                        <div class="info-row">
-                            <span>Комментарий</span>
-                            <strong>@selectedTrip.Comment</strong>
-                        </div>
-
+                        <div class="info-title">Информация о заявке</div>
+                        <div class="info-row"><span>ID заявки</span><strong>#@selectedTrip.RequestId</strong></div>
+                        <div class="info-row"><span>Маршрут</span><strong>@selectedTrip.Route</strong></div>
                     </div>
 
                 </div>
@@ -425,44 +238,24 @@
                         font-weight:800;
                         color:#edf4ff;
                         margin-bottom:20px;">
-
                 ПРИНУДИТЕЛЬНОЕ ЗАВЕРШЕНИЕ
-
             </div>
 
-            <div style="color:#8fb7f0;
-                        margin-bottom:18px;">
-
-                Поездка зависла в статусе InProgress.
-                Требуется комментарий администратора.
-
+            <div style="color:#8fb7f0; margin-bottom:18px;">
+                Поездка зависла в статусе InProgress. Требуется комментарий администратора.
             </div>
 
             <textarea @bind="forceComment"
                       class="blue-input"
                       rows="5"
-                      placeholder="Введите комментарий...">
-            </textarea>
+                      placeholder="Введите комментарий..."></textarea>
 
             <div style="display:flex;
                         justify-content:flex-end;
                         gap:14px;
                         margin-top:24px;">
-
-                <button class="modal-cancel-btn"
-                        @onclick="CloseForceModal">
-
-                    Отмена
-
-                </button>
-
-                <button class="modal-save-btn"
-                        @onclick="ForceCompleteTrip">
-
-                    Завершить поездку
-
-                </button>
-
+                <button class="modal-cancel-btn" @onclick="CloseForceModal">Отмена</button>
+                <button class="modal-save-btn" @onclick="ForceCompleteTrip">Завершить поездку</button>
             </div>
 
         </div>
@@ -471,330 +264,27 @@
 }
 
 <style>
-
-    .tbl-head{
-        padding:18px;
-        text-align:left;
-        color:#8fb7f0;
-        font-size:13px;
-        letter-spacing:1px;
-    }
-
-    .tbl-cell{
-        padding:18px;
-        color:#dce9ff;
-        font-size:14px;
-    }
-
-    .table-row{
-        border-top:1px solid #18345f;
-        transition:0.2s;
-    }
-
-    .table-row:hover{
-        background:rgba(31,68,121,0.15);
-    }
-
-    .filter-label{
-        display:block;
-        margin-bottom:8px;
-        color:#8fb7f0;
-        font-size:13px;
-        font-weight:700;
-    }
-
-    .blue-input{
-        width:100%;
-        background:#071120;
-        border:1px solid #27508d;
-        border-radius:10px;
-        padding:12px;
-        color:#edf4ff;
-        font-size:14px;
-    }
-
-    .request-box{
-        display:inline-block;
-        background:#132746;
-        color:#9ec5ff;
-        padding:8px 14px;
-        border-radius:10px;
-        font-weight:700;
-    }
-
-    .mileage-box{
-        display:inline-block;
-        background:#0f2340;
-        color:#5ca7ff;
-        padding:8px 12px;
-        border-radius:10px;
-        font-weight:700;
-    }
-
-    .status-scheduled,
-    .status-progress,
-    .status-completed,
-    .status-cancelled{
-        display:inline-block;
-        padding:6px 14px;
-        border-radius:20px;
-        font-size:13px;
-        font-weight:700;
-    }
-
-    .status-scheduled{
-        background:rgba(41,121,255,0.14);
-        color:#66a8ff;
-    }
-
-    .status-progress{
-        background:rgba(255,152,0,0.14);
-        color:#ffbe5c;
-    }
-
-    .status-completed{
-        background:rgba(76,175,80,0.14);
-        color:#6dff9b;
-    }
-
-    .status-cancelled{
-        background:rgba(180,180,180,0.14);
-        color:#b0b0b0;
-    }
-
-    .details-btn,
-    .force-btn,
-    .cancel-btn{
-        border:none;
-        padding:10px 14px;
-        border-radius:8px;
-        cursor:pointer;
-        font-size:13px;
-        font-weight:700;
-        transition:0.2s;
-    }
-
-    .details-btn{
-        background:#1565c0;
-        color:white;
-    }
-
-    .force-btn{
-        background:#5a4314;
-        color:#ffc46b;
-    }
-
-    .cancel-btn{
-        background:#5c1f1f;
-        color:#ff9a9a;
-    }
-
-    .details-btn:hover,
-    .force-btn:hover,
-    .cancel-btn:hover{
-        transform:translateY(-2px);
-        opacity:0.92;
-    }
-
-    .info-card{
-        background:#08111f;
-        border:1px solid #18345f;
-        border-radius:16px;
-        padding:22px;
-    }
-
-    .info-title{
-        color:#edf4ff;
-        font-size:18px;
-        font-weight:800;
-        margin-bottom:18px;
-    }
-
-    .info-row{
-        display:flex;
-        justify-content:space-between;
-        margin-bottom:12px;
-        color:#8ca9d5;
-    }
-
-    .modal-save-btn{
-        background:#2979ff;
-        border:none;
-        color:white;
-        padding:12px 20px;
-        border-radius:10px;
-        cursor:pointer;
-        font-weight:700;
-    }
-
-    .modal-cancel-btn{
-        background:#17263d;
-        border:none;
-        color:#8fb7f0;
-        padding:12px 20px;
-        border-radius:10px;
-        cursor:pointer;
-        font-weight:700;
-    }
-
+    .tbl-head { padding:18px; text-align:left; color:#8fb7f0; font-size:13px; letter-spacing:1px; }
+    .tbl-cell { padding:18px; color:#dce9ff; font-size:14px; }
+    .table-row { border-top:1px solid #18345f; transition:0.2s; }
+    .table-row:hover { background:rgba(31,68,121,0.15); }
+    .filter-label { display:block; margin-bottom:8px; color:#8fb7f0; font-size:13px; font-weight:700; }
+    .blue-input { width:100%; background:#071120; border:1px solid #27508d; border-radius:10px; padding:12px; color:#edf4ff; font-size:14px; }
+    .request-box { display:inline-block; background:#132746; color:#9ec5ff; padding:8px 14px; border-radius:10px; font-weight:700; }
+    .mileage-box { display:inline-block; background:#0f2340; color:#5ca7ff; padding:8px 12px; border-radius:10px; font-weight:700; }
+    .status-scheduled, .status-progress, .status-completed, .status-cancelled { display:inline-block; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:700; }
+    .status-scheduled { background:rgba(41,121,255,0.14); color:#66a8ff; }
+    .status-progress { background:rgba(255,152,0,0.14); color:#ffbe5c; }
+    .status-completed { background:rgba(76,175,80,0.14); color:#6dff9b; }
+    .status-cancelled { background:rgba(180,180,180,0.14); color:#b0b0b0; }
+    .details-btn, .force-btn, .cancel-btn { border:none; padding:10px 14px; border-radius:8px; cursor:pointer; font-size:13px; font-weight:700; transition:0.2s; }
+    .details-btn { background:#1565c0; color:white; }
+    .force-btn { background:#5a4314; color:#ffc46b; }
+    .cancel-btn { background:#5c1f1f; color:#ff9a9a; }
+    .details-btn:hover, .force-btn:hover, .cancel-btn:hover { transform:translateY(-2px); opacity:0.92; }
+    .info-card { background:#08111f; border:1px solid #18345f; border-radius:16px; padding:22px; }
+    .info-title { color:#edf4ff; font-size:18px; font-weight:800; margin-bottom:18px; }
+    .info-row { display:flex; justify-content:space-between; margin-bottom:12px; color:#8ca9d5; }
+    .modal-save-btn { background:#2979ff; border:none; color:white; padding:12px 20px; border-radius:10px; cursor:pointer; font-weight:700; }
+    .modal-cancel-btn { background:#17263d; border:none; color:#8fb7f0; padding:12px 20px; border-radius:10px; cursor:pointer; font-weight:700; }
 </style>
-
-@code {
-
-    private string selectedStatus = "All";
-
-    private string selectedDriver = "";
-
-    private string selectedVehicle = "";
-
-    private DateTime? dateFrom;
-
-    private DateTime? dateTo;
-
-    private TripModel? selectedTrip;
-
-    private bool showForceCompleteModal;
-
-    private TripModel? forceTrip;
-
-    private string forceComment = "";
-
-    private List<string> drivers = new()
-    {
-        "Иванов Иван",
-        "Петров Сергей",
-        "Сидоров Алексей"
-    };
-
-    private List<string> vehicles = new()
-    {
-        "Toyota Camry A001AA",
-        "Ford Transit B777BB",
-        "Mercedes Sprinter C555CC"
-    };
-
-    private List<TripModel> trips = new()
-    {
-        new()
-        {
-            Id = 1001,
-            RequestId = 5001,
-            Driver = "Иванов Иван",
-            Vehicle = "Toyota Camry A001AA",
-            Date = DateTime.Today,
-            StartTime = "08:30",
-            EndTime = "12:15",
-            Mileage = 220,
-            Status = "Completed",
-            Route = "Москва → Тула",
-            Comment = "Поездка завершена успешно"
-        },
-
-        new()
-        {
-            Id = 1002,
-            RequestId = 5002,
-            Driver = "Петров Сергей",
-            Vehicle = "Ford Transit B777BB",
-            Date = DateTime.Today,
-            StartTime = "10:00",
-            Mileage = 140,
-            Status = "InProgress",
-            Route = "Москва → Калуга",
-            Comment = "Поездка выполняется"
-        },
-
-        new()
-        {
-            Id = 1003,
-            RequestId = 5003,
-            Driver = "Сидоров Алексей",
-            Vehicle = "Mercedes Sprinter C555CC",
-            Date = DateTime.Today.AddDays(1),
-            StartTime = "07:00",
-            Mileage = 0,
-            Status = "Scheduled",
-            Route = "Москва → Рязань",
-            Comment = "Ожидает начала"
-        }
-    };
-
-    private IEnumerable<TripModel> FilteredTrips =>
-        trips.Where(t =>
-            (selectedStatus == "All" || t.Status == selectedStatus)
-            && (string.IsNullOrWhiteSpace(selectedDriver) || t.Driver == selectedDriver)
-            && (string.IsNullOrWhiteSpace(selectedVehicle) || t.Vehicle == selectedVehicle)
-            && (!dateFrom.HasValue || t.Date >= dateFrom.Value)
-            && (!dateTo.HasValue || t.Date <= dateTo.Value));
-
-    private void OpenDetails(TripModel trip)
-    {
-        selectedTrip = trip;
-    }
-
-    private void CloseDetails()
-    {
-        selectedTrip = null;
-    }
-
-    private void OpenForceComplete(TripModel trip)
-    {
-        forceTrip = trip;
-        showForceCompleteModal = true;
-    }
-
-    private void CloseForceModal()
-    {
-        showForceCompleteModal = false;
-        forceComment = "";
-        forceTrip = null;
-    }
-
-    private void ForceCompleteTrip()
-    {
-        if (forceTrip is not null)
-        {
-            forceTrip.Status = "Completed";
-            forceTrip.EndTime = DateTime.Now.ToString("HH:mm");
-
-            forceTrip.Comment =
-                $"Принудительно завершено администратором: {forceComment}";
-        }
-
-        CloseForceModal();
-    }
-
-    private void CancelTrip(TripModel trip)
-    {
-        trip.Status = "Cancelled";
-
-        trip.Comment =
-            "Поездка отменена. Заявка возвращена в Pending.";
-    }
-
-    public class TripModel
-    {
-        public int Id { get; set; }
-
-        public int RequestId { get; set; }
-
-        public string Driver { get; set; } = "";
-
-        public string Vehicle { get; set; } = "";
-
-        public DateTime Date { get; set; }
-
-        public string StartTime { get; set; } = "";
-
-        public string? EndTime { get; set; }
-
-        public int Mileage { get; set; }
-
-        public string Status { get; set; } = "";
-
-        public string Route { get; set; } = "";
-
-        public string Comment { get; set; } = "";
-    }
-
-}

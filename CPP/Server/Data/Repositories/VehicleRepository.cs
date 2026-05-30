@@ -22,4 +22,21 @@ public class VehicleRepository : Repository<Vehicle>, IVehicleRepository
             .Where(v => v.VehicleType == type)
             .ToListAsync();
     }
+
+    public async Task<List<Vehicle>> GetAllWithDetailsAsync()
+    {
+        return await _dbSet
+            .Include(v => v.Driver)
+            .Include(v => v.Trips)
+            .OrderBy(v => v.VehicleId)
+            .ToListAsync();
+    }
+
+    public async Task<Vehicle?> GetByIdWithDetailsAsync(int id)
+    {
+        return await _dbSet
+            .Include(v => v.Driver)
+            .Include(v => v.Trips)
+            .FirstOrDefaultAsync(v => v.VehicleId == id);
+    }
 }

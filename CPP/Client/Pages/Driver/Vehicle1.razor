@@ -1,482 +1,129 @@
 @page "/driver/vehicle1"
-
 @using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
 
 <PageTitle>Мой автомобиль</PageTitle>
 
-<div style="min-height:100vh;
-            background:linear-gradient(135deg,#071120 0%,#0b1f3d 100%);
-            padding:24px;">
+<div style="min-height:100vh; background:linear-gradient(135deg,#071120 0%,#0b1f3d 100%); padding:24px;">
+    <div style="max-width:1500px; margin:0 auto;">
 
-    <div style="max-width:1500px;
-                margin:0 auto;">
-
-        <!-- HEADER -->
         <div style="margin-bottom:32px;">
-
-            <div style="font-size:34px;
-                        font-weight:900;
-                        color:#edf4ff;
-                        letter-spacing:1px;">
-
-                МОЙ АВТОМОБИЛЬ
-
-            </div>
-
-            <div style="margin-top:10px;
-                        color:#87a6cf;
-                        font-size:14px;">
-
-                Информация о закреплённом транспортном средстве
-
-            </div>
-
+            <div style="font-size:34px; font-weight:900; color:#edf4ff; letter-spacing:1px;">МОЙ АВТОМОБИЛЬ</div>
+            <div style="margin-top:10px; color:#87a6cf; font-size:14px;">Информация о закреплённом транспортном средстве</div>
         </div>
 
         @if (vehicle is not null)
         {
-            <div style="display:grid;
-                        grid-template-columns:420px 1fr;
-                        gap:28px;
-                        align-items:start;">
-
+            <div style="display:grid; grid-template-columns:420px 1fr; gap:28px; align-items:start;">
+                
                 <!-- LEFT -->
-                <div style="background:linear-gradient(145deg,#0c1b32 0%,#091524 100%);
-                            border:1px solid #21467c;
-                            border-radius:22px;
-                            padding:24px;">
-
-                    <!-- IMAGE -->
-                    <div style="height:280px;
-                                background:rgba(42,74,142,0.18);
-                                border:1px solid #21467c;
-                                border-radius:18px;
-                                display:flex;
-                                align-items:center;
-                                justify-content:center;
-                                margin-bottom:24px;">
-
+                <div style="background:linear-gradient(145deg,#0c1b32 0%,#091524 100%); border:1px solid #21467c; border-radius:22px; padding:24px;">
+                    
+                    <div style="height:280px; background:rgba(42,74,142,0.18); border:1px solid #21467c; border-radius:18px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
                         @if (!string.IsNullOrWhiteSpace(vehicle.ImageUrl))
                         {
-                            <img src="@vehicle.ImageUrl"
-                                 style="width:100%;
-                                        height:100%;
-                                        object-fit:cover;
-                                        border-radius:18px;" />
+                            <img src="@vehicle.ImageUrl" style="width:100%; height:100%; object-fit:cover; border-radius:18px;" />
                         }
                         else
                         {
                             <div style="text-align:center;">
-
-                                <div style="font-size:96px;">
-                                    @GetVehicleIcon(vehicle.VehicleType)
-                                </div>
-
-                                <div style="margin-top:12px;
-                                            color:#7fa4d6;
-                                            font-size:14px;">
-
-                                    Фото отсутствует
-
-                                </div>
-
+                                <div style="font-size:96px;">@GetVehicleIcon(vehicle.VehicleType)</div>
+                                <div style="margin-top:12px; color:#7fa4d6; font-size:14px;">Фото отсутствует</div>
                             </div>
                         }
-
                     </div>
 
-                    <!-- STATUS -->
-                    <div style="display:flex;
-                                justify-content:space-between;
-                                align-items:center;
-                                background:#08111d;
-                                border:1px solid #1e3f6d;
-                                border-radius:16px;
-                                padding:18px;">
-
+                    <div style="display:flex; justify-content:space-between; align-items:center; background:#08111d; border:1px solid #1e3f6d; border-radius:16px; padding:18px;">
                         <div>
-
-                            <div style="font-size:12px;
-                                        color:#7fa4d6;
-                                        letter-spacing:1px;">
-
-                                ТЕКУЩИЙ СТАТУС
-
-                            </div>
-
+                            <div style="font-size:12px; color:#7fa4d6; letter-spacing:1px;">ТЕКУЩИЙ СТАТУС</div>
                             @if (vehicle.Status == "Available")
                             {
-                                <div style="margin-top:8px;
-                                            color:#65d98c;
-                                            font-size:18px;
-                                            font-weight:800;">
-
-                                    ● ДОСТУПЕН
-
-                                </div>
+                                <div style="margin-top:8px; color:#65d98c; font-size:18px; font-weight:800;">● ДОСТУПЕН</div>
                             }
                             else
                             {
-                                <div style="margin-top:8px;
-                                            color:#ffb74d;
-                                            font-size:18px;
-                                            font-weight:800;">
-
-                                    ● В РЕМОНТЕ
-
-                                </div>
+                                <div style="margin-top:8px; color:#ffb74d; font-size:18px; font-weight:800;">● В РЕМОНТЕ</div>
                             }
-
                         </div>
-
-                        <div style="font-size:42px;">
-                            🚘
-                        </div>
-
+                        <div style="font-size:42px;">🚘</div>
                     </div>
 
-                    <!-- INSURANCE -->
-                    <div style="margin-top:20px;
-                                background:rgba(37,99,235,0.12);
-                                border-left:4px solid #3b82f6;
-                                border-radius:14px;
-                                padding:18px;">
-
-                        <div style="color:#8db4ef;
-                                    font-size:12px;
-                                    letter-spacing:1px;">
-
-                            СТРАХОВКА
-
+                    @if (vehicle.InsuranceExpiration.HasValue)
+                    {
+                        <div style="margin-top:20px; background:rgba(37,99,235,0.12); border-left:4px solid #3b82f6; border-radius:14px; padding:18px;">
+                            <div style="color:#8db4ef; font-size:12px; letter-spacing:1px;">СТРАХОВКА</div>
+                            <div style="margin-top:10px; color:#edf4ff; font-size:20px; font-weight:800;">До @vehicle.InsuranceExpiration.Value.ToString("dd.MM.yyyy")</div>
                         </div>
-
-                        <div style="margin-top:10px;
-                                    color:#edf4ff;
-                                    font-size:20px;
-                                    font-weight:800;">
-
-                            До @vehicle.InsuranceExpiration.ToString("dd.MM.yyyy")
-
-                        </div>
-
-                    </div>
-
+                    }
                 </div>
 
                 <!-- RIGHT -->
-                <div style="display:flex;
-                            flex-direction:column;
-                            gap:24px;">
-
-                    <!-- TITLE -->
-                    <div style="background:linear-gradient(145deg,#0d1c34 0%,#091423 100%);
-                                border:1px solid #21467c;
-                                border-radius:22px;
-                                padding:28px;">
-
-                        <div style="display:flex;
-                                    justify-content:space-between;
-                                    align-items:center;
-                                    flex-wrap:wrap;
-                                    gap:18px;">
-
+                <div style="display:flex; flex-direction:column; gap:24px;">
+                    
+                    <div style="background:linear-gradient(145deg,#0d1c34 0%,#091423 100%); border:1px solid #21467c; border-radius:22px; padding:28px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:18px;">
                             <div>
-
-                                <div style="font-size:38px;
-                                            font-weight:900;
-                                            color:#edf4ff;">
-
-                                    @vehicle.Brand @vehicle.Model
-
-                                </div>
-
-                                <div style="margin-top:8px;
-                                            color:#87a6cf;
-                                            font-size:16px;">
-
-                                    @vehicle.Year год выпуска
-
-                                </div>
-
+                                <div style="font-size:38px; font-weight:900; color:#edf4ff;">@vehicle.Brand @vehicle.Model</div>
+                                <div style="margin-top:8px; color:#87a6cf; font-size:16px;">@vehicle.Year год выпуска</div>
                             </div>
-
-                            <div style="background:#08111d;
-                                        border:1px solid #1e3f6d;
-                                        border-radius:16px;
-                                        padding:16px 22px;">
-
-                                <div style="color:#7fa4d6;
-                                            font-size:11px;
-                                            letter-spacing:1px;">
-
-                                    ГОСУДАРСТВЕННЫЙ НОМЕР
-
-                                </div>
-
-                                <div style="margin-top:8px;
-                                            color:#edf4ff;
-                                            font-size:24px;
-                                            font-weight:900;
-                                            font-family:monospace;">
-
-                                    @vehicle.LicensePlate
-
-                                </div>
-
+                            <div style="background:#08111d; border:1px solid #1e3f6d; border-radius:16px; padding:16px 22px;">
+                                <div style="color:#7fa4d6; font-size:11px; letter-spacing:1px;">ГОСУДАРСТВЕННЫЙ НОМЕР</div>
+                                <div style="margin-top:8px; color:#edf4ff; font-size:24px; font-weight:900; font-family:monospace;">@vehicle.LicensePlate</div>
                             </div>
-
                         </div>
-
                     </div>
 
-                    <!-- INFO GRID -->
-                    <div style="display:grid;
-                                grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-                                gap:22px;">
-
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:22px;">
                         <div class="info-card">
-
-                            <div class="info-title">
-                                VIN
-                            </div>
-
-                            <div class="info-value vin">
-                                @vehicle.VIN
-                            </div>
-
+                            <div class="info-title">VIN</div>
+                            <div class="info-value vin">@vehicle.Vin</div>
                         </div>
-
                         <div class="info-card">
-
-                            <div class="info-title">
-                                Тип топлива
-                            </div>
-
-                            <div class="info-value">
-                                @vehicle.FuelType
-                            </div>
-
+                            <div class="info-title">Тип топлива</div>
+                            <div class="info-value">@vehicle.FuelType</div>
                         </div>
-
                         <div class="info-card">
-
-                            <div class="info-title">
-                                Тип автомобиля
-                            </div>
-
-                            <div class="info-value">
-                                @vehicle.VehicleType
-                            </div>
-
+                            <div class="info-title">Тип автомобиля</div>
+                            <div class="info-value">@vehicle.VehicleType</div>
                         </div>
-
                         <div class="info-card">
-
-                            <div class="info-title">
-                                Пробег
-                            </div>
-
-                            <div class="info-value">
-                                @vehicle.Mileage.ToString("N0") км
-                            </div>
-
+                            <div class="info-title">Пробег</div>
+                            <div class="info-value">@vehicle.Mileage.ToString("N0") км</div>
                         </div>
-
                     </div>
 
-                    <!-- ODOMETER -->
-                    <div style="background:linear-gradient(145deg,#0c1b32 0%,#091423 100%);
-                                border:1px solid #21467c;
-                                border-radius:22px;
-                                padding:26px;">
-
-                        <div style="display:flex;
-                                    justify-content:space-between;
-                                    align-items:center;
-                                    flex-wrap:wrap;
-                                    gap:20px;">
-
+                    <div style="background:linear-gradient(145deg,#0c1b32 0%,#091423 100%); border:1px solid #21467c; border-radius:22px; padding:26px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
                             <div>
-
-                                <div style="font-size:14px;
-                                            color:#7fa4d6;
-                                            letter-spacing:1px;">
-
-                                    ТЕКУЩИЙ ПРОБЕГ
-
-                                </div>
-
-                                <div style="margin-top:14px;
-                                            color:#edf4ff;
-                                            font-size:52px;
-                                            font-weight:900;">
-
+                                <div style="font-size:14px; color:#7fa4d6; letter-spacing:1px;">ТЕКУЩИЙ ПРОБЕГ</div>
+                                <div style="margin-top:14px; color:#edf4ff; font-size:52px; font-weight:900;">
                                     @vehicle.Mileage.ToString("N0")
-
-                                    <span style="font-size:26px;
-                                                 color:#7fa4d6;">
-
-                                        км
-
-                                    </span>
-
+                                    <span style="font-size:26px; color:#7fa4d6;">км</span>
                                 </div>
-
                             </div>
-
-                            <div style="width:120px;
-                                        height:120px;
-                                        border-radius:50%;
-                                        background:radial-gradient(circle,#2563eb 0%,#0b1f3d 100%);
-                                        display:flex;
-                                        align-items:center;
-                                        justify-content:center;
-                                        box-shadow:0 0 30px rgba(37,99,235,0.45);">
-
-                                <div style="font-size:46px;">
-                                    ⚙
-                                </div>
-
-                            </div>
-
+                            
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
         }
         else
         {
-            <!-- EMPTY -->
-            <div style="background:linear-gradient(145deg,#0c1b32 0%,#091423 100%);
-                        border:2px dashed #2a4a8e;
-                        border-radius:24px;
-                        padding:90px 40px;
-                        text-align:center;">
-
-                <div style="font-size:110px;
-                            margin-bottom:24px;">
-
-                    🚫
-
+            <div style="background:linear-gradient(145deg,#0c1b32 0%,#091423 100%); border:2px dashed #2a4a8e; border-radius:24px; padding:90px 40px; text-align:center;">
+                <div style="font-size:110px; margin-bottom:24px;">🚫</div>
+                <div style="color:#edf4ff; font-size:30px; font-weight:900;">АВТОМОБИЛЬ НЕ ЗАКРЕПЛЁН</div>
+                <div style="margin-top:18px; color:#89a7cf; font-size:17px; max-width:700px; margin-left:auto; margin-right:auto; line-height:1.7;">
+                    За вами не закреплён постоянный автомобиль. Обратитесь к администратору для назначения транспортного средства.
                 </div>
-
-                <div style="color:#edf4ff;
-                            font-size:30px;
-                            font-weight:900;">
-
-                    АВТОМОБИЛЬ НЕ ЗАКРЕПЛЁН
-
-                </div>
-
-                <div style="margin-top:18px;
-                            color:#89a7cf;
-                            font-size:17px;
-                            max-width:700px;
-                            margin-left:auto;
-                            margin-right:auto;
-                            line-height:1.7;">
-
-                    За вами не закреплён постоянный автомобиль.
-                    Обратитесь к администратору для назначения транспортного средства.
-
-                </div>
-
             </div>
         }
-
     </div>
-
 </div>
 
 <style>
-
-    .info-card{
-        background:linear-gradient(145deg,#0c1b32 0%,#091423 100%);
-        border:1px solid #21467c;
-        border-radius:18px;
-        padding:22px;
-        transition:0.25s;
-    }
-
-    .info-card:hover{
-        transform:translateY(-4px);
-        border-color:#3b82f6;
-        box-shadow:0 10px 24px rgba(0,0,0,0.35);
-    }
-
-    .info-title{
-        color:#7fa4d6;
-        font-size:12px;
-        letter-spacing:1px;
-        margin-bottom:14px;
-    }
-
-    .info-value{
-        color:#edf4ff;
-        font-size:22px;
-        font-weight:800;
-        word-break:break-word;
-    }
-
-    .vin{
-        font-family:monospace;
-        font-size:18px;
-    }
-
+    .info-card { background:linear-gradient(145deg,#0c1b32 0%,#091423 100%); border:1px solid #21467c; border-radius:18px; padding:22px; transition:0.25s; }
+    .info-card:hover { transform:translateY(-4px); border-color:#3b82f6; box-shadow:0 10px 24px rgba(0,0,0,0.35); }
+    .info-title { color:#7fa4d6; font-size:12px; letter-spacing:1px; margin-bottom:14px; }
+    .info-value { color:#edf4ff; font-size:22px; font-weight:800; word-break:break-word; }
+    .vin { font-family:monospace; font-size:18px; }
 </style>
-
-@code {
-
-    private VehicleModel? vehicle = new()
-    {
-        Brand = "Toyota",
-        Model = "Camry",
-        Year = 2022,
-        LicensePlate = "A777AA 777",
-        VIN = "JTNB11HK203456781",
-        FuelType = "Бензин",
-        VehicleType = "Седан",
-        Mileage = 128540,
-        Status = "Available",
-        InsuranceExpiration = DateTime.Today.AddMonths(8),
-        ImageUrl = null
-    };
-
-    private string GetVehicleIcon(string type) => type switch
-    {
-        "Седан" => "🚗",
-        "Универсал" => "🚙",
-        "Микроавтобус" => "🚐",
-        "Грузовой" => "🚛",
-        _ => "🚘"
-    };
-
-    public class VehicleModel
-    {
-        public string Brand { get; set; } = "";
-
-        public string Model { get; set; } = "";
-
-        public int Year { get; set; }
-
-        public string LicensePlate { get; set; } = "";
-
-        public string VIN { get; set; } = "";
-
-        public string FuelType { get; set; } = "";
-
-        public string VehicleType { get; set; } = "";
-
-        public int Mileage { get; set; }
-
-        public string Status { get; set; } = "";
-
-        public DateTime InsuranceExpiration { get; set; }
-
-        public string? ImageUrl { get; set; }
-    }
-
-}

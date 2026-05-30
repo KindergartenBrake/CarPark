@@ -1,36 +1,32 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.JSInterop;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using Radzen;
-using Radzen.Blazor;
+using CP.Server.DTO;
 
-namespace CP.Client.Pages.Driver
+namespace CP.Client.Pages.Driver;
+
+public partial class Vehicle1
 {
-    public partial class Vehicle
+    [Inject] protected CP.Client.CarParkService CarParkService { get; set; } = default!;
+
+    private DriverVehicleDto? vehicle;
+
+    protected override async Task OnInitializedAsync()
     {
-        [Inject]
-        protected IJSRuntime JSRuntime { get; set; }
-
-        [Inject]
-        protected NavigationManager NavigationManager { get; set; }
-
-        [Inject]
-        protected DialogService DialogService { get; set; }
-
-        [Inject]
-        protected TooltipService TooltipService { get; set; }
-
-        [Inject]
-        protected ContextMenuService ContextMenuService { get; set; }
-
-        [Inject]
-        protected NotificationService NotificationService { get; set; }
-
-        [Inject]
-        protected SecurityService Security { get; set; }
+        try
+        {
+            vehicle = await CarParkService.GetDriverVehicleAsync();
+        }
+        catch
+        {
+            vehicle = null;
+        }
     }
+
+    private string GetVehicleIcon(string type) => type switch
+    {
+        "Седан" => "🚗",
+        "Универсал" => "🚙",
+        "Микроавтобус" => "🚐",
+        "Грузовой" => "🚛",
+        _ => "🚘"
+    };
 }

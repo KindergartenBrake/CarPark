@@ -28,4 +28,14 @@ public class TripRepository : Repository<Trip>, ITripRepository
             .Include(t => t.Vehicle)
             .FirstOrDefaultAsync(t => t.TripId == tripId);
     }
+
+    public async Task<List<Trip>> GetAllTripsWithDetailsAsync()
+    {
+        return await _dbSet
+            .Include(t => t.Driver)
+            .Include(t => t.Vehicle)
+            .Include(t => t.TripRequest)
+            .OrderByDescending(t => t.TripDate)
+            .ToListAsync();
+    }
 }

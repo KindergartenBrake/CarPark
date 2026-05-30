@@ -7,4 +7,5 @@ public interface ITripRepository : IRepository<Trip>
     Task<List<Trip>> GetByDriverIdAsync(int driverId);
     Task<Trip?> GetByDriverAndIdAsync(int driverId, int tripId);
     Task<Trip?> GetWithVehicleAsync(int tripId);
+    Task<List<Trip>> GetAllTripsWithDetailsAsync();
 }

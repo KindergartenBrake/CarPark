@@ -1,36 +1,95 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.JSInterop;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using Radzen;
-using Radzen.Blazor;
+using CP.Server.DTO;
 
-namespace CP.Client.Pages.Administrator
+namespace CP.Client.Pages.Administrator;
+
+public partial class Dashboard2
 {
-    public partial class Dashboard1
+    [Inject] protected CP.Client.CarParkService CarParkService { get; set; } = default!;
+    [Inject] protected NavigationManager Navigation { get; set; } = default!;
+
+    private bool showRejectModal;
+    private string rejectReason = "";
+    private RecentRequestDto? selectedRequest;
+    
+    private AdminDashboardDto stats = new();
+    
+    // Свойства для привязки к разметке
+    private List<RecentRequestDto> requests => stats.RecentRequests;
+    private List<ActivityPointDto> chartData => stats.WeeklyActivity;
+    
+    private int PendingRequests => stats.PendingRequests;
+    private int ActiveTrips => stats.ActiveTrips;
+    private int AvailableVehicles => stats.AvailableVehicles;
+    private int ActiveDrivers => stats.ActiveDrivers;
+    private int TotalVehicles => stats.TotalVehicles;
+    private int VehiclesInRepair => stats.VehiclesInRepair;
+    private int CompletedTripsToday => stats.CompletedTripsToday;
+    private double AverageLoad => stats.AverageLoad;
+
+    protected override async Task OnInitializedAsync()
     {
-        [Inject]
-        protected IJSRuntime JSRuntime { get; set; }
+        await LoadStats();
+    }
 
-        [Inject]
-        protected NavigationManager NavigationManager { get; set; }
+    private async Task LoadStats()
+    {
+        try
+        {
+            stats = await CarParkService.GetAdminDashboardStatsAsync();
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading dashboard: {ex.Message}");
+            stats = new AdminDashboardDto();
+        }
+    }
 
-        [Inject]
-        protected DialogService DialogService { get; set; }
+    private void GoToRequests()
+    {
+        Navigation.NavigateTo("/administrator/trip-requests2");
+    }
 
-        [Inject]
-        protected TooltipService TooltipService { get; set; }
+    private void GoToVehicles()
+    {
+        Navigation.NavigateTo("/administrator/vehicles2");
+    }
 
-        [Inject]
-        protected ContextMenuService ContextMenuService { get; set; }
+    private async Task AssignRequest(RecentRequestDto request)
+    {
+        // Перенаправляем на страницу заявок с выделением конкретной заявки
+        Navigation.NavigateTo($"/administrator/trip-requests2?requestId={request.RequestId}");
+    }
 
-        [Inject]
-        protected NotificationService NotificationService { get; set; }
+    private void OpenRejectModal(RecentRequestDto request)
+    {
+        selectedRequest = request;
+        showRejectModal = true;
+    }
 
-        [Inject]
-        protected SecurityService Security { get; set; }
+    private void CloseRejectModal()
+    {
+        showRejectModal = false;
+        rejectReason = "";
+        selectedRequest = null;
+    }
+
+    private async Task RejectRequest()
+    {
+        if (selectedRequest is not null)
+        {
+            try
+            {
+                await CarParkService.RejectTripRequestAsync(selectedRequest.RequestId, 
+                    new RejectTripRequestDto { Reason = rejectReason });
+                await LoadStats();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error rejecting request: {ex.Message}");
+            }
+        }
+        CloseRejectModal();
     }
 }

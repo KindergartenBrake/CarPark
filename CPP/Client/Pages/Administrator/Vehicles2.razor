@@ -1,7 +1,7 @@
 @page "/administrator/vehicles2"
-
+@namespace CP.Client.Pages.Administrator
 @using Microsoft.AspNetCore.Authorization
-
+@attribute [Authorize]
 
 <PageTitle>Vehicles Management</PageTitle>
 
@@ -17,24 +17,17 @@
                     margin-bottom:30px;">
 
             <div>
-
-                <div style="color:#edf4ff;
-                            font-size:34px;
-                            font-weight:800;
+                <div style="font-size:36px;
+                            font-weight:900;
+                            color:#edf4ff;
                             letter-spacing:1px;">
-
-                    VEHICLES MANAGEMENT
-
+                АВТОМОБИЛИ
                 </div>
-
                 <div style="margin-top:8px;
                             color:#7e9dc8;
                             font-size:14px;">
-
                     Управление автопарком, водителями и состоянием автомобилей
-
                 </div>
-
             </div>
 
             <button @onclick="OpenCreateModal"
@@ -47,11 +40,8 @@
                            font-size:14px;
                            font-weight:700;
                            box-shadow:0 0 20px rgba(41,121,255,0.35);">
-
                 + ДОБАВИТЬ АВТОМОБИЛЬ
-
             </button>
-
         </div>
 
         <div style="background:#0c1b31;
@@ -59,7 +49,6 @@
                     border-radius:14px;
                     padding:18px;
                     margin-bottom:24px;">
-
             <input @bind="search"
                    placeholder="Поиск по марке, модели, госномеру или VIN..."
                    style="width:100%;
@@ -69,21 +58,16 @@
                           padding:14px;
                           color:#dce9ff;
                           font-size:14px;" />
-
         </div>
 
         <div style="overflow-x:auto;
                     background:#0c1b31;
                     border-radius:18px;
                     border:1px solid #1d3f73;">
-
             <table style="width:100%;
                           border-collapse:collapse;">
-
                 <thead style="background:#11284b;">
-
                     <tr>
-
                         <th class="tbl-head">ID</th>
                         <th class="tbl-head">Марка</th>
                         <th class="tbl-head">Модель</th>
@@ -94,132 +78,56 @@
                         <th class="tbl-head">Пробег</th>
                         <th class="tbl-head">Статус</th>
                         <th class="tbl-head">Действия</th>
-
                     </tr>
-
                 </thead>
-
                 <tbody>
-
                     @foreach (var vehicle in FilteredVehicles)
                     {
                         <tr class="table-row">
-
+                            <td class="tbl-cell">#@vehicle.VehicleId</td>
+                            <td class="tbl-cell">@vehicle.Brand</td>
+                            <td class="tbl-cell">@vehicle.Model</td>
                             <td class="tbl-cell">
-                                #@vehicle.Id
+                                <div class="plate-box">@vehicle.LicensePlate</div>
                             </td>
-
+                            <td class="tbl-cell">@vehicle.VehicleType</td>
+                            <td class="tbl-cell">@vehicle.Year</td>
+                            <td class="tbl-cell">@vehicle.DriverName</td>
                             <td class="tbl-cell">
-                                @vehicle.Brand
+                                <div class="mileage-box">@vehicle.Mileage KM</div>
                             </td>
-
                             <td class="tbl-cell">
-                                @vehicle.Model
-                            </td>
-
-                            <td class="tbl-cell">
-
-                                <div class="plate-box">
-                                    @vehicle.LicensePlate
-                                </div>
-
-                            </td>
-
-                            <td class="tbl-cell">
-                                @vehicle.VehicleType
-                            </td>
-
-                            <td class="tbl-cell">
-                                @vehicle.Year
-                            </td>
-
-                            <td class="tbl-cell">
-                                @vehicle.DriverName
-                            </td>
-
-                            <td class="tbl-cell">
-
-                                <div class="mileage-box">
-                                    @vehicle.Mileage KM
-                                </div>
-
-                            </td>
-
-                            <td class="tbl-cell">
-
                                 @switch (vehicle.Status)
                                 {
-                                    case "Доступен":
-                                        <div class="status-available">
-                                            ● Доступен
-                                        </div>
+                                    case "Available":
+                                        <div class="status-available">● Доступен</div>
                                         break;
-
-                                    case "В ремонте":
-                                        <div class="status-repair">
-                                            ● В ремонте
-                                        </div>
+                                    case "InRepair":
+                                        <div class="status-repair">● В ремонте</div>
                                         break;
-
                                     default:
-                                        <div class="status-disabled">
-                                            ● Списан
-                                        </div>
+                                        <div class="status-disabled">● Списан</div>
                                         break;
                                 }
-
                             </td>
-
                             <td class="tbl-cell">
-
-                                <div style="display:flex;
-                                            gap:10px;
-                                            flex-wrap:wrap;">
-
-                                    <button class="edit-btn"
-                                            @onclick="() => OpenEditModal(vehicle)">
-
-                                        Редактировать
-
-                                    </button>
-
-                                    <button class="details-btn"
-                                            @onclick="() => OpenDetails(vehicle)">
-
-                                        Детали
-
-                                    </button>
-
+                                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                                    <button class="edit-btn" @onclick="() => OpenEditModal(vehicle)">Редактировать</button>
+                                    <button class="details-btn" @onclick="() => OpenDetails(vehicle)">Детали</button>
                                     @if (!vehicle.HasActiveTrips)
                                     {
-                                        <button class="delete-btn"
-                                                @onclick="() => DeleteVehicle(vehicle)">
-
-                                            Удалить
-
-                                        </button>
+                                        <button class="delete-btn" @onclick="() => DeleteVehicle(vehicle)">Удалить</button>
                                     }
                                     else
                                     {
-                                        <button class="deactivate-btn"
-                                                @onclick="() => DeactivateVehicle(vehicle)">
-
-                                            Деактивировать
-
-                                        </button>
+                                        <button class="deactivate-btn" @onclick="() => DeactivateVehicle(vehicle)">Деактивировать</button>
                                     }
-
                                 </div>
-
                             </td>
-
                         </tr>
                     }
-
                 </tbody>
-
             </table>
-
         </div>
 
         @if (selectedVehicle is not null)
@@ -229,744 +137,169 @@
                         border:1px solid #1d3f73;
                         border-radius:18px;
                         padding:28px;">
-
-                <div style="display:flex;
-                            justify-content:space-between;
-                            align-items:center;
-                            margin-bottom:28px;">
-
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:28px;">
                     <div>
-
-                        <div style="font-size:30px;
-                                    font-weight:800;
-                                    color:#edf4ff;">
-
+                        <div style="font-size:30px; font-weight:800; color:#edf4ff;">
                             @selectedVehicle.Brand @selectedVehicle.Model
-
                         </div>
-
-                        <div style="margin-top:8px;
-                                    color:#7f9cc7;">
-
-                            @selectedVehicle.LicensePlate
-
-                        </div>
-
+                        <div style="margin-top:8px; color:#7f9cc7;">@selectedVehicle.LicensePlate</div>
                     </div>
-
                     <button @onclick="CloseDetails"
-                            style="background:#162844;
-                                   border:none;
-                                   color:#9cc3ff;
-                                   padding:12px 18px;
-                                   border-radius:10px;
-                                   cursor:pointer;">
-
+                            style="background:#162844; border:none; color:#9cc3ff;
+                                   padding:12px 18px; border-radius:10px; cursor:pointer;">
                         Закрыть
-
                     </button>
-
                 </div>
-
-                <div style="display:grid;
-                            grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-                            gap:20px;">
-
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px;">
                     <div class="info-card">
-
-                        <div class="info-title">
-                            Основная информация
-                        </div>
-
-                        <div class="info-row">
-                            <span>VIN</span>
-                            <strong>@selectedVehicle.Vin</strong>
-                        </div>
-
-                        <div class="info-row">
-                            <span>Тип топлива</span>
-                            <strong>@selectedVehicle.FuelType</strong>
-                        </div>
-
-                        <div class="info-row">
-                            <span>Тип авто</span>
-                            <strong>@selectedVehicle.VehicleType</strong>
-                        </div>
-
-                        <div class="info-row">
-                            <span>Пробег</span>
-                            <strong>@selectedVehicle.Mileage KM</strong>
-                        </div>
-
+                        <div class="info-title">Основная информация</div>
+                        <div class="info-row"><span>VIN</span><strong>@selectedVehicle.Vin</strong></div>
+                        <div class="info-row"><span>Тип топлива</span><strong>@selectedVehicle.FuelType</strong></div>
+                        <div class="info-row"><span>Тип авто</span><strong>@selectedVehicle.VehicleType</strong></div>
+                        <div class="info-row"><span>Пробег</span><strong>@selectedVehicle.Mileage KM</strong></div>
                     </div>
-
                     <div class="info-card">
-
-                        <div class="info-title">
-                            Страховка и водитель
-                        </div>
-
-                        <div class="info-row">
-                            <span>Водитель</span>
-                            <strong>@selectedVehicle.DriverName</strong>
-                        </div>
-
-                        <div class="info-row">
-                            <span>Страховка до</span>
-                            <strong>@selectedVehicle.InsuranceExpire.ToShortDateString()</strong>
-                        </div>
-
-                        <div class="info-row">
-                            <span>Статус</span>
-                            <strong>@selectedVehicle.Status</strong>
-                        </div>
-
+                        <div class="info-title">Страховка и водитель</div>
+                        <div class="info-row"><span>Водитель</span><strong>@selectedVehicle.DriverName</strong></div>
+                        <div class="info-row"><span>Страховка до</span><strong>@(selectedVehicle.InsuranceExpire?.ToShortDateString() ?? "-")</strong></div>
+                        <div class="info-row"><span>Статус</span><strong>@selectedVehicle.Status</strong></div>
                     </div>
-
                     <div class="info-card">
-
-                        <div class="info-title">
-                            История поездок
-                        </div>
-
-                        <div style="display:flex;
-                                    flex-direction:column;
-                                    gap:12px;
-                                    margin-top:16px;">
-
+                        <div class="info-title">История поездок</div>
+                        <div style="display:flex; flex-direction:column; gap:12px; margin-top:16px;">
                             @foreach (var trip in selectedVehicle.Trips)
                             {
                                 <div class="trip-box">
-
-                                    <div style="display:flex;
-                                                justify-content:space-between;">
-
+                                    <div style="display:flex; justify-content:space-between;">
                                         <div>
-
-                                            <div style="color:#edf4ff;
-                                                        font-weight:700;">
-
-                                                Поездка #@trip.Id
-
-                                            </div>
-
-                                            <div style="margin-top:6px;
-                                                        color:#7e9cc8;
-                                                        font-size:13px;">
-
-                                                @trip.Route
-
-                                            </div>
-
+                                            <div style="color:#edf4ff; font-weight:700;">Поездка #@trip.TripId</div>
+                                            <div style="margin-top:6px; color:#7e9cc8; font-size:13px;">@trip.Route</div>
                                         </div>
-
-                                        <div style="color:#5ca7ff;
-                                                    font-weight:700;">
-
-                                            +@trip.Distance KM
-
-                                        </div>
-
+                                        <div style="color:#5ca7ff; font-weight:700;">+@trip.Distance KM</div>
                                     </div>
-
                                 </div>
                             }
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
         }
-
     </div>
-
 </div>
 
 @if (showModal)
 {
-    <div style="position:fixed;
-                inset:0;
-                background:rgba(0,0,0,0.7);
-                backdrop-filter:blur(5px);
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                z-index:999;">
-
-        <div style="width:900px;
-                    background:#0c1b31;
-                    border:1px solid #24529a;
-                    border-radius:18px;
-                    padding:30px;">
-
-            <div style="font-size:28px;
-                        font-weight:800;
-                        color:#edf4ff;
-                        margin-bottom:24px;">
-
-                @(editingVehicle.Id == 0
-                    ? "СОЗДАНИЕ АВТОМОБИЛЯ"
-                    : "РЕДАКТИРОВАНИЕ АВТОМОБИЛЯ")
-
+    <div style="position:fixed; inset:0; background:rgba(0,0,0,0.7);
+                backdrop-filter:blur(5px); display:flex; align-items:center;
+                justify-content:center; z-index:999;">
+        <div style="width:900px; background:#0c1b31; border:1px solid #24529a;
+                    border-radius:18px; padding:30px;">
+            <div style="font-size:28px; font-weight:800; color:#edf4ff; margin-bottom:24px;">
+                @(editingVehicleId == null ? "СОЗДАНИЕ АВТОМОБИЛЯ" : "РЕДАКТИРОВАНИЕ АВТОМОБИЛЯ")
             </div>
-
             @if (showDriverWarning)
             {
-                <div style="background:rgba(255,152,0,0.12);
-                            border:1px solid rgba(255,152,0,0.4);
-                            color:#ffbe5c;
-                            padding:16px;
-                            border-radius:12px;
-                            margin-bottom:20px;">
-
+                <div style="background:rgba(255,152,0,0.12); border:1px solid rgba(255,152,0,0.4);
+                            color:#ffbe5c; padding:16px; border-radius:12px; margin-bottom:20px;">
                     ВНИМАНИЕ: У автомобиля есть будущие назначенные поездки с другим водителем.
-
                 </div>
             }
-
-            <div style="display:grid;
-                        grid-template-columns:1fr 1fr;
-                        gap:18px;">
-
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
                 <div>
                     <label class="input-label">Марка</label>
                     <input @bind="editingVehicle.Brand" class="blue-input" />
                 </div>
-
                 <div>
                     <label class="input-label">Модель</label>
                     <input @bind="editingVehicle.Model" class="blue-input" />
                 </div>
-
                 <div>
                     <label class="input-label">Год</label>
-                    <input type="number"
-                           @bind="editingVehicle.Year"
-                           class="blue-input" />
+                    <input type="number" @bind="editingVehicle.Year" class="blue-input" />
                 </div>
-
                 <div>
                     <label class="input-label">Госномер</label>
-                    <input @bind="editingVehicle.LicensePlate"
-                           class="blue-input" />
+                    <input @bind="editingVehicle.LicensePlate" class="blue-input" />
                 </div>
-
                 <div>
                     <label class="input-label">VIN</label>
-                    <input @bind="editingVehicle.Vin"
-                           class="blue-input" />
+                    <input @bind="editingVehicle.Vin" class="blue-input" />
                 </div>
-
                 <div>
                     <label class="input-label">Тип топлива</label>
-
-                    <select @bind="editingVehicle.FuelType"
-                            class="blue-input">
-
+                    <select @bind="editingVehicle.FuelType" class="blue-input">
                         <option>Бензин</option>
                         <option>Дизель</option>
                         <option>Электро</option>
                         <option>Гибрид</option>
-
                     </select>
-
                 </div>
-
                 <div>
                     <label class="input-label">Тип авто</label>
-
-                    <select @bind="editingVehicle.VehicleType"
-                            class="blue-input">
-
+                    <select @bind="editingVehicle.VehicleType" class="blue-input">
                         <option>Седан</option>
                         <option>Универсал</option>
                         <option>Микроавтобус</option>
                         <option>Грузовой</option>
-
                     </select>
-
                 </div>
-
                 <div>
                     <label class="input-label">Пробег</label>
-
-                    <input type="number"
-                           @bind="editingVehicle.Mileage"
-                           class="blue-input" />
-
+                    <input type="number" @bind="editingVehicle.Mileage" class="blue-input" />
                 </div>
-
                 <div>
                     <label class="input-label">Статус</label>
-
-                    <select @bind="editingVehicle.Status"
-                            class="blue-input">
-
-                        <option>Доступен</option>
-                        <option>В ремонте</option>
-                        <option>Списан</option>
-
+                    <select @bind="editingVehicle.Status" class="blue-input">
+                        <option value="Available">Доступен</option>
+                        <option value="InRepair">В ремонте</option>
+                        <option value="Decommissioned">Списан</option>
                     </select>
-
                 </div>
-
                 <div>
                     <label class="input-label">Страховка до</label>
-
-                    <input type="date"
-                           @bind="editingVehicle.InsuranceExpire"
-                           class="blue-input" />
-
+                    <input type="date" @bind="editingVehicle.InsuranceExpire" class="blue-input" />
                 </div>
-
                 <div style="grid-column:span 2;">
-
-                    <label class="input-label">
-                        Основной водитель
-                    </label>
-
-                    <select class="blue-input"
-        @bind="editingVehicle.DriverName"
-        @bind:after="CheckDriverWarning">
-
-    @foreach (var driver in drivers)
-    {
-        <option value="@driver">
-            @driver
-        </option>
-    }
-
-</select>
-
+                    <label class="input-label">Основной водитель</label>
+                    <select class="blue-input" @bind="editingVehicle.DriverId">
+                        <option value="">Не назначен</option>
+                        @foreach (var driver in drivers)
+                        {
+                            <option value="@driver.Id">@driver.FullName</option>
+                        }
+                    </select>
                 </div>
-
             </div>
-
-            <div style="display:flex;
-                        justify-content:flex-end;
-                        gap:14px;
-                        margin-top:28px;">
-
-                <button class="cancel-btn"
-                        @onclick="CloseModal">
-
-                    Отмена
-
-                </button>
-
-                <button class="save-btn"
-                        @onclick="SaveVehicle">
-
-                    Сохранить
-
-                </button>
-
+            <div style="display:flex; justify-content:flex-end; gap:14px; margin-top:28px;">
+                <button class="cancel-btn" @onclick="CloseModal">Отмена</button>
+                <button class="save-btn" @onclick="SaveVehicle">Сохранить</button>
             </div>
-
         </div>
-
     </div>
 }
 
 <style>
-
-    .tbl-head{
-        padding:18px;
-        text-align:left;
-        color:#8fb7f0;
-        font-size:13px;
-        letter-spacing:1px;
-    }
-
-    .tbl-cell{
-        padding:18px;
-        color:#dce9ff;
-        font-size:14px;
-    }
-
-    .table-row{
-        border-top:1px solid #18345f;
-        transition:0.2s;
-    }
-
-    .table-row:hover{
-        background:rgba(31,68,121,0.15);
-    }
-
-    .plate-box{
-        display:inline-block;
-        background:#09111f;
-        border:1px solid #21467f;
-        padding:8px 14px;
-        border-radius:10px;
-        font-family:monospace;
-        font-weight:700;
-    }
-
-    .mileage-box{
-        display:inline-block;
-        background:#132746;
-        color:#5ca7ff;
-        padding:8px 12px;
-        border-radius:10px;
-        font-weight:700;
-    }
-
-    .status-available{
-        display:inline-block;
-        background:rgba(76,175,80,0.12);
-        color:#67ff99;
-        padding:6px 14px;
-        border-radius:20px;
-        font-size:13px;
-        font-weight:700;
-    }
-
-    .status-repair{
-        display:inline-block;
-        background:rgba(255,152,0,0.12);
-        color:#ffbe5c;
-        padding:6px 14px;
-        border-radius:20px;
-        font-size:13px;
-        font-weight:700;
-    }
-
-    .status-disabled{
-        display:inline-block;
-        background:rgba(180,180,180,0.12);
-        color:#b0b0b0;
-        padding:6px 14px;
-        border-radius:20px;
-        font-size:13px;
-        font-weight:700;
-    }
-
-    .edit-btn,
-    .details-btn,
-    .delete-btn,
-    .deactivate-btn{
-        border:none;
-        padding:10px 14px;
-        border-radius:8px;
-        cursor:pointer;
-        font-size:13px;
-        font-weight:700;
-        transition:0.2s;
-    }
-
-    .edit-btn{
-        background:#1565c0;
-        color:white;
-    }
-
-    .details-btn{
-        background:#1d3557;
-        color:#9ec5ff;
-    }
-
-    .delete-btn{
-        background:#701c1c;
-        color:#ff9a9a;
-    }
-
-    .deactivate-btn{
-        background:#5a4314;
-        color:#ffc46b;
-    }
-
-    .edit-btn:hover,
-    .details-btn:hover,
-    .delete-btn:hover,
-    .deactivate-btn:hover{
-        transform:translateY(-2px);
-        opacity:0.92;
-    }
-
-    .info-card{
-        background:#08111f;
-        border:1px solid #18345f;
-        border-radius:16px;
-        padding:22px;
-    }
-
-    .info-title{
-        color:#edf4ff;
-        font-size:18px;
-        font-weight:800;
-        margin-bottom:18px;
-    }
-
-    .info-row{
-        display:flex;
-        justify-content:space-between;
-        margin-bottom:12px;
-        color:#8ca9d5;
-    }
-
-    .trip-box{
-        background:#0f2038;
-        border:1px solid #1f4479;
-        border-radius:12px;
-        padding:14px;
-    }
-
-    .input-label{
-        display:block;
-        margin-bottom:8px;
-        color:#8fb7f0;
-        font-size:13px;
-        font-weight:700;
-    }
-
-    .blue-input{
-        width:100%;
-        background:#071120;
-        border:1px solid #27508d;
-        border-radius:10px;
-        padding:12px;
-        color:#edf4ff;
-        font-size:14px;
-    }
-
-    .save-btn{
-        background:#2979ff;
-        border:none;
-        color:white;
-        padding:12px 20px;
-        border-radius:10px;
-        cursor:pointer;
-        font-weight:700;
-    }
-
-    .cancel-btn{
-        background:#17263d;
-        border:none;
-        color:#8fb7f0;
-        padding:12px 20px;
-        border-radius:10px;
-        cursor:pointer;
-        font-weight:700;
-    }
-
+    .tbl-head { padding:18px; text-align:left; color:#8fb7f0; font-size:13px; letter-spacing:1px; }
+    .tbl-cell { padding:18px; color:#dce9ff; font-size:14px; }
+    .table-row { border-top:1px solid #18345f; transition:0.2s; }
+    .table-row:hover { background:rgba(31,68,121,0.15); }
+    .plate-box { display:inline-block; background:#09111f; border:1px solid #21467f; padding:8px 14px; border-radius:10px; font-family:monospace; font-weight:700; }
+    .mileage-box { display:inline-block; background:#132746; color:#5ca7ff; padding:8px 12px; border-radius:10px; font-weight:700; }
+    .status-available { display:inline-block; background:rgba(76,175,80,0.12); color:#67ff99; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:700; }
+    .status-repair { display:inline-block; background:rgba(255,152,0,0.12); color:#ffbe5c; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:700; }
+    .status-disabled { display:inline-block; background:rgba(180,180,180,0.12); color:#b0b0b0; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:700; }
+    .edit-btn, .details-btn, .delete-btn, .deactivate-btn { border:none; padding:10px 14px; border-radius:8px; cursor:pointer; font-size:13px; font-weight:700; transition:0.2s; }
+    .edit-btn { background:#1565c0; color:white; }
+    .details-btn { background:#1d3557; color:#9ec5ff; }
+    .delete-btn { background:#701c1c; color:#ff9a9a; }
+    .deactivate-btn { background:#5a4314; color:#ffc46b; }
+    .edit-btn:hover, .details-btn:hover, .delete-btn:hover, .deactivate-btn:hover { transform:translateY(-2px); opacity:0.92; }
+    .info-card { background:#08111f; border:1px solid #18345f; border-radius:16px; padding:22px; }
+    .info-title { color:#edf4ff; font-size:18px; font-weight:800; margin-bottom:18px; }
+    .info-row { display:flex; justify-content:space-between; margin-bottom:12px; color:#8ca9d5; }
+    .trip-box { background:#0f2038; border:1px solid #1f4479; border-radius:12px; padding:14px; }
+    .input-label { display:block; margin-bottom:8px; color:#8fb7f0; font-size:13px; font-weight:700; }
+    .blue-input { width:100%; background:#071120; border:1px solid #27508d; border-radius:10px; padding:12px; color:#edf4ff; font-size:14px; }
+    .save-btn { background:#2979ff; border:none; color:white; padding:12px 20px; border-radius:10px; cursor:pointer; font-weight:700; }
+    .cancel-btn { background:#17263d; border:none; color:#8fb7f0; padding:12px 20px; border-radius:10px; cursor:pointer; font-weight:700; }
 </style>
-
-@code {
-
-    private string search = "";
-
-    private bool showModal;
-
-    private bool showDriverWarning;
-
-    private VehicleModel editingVehicle = new();
-
-    private VehicleModel? selectedVehicle;
-
-    private List<string> drivers = new()
-    {
-        "Иванов Иван",
-        "Петров Сергей",
-        "Сидоров Алексей"
-    };
-
-    private List<VehicleModel> vehicles = new()
-    {
-        new()
-        {
-            Id = 1,
-            Brand = "Toyota",
-            Model = "Camry",
-            Year = 2022,
-            LicensePlate = "A001AA77",
-            Vin = "JT1234567890",
-            FuelType = "Бензин",
-            VehicleType = "Седан",
-            Mileage = 54200,
-            Status = "Доступен",
-            InsuranceExpire = DateTime.Now.AddMonths(8),
-            DriverName = "Иванов Иван",
-            HasActiveTrips = true,
-
-            Trips = new()
-            {
-                new()
-                {
-                    Id = 1001,
-                    Route = "Москва → Казань",
-                    Distance = 840
-                },
-
-                new()
-                {
-                    Id = 1002,
-                    Route = "Москва → Тула",
-                    Distance = 180
-                }
-            }
-        },
-
-        new()
-        {
-            Id = 2,
-            Brand = "Ford",
-            Model = "Transit",
-            Year = 2021,
-            LicensePlate = "B777BB77",
-            Vin = "FRD987654321",
-            FuelType = "Дизель",
-            VehicleType = "Микроавтобус",
-            Mileage = 120300,
-            Status = "В ремонте",
-            InsuranceExpire = DateTime.Now.AddMonths(4),
-            DriverName = "Петров Сергей",
-            HasActiveTrips = false
-        }
-    };
-
-    private IEnumerable<VehicleModel> FilteredVehicles =>
-        vehicles.Where(v =>
-            string.IsNullOrWhiteSpace(search)
-            || v.Brand.Contains(search, StringComparison.OrdinalIgnoreCase)
-            || v.Model.Contains(search, StringComparison.OrdinalIgnoreCase)
-            || v.LicensePlate.Contains(search, StringComparison.OrdinalIgnoreCase)
-            || v.Vin.Contains(search, StringComparison.OrdinalIgnoreCase));
-
-    private void OpenCreateModal()
-    {
-        editingVehicle = new VehicleModel
-        {
-            Year = DateTime.Now.Year,
-            InsuranceExpire = DateTime.Now.AddYears(1),
-            Status = "Доступен"
-        };
-
-        showModal = true;
-    }
-
-    private void OpenEditModal(VehicleModel vehicle)
-    {
-        editingVehicle = new VehicleModel
-        {
-            Id = vehicle.Id,
-            Brand = vehicle.Brand,
-            Model = vehicle.Model,
-            Year = vehicle.Year,
-            LicensePlate = vehicle.LicensePlate,
-            Vin = vehicle.Vin,
-            FuelType = vehicle.FuelType,
-            VehicleType = vehicle.VehicleType,
-            Mileage = vehicle.Mileage,
-            Status = vehicle.Status,
-            InsuranceExpire = vehicle.InsuranceExpire,
-            DriverName = vehicle.DriverName,
-            HasActiveTrips = vehicle.HasActiveTrips,
-            Trips = vehicle.Trips
-        };
-
-        showModal = true;
-    }
-
-    private void SaveVehicle()
-    {
-        if (editingVehicle.Id == 0)
-        {
-            editingVehicle.Id = vehicles.Max(x => x.Id) + 1;
-            vehicles.Add(editingVehicle);
-        }
-        else
-        {
-            var existing = vehicles.First(x => x.Id == editingVehicle.Id);
-
-            existing.Brand = editingVehicle.Brand;
-            existing.Model = editingVehicle.Model;
-            existing.Year = editingVehicle.Year;
-            existing.LicensePlate = editingVehicle.LicensePlate;
-            existing.Vin = editingVehicle.Vin;
-            existing.FuelType = editingVehicle.FuelType;
-            existing.VehicleType = editingVehicle.VehicleType;
-            existing.Mileage = editingVehicle.Mileage;
-            existing.Status = editingVehicle.Status;
-            existing.InsuranceExpire = editingVehicle.InsuranceExpire;
-            existing.DriverName = editingVehicle.DriverName;
-        }
-
-        showModal = false;
-        showDriverWarning = false;
-    }
-
-    private void DeleteVehicle(VehicleModel vehicle)
-    {
-        vehicles.Remove(vehicle);
-    }
-
-    private void DeactivateVehicle(VehicleModel vehicle)
-    {
-        vehicle.Status = "Списан";
-    }
-
-    private void OpenDetails(VehicleModel vehicle)
-    {
-        selectedVehicle = vehicle;
-    }
-
-    private void CloseDetails()
-    {
-        selectedVehicle = null;
-    }
-
-    private void CloseModal()
-    {
-        showModal = false;
-        showDriverWarning = false;
-    }
-
-    private void CheckDriverWarning()
-{
-    showDriverWarning = editingVehicle.HasActiveTrips;
-}
-
-    public class VehicleModel
-    {
-        public int Id { get; set; }
-
-        public string Brand { get; set; } = "";
-
-        public string Model { get; set; } = "";
-
-        public int Year { get; set; }
-
-        public string LicensePlate { get; set; } = "";
-
-        public string Vin { get; set; } = "";
-
-        public string FuelType { get; set; } = "";
-
-        public string VehicleType { get; set; } = "";
-
-        public int Mileage { get; set; }
-
-        public string Status { get; set; } = "";
-
-        public DateTime InsuranceExpire { get; set; }
-
-        public string DriverName { get; set; } = "";
-
-        public bool HasActiveTrips { get; set; }
-
-        public List<TripModel> Trips { get; set; } = new();
-    }
-
-    public class TripModel
-    {
-        public int Id { get; set; }
-
-        public string Route { get; set; } = "";
-
-        public int Distance { get; set; }
-    }
-
-}

@@ -1,36 +1,68 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.JSInterop;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using Radzen;
-using Radzen.Blazor;
+using CP.Server.DTO;
 
-namespace CP.Client.Pages.Administrator
+namespace CP.Client.Pages.Administrator;
+
+public partial class Employess2
 {
-    public partial class Employess
+    [Inject] protected CarParkService CarParkService { get; set; } = default!;
+
+    private string search = "";
+    private EmployeeDto? selectedEmployee;
+    private List<EmployeeDto> employees = new();
+
+    private IEnumerable<EmployeeDto> FilteredEmployees =>
+        employees.Where(x =>
+            string.IsNullOrWhiteSpace(search)
+            || x.FullName.Contains(search, StringComparison.OrdinalIgnoreCase)
+            || x.Email.Contains(search, StringComparison.OrdinalIgnoreCase));
+
+    protected override async Task OnInitializedAsync()
     {
-        [Inject]
-        protected IJSRuntime JSRuntime { get; set; }
+        await LoadEmployees();
+    }
 
-        [Inject]
-        protected NavigationManager NavigationManager { get; set; }
+    private async Task LoadEmployees()
+    {
+        try
+        {
+            employees = await CarParkService.GetEmployeesAsync();
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка загрузки сотрудников: {ex.Message}");
+            employees = new();
+        }
+    }
 
-        [Inject]
-        protected DialogService DialogService { get; set; }
+    private async Task OpenDetails(EmployeeDto employee)
+    {
+        try
+        {
+            selectedEmployee = await CarParkService.GetEmployeeByIdAsync(employee.UserId);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка загрузки деталей: {ex.Message}");
+        }
+    }
 
-        [Inject]
-        protected TooltipService TooltipService { get; set; }
+    private void CloseDetails()
+    {
+        selectedEmployee = null;
+    }
 
-        [Inject]
-        protected ContextMenuService ContextMenuService { get; set; }
-
-        [Inject]
-        protected NotificationService NotificationService { get; set; }
-
-        [Inject]
-        protected SecurityService Security { get; set; }
+    private async Task Deactivate(EmployeeDto employee)
+    {
+        try
+        {
+            await CarParkService.DeactivateEmployeeAsync(employee.UserId);
+            await LoadEmployees();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка деактивации: {ex.Message}");
+        }
     }
 }

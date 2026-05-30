@@ -1,36 +1,128 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.JSInterop;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using Radzen;
-using Radzen.Blazor;
+using CP.Server.DTO;
 
-namespace CP.Client.Pages.Administrator
+namespace CP.Client.Pages.Administrator;
+
+public partial class Drivers2
 {
-    public partial class Drivers
+    [Inject] protected CP.Client.CarParkService CarParkService { get; set; } = default!;
+
+    private string search = "";
+    private bool showModal;
+    private CreateDriverDto editingDriver = new();
+    private AdminDriverDto? selectedDriver;
+    private int? editingDriverId;
+
+    private List<AdminDriverDto> drivers = new();
+    private List<AdminVehicleDto> vehicles = new();
+
+    private IEnumerable<AdminDriverDto> FilteredDrivers =>
+        drivers.Where(x =>
+            string.IsNullOrWhiteSpace(search)
+            || (x.FullName?.Contains(search, StringComparison.OrdinalIgnoreCase) ?? false)
+            || (x.Phone?.Contains(search, StringComparison.OrdinalIgnoreCase) ?? false)
+            || (x.LicenseNumber?.Contains(search, StringComparison.OrdinalIgnoreCase) ?? false));
+
+    protected override async Task OnInitializedAsync()
     {
-        [Inject]
-        protected IJSRuntime JSRuntime { get; set; }
+        await LoadDrivers();
+        await LoadVehicles();
+    }
 
-        [Inject]
-        protected NavigationManager NavigationManager { get; set; }
+    private async Task LoadDrivers()
+    {
+        try
+        {
+            drivers = await CarParkService.GetAdminDriversAsync();
+        }
+        catch
+        {
+            drivers = new();
+        }
+    }
 
-        [Inject]
-        protected DialogService DialogService { get; set; }
+    private async Task LoadVehicles()
+    {
+        try
+        {
+            vehicles = await CarParkService.GetAdminVehiclesAsync();
+        }
+        catch
+        {
+            vehicles = new();
+        }
+    }
 
-        [Inject]
-        protected TooltipService TooltipService { get; set; }
+    private void OpenCreateModal()
+    {
+        editingDriverId = null;
+        editingDriver = new CreateDriverDto
+        {
+            IsActive = true,
+            LicenseExpireDate = DateTime.Now.AddYears(1)
+        };
+        showModal = true;
+    }
 
-        [Inject]
-        protected ContextMenuService ContextMenuService { get; set; }
+    private void OpenEditModal(AdminDriverDto driver)
+    {
+        editingDriverId = driver.DriverId;
 
-        [Inject]
-        protected NotificationService NotificationService { get; set; }
+        var nameParts = driver.FullName?.Split(' ') ?? new[] { "", "" };
+        editingDriver = new CreateDriverDto
+        {
+            LastName = nameParts.Length > 0 ? nameParts[0] : "",
+            FirstName = nameParts.Length > 1 ? nameParts[1] : "",
+            MiddleName = nameParts.Length > 2 ? nameParts[2] : null,
+            LicenseNumber = driver.LicenseNumber,
+            LicenseExpireDate = driver.LicenseExpireDate,
+            Phone = driver.Phone ?? "",
+            IsActive = driver.IsActive,
+            UserId = driver.IdentityUser
+        };
+        showModal = true;
+    }
 
-        [Inject]
-        protected SecurityService Security { get; set; }
+    private async Task SaveDriver()
+    {
+        try
+        {
+            if (editingDriverId == null)
+            {
+                await CarParkService.CreateDriverAsync(editingDriver);
+            }
+            else
+            {
+                await CarParkService.UpdateDriverAsync(editingDriverId.Value, editingDriver);
+            }
+            showModal = false;
+            await LoadDrivers();
+        }
+        catch { }
+    }
+
+    private void OpenDetails(AdminDriverDto driver)
+    {
+        selectedDriver = driver;
+    }
+
+    private void CloseDetails()
+    {
+        selectedDriver = null;
+    }
+
+    private void CloseModal()
+    {
+        showModal = false;
+    }
+
+    private async Task Deactivate(AdminDriverDto driver)
+    {
+        try
+        {
+            await CarParkService.DeactivateDriverAsync(driver.DriverId);
+            await LoadDrivers();
+        }
+        catch { }
     }
 }

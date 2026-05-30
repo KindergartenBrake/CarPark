@@ -1,36 +1,37 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.JSInterop;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using Radzen;
-using Radzen.Blazor;
+using CP.Server.DTO;
 
-namespace CP.Client.Pages.Employee
+namespace CP.Client.Pages.Employee;
+
+public partial class Dashboard
 {
-    public partial class Dashboard
+    [Inject] protected CarParkService CarParkService { get; set; } = default!;
+    [Inject] protected NavigationManager NavigationManager { get; set; } = default!;
+
+    private EmployeeDashboardDto data = new();
+
+    private int PendingRequests => data.PendingRequests;
+    private int ApprovedRequests => data.ApprovedRequests;
+    private int CompletedRequests => data.CompletedRequests;
+    private int RejectedRequests => data.RejectedRequests;
+    private UpcomingTripDto? UpcomingTrip => data.UpcomingTrip;
+    private List<RecentRequestDto> RecentRequests => data.RecentRequests;
+
+    protected override async Task OnInitializedAsync()
     {
-        [Inject]
-        protected IJSRuntime JSRuntime { get; set; }
+        await LoadDashboard();
+    }
 
-        [Inject]
-        protected NavigationManager NavigationManager { get; set; }
-
-        [Inject]
-        protected DialogService DialogService { get; set; }
-
-        [Inject]
-        protected TooltipService TooltipService { get; set; }
-
-        [Inject]
-        protected ContextMenuService ContextMenuService { get; set; }
-
-        [Inject]
-        protected NotificationService NotificationService { get; set; }
-
-        [Inject]
-        protected SecurityService Security { get; set; }
+    private async Task LoadDashboard()
+    {
+        try
+        {
+            data = await CarParkService.GetEmployeeDashboardAsync();
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading dashboard: {ex.Message}");
+        }
     }
 }

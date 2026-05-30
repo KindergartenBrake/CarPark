@@ -16,4 +16,19 @@ public class DriverRepository : Repository<Driver>, IDriverRepository
     {
         return await _dbSet.Where(d => d.IsActive).ToListAsync();
     }
+
+    // Admin - driver
+    public async Task<List<Driver>> GetAllWithVehicleAsync()
+    {
+        return await _dbSet
+            .Include(d => d.Vehicle)
+            .OrderBy(d => d.LastName)
+            .ToListAsync();
+    }
+    public async Task<Driver?> GetByIdWithVehicleAsync(int id)
+    {
+        return await _dbSet
+            .Include(d => d.Vehicle)
+            .FirstOrDefaultAsync(d => d.DriverId == id);
+    }
 }

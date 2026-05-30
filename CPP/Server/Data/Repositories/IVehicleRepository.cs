@@ -6,4 +6,6 @@ public interface IVehicleRepository : IRepository<Vehicle>
 {
     Task<List<Vehicle>> GetAvailableWithDriverAsync();
     Task<List<Vehicle>> GetByTypeAsync(string type);
+    Task<List<Vehicle>> GetAllWithDetailsAsync();
+    Task<Vehicle?> GetByIdWithDetailsAsync(int id);
 }

@@ -6,150 +6,344 @@
 
 <style>
     :root {
-        --brutal-bg: linear-gradient(135deg, #0a1928 0%, #0d2b3e 50%, #0a1928 100%);
-        --brutal-card-bg: linear-gradient(135deg, #1a2a3a 0%, #16212e 100%);
-        --brutal-border: #2a4a6e;
-        --brutal-text: #e0e8f0;
-        --brutal-text-muted: #8aa0b5;
-        --brutal-accent: #2b7abf;
-        --brutal-sidebar: linear-gradient(135deg, #0a121a 0%, #0d1620 100%);
+        --primary-gradient: linear-gradient(135deg, #0a1928 0%, #0d2b3e 50%, #0a1928 100%);
+        --card-gradient: linear-gradient(145deg, #0d1c34 0%, #0a1628 100%);
+        --accent-color: #3b82f6;
+        --accent-hover: #2563eb;
+        --border-color: #1f4781;
+        --text-primary: #edf4ff;
+        --text-secondary: #8aa8cc;
+        --text-muted: #5f82b5;
+        --menu-color: #5f7ea8;
+        --menu-hover: #8aa8cc;
+        --menu-active: #3b82f6;
+        --sidebar-bg: linear-gradient(135deg, #0a121a 0%, #0d1620 100%);
+        --header-bg: linear-gradient(90deg, #0d1c34 0%, #0a1628 100%);
     }
     
+    /* Global styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    /* Radzen Menu Customization */
     .rz-panel-menu-item {
-        color: var(--brutal-text-muted) !important;
+        color: var(--menu-color) !important;
         transition: all 0.3s ease !important;
-        border-radius: 8px !important;
-        margin: 4px 8px !important;
+        border-radius: 10px !important;
+        margin: 6px 12px !important;
+        padding: 12px 16px !important;
+        font-weight: 500 !important;
+        font-size: 14px !important;
+    }
+    
+    .rz-panel-menu-item .rz-button-text {
+        color: var(--menu-color) !important;
+    }
+    
+    .rz-panel-menu-item .rz-icon {
+        color: var(--menu-color) !important;
     }
     
     .rz-panel-menu-item:hover {
-        color: var(--brutal-text) !important;
-        background: rgba(42,74,110,0.3) !important;
+        color: var(--menu-hover) !important;
+        background: rgba(59, 130, 246, 0.08) !important;
+        transform: translateX(4px);
+    }
+    
+    .rz-panel-menu-item:hover .rz-button-text {
+        color: var(--menu-hover) !important;
+    }
+    
+    .rz-panel-menu-item:hover .rz-icon {
+        color: var(--menu-hover) !important;
     }
     
     .rz-panel-menu-item-active {
-        color: var(--brutal-text) !important;
-        background: linear-gradient(135deg, #1e5799 0%, #2b7abf 100%) !important;
-        border-left: 3px solid #5aa5dd !important;
+        color: var(--menu-active) !important;
+        background: rgba(59, 130, 246, 0.12) !important;
+        border-left: 3px solid var(--accent-color) !important;
+        border-radius: 10px !important;
     }
     
+    .rz-panel-menu-item-active .rz-button-text {
+        color: var(--menu-active) !important;
+    }
+    
+    .rz-panel-menu-item-active .rz-icon {
+        color: var(--menu-active) !important;
+    }
+    
+    /* Header */
     .rz-header {
-        background: var(--brutal-card-bg) !important;
-        border-bottom: 1px solid var(--brutal-border) !important;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
-        padding: 0 20px !important;
+        background: var(--header-bg) !important;
+        border-bottom: 1px solid var(--border-color) !important;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+        padding: 0 24px !important;
+        min-height: 70px !important;
+        height: auto !important;
+        display: flex !important;
+        align-items: center !important;
     }
     
+    /* Sidebar */
     .rz-sidebar {
-        background: var(--brutal-sidebar) !important;
-        border-right: 1px solid var(--brutal-border) !important;
+        background: var(--sidebar-bg) !important;
+        border-right: 1px solid var(--border-color) !important;
+        backdrop-filter: blur(10px);
     }
     
+    /* Body */
     .rz-body {
-        background: var(--brutal-bg) !important;
+        background: var(--primary-gradient) !important;
+        padding: 0 !important;
     }
     
-    .user-info {
+    /* Header content */
+    .header-content {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        gap: 15px;
-        color: #e0e8f0;
+        width: 100%;
     }
     
-    .user-name {
-        font-weight: bold;
-        color: #e0e8f0;
-    }
-    
-    .user-role {
-        font-size: 12px;
-        color: #2b7abf;
-        background: rgba(43,122,191,0.2);
-        padding: 4px 8px;
-        border-radius: 20px;
-    }
-    
-    .logout-btn {
-        background: transparent;
-        border: 1px solid #2a4a6e;
-        color: #e0e8f0;
-        padding: 6px 12px;
-        border-radius: 6px;
+    .sidebar-toggle {
+        color: var(--text-secondary);
+        font-size: 20px;
         cursor: pointer;
         transition: all 0.2s ease;
     }
     
-    .logout-btn:hover {
-        background: rgba(220,53,69,0.2);
-        border-color: #dc3545;
-        color: #dc3545;
+    .sidebar-toggle:hover {
+        color: var(--accent-color);
+        transform: scale(1.05);
     }
     
+    /* User info - right aligned */
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .user-avatar {
+        width: 42px;
+        height: 42px;
+        background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    .user-avatar:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+    }
+    
+    .user-details {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    
+    .user-name {
+        font-weight: 700;
+        color: var(--text-primary);
+        font-size: 14px;
+    }
+    
+    .user-role {
+        font-size: 11px;
+        color: var(--accent-color);
+        background: rgba(59, 130, 246, 0.15);
+        padding: 3px 10px;
+        border-radius: 20px;
+        margin-top: 4px;
+        font-weight: 600;
+    }
+    
+    .logout-btn {
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        color: #f87171;
+        padding: 8px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-weight: 600;
+        font-size: 13px;
+    }
+    
+    .logout-btn:hover {
+        background: rgba(239, 68, 68, 0.2);
+        border-color: #ef4444;
+        color: #fca5a5;
+        transform: translateY(-1px);
+    }
+    
+    /* Logo area */
+    .logo-area {
+        padding: 24px 20px !important;
+        border-bottom: 1px solid var(--border-color);
+        margin-bottom: 16px;
+    }
+    
+    .logo-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+    }
+    
+    .logo-text {
+        font-size: 20px;
+        font-weight: 800;
+        color: var(--text-primary);
+        letter-spacing: 2px;
+    }
+    
+    .logo-subtitle {
+        font-size: 10px;
+        color: var(--text-muted);
+        letter-spacing: 1px;
+    }
+    
+    /* Footer */
+    .sidebar-footer {
+        padding: 20px !important;
+        border-top: 1px solid var(--border-color);
+        margin-top: auto;
+        text-align: center;
+    }
+    
+    .footer-text {
+        color: var(--text-muted);
+        font-size: 11px;
+    }
+    
+    /* Scrollbar */
     ::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
+        width: 8px;
+        height: 8px;
     }
     
     ::-webkit-scrollbar-track {
         background: #0a121a;
-        border-radius: 5px;
+        border-radius: 4px;
     }
     
     ::-webkit-scrollbar-thumb {
-        background: #2a4a6e;
-        border-radius: 5px;
+        background: var(--border-color);
+        border-radius: 4px;
     }
     
     ::-webkit-scrollbar-thumb:hover {
-        background: #3a8bc5;
+        background: var(--accent-color);
+    }
+    
+    /* Radzen body content */
+    .rz-body-content {
+        padding: 0 !important;
+    }
+    
+    .rz-row {
+        margin: 0 !important;
+    }
+    
+    .rz-column {
+        padding: 0 !important;
     }
 </style>
 
 <RadzenLayout>
     <RadzenHeader>
-        <RadzenRow JustifyContent="JustifyContent.Start" AlignItems="AlignItems.Center" Gap="0">
-            <RadzenColumn Size="5">
-                <RadzenSidebarToggle Click="@SidebarToggleClick" Style="color: #8aa0b5;" />
-            </RadzenColumn>
-            <RadzenColumn Size="7">
-                <div class="user-info" style="display: flex; justify-content: flex-end; align-items: center; gap: 15px;">
-                    <div>
-                        <span class="user-name">@(Security?.User?.Name ?? "Сотрудник")</span>
-                        <span class="user-role">Сотрудник</span>
-                    </div>
-                    <button class="logout-btn" @onclick="Logout">Выход</button>
+        <div class="header-content">
+            <div class="sidebar-toggle" @onclick="SidebarToggleClick">
+                ☰
+            </div>
+            <div class="user-info">
+                <div class="user-details">
+                    <span class="user-name">@(Security?.User?.Name ?? "Сотрудник")</span>
+                    <span class="user-role">@GetRoleDisplayName()</span>
                 </div>
-            </RadzenColumn>
-        </RadzenRow>
+                <div class="user-avatar">
+                    @(Security?.User?.Name?.FirstOrDefault().ToString().ToUpper() ?? "U")
+                </div>
+                <button class="logout-btn" @onclick="Logout">Выход</button>
+            </div>
+        </div>
     </RadzenHeader>
     
     <RadzenBody Expanded="@sidebarExpanded">
-        <RadzenRow class="rz-mx-auto rz-px-4 rz-pt-2 rz-pt-md-4 rz-pt-lg-6 rz-pt-xl-12 rz-pb-2 rz-pb-lg-12" Style="max-width: 1440px;">
-            <RadzenColumn Size="12">
+        <RadzenRow Style="width: 100%; margin: 0; padding: 0;">
+            <RadzenColumn Size="12" Style="padding: 0;">
                 @Body
             </RadzenColumn>
         </RadzenRow>
     </RadzenBody>
     
     <RadzenSidebar @bind-Expanded="@sidebarExpanded">
-        <!-- Логотип -->
-        <RadzenStack AlignItems="Radzen.AlignItems.Center" class="rz-py-4 rz-py-lg-6" Style="padding: var(--rz-panel-menu-item-padding); border-bottom: 1px solid #2a4a6e;">
-            <RadzenImage Path="images/logo.png" style="width: 48px; height: 48px; filter: brightness(0) invert(1);" AlternateText="Logo"></RadzenImage>
-            <RadzenText Text="CARPARK" TextStyle="Radzen.Blazor.TextStyle.Subtitle1" class="rz-mb-0" style="color: #e0e8f0; font-weight: bold; letter-spacing: 2px;" />
+        <!-- Logo -->
+        <RadzenStack AlignItems="Radzen.AlignItems.Center" Gap="1rem" class="logo-area">
+            <div class="logo-icon">CP</div>
+            <RadzenStack AlignItems="Radzen.AlignItems.Center" Gap="0.25rem">
+                <RadzenText Text="CARPARK" TextStyle="Radzen.Blazor.TextStyle.H6" class="logo-text" />
+                <RadzenText Text="Fleet Management" TextStyle="Radzen.Blazor.TextStyle.Caption" class="logo-subtitle" />
+            </RadzenStack>
         </RadzenStack>
         
-        <!-- Меню сотрудника -->
+        <!-- Dynamic menu by role -->
         <RadzenPanelMenu>
-            <RadzenPanelMenuItem Text="Главная" Path="/employee/dashboard" />
-            <RadzenPanelMenuItem Text="Мои заявки" Path="/employee/trip-requests" />
-            <RadzenPanelMenuItem Text="Доступные автомобили" Path="/employee/vehicles" />
-            <RadzenPanelMenuItem Text="Профиль" Path="/employee/profile" />
+            @if (userRole == "Employee")
+            {
+                <RadzenPanelMenuItem Text="Главная" Path="/employee/dashboard" Icon="dashboard" />
+                <RadzenPanelMenuItem Text="Мои заявки" Path="/employee/trip-requests" Icon="assignment" />
+                <RadzenPanelMenuItem Text="Доступные автомобили" Path="/employee/vehicles" Icon="directions_car" />
+                <RadzenPanelMenuItem Text="Профиль" Path="/employee/profile" Icon="person" />
+            }
+            else if (userRole == "Driver")
+            {
+                <RadzenPanelMenuItem Text="Панель водителя" Path="/driver/dashboard1" Icon="dashboard" />
+                <RadzenPanelMenuItem Text="Мои поездки" Path="/driver/trips1" Icon="route" />
+                <RadzenPanelMenuItem Text="Мой автомобиль" Path="/driver/vehicle1" Icon="local_taxi" />
+                <RadzenPanelMenuItem Text="Профиль" Path="/driver/profile1" Icon="person" />
+            }
+            else if (userRole == "Administrator")
+            {
+                <RadzenPanelMenuItem Text="Дашборд" Path="/administrator/dashboard2" Icon="dashboard" />
+                <RadzenPanelMenuItem Text="Заявки" Path="/administrator/trip-requests2" Icon="list_alt" />
+                <RadzenPanelMenuItem Text="Автомобили" Path="/administrator/vehicles2" Icon="directions_car" />
+                <RadzenPanelMenuItem Text="Водители" Path="/administator/drivers2" Icon="people" />
+                <RadzenPanelMenuItem Text="Поездки" Path="/administrator/trips2" Icon="route" />
+                <RadzenPanelMenuItem Text="Сотрудники" Path="/administrator/employess2" Icon="badge" />
+                <RadzenPanelMenuItem Text="Пользователи" Path="/application-users" Icon="admin_panel_settings" />
+                <RadzenPanelMenuItem Text="Добавить пользователя" Path="/add-application-user" Icon="person_add" />
+                <RadzenPanelMenuItem Text="Профиль" Path="/administrator/profile2" Icon="settings" />
+            }
+            else
+            {
+                <RadzenPanelMenuItem Text="Главная" Path="/" Icon="home" />
+            }
         </RadzenPanelMenu>
         
-        <!-- Футер -->
-        <RadzenStack AlignItems="Radzen.AlignItems.Center" Gap="0" class="rz-py-4 rz-py-lg-6" Style="padding: var(--rz-panel-menu-item-padding); border-top: 1px solid #2a4a6e; margin-top: auto;">
-            <RadzenText Text="CP v1.0.0" TextStyle="Radzen.Blazor.TextStyle.Caption" TextAlign="Radzen.TextAlign.Center" style="color: #5a7a9a;" />
-            <RadzenText Text="Copyright Ⓒ 2026" TextStyle="Radzen.Blazor.TextStyle.Caption" class="rz-mb-0" TextAlign="Radzen.TextAlign.Center" style="color: #5a7a9a;" />
+        <!-- Footer -->
+        <RadzenStack AlignItems="Radzen.AlignItems.Center" Gap="0.5rem" class="sidebar-footer">
+            <RadzenText Text="CARPARK v1.0.0" TextStyle="Radzen.Blazor.TextStyle.Caption" class="footer-text" />
+            <RadzenText Text="© 2026 All rights reserved" TextStyle="Radzen.Blazor.TextStyle.Caption" class="footer-text" />
         </RadzenStack>
     </RadzenSidebar>
 </RadzenLayout>

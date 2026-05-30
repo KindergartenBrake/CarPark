@@ -48,4 +48,14 @@ public class TripRequestsController : ControllerBase
         var result = await _service.CreateAsync(dto, userId);
         return CreatedAtAction(nameof(GetById), new { id = result.RequestId }, result);
     }
+
+    [HttpGet("dashboard")]
+    public async Task<ActionResult<EmployeeDashboardDto>> GetEmployeeDashboard()
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (string.IsNullOrEmpty(userId)) return Unauthorized();
+        
+        var dashboard = await _service.GetEmployeeDashboardAsync(userId);
+        return Ok(dashboard);
+    }
 }

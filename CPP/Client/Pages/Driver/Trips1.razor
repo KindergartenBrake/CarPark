@@ -1,58 +1,61 @@
 @page "/driver/trips1"
-
 @using Microsoft.AspNetCore.Authorization
-@using System.ComponentModel.DataAnnotations
-@using System.Net.Http.Json
+@attribute [Authorize]
 
 <PageTitle>Driver - Мои поездки</PageTitle>
 
-<div style="min-height: 100vh; background: linear-gradient(135deg, #071226 0%, #0d1f3e 50%, #123a78 100%); padding: 24px;">
-    <div style="max-width: 1600px; margin: 0 auto;">
+<div style="min-height: 100vh; 
+            background: linear-gradient(135deg, #071120 0%, #0b1f3d 100%); 
+            padding: 24px;">
+    
+    <div style="width: 100%;">
 
         <div style="margin-bottom: 32px;">
-            <div style="color: #f0f6ff; font-size: 32px; font-weight: 800; letter-spacing: 1px;">
+            <div style="color: #edf4ff; font-size: 36px; font-weight: 900; letter-spacing: 1px;">
                 МОИ ПОЕЗДКИ
             </div>
-            <div style="color: #8fb3e0; font-size: 15px; margin-top: 8px;">
+            <div style="color: #89a7cf; font-size: 14px; margin-top: 8px;">
                 Управление назначенными, активными и завершёнными поездками
             </div>
         </div>
 
-        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; border-bottom: 2px solid #2c5fa8;">
+        <!-- TABS -->
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; border-bottom: 2px solid #1f4781;">
             @foreach (var filter in tripFilters)
             {
                 var currentFilter = filter;
                 <button @onclick="() => SelectFilter(currentFilter)"
-                        style="background: @(selectedFilter == currentFilter ? "#2f6fd0" : "transparent");
-                               color: @(selectedFilter == currentFilter ? "white" : "#8fb3e0");
+                        style="background: @(selectedFilter == currentFilter ? "#2563eb" : "transparent");
+                               color: @(selectedFilter == currentFilter ? "white" : "#8aa8cc");
                                border: none;
                                padding: 14px 28px;
                                font-size: 14px;
                                font-weight: 700;
                                cursor: pointer;
-                               border-radius: 10px 10px 0 0;
+                               border-radius: 12px 12px 0 0;
                                transition: all 0.3s ease;">
                     @GetFilterLabel(currentFilter)
                 </button>
             }
         </div>
 
-        <div style="background: rgba(13, 31, 62, 0.95);
-                    border: 1px solid #2c5fa8;
-                    border-radius: 14px;
+        <!-- TABLE -->
+        <div style="background: rgba(12, 28, 51, 0.95);
+                    border: 1px solid #1f4781;
+                    border-radius: 20px;
                     overflow: hidden;
-                    box-shadow: 0 10px 30px rgba(0,0,0,0.35);">
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
 
             <div style="overflow-x: auto;">
                 <table style="width: 100%; border-collapse: collapse;">
-                    <thead>
-                        <tr style="background: linear-gradient(90deg, #123a78, #1b4f9c);">
-                            <th style="padding: 18px; color: white; text-align: left;">ID</th>
-                            <th style="padding: 18px; color: white; text-align: left;">Плановая дата/время</th>
-                            <th style="padding: 18px; color: white; text-align: left;">Автомобиль</th>
-                            <th style="padding: 18px; color: white; text-align: left;">Статус</th>
-                            <th style="padding: 18px; color: white; text-align: left;">Пробег</th>
-                            <th style="padding: 18px; color: white; text-align: center;">Действия</th>
+                    <thead style="background: linear-gradient(90deg, #0d1c34, #0a1628);">
+                        <tr>
+                            <th style="padding: 18px; color: #8eb5ef; text-align: left; font-size: 13px;">ID</th>
+                            <th style="padding: 18px; color: #8eb5ef; text-align: left; font-size: 13px;">Плановая дата/время</th>
+                            <th style="padding: 18px; color: #8eb5ef; text-align: left; font-size: 13px;">Автомобиль</th>
+                            <th style="padding: 18px; color: #8eb5ef; text-align: left; font-size: 13px;">Статус</th>
+                            <th style="padding: 18px; color: #8eb5ef; text-align: left; font-size: 13px;">Пробег</th>
+                            <th style="padding: 18px; color: #8eb5ef; text-align: center; font-size: 13px;">Действия</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,55 +63,46 @@
                         {
                             @foreach (var trip in filteredTrips)
                             {
-                                <tr style="border-bottom: 1px solid #1d3d73;">
-                                    <td style="padding: 16px; color: #dce9ff; font-weight: 700;">
+                                <tr style="border-bottom: 1px solid #1f4781;">
+                                    <td style="padding: 16px; color: #e1edff; font-weight: 700;">
                                         #@trip.Id
                                     </td>
-
-                                    <td style="padding: 16px; color: #dce9ff;">
+                                    <td style="padding: 16px; color: #e1edff;">
                                         @trip.ScheduledDate.ToString("dd.MM.yyyy HH:mm")
                                     </td>
-
-                                    <td style="padding: 16px; color: #dce9ff;">
+                                    <td style="padding: 16px; color: #e1edff;">
                                         @trip.VehicleName
                                     </td>
-
                                     <td style="padding: 16px;">
                                         <span style="@GetStatusStyle(trip.Status)">
-                                            @trip.Status
+                                            @GetStatusText(trip.Status)
                                         </span>
                                     </td>
-
-                                    <td style="padding: 16px; color: #dce9ff;">
-                                        @(trip.StartOdometer?.ToString() ?? "-")
+                                    <td style="padding: 16px; color: #e1edff;">
+                                        @(trip.StartOdometer?.ToString() ?? "—")
                                         /
-                                        @(trip.EndOdometer?.ToString() ?? "-")
+                                        @(trip.EndOdometer?.ToString() ?? "—")
                                     </td>
-
                                     <td style="padding: 16px; text-align: center;">
                                         <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-
                                             @if (trip.Status == "Scheduled")
                                             {
                                                 <button @onclick="() => OpenStartModal(trip)"
-                                                        style="@ActionButtonStyle("#2f6fd0")">
+                                                        style="@ActionButtonStyle("#2563eb")">
                                                     Начать поездку
                                                 </button>
                                             }
-
                                             @if (trip.Status == "InProgress")
                                             {
                                                 <button @onclick="() => OpenEndModal(trip)"
-                                                        style="@ActionButtonStyle("#00a86b")">
+                                                        style="@ActionButtonStyle("#10b981")">
                                                     Завершить поездку
                                                 </button>
                                             }
-
                                             <button @onclick="() => ShowDetails(trip)"
-                                                    style="@ActionButtonStyle("#555")">
+                                                    style="@ActionButtonStyle("#475569")">
                                                 Детали
                                             </button>
-
                                         </div>
                                     </td>
                                 </tr>
@@ -117,7 +111,7 @@
                         else
                         {
                             <tr>
-                                <td colspan="6" style="padding: 50px; text-align: center; color: #8fb3e0;">
+                                <td colspan="6" style="padding: 50px; text-align: center; color: #8aa8cc;">
                                     Нет поездок по выбранному фильтру
                                 </td>
                             </tr>
@@ -127,67 +121,55 @@
             </div>
         </div>
 
-        @if (showStartModal && selectedTrip is not null)
-        {
-            <div class="modal-overlay">
-                <div class="modal-window">
-                    <h3>Начать поездку #@selectedTrip.Id</h3>
-
-                    <EditForm Model="startModel" OnValidSubmit="StartTrip">
-                        <DataAnnotationsValidator />
-                        <ValidationSummary />
-
-                        <div class="form-group">
-                            <label>Показания одометра (начало)</label>
-                            <InputNumber @bind-Value="startModel.StartOdometer" class="form-input" />
-                        </div>
-
-                        <div class="modal-actions">
-                            <button type="submit" class="primary-btn">Подтвердить</button>
-                            <button type="button" @onclick="CloseModals" class="secondary-btn">Отмена</button>
-                        </div>
-                    </EditForm>
-                </div>
-            </div>
-        }
-
-        @if (showEndModal && selectedTrip is not null)
-        {
-            <div class="modal-overlay">
-                <div class="modal-window">
-                    <h3>Завершить поездку #@selectedTrip.Id</h3>
-
-                    <EditForm Model="endModel" OnValidSubmit="EndTrip">
-                        <DataAnnotationsValidator />
-                        <ValidationSummary />
-
-                        <div class="form-group">
-                            <label>Показания одометра (конец)</label>
-                            <InputNumber @bind-Value="endModel.EndOdometer" class="form-input" />
-                        </div>
-
-                        <div class="modal-actions">
-                            <button type="submit" class="primary-btn">Завершить</button>
-                            <button type="button" @onclick="CloseModals" class="secondary-btn">Отмена</button>
-                        </div>
-                    </EditForm>
-                </div>
-            </div>
-        }
-
     </div>
 </div>
 
-<style>
-    button:hover {
-        transform: translateY(-2px);
-        opacity: 0.92;
-    }
+<!-- START MODAL -->
+@if (showStartModal && selectedTrip is not null)
+{
+    <div class="modal-overlay">
+        <div class="modal-window">
+            <h3 style="margin: 0 0 20px 0; font-size: 24px;">Начать поездку #@selectedTrip.Id</h3>
 
+            <div class="form-group">
+                <label>Показания одометра (начало)</label>
+                <input type="number" @bind="startModel.StartOdometer" class="form-input" />
+            </div>
+
+            <div class="modal-actions">
+                <button @onclick="StartTrip" class="primary-btn">Подтвердить</button>
+                <button @onclick="CloseModals" class="secondary-btn">Отмена</button>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- END MODAL -->
+@if (showEndModal && selectedTrip is not null)
+{
+    <div class="modal-overlay">
+        <div class="modal-window">
+            <h3 style="margin: 0 0 20px 0; font-size: 24px;">Завершить поездку #@selectedTrip.Id</h3>
+
+            <div class="form-group">
+                <label>Показания одометра (конец)</label>
+                <input type="number" @bind="endModel.EndOdometer" class="form-input" />
+            </div>
+
+            <div class="modal-actions">
+                <button @onclick="EndTrip" class="primary-btn">Завершить</button>
+                <button @onclick="CloseModals" class="secondary-btn">Отмена</button>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
     .modal-overlay {
         position: fixed;
         inset: 0;
-        background: rgba(0,0,0,0.75);
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(4px);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -195,13 +177,13 @@
     }
 
     .modal-window {
-        background: linear-gradient(135deg, #0d1f3e, #123a78);
-        padding: 30px;
-        border-radius: 14px;
-        width: 420px;
-        border: 1px solid #2f6fd0;
-        color: white;
-        box-shadow: 0 10px 35px rgba(0,0,0,0.45);
+        background: linear-gradient(145deg, #0d1c34 0%, #0a1628 100%);
+        padding: 32px;
+        border-radius: 20px;
+        width: 450px;
+        border: 1px solid #1f4781;
+        color: #edf4ff;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
     }
 
     .form-group {
@@ -211,192 +193,57 @@
     .form-group label {
         display: block;
         margin-bottom: 8px;
-        color: #cde2ff;
+        color: #8aa8cc;
         font-weight: 600;
+        font-size: 13px;
     }
 
     .form-input {
         width: 100%;
         padding: 12px;
-        border-radius: 8px;
-        border: 1px solid #2f6fd0;
-        background: #071226;
-        color: white;
+        border-radius: 10px;
+        border: 1px solid #1f4781;
+        background: #08111f;
+        color: #edf4ff;
+        font-size: 14px;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: #3b82f6;
     }
 
     .modal-actions {
         display: flex;
         gap: 12px;
         margin-top: 24px;
+        justify-content: flex-end;
     }
 
     .primary-btn {
-        background: #2f6fd0;
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
         border: none;
         color: white;
-        padding: 12px 20px;
+        padding: 10px 20px;
         border-radius: 8px;
         font-weight: 700;
         cursor: pointer;
+        transition: 0.2s;
     }
 
     .secondary-btn {
-        background: #555;
+        background: #1e293b;
         border: none;
-        color: white;
-        padding: 12px 20px;
+        color: #8aa8cc;
+        padding: 10px 20px;
         border-radius: 8px;
         cursor: pointer;
+        font-weight: 700;
+        transition: 0.2s;
+    }
+
+    .primary-btn:hover, .secondary-btn:hover {
+        transform: translateY(-2px);
+        opacity: 0.92;
     }
 </style>
-
-@code {
-    [Inject] private HttpClient Http { get; set; } = default!;
-
-    private List<TripDto> trips = new();
-    private string selectedFilter = "All";
-
-    private bool showStartModal;
-    private bool showEndModal;
-
-    private TripDto? selectedTrip;
-
-    private StartTripModel startModel = new();
-    private EndTripModel endModel = new();
-
-    private List<string> tripFilters = new()
-    {
-        "All",
-        "Scheduled",
-        "InProgress",
-        "Completed"
-    };
-
-protected override async Task OnInitializedAsync()
-    {
-        await LoadTrips();
-    }
-private async Task LoadTrips()
-{
-    try
-    {
-        var result = await Http.GetFromJsonAsync<List<TripDto>>("api/driver/trips/my");
-
-        if (result != null)
-            trips = result;
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Error loading trips: {ex.Message}");
-    }
-}
-
-
-    private IEnumerable<TripDto> filteredTrips =>
-        selectedFilter == "All"
-            ? trips
-            : trips.Where(t => t.Status == selectedFilter);
-
-    private void SelectFilter(string filter)
-    {
-        selectedFilter = filter;
-    }
-
-    private string GetFilterLabel(string filter) => filter switch
-    {
-        "All" => "Все",
-        "Scheduled" => "Назначенные",
-        "InProgress" => "Активные",
-        "Completed" => "Завершённые",
-        _ => filter
-    };
-
-    private string GetStatusStyle(string status) => status switch
-    {
-        "Scheduled" => "background:#f0ad4e; color:white; padding:6px 14px; border-radius:20px; font-weight:700;",
-        "InProgress" => "background:#2f6fd0; color:white; padding:6px 14px; border-radius:20px; font-weight:700;",
-        "Completed" => "background:#28a745; color:white; padding:6px 14px; border-radius:20px; font-weight:700;",
-        _ => "background:#777; color:white; padding:6px 14px; border-radius:20px;"
-    };
-
-    private string ActionButtonStyle(string color) =>
-        $"background:{color}; border:none; color:white; padding:8px 14px; border-radius:8px; cursor:pointer; font-weight:600;";
-
-    private void OpenStartModal(TripDto trip)
-    {
-        selectedTrip = trip;
-        startModel = new();
-        showStartModal = true;
-    }
-
-    private void OpenEndModal(TripDto trip)
-    {
-        selectedTrip = trip;
-        endModel = new();
-        showEndModal = true;
-    }
-
-    private void CloseModals()
-    {
-        showStartModal = false;
-        showEndModal = false;
-        selectedTrip = null;
-    }
-
-    private async Task StartTrip()
-    {
-        if (selectedTrip is null) return;
-
-        var response = await Http.PutAsJsonAsync($"/api/trips/{selectedTrip.Id}/start", startModel);
-
-        if (response.IsSuccessStatusCode)
-        {
-            selectedTrip.Status = "InProgress";
-            selectedTrip.StartOdometer = startModel.StartOdometer;
-            CloseModals();
-        }
-    }
-
-    private async Task EndTrip()
-    {
-        if (selectedTrip is null) return;
-
-        if (endModel.EndOdometer <= selectedTrip.StartOdometer)
-            return;
-
-        var response = await Http.PutAsJsonAsync($"/api/trips/{selectedTrip.Id}/end", endModel);
-
-        if (response.IsSuccessStatusCode)
-        {
-            selectedTrip.Status = "Completed";
-            selectedTrip.EndOdometer = endModel.EndOdometer;
-            CloseModals();
-        }
-    }
-
-    private void ShowDetails(TripDto trip)
-    {
-    }
-
-    public class TripDto
-    {
-        public int Id { get; set; }
-        public DateTime ScheduledDate { get; set; }
-        public string VehicleName { get; set; } = "";
-        public string Status { get; set; } = "";
-        public int? StartOdometer { get; set; }
-        public int? EndOdometer { get; set; }
-    }
-
-    public class StartTripModel
-    {
-        [Required(ErrorMessage = "Введите начальные показания")]
-        public int StartOdometer { get; set; }
-    }
-
-    public class EndTripModel
-    {
-        [Required(ErrorMessage = "Введите конечные показания")]
-        public int EndOdometer { get; set; }
-    }
-}

@@ -1,36 +1,150 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.JSInterop;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using Radzen;
-using Radzen.Blazor;
+using CP.Server.DTO;
 
-namespace CP.Client.Pages.Administrator
+namespace CP.Client.Pages.Administrator;
+
+public partial class Vehicles2
 {
-    public partial class Vehicles
+    [Inject] protected CP.Client.CarParkService CarParkService { get; set; } = default!;
+
+    private string search = "";
+    private bool showModal;
+    private bool showDriverWarning;
+    private CreateVehicleDto editingVehicle = new();
+    private AdminVehicleDto? selectedVehicle;
+    private List<AvailableDriverDto> drivers = new();
+    private int? editingVehicleId;  // ← добавлено
+
+    private List<AdminVehicleDto> vehicles = new();
+
+    private IEnumerable<AdminVehicleDto> FilteredVehicles =>
+        vehicles.Where(v =>
+            string.IsNullOrWhiteSpace(search)
+            || (v.Brand?.Contains(search, StringComparison.OrdinalIgnoreCase) ?? false)
+            || (v.Model?.Contains(search, StringComparison.OrdinalIgnoreCase) ?? false)
+            || (v.LicensePlate?.Contains(search, StringComparison.OrdinalIgnoreCase) ?? false)
+            || (v.Vin?.Contains(search, StringComparison.OrdinalIgnoreCase) ?? false));
+
+    protected override async Task OnInitializedAsync()
     {
-        [Inject]
-        protected IJSRuntime JSRuntime { get; set; }
+        await LoadVehicles();
+        await LoadDrivers();
+    }
 
-        [Inject]
-        protected NavigationManager NavigationManager { get; set; }
+    private async Task LoadVehicles()
+    {
+        try
+        {
+            vehicles = await CarParkService.GetAdminVehiclesAsync();
+        }
+        catch
+        {
+            vehicles = new();
+        }
+    }
 
-        [Inject]
-        protected DialogService DialogService { get; set; }
+    private async Task LoadDrivers()
+    {
+        try
+        {
+            drivers = await CarParkService.GetAvailableDriversAsync();
+        }
+        catch
+        {
+            drivers = new();
+        }
+    }
 
-        [Inject]
-        protected TooltipService TooltipService { get; set; }
+    private void OpenCreateModal()
+    {
+        editingVehicleId = null;  // ← новая запись
+        editingVehicle = new CreateVehicleDto
+        {
+            Year = DateTime.Now.Year,
+            Status = "Available",
+            InsuranceExpire = DateTime.Now.AddYears(1)
+        };
+        showModal = true;
+        showDriverWarning = false;
+    }
 
-        [Inject]
-        protected ContextMenuService ContextMenuService { get; set; }
+    private void OpenEditModal(AdminVehicleDto vehicle)
+    {
+        editingVehicleId = vehicle.VehicleId;  // ← запомнили ID
+        editingVehicle = new CreateVehicleDto
+        {
+            Brand = vehicle.Brand,
+            Model = vehicle.Model,
+            Year = vehicle.Year,
+            LicensePlate = vehicle.LicensePlate,
+            Vin = vehicle.Vin,
+            FuelType = vehicle.FuelType,
+            VehicleType = vehicle.VehicleType,
+            Mileage = vehicle.Mileage,
+            Status = vehicle.Status,
+            InsuranceExpire = vehicle.InsuranceExpire,
+            DriverId = vehicle.DriverId
+        };
+        showModal = true;
+        showDriverWarning = false;
+    }
 
-        [Inject]
-        protected NotificationService NotificationService { get; set; }
+    private async Task SaveVehicle()
+    {
+        try
+        {
+            if (editingVehicleId == null)
+            {
+                await CarParkService.CreateVehicleAsync(editingVehicle);
+            }
+            else
+            {
+                await CarParkService.UpdateVehicleAsync(editingVehicleId.Value, editingVehicle);
+            }
+            showModal = false;
+            await LoadVehicles();
+        }
+        catch { }
+    }
 
-        [Inject]
-        protected SecurityService Security { get; set; }
+    private async Task DeleteVehicle(AdminVehicleDto vehicle)
+    {
+        try
+        {
+            await CarParkService.DeleteVehicleAsync(vehicle.VehicleId);
+            await LoadVehicles();
+        }
+        catch { }
+    }
+
+    private async Task DeactivateVehicle(AdminVehicleDto vehicle)
+    {
+        try
+        {
+            await CarParkService.DeactivateVehicleAsync(vehicle.VehicleId);
+            await LoadVehicles();
+        }
+        catch { }
+    }
+
+    private void OpenDetails(AdminVehicleDto vehicle)
+    {
+        selectedVehicle = vehicle;
+    }
+
+    private void CloseDetails()
+    {
+        selectedVehicle = null;
+    }
+
+    private void CloseModal()
+    {
+        showModal = false;
+        showDriverWarning = false;
+    }
+
+    private void CheckDriverWarning()
+    {
+        showDriverWarning = selectedVehicle?.HasActiveTrips ?? false;
     }
 }

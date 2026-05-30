@@ -1,68 +1,43 @@
 @page "/administator/drivers2"
 @using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
 
 <PageTitle>Drivers Management</PageTitle>
 
 <div style="min-height: 100vh; background: linear-gradient(135deg, #071120 0%, #0b1d38 100%); padding: 24px;">
 
-    <div style="max-width: 1700px; margin: 0 auto;">
+    <div style="width:100%;">
 
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
-
             <div>
-                <div style="color:#e7f0ff; font-size:32px; font-weight:800; letter-spacing:1px;">
-                    DRIVERS MANAGEMENT
+                <div style="font-size:36px;
+                            font-weight:900;
+                            color:#edf4ff;
+                            letter-spacing:1px;">
+                ВОДИТЕЛИ
                 </div>
-
                 <div style="color:#7f9cc7; margin-top:8px; font-size:14px;">
                     Управление водителями, активностью и закреплёнными автомобилями
                 </div>
             </div>
-
             <button @onclick="OpenCreateModal"
-                    style="background:#2979ff;
-                           border:none;
-                           color:white;
-                           padding:14px 22px;
-                           border-radius:10px;
-                           font-size:14px;
-                           font-weight:700;
-                           cursor:pointer;
+                    style="background:#2979ff; border:none; color:white; padding:14px 22px;
+                           border-radius:10px; font-size:14px; font-weight:700; cursor:pointer;
                            box-shadow:0 0 20px rgba(41,121,255,0.35);">
-
                 + ДОБАВИТЬ ВОДИТЕЛЯ
             </button>
-
         </div>
 
-        <div style="background:#0c1b31;
-                    border:1px solid #1d3f73;
-                    border-radius:14px;
-                    padding:18px;
-                    margin-bottom:24px;">
-
-            <input @bind="search"
-                   placeholder="Поиск по ФИО, телефону или номеру прав..."
-                   style="width:100%;
-                          background:#08111f;
-                          border:1px solid #23497f;
-                          border-radius:10px;
-                          padding:14px;
-                          color:#dce9ff;
-                          font-size:14px;" />
+        <div style="background:#0c1b31; border:1px solid #1d3f73; border-radius:14px; padding:18px; margin-bottom:24px;">
+            <input @bind="search" placeholder="Поиск по ФИО, телефону или номеру прав..."
+                   style="width:100%; background:#08111f; border:1px solid #23497f;
+                          border-radius:10px; padding:14px; color:#dce9ff; font-size:14px;" />
         </div>
 
-        <div style="overflow-x:auto;
-                    background:#0c1b31;
-                    border-radius:16px;
-                    border:1px solid #1d3f73;">
-
+        <div style="overflow-x:auto; background:#0c1b31; border-radius:16px; border:1px solid #1d3f73;">
             <table style="width:100%; border-collapse:collapse;">
-
                 <thead style="background:#11284b;">
-
                     <tr>
-
                         <th class="tbl-head">ID</th>
                         <th class="tbl-head">ФИО</th>
                         <th class="tbl-head">Номер прав</th>
@@ -70,676 +45,168 @@
                         <th class="tbl-head">Активность</th>
                         <th class="tbl-head">Автомобиль</th>
                         <th class="tbl-head">Действия</th>
-
                     </tr>
-
                 </thead>
-
                 <tbody>
-
                     @foreach (var driver in FilteredDrivers)
                     {
                         <tr style="border-top:1px solid #18345f;">
-
+                            <td class="tbl-cell">#@driver.DriverId</td>
                             <td class="tbl-cell">
-                                #@driver.Id
-                            </td>
-
-                            <td class="tbl-cell">
-
                                 <div style="display:flex; flex-direction:column;">
-
-                                    <span style="font-weight:700; color:#f2f7ff;">
-                                        @driver.FullName
-                                    </span>
-
-                                    <span style="font-size:12px; color:#6f92c4;">
-                                        @driver.IdentityUser
-                                    </span>
-
+                                    <span style="font-weight:700; color:#f2f7ff;">@driver.FullName</span>
+                                    <span style="font-size:12px; color:#6f92c4;">@driver.IdentityUser</span>
                                 </div>
-
                             </td>
-
+                            <td class="tbl-cell">@driver.LicenseNumber</td>
+                            <td class="tbl-cell">@driver.Phone</td>
                             <td class="tbl-cell">
-                                @driver.LicenseNumber
-                            </td>
-
-                            <td class="tbl-cell">
-                                @driver.Phone
-                            </td>
-
-                            <td class="tbl-cell">
-
                                 @if (driver.IsActive)
                                 {
-                                    <div class="status-active">
-                                        ● Активен
-                                    </div>
+                                    <div class="status-active">● Активен</div>
                                 }
                                 else
                                 {
-                                    <div class="status-inactive">
-                                        ● Неактивен
-                                    </div>
+                                    <div class="status-inactive">● Неактивен</div>
                                 }
-
                             </td>
-
                             <td class="tbl-cell">
-
-                                <div style="color:#9ec3ff;">
-                                    @(driver.Vehicle ?? "Не назначен")
-                                </div>
-
+                                <div style="color:#9ec3ff;">@(driver.VehicleName ?? "Не назначен")</div>
                             </td>
-
                             <td class="tbl-cell">
-
                                 <div style="display:flex; gap:10px; flex-wrap:wrap;">
-
-                                    <button class="action-btn edit-btn"
-                                            @onclick="() => OpenEditModal(driver)">
-                                        Редактировать
-                                    </button>
-
-                                    <button class="action-btn details-btn"
-                                            @onclick="() => OpenDetails(driver)">
-                                        Детали
-                                    </button>
-
+                                    <button class="action-btn edit-btn" @onclick="() => OpenEditModal(driver)">Редактировать</button>
+                                    <button class="action-btn details-btn" @onclick="() => OpenDetails(driver)">Детали</button>
                                     @if (driver.IsActive)
                                     {
-                                        <button class="action-btn deactivate-btn"
-                                                @onclick="() => Deactivate(driver)">
-                                            Деактивировать
-                                        </button>
+                                        <button class="action-btn deactivate-btn" @onclick="() => Deactivate(driver)">Деактивировать</button>
                                     }
-
                                 </div>
-
                             </td>
-
                         </tr>
                     }
-
                 </tbody>
-
             </table>
-
         </div>
 
         @if (selectedDriver is not null)
         {
-            <div style="margin-top:30px;
-                        background:#0c1b31;
-                        border:1px solid #1d3f73;
-                        border-radius:16px;
-                        padding:28px;">
-
-                <div style="display:flex;
-                            justify-content:space-between;
-                            align-items:center;
-                            margin-bottom:25px;">
-
-                    <div style="color:#f2f7ff;
-                                font-size:24px;
-                                font-weight:800;">
-
-                        DRIVER DETAILS
-
-                    </div>
-
-                    <button @onclick="CloseDetails"
-                            style="background:#152842;
-                                   border:none;
-                                   color:#9abfff;
-                                   padding:10px 16px;
-                                   border-radius:8px;
-                                   cursor:pointer;">
-
-                        Закрыть
-
-                    </button>
-
+            <div style="margin-top:30px; background:#0c1b31; border:1px solid #1d3f73; border-radius:16px; padding:28px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px;">
+                    <div style="color:#f2f7ff; font-size:24px; font-weight:800;">DRIVER DETAILS</div>
+                    <button @onclick="CloseDetails" style="background:#152842; border:none; color:#9abfff; padding:10px 16px; border-radius:8px; cursor:pointer;">Закрыть</button>
                 </div>
-
-                <div style="display:grid;
-                            grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
-                            gap:20px;">
-
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:20px;">
                     <div class="info-card">
-
-                        <div class="card-title">
-                            Основная информация
-                        </div>
-
-                        <div class="info-row">
-                            <span>ID:</span>
-                            <strong>@selectedDriver.Id</strong>
-                        </div>
-
-                        <div class="info-row">
-                            <span>ФИО:</span>
-                            <strong>@selectedDriver.FullName</strong>
-                        </div>
-
-                        <div class="info-row">
-                            <span>Телефон:</span>
-                            <strong>@selectedDriver.Phone</strong>
-                        </div>
-
-                        <div class="info-row">
-                            <span>Права:</span>
-                            <strong>@selectedDriver.LicenseNumber</strong>
-                        </div>
-
-                        <div class="info-row">
-                            <span>Срок действия:</span>
-                            <strong>@selectedDriver.LicenseExpireDate.ToShortDateString()</strong>
-                        </div>
-
+                        <div class="card-title">Основная информация</div>
+                        <div class="info-row"><span>ID:</span><strong>@selectedDriver.DriverId</strong></div>
+                        <div class="info-row"><span>ФИО:</span><strong>@selectedDriver.FullName</strong></div>
+                        <div class="info-row"><span>Телефон:</span><strong>@selectedDriver.Phone</strong></div>
+                        <div class="info-row"><span>Права:</span><strong>@selectedDriver.LicenseNumber</strong></div>
+                        <div class="info-row"><span>Срок действия:</span><strong>@selectedDriver.LicenseExpireDate.ToShortDateString()</strong></div>
                     </div>
-
                     <div class="info-card">
-
-                        <div class="card-title">
-                            Закреплённый автомобиль
-                        </div>
-
+                        <div class="card-title">Закреплённый автомобиль</div>
                         <div style="margin-top:18px;">
-
-                            <div style="font-size:18px;
-                                        color:#f2f7ff;
-                                        font-weight:700;">
-
-                                @(selectedDriver.Vehicle ?? "Нет автомобиля")
-
-                            </div>
-
-                            <div style="margin-top:10px;
-                                        color:#7d9bc7;
-                                        font-size:14px;">
-
-                                Назначенный транспорт водителя
-
-                            </div>
-
+                            <div style="font-size:18px; color:#f2f7ff; font-weight:700;">@(selectedDriver.VehicleName ?? "Нет автомобиля")</div>
+                            <div style="margin-top:10px; color:#7d9bc7; font-size:14px;">Назначенный транспорт водителя</div>
                         </div>
-
                     </div>
-
                     <div class="info-card">
-
-                        <div class="card-title">
-                            Статистика поездок
-                        </div>
-
+                        <div class="card-title">Статистика поездок</div>
                         <div class="stats-grid">
-
-                            <div class="stat-box">
-                                <div class="stat-value">124</div>
-                                <div class="stat-label">Поездок</div>
-                            </div>
-
-                            <div class="stat-box">
-                                <div class="stat-value">98%</div>
-                                <div class="stat-label">Успешно</div>
-                            </div>
-
-                            <div class="stat-box">
-                                <div class="stat-value">4.9</div>
-                                <div class="stat-label">Рейтинг</div>
-                            </div>
-
+                            <div class="stat-box"><div class="stat-value">124</div><div class="stat-label">Поездок</div></div>
+                            <div class="stat-box"><div class="stat-value">98%</div><div class="stat-label">Успешно</div></div>
+                            <div class="stat-box"><div class="stat-value">4.9</div><div class="stat-label">Рейтинг</div></div>
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
         }
-
     </div>
-
 </div>
 
 @if (showModal)
 {
-    <div style="position:fixed;
-                inset:0;
-                background:rgba(0,0,0,0.7);
-                backdrop-filter:blur(4px);
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                z-index:999;">
-
-        <div style="width:700px;
-                    background:#0c1b31;
-                    border:1px solid #24529a;
-                    border-radius:18px;
-                    padding:30px;">
-
-            <div style="font-size:24px;
-                        color:#f2f7ff;
-                        font-weight:800;
-                        margin-bottom:24px;">
-
-                @(editingDriver.Id == 0
-                    ? "СОЗДАНИЕ ВОДИТЕЛЯ"
-                    : "РЕДАКТИРОВАНИЕ ВОДИТЕЛЯ")
-
+    <div style="position:fixed; inset:0; background:rgba(0,0,0,0.7); backdrop-filter:blur(4px);
+                display:flex; align-items:center; justify-content:center; z-index:999;">
+        <div style="width:700px; background:#0c1b31; border:1px solid #24529a; border-radius:18px; padding:30px;">
+            <div style="font-size:24px; color:#f2f7ff; font-weight:800; margin-bottom:24px;">
+                @(editingDriverId == null ? "СОЗДАНИЕ ВОДИТЕЛЯ" : "РЕДАКТИРОВАНИЕ ВОДИТЕЛЯ")
             </div>
-
-            <div style="display:grid;
-                        grid-template-columns:1fr 1fr;
-                        gap:18px;">
-
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
                 <div>
-                    <label class="input-label">ФИО</label>
-
-                    <input @bind="editingDriver.FullName" class="blue-input" />
+                    <label class="input-label">Фамилия</label>
+                    <input @bind="editingDriver.LastName" class="blue-input" />
                 </div>
-
+                <div>
+                    <label class="input-label">Имя</label>
+                    <input @bind="editingDriver.FirstName" class="blue-input" />
+                </div>
+                <div>
+                    <label class="input-label">Отчество</label>
+                    <input @bind="editingDriver.MiddleName" class="blue-input" />
+                </div>
                 <div>
                     <label class="input-label">Телефон</label>
-
                     <input @bind="editingDriver.Phone" class="blue-input" />
                 </div>
-
                 <div>
                     <label class="input-label">Номер прав</label>
-
                     <input @bind="editingDriver.LicenseNumber" class="blue-input" />
                 </div>
-
                 <div>
                     <label class="input-label">Срок действия прав</label>
-
-                    <input type="date"
-                           @bind="editingDriver.LicenseExpireDate"
-                           class="blue-input" />
+                    <input type="date" @bind="editingDriver.LicenseExpireDate" class="blue-input" />
                 </div>
-
-                <div>
-                    <label class="input-label">Identity User</label>
-
-                    <select class="blue-input"
-                            @bind="editingDriver.IdentityUser">
-
-                        @foreach (var user in users)
-                        {
-                            <option value="@user">
-                                @user
-                            </option>
-                        }
-
-                    </select>
-                </div>
-
                 <div>
                     <label class="input-label">Автомобиль</label>
-
-                    <select class="blue-input"
-                            @bind="editingDriver.Vehicle">
-
+                    <select class="blue-input" @bind="editingDriver.VehicleId">
                         <option value="">Не назначен</option>
-
-                        @foreach (var car in vehicles)
+                        @foreach (var v in vehicles)
                         {
-                            <option value="@car">
-                                @car
-                            </option>
+                            <option value="@v.VehicleId">@v.Brand @v.Model (@v.LicensePlate)</option>
                         }
-
                     </select>
                 </div>
-
+                <div>
+                    <label class="input-label">Identity User</label>
+                    <input @bind="editingDriver.UserId" class="blue-input" placeholder="GUID пользователя" />
+                </div>
             </div>
-
             <div style="margin-top:18px;">
-
-                <label style="display:flex;
-                              align-items:center;
-                              gap:10px;
-                              color:#dce9ff;">
-
-                    <input type="checkbox"
-                           @bind="editingDriver.IsActive" />
-
+                <label style="display:flex; align-items:center; gap:10px; color:#dce9ff;">
+                    <input type="checkbox" @bind="editingDriver.IsActive" />
                     Активный водитель
-
                 </label>
-
             </div>
-
-            <div style="display:flex;
-                        justify-content:flex-end;
-                        gap:14px;
-                        margin-top:30px;">
-
-                <button class="cancel-btn"
-                        @onclick="CloseModal">
-
-                    Отмена
-
-                </button>
-
-                <button class="save-btn"
-                        @onclick="SaveDriver">
-
-                    Сохранить
-
-                </button>
-
+            <div style="display:flex; justify-content:flex-end; gap:14px; margin-top:30px;">
+                <button class="cancel-btn" @onclick="CloseModal">Отмена</button>
+                <button class="save-btn" @onclick="SaveDriver">Сохранить</button>
             </div>
-
         </div>
-
     </div>
 }
 
 <style>
-
-    .tbl-head{
-        padding:18px;
-        text-align:left;
-        color:#8fb7f0;
-        font-size:13px;
-        letter-spacing:1px;
-    }
-
-    .tbl-cell{
-        padding:18px;
-        color:#dce9ff;
-        font-size:14px;
-    }
-
-    .status-active{
-        display:inline-block;
-        background:rgba(56, 142, 60, 0.15);
-        color:#66ff99;
-        padding:6px 14px;
-        border-radius:20px;
-        font-size:13px;
-        font-weight:700;
-    }
-
-    .status-inactive{
-        display:inline-block;
-        background:rgba(180, 180, 180, 0.1);
-        color:#b0b0b0;
-        padding:6px 14px;
-        border-radius:20px;
-        font-size:13px;
-        font-weight:700;
-    }
-
-    .action-btn{
-        border:none;
-        padding:10px 14px;
-        border-radius:8px;
-        cursor:pointer;
-        font-size:13px;
-        font-weight:700;
-        transition:0.2s;
-    }
-
-    .edit-btn{
-        background:#1565c0;
-        color:white;
-    }
-
-    .details-btn{
-        background:#1e3a5f;
-        color:#9fc8ff;
-    }
-
-    .deactivate-btn{
-        background:#4a1f1f;
-        color:#ff8a8a;
-    }
-
-    .action-btn:hover{
-        transform:translateY(-2px);
-        opacity:0.9;
-    }
-
-    .info-card{
-        background:#08111f;
-        border:1px solid #18345f;
-        border-radius:14px;
-        padding:22px;
-    }
-
-    .card-title{
-        color:#f2f7ff;
-        font-size:18px;
-        font-weight:800;
-        margin-bottom:18px;
-    }
-
-    .info-row{
-        display:flex;
-        justify-content:space-between;
-        margin-bottom:12px;
-        color:#9cb9e4;
-    }
-
-    .stats-grid{
-        display:grid;
-        grid-template-columns:repeat(3,1fr);
-        gap:14px;
-        margin-top:18px;
-    }
-
-    .stat-box{
-        background:#0d2342;
-        border-radius:12px;
-        padding:18px;
-        text-align:center;
-    }
-
-    .stat-value{
-        color:#4da3ff;
-        font-size:24px;
-        font-weight:800;
-    }
-
-    .stat-label{
-        color:#88a7d4;
-        font-size:13px;
-        margin-top:8px;
-    }
-
-    .input-label{
-        display:block;
-        color:#8fb7f0;
-        margin-bottom:8px;
-        font-size:13px;
-        font-weight:700;
-    }
-
-    .blue-input{
-        width:100%;
-        background:#08111f;
-        border:1px solid #24529a;
-        border-radius:10px;
-        padding:12px;
-        color:#e7f0ff;
-        font-size:14px;
-    }
-
-    .save-btn{
-        background:#2979ff;
-        border:none;
-        color:white;
-        padding:12px 20px;
-        border-radius:10px;
-        cursor:pointer;
-        font-weight:700;
-    }
-
-    .cancel-btn{
-        background:#17263d;
-        border:none;
-        color:#8fb7f0;
-        padding:12px 20px;
-        border-radius:10px;
-        cursor:pointer;
-        font-weight:700;
-    }
-
+    .tbl-head { padding:18px; text-align:left; color:#8fb7f0; font-size:13px; letter-spacing:1px; }
+    .tbl-cell { padding:18px; color:#dce9ff; font-size:14px; }
+    .status-active { display:inline-block; background:rgba(56,142,60,0.15); color:#66ff99; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:700; }
+    .status-inactive { display:inline-block; background:rgba(180,180,180,0.1); color:#b0b0b0; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:700; }
+    .action-btn { border:none; padding:10px 14px; border-radius:8px; cursor:pointer; font-size:13px; font-weight:700; transition:0.2s; }
+    .edit-btn { background:#1565c0; color:white; }
+    .details-btn { background:#1e3a5f; color:#9fc8ff; }
+    .deactivate-btn { background:#4a1f1f; color:#ff8a8a; }
+    .action-btn:hover { transform:translateY(-2px); opacity:0.9; }
+    .info-card { background:#08111f; border:1px solid #18345f; border-radius:14px; padding:22px; }
+    .card-title { color:#f2f7ff; font-size:18px; font-weight:800; margin-bottom:18px; }
+    .info-row { display:flex; justify-content:space-between; margin-bottom:12px; color:#9cb9e4; }
+    .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px; }
+    .stat-box { background:#0d2342; border-radius:12px; padding:18px; text-align:center; }
+    .stat-value { color:#4da3ff; font-size:24px; font-weight:800; }
+    .stat-label { color:#88a7d4; font-size:13px; margin-top:8px; }
+    .input-label { display:block; color:#8fb7f0; margin-bottom:8px; font-size:13px; font-weight:700; }
+    .blue-input { width:100%; background:#08111f; border:1px solid #24529a; border-radius:10px; padding:12px; color:#e7f0ff; font-size:14px; }
+    .save-btn { background:#2979ff; border:none; color:white; padding:12px 20px; border-radius:10px; cursor:pointer; font-weight:700; }
+    .cancel-btn { background:#17263d; border:none; color:#8fb7f0; padding:12px 20px; border-radius:10px; cursor:pointer; font-weight:700; }
 </style>
-
-@code {
-
-    private string search = "";
-
-    private bool showModal;
-
-    private DriverModel editingDriver = new();
-
-    private DriverModel? selectedDriver;
-
-    private List<string> users = new()
-    {
-        "driver.petrov",
-        "driver.ivanov",
-        "driver.sidorov"
-    };
-
-    private List<string> vehicles = new()
-    {
-        "Toyota Camry A001AA",
-        "Ford Transit B777BB",
-        "Mercedes Sprinter C555CC"
-    };
-
-    private List<DriverModel> drivers = new()
-    {
-        new()
-        {
-            Id = 1,
-            FullName = "Иванов Иван",
-            Phone = "+7 900 111-22-33",
-            LicenseNumber = "AB123456",
-            LicenseExpireDate = DateTime.Now.AddYears(3),
-            IsActive = true,
-            Vehicle = "Toyota Camry A001AA",
-            IdentityUser = "driver.ivanov"
-        },
-
-        new()
-        {
-            Id = 2,
-            FullName = "Петров Сергей",
-            Phone = "+7 900 555-66-77",
-            LicenseNumber = "CD987654",
-            LicenseExpireDate = DateTime.Now.AddYears(2),
-            IsActive = false,
-            Vehicle = null,
-            IdentityUser = "driver.petrov"
-        }
-    };
-
-    private IEnumerable<DriverModel> FilteredDrivers =>
-        drivers.Where(x =>
-            string.IsNullOrWhiteSpace(search)
-            || x.FullName.Contains(search, StringComparison.OrdinalIgnoreCase)
-            || x.Phone.Contains(search, StringComparison.OrdinalIgnoreCase)
-            || x.LicenseNumber.Contains(search, StringComparison.OrdinalIgnoreCase));
-
-    private void OpenCreateModal()
-    {
-        editingDriver = new DriverModel
-        {
-            IsActive = true,
-            LicenseExpireDate = DateTime.Now.AddYears(1)
-        };
-
-        showModal = true;
-    }
-
-    private void OpenEditModal(DriverModel driver)
-    {
-        editingDriver = new DriverModel
-        {
-            Id = driver.Id,
-            FullName = driver.FullName,
-            Phone = driver.Phone,
-            LicenseNumber = driver.LicenseNumber,
-            LicenseExpireDate = driver.LicenseExpireDate,
-            IsActive = driver.IsActive,
-            Vehicle = driver.Vehicle,
-            IdentityUser = driver.IdentityUser
-        };
-
-        showModal = true;
-    }
-
-    private void SaveDriver()
-    {
-        if (editingDriver.Id == 0)
-        {
-            editingDriver.Id = drivers.Max(x => x.Id) + 1;
-            drivers.Add(editingDriver);
-        }
-        else
-        {
-            var existing = drivers.First(x => x.Id == editingDriver.Id);
-
-            existing.FullName = editingDriver.FullName;
-            existing.Phone = editingDriver.Phone;
-            existing.LicenseNumber = editingDriver.LicenseNumber;
-            existing.LicenseExpireDate = editingDriver.LicenseExpireDate;
-            existing.IsActive = editingDriver.IsActive;
-            existing.Vehicle = editingDriver.Vehicle;
-            existing.IdentityUser = editingDriver.IdentityUser;
-        }
-
-        showModal = false;
-    }
-
-    private void OpenDetails(DriverModel driver)
-    {
-        selectedDriver = driver;
-    }
-
-    private void CloseDetails()
-    {
-        selectedDriver = null;
-    }
-
-    private void CloseModal()
-    {
-        showModal = false;
-    }
-
-    private void Deactivate(DriverModel driver)
-    {
-        driver.IsActive = false;
-    }
-
-    public class DriverModel
-    {
-        public int Id { get; set; }
-
-        public string FullName { get; set; } = "";
-
-        public string LicenseNumber { get; set; } = "";
-
-        public DateTime LicenseExpireDate { get; set; }
-
-        public string Phone { get; set; } = "";
-
-        public bool IsActive { get; set; }
-
-        public string? Vehicle { get; set; }
-
-        public string IdentityUser { get; set; } = "";
-    }
-
-}
