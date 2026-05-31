@@ -10,7 +10,7 @@ public class VehicleRepository : Repository<Vehicle>, IVehicleRepository
     public async Task<List<Vehicle>> GetAvailableWithDriverAsync()
     {
         return await _dbSet
-            .Include(v => v.Driver)
+            .Include(v => v.PrimaryDriver)
             .Where(v => v.Status == "Available")
             .ToListAsync();
     }
@@ -18,7 +18,7 @@ public class VehicleRepository : Repository<Vehicle>, IVehicleRepository
     public async Task<List<Vehicle>> GetByTypeAsync(string type)
     {
         return await _dbSet
-            .Include(v => v.Driver)
+            .Include(v => v.PrimaryDriver)
             .Where(v => v.VehicleType == type)
             .ToListAsync();
     }
@@ -26,17 +26,15 @@ public class VehicleRepository : Repository<Vehicle>, IVehicleRepository
     public async Task<List<Vehicle>> GetAllWithDetailsAsync()
     {
         return await _dbSet
-            .Include(v => v.Driver)
-            .Include(v => v.Trips)
-            .OrderBy(v => v.VehicleId)
+            .Include(v => v.PrimaryDriver)
+            .OrderBy(v => v.Brand)
             .ToListAsync();
     }
 
     public async Task<Vehicle?> GetByIdWithDetailsAsync(int id)
     {
         return await _dbSet
-            .Include(v => v.Driver)
-            .Include(v => v.Trips)
+            .Include(v => v.PrimaryDriver)
             .FirstOrDefaultAsync(v => v.VehicleId == id);
     }
 }

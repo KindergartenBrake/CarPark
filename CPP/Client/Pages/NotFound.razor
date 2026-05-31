@@ -3,13 +3,104 @@
 @layout NotFoundLayout
 @attribute [AllowAnonymous]
 
-<PageTitle>Not found</PageTitle>
-<RadzenRow AlignItems="Radzen.AlignItems.Center">
-    <RadzenColumn Size="12">
-        <RadzenText TextStyle="Radzen.Blazor.TextStyle.DisplayH4" class="rz-mt-6 rz-mt-md-12 rz-pt-md-12 rz-mx-auto" Text="The page isn't available. Sorry about that." TextAlign="Radzen.TextAlign.Center" />
-        <RadzenText Text="We can't find a page with the url you entered." TextStyle="Radzen.Blazor.TextStyle.Subtitle1" class="rz-mb-4 rz-mb-sm-12" TextAlign="Radzen.TextAlign.Center" />
-        <RadzenText TextStyle="Radzen.Blazor.TextStyle.Body1" class="rz-mb-4 rz-mb-sm-12" TextAlign="Radzen.TextAlign.Center">
-            <RadzenLink Path="/" Text="Go to homepage" />
-        </RadzenText>
-    </RadzenColumn>
-</RadzenRow>
+<PageTitle>404 - Страница не найдена</PageTitle>
+
+<div style="min-height: 100vh; background: linear-gradient(135deg, #071120 0%, #0b1f3d 100%); display: flex; align-items: center; justify-content: center; padding: 24px;">
+    
+    <div style="display: flex; flex-wrap: wrap; max-width: 1200px; width: 100%; gap: 40px; align-items: center;">
+        
+        <!-- LEFT SIDE - Content & Buttons -->
+        <div style="flex: 1; min-width: 280px; text-align: left;">
+            
+            <!-- 404 Number -->
+            <div style="font-size: 100px; font-weight: 900; color: #3b82f6; text-shadow: 0 0 30px rgba(59, 130, 246, 0.5); line-height: 1;">
+                404
+            </div>
+            
+            <!-- Title -->
+            <div style="font-size: 28px; font-weight: 800; color: #edf4ff; margin-top: 16px; letter-spacing: 1px;">
+                СТРАНИЦА НЕ НАЙДЕНА
+            </div>
+            
+            <!-- Description -->
+            <div style="font-size: 15px; color: #8aa8cc; margin-top: 12px; line-height: 1.5;">
+                Извините, страница, которую вы ищете, не существует или была перемещена
+            </div>
+            
+            <!-- Buttons -->
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 32px;">
+                
+                <button onclick="document.getElementById('bgVideo').play()" 
+                        style="background: linear-gradient(135deg, #2563eb, #1d4ed8); border: none; color: white; padding: 14px 24px; border-radius: 12px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s ease; width: 100%; max-width: 250px;"
+                        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(37,99,235,0.3)'"
+                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                    ВОСПРОИЗВЕСТИ ВИДЕО
+                </button>
+                
+                <button @onclick="GoToHome" 
+                        style="background: transparent; border: 1px solid #3b82f6; color: #3b82f6; padding: 14px 24px; border-radius: 12px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s ease; width: 100%; max-width: 250px;"
+                        onmouseover="this.style.transform='translateY(-2px)'; this.style.background='rgba(59,130,246,0.1)'"
+                        onmouseout="this.style.transform='translateY(0)'; this.style.background='transparent'">
+                    НА ГЛАВНУЮ
+                </button>
+                
+            </div>
+            
+            
+        </div>
+        
+        <!-- RIGHT SIDE - Video (TikTok style) -->
+        <div style="flex: 1; min-width: 320px; display: flex; justify-content: center;">
+            
+            <div style="max-width: 360px; width: 100%; border-radius: 32px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); background: #000;">
+                
+                <div style="position: relative; padding-bottom: 177.77%; /* 9:16 ratio */">
+                    <video id="bgVideo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; background: #000;" controls>
+                        <source src="/videos/not-found-bg.mp4" type="video/mp4">
+                        Ваш браузер не поддерживает видео
+                    </video>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</div>
+
+<style>
+    /* Стили для контролов видео */
+    video::-webkit-media-controls {
+        filter: invert(1);
+    }
+    
+    video::-webkit-media-controls-panel {
+        background: linear-gradient(135deg, #0d1c34, #0a1628);
+    }
+    
+    /* Адаптивность */
+    @@media (max-width: 768px) {
+        .flex-container {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .left-side {
+            text-align: center;
+        }
+        
+        .buttons {
+            align-items: center;
+        }
+    }
+</style>
+
+@code {
+    [Inject] protected NavigationManager Navigation { get; set; } = default!;
+    
+    private void GoToHome()
+    {
+        Navigation.NavigateTo("/", true);
+    }
+}

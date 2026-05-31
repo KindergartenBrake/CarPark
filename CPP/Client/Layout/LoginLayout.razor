@@ -3,111 +3,153 @@
 <RadzenComponents />
 
 <style>
-    .brutal-page {
+    .login-page {
         min-height: 100vh;
-        background: linear-gradient(135deg, #0a1928 0%, #0d2b3e 50%, #0a1928 100%);
+        background: linear-gradient(135deg, #071120 0%, #0b1f3d 100%);
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px;
+        padding: 24px;
     }
     
-    .brutal-card {
-        max-width: 1000px;
+    .login-card {
+        max-width: 1100px;
         width: 100%;
-        background: linear-gradient(135deg, #1a2a3a 0%, #16212e 100%);
-        border-radius: 16px;
+        background: #0c1c33;
+        border-radius: 24px;
         overflow: hidden;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
-        border: 1px solid #2a4a6e;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        border: 1px solid #1f4781;
     }
     
     .brand-side {
-        background: linear-gradient(135deg, #0a121a 0%, #0d1620 100%);
+        background: linear-gradient(145deg, #0d1c34 0%, #0a1628 100%);
         padding: 48px;
         height: 100%;
-        border-right: 1px solid #2a4a6e;
+        border-right: 1px solid #1f4781;
     }
     
     .form-side {
-        background: linear-gradient(135deg, #141f2b 0%, #111a24 100%);
+        background: #0c1c33;
         padding: 48px;
         height: 100%;
     }
     
     .logo {
-        width: 64px;
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         margin-bottom: 32px;
-        filter: brightness(0) invert(1);
+        font-size: 32px;
+        font-weight: bold;
+        color: white;
     }
     
     h2 {
-        color: #e0e8f0;
+        color: #edf4ff;
         font-size: 28px;
-        font-weight: 500;
+        font-weight: 800;
         margin-bottom: 12px;
-        letter-spacing: -0.3px;
+        letter-spacing: 1px;
     }
     
     .subtitle {
-        color: #8aa0b5;
+        color: #8aa8cc;
         font-size: 14px;
         line-height: 1.5;
     }
     
-    hr {
+    .divider {
         border: none;
         height: 1px;
-        background: #2a4a6e;
+        background: #1f4781;
         margin: 32px 0 20px;
     }
     
     .version {
         font-size: 12px;
-        color: #5a7a9a;
+        color: #5f82b5;
     }
     
-    .brutal-input {
-        background: #0f1a24 !important;
-        border: 1px solid #2a4a6e !important;
-        color: #e0e8f0 !important;
-        border-radius: 6px !important;
-        padding: 10px 12px !important;
+    /* Стили для Radzen компонентов */
+    .login-input {
+        background: #08111f !important;
+        border: 1px solid #1f4781 !important;
+        color: #edf4ff !important;
+        border-radius: 10px !important;
+        padding: 12px 16px !important;
+        font-size: 14px !important;
+        width: 100% !important;
     }
     
-    .brutal-input:focus {
-        border-color: #3a8bc5 !important;
-        box-shadow: 0 0 0 2px rgba(58,139,197,0.2) !important;
-        background: #121f2c !important;
+    .login-input:focus {
+        border-color: #3b82f6 !important;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
+        background: #0d1c34 !important;
+        outline: none;
     }
     
-    .brutal-input::placeholder {
-        color: #5a7a9a !important;
+    .login-input::placeholder {
+        color: #5f82b5 !important;
     }
     
-    .brutal-label {
-        color: #8aa0b5 !important;
-        font-weight: 500;
+    .login-label {
+        color: #8aa8cc !important;
+        font-weight: 600;
         margin-bottom: 8px;
         display: block;
+        font-size: 13px;
+        letter-spacing: 0.5px;
     }
     
-    .brutal-btn {
-        background: linear-gradient(135deg, #1e5799 0%, #2b7abf 100%);
-        border: 1px solid #3a8bc5;
+    .login-btn {
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        border: none;
         color: white;
-        font-weight: bold;
-        padding: 10px 24px;
-        border-radius: 6px;
+        font-weight: 800;
+        padding: 12px 24px;
+        border-radius: 10px;
         width: 100%;
         cursor: pointer;
         transition: all 0.2s ease;
+        font-size: 14px;
+        letter-spacing: 1px;
     }
     
-    .brutal-btn:hover {
-        background: linear-gradient(135deg, #2b6aae 0%, #3a8bc5 100%);
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(30,87,153,0.4);
+    .login-btn:hover {
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+    }
+    
+    .error-alert {
+        background: rgba(220, 38, 38, 0.15);
+        border: 1px solid #dc2626;
+        border-radius: 10px;
+        padding: 12px 16px;
+        margin-bottom: 24px;
+        color: #fca5a5;
+        font-size: 14px;
+    }
+    
+    .info-text {
+        text-align: center;
+        margin-top: 24px;
+        color: #5f82b5;
+        font-size: 12px;
+    }
+    
+    .info-text a {
+        color: #3b82f6;
+        text-decoration: none;
+    }
+    
+    .info-text a:hover {
+        text-decoration: underline;
     }
     
     @@media (max-width: 768px) {
@@ -116,7 +158,9 @@
         }
         
         .logo {
-            width: 48px;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
             margin-bottom: 24px;
         }
         
@@ -126,22 +170,20 @@
     }
 </style>
 
-<div class="brutal-page">
-    <div class="brutal-card">
+<div class="login-page">
+    <div class="login-card">
         <div style="display: flex; flex-wrap: wrap;">
-        
-            <div style="flex: 1; min-width: 250px;" class="brand-side">
-                <img src="images/logo-login.png" alt="Logo" class="logo" />
-                <h2>CarPark</h2>
-                <div class="subtitle">Управление автопарком</div>
-                <hr />
+            <div style="flex: 1; min-width: 280px;" class="brand-side">
+                <div class="logo">CP</div>
+                <h2>CARPARK</h2>
+                <div class="subtitle">Система управления автопарком</div>
+                <div class="divider"></div>
                 <div class="version">v1.0.0</div>
             </div>
             
-            <div style="flex: 1; min-width: 280px;" class="form-side">
+            <div style="flex: 1; min-width: 320px;" class="form-side">
                 @Body
             </div>
-            
         </div>
     </div>
 </div>

@@ -126,10 +126,10 @@ namespace CP.Server.Data
         entity.Property(e => e.Status).HasColumnName("status").HasMaxLength(20).HasDefaultValue("Available");
         entity.Property(e => e.Insurance).HasColumnName("insurance").HasMaxLength(20);
 
-        entity.HasOne(e => e.Driver)
-                    .WithMany()
-                    .HasForeignKey(e => e.DriverId)
-                    .OnDelete(DeleteBehavior.SetNull);
+        entity.HasOne(e => e.PrimaryDriver)
+            .WithOne()
+            .HasForeignKey<Vehicle>(e => e.DriverId)
+            .OnDelete(DeleteBehavior.SetNull);
       });
 
       // TripRequest

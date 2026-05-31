@@ -4,8 +4,7 @@
 @inject NavigationManager Navigation
 
 <PageTitle>Login</PageTitle>
-<RadzenText Text="Login" TextStyle="Radzen.Blazor.TextStyle.H5" class="mb-4" TagName="Radzen.Blazor.TagName.H2" />
-<RadzenRow>
+<RadzenText Text="Вход в систему" TextStyle="Radzen.Blazor.TextStyle.H5" class="mb-4" TagName="Radzen.Blazor.TagName.H2" style="color: #edf4ff; font-weight: 800; font-size: 24px; letter-spacing: 1px;" /><RadzenRow>
     <RadzenColumn SizeMD="12">
         <RadzenTemplateForm Action="@($"account/login?redirectUrl={redirectUrl}")" Data="@("login")"
             Method="post">

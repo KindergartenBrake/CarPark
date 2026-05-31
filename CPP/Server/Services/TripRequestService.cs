@@ -194,7 +194,7 @@ public class TripRequestService : ITripRequestService
             Model = v.Model,
             LicensePlate = v.LicensePlate,
             VehicleType = v.VehicleType ?? "Не указан",
-            PrimaryDriverName = v.Driver != null ? $"{v.Driver.LastName} {v.Driver.FirstName}" : "Не назначен",
+            PrimaryDriverName = v.PrimaryDriver != null ? $"{v.PrimaryDriver.LastName} {v.PrimaryDriver.FirstName}" : "Не назначен",
             IsAvailable = v.Status == "Available"
         }).ToList();
     }

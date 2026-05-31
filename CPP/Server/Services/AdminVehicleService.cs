@@ -53,7 +53,7 @@ public class AdminVehicleService : IAdminVehicleService
             Mileage = v.Mileage,
             Status = v.Status ?? "Available",
             InsuranceExpire = v.InsuranceExpiryDate,
-            DriverName = v.Driver != null ? $"{v.Driver.LastName} {v.Driver.FirstName}" : "Не назначен",
+            DriverName = v.PrimaryDriver != null ? $"{v.PrimaryDriver.LastName} {v.PrimaryDriver.FirstName}" : null,
             DriverId = v.DriverId,
             HasActiveTrips = v.Trips.Any(t => t.Status == "Scheduled" || t.Status == "InProgress"),
             Trips = v.Trips.Select(t => new AdminTripDto
@@ -85,7 +85,7 @@ public class AdminVehicleService : IAdminVehicleService
             Mileage = v.Mileage,
             Status = v.Status ?? "Available",
             InsuranceExpire = v.InsuranceExpiryDate,
-            DriverName = v.Driver != null ? $"{v.Driver.LastName} {v.Driver.FirstName}" : "Не назначен",
+            DriverName = v.PrimaryDriver != null ? $"{v.PrimaryDriver.LastName} {v.PrimaryDriver.FirstName}" : "Не назначен",
             DriverId = v.DriverId,
             HasActiveTrips = v.Trips.Any(t => t.Status == "Scheduled" || t.Status == "InProgress"),
             Trips = v.Trips.Select(t => new AdminTripDto

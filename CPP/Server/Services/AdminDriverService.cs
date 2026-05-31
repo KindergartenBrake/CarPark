@@ -117,7 +117,6 @@ public class AdminDriverService : IAdminDriverService
         var entity = await _driverRepo.GetByIdAsync(id);
         if (entity == null) return;
 
-        // Сохраняем старый VehicleId для очистки
         var oldVehicleId = entity.VehicleId;
 
         entity.FirstName = dto.FirstName;
@@ -130,7 +129,9 @@ public class AdminDriverService : IAdminDriverService
         entity.VehicleId = dto.VehicleId;
         entity.UserId = dto.UserId;
 
-        // Если у водителя изменился автомобиль
+        await _driverRepo.SaveChangesAsync();
+
+        // Обновляем основной автомобиль водителя
         if (oldVehicleId != dto.VehicleId)
         {
             // Очищаем DriverId у старого автомобиля
@@ -140,7 +141,7 @@ public class AdminDriverService : IAdminDriverService
                 if (oldVehicle != null)
                 {
                     oldVehicle.DriverId = null;
-                    await _vehicleRepo.UpdateAsync(oldVehicle);
+                    await _vehicleRepo.SaveChangesAsync();
                 }
             }
 
@@ -151,12 +152,10 @@ public class AdminDriverService : IAdminDriverService
                 if (newVehicle != null)
                 {
                     newVehicle.DriverId = id;
-                    await _vehicleRepo.UpdateAsync(newVehicle);
+                    await _vehicleRepo.SaveChangesAsync();
                 }
             }
         }
-
-        await _driverRepo.SaveChangesAsync();
     }
 
     public async Task DeactivateAsync(int id)

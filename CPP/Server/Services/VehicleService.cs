@@ -30,7 +30,7 @@ public class VehicleService : IVehicleService
             FuelType = v.FuelType ?? "Не указан",
             Mileage = v.Mileage,
             Status = v.Status ?? "Available",
-            DriverName = v.Driver != null ? $"{v.Driver.LastName} {v.Driver.FirstName}" : null
+            DriverName = v.PrimaryDriver != null ? $"{v.PrimaryDriver.LastName} {v.PrimaryDriver.FirstName}" : null
         }).ToList();
     }
 }

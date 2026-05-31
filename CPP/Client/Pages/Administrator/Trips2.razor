@@ -40,10 +40,10 @@
                     <label class="filter-label">Статус</label>
                     <select @bind="selectedStatus" class="blue-input">
                         <option value="All">Все</option>
-                        <option value="Scheduled">Scheduled</option>
-                        <option value="InProgress">InProgress</option>
-                        <option value="Completed">Completed</option>
-                        <option value="Cancelled">Cancelled</option>
+                        <option value="Scheduled">Запланирована</option>
+                        <option value="InProgress">Активна</option>
+                        <option value="Completed">Завершена</option>
+                        <option value="Cancelled">Отменена</option>
                     </select>
                 </div>
 
@@ -127,16 +127,16 @@
                                 @switch (trip.Status)
                                 {
                                     case "Scheduled":
-                                        <div class="status-scheduled">● Scheduled</div>
+                                        <div class="status-scheduled">● Запланирована</div>
                                         break;
                                     case "InProgress":
-                                        <div class="status-progress">● InProgress</div>
+                                        <div class="status-progress">● Активна</div>
                                         break;
                                     case "Completed":
-                                        <div class="status-completed">● Completed</div>
+                                        <div class="status-completed">● Завершена</div>
                                         break;
                                     default:
-                                        <div class="status-cancelled">● Cancelled</div>
+                                        <div class="status-cancelled">● Отенена</div>
                                         break;
                                 }
                             </td>
