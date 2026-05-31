@@ -15,6 +15,11 @@ public partial class Drivers2
 
     private List<AdminDriverDto> drivers = new();
     private List<AdminVehicleDto> vehicles = new();
+    private List<UserLookupDto> allUsers = new();  // для редактирования
+    private List<UserLookupDto> availableUsers = new();  // для создания
+    private List<UserLookupDto> currentUsers = new();
+
+
 
     private IEnumerable<AdminDriverDto> FilteredDrivers =>
         drivers.Where(x =>
@@ -27,6 +32,8 @@ public partial class Drivers2
     {
         await LoadDrivers();
         await LoadVehicles();
+        await LoadAllUsers(); 
+        await LoadAvailableUsers();
     }
 
     private async Task LoadDrivers()
@@ -53,9 +60,38 @@ public partial class Drivers2
         }
     }
 
-    private void OpenCreateModal()
+    private async Task LoadAllUsers()
+    {
+        try
+        {
+            allUsers = await CarParkService.GetAllUsersAsync();
+        }
+        catch
+        {
+            allUsers = new();
+        }
+    }
+
+
+    private async Task LoadAvailableUsers()
+    {
+        try
+        {
+            availableUsers = await CarParkService.GetAvailableUsersAsync();
+        }
+        catch
+        {
+            availableUsers = new();
+        }
+    }
+
+    private async Task OpenCreateModal()
     {
         editingDriverId = null;
+        currentUsers = await CarParkService.GetAvailableUsersAsync();
+
+        await LoadAvailableUsers();  // загружаем пользователей
+        
         editingDriver = new CreateDriverDto
         {
             IsActive = true,
@@ -64,9 +100,14 @@ public partial class Drivers2
         showModal = true;
     }
 
-    private void OpenEditModal(AdminDriverDto driver)
+    private async Task OpenEditModal(AdminDriverDto driver)
     {
         editingDriverId = driver.DriverId;
+        currentUsers = await CarParkService.GetAllUsersAsync();
+
+
+        await LoadAllUsers();  // загружаем пользователей
+        await LoadVehicles();
 
         var nameParts = driver.FullName?.Split(' ') ?? new[] { "", "" };
         editingDriver = new CreateDriverDto
@@ -78,9 +119,21 @@ public partial class Drivers2
             LicenseExpireDate = driver.LicenseExpireDate,
             Phone = driver.Phone ?? "",
             IsActive = driver.IsActive,
-            UserId = driver.IdentityUser
+            UserId = driver.IdentityUser,
+            VehicleId = GetVehicleIdByName(driver.VehicleName)
         };
         showModal = true;
+    }
+    
+    private int? GetVehicleIdByName(string? vehicleName)
+    {
+        if (string.IsNullOrEmpty(vehicleName)) return null;
+        
+        var vehicle = vehicles.FirstOrDefault(v => 
+            $"{v.Brand} {v.Model} ({v.LicensePlate})" == vehicleName ||
+            $"{v.Brand} {v.Model}" == vehicleName);
+        
+        return vehicle?.VehicleId;
     }
 
     private async Task SaveDriver()

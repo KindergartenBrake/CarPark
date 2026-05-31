@@ -948,5 +948,21 @@ namespace CP.Client
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadFromJsonAsync<EmployeeDashboardDto>() ?? new();
         }
+
+        public async Task<List<UserLookupDto>> GetAvailableUsersAsync()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, "api/admin/drivers/users");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<List<UserLookupDto>>() ?? new();
+        }
+
+        public async Task<List<UserLookupDto>> GetAllUsersAsync()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, "api/admin/drivers/all-users");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<List<UserLookupDto>>() ?? new();
+        }
     }
 }

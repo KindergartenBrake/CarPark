@@ -13,7 +13,7 @@ public partial class Vehicles2
     private CreateVehicleDto editingVehicle = new();
     private AdminVehicleDto? selectedVehicle;
     private List<AvailableDriverDto> drivers = new();
-    private int? editingVehicleId;  // ← добавлено
+    private int? editingVehicleId;
 
     private List<AdminVehicleDto> vehicles = new();
 

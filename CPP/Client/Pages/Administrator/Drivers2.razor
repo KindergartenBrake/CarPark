@@ -170,8 +170,16 @@
                     </select>
                 </div>
                 <div>
-                    <label class="input-label">Identity User</label>
-                    <input @bind="editingDriver.UserId" class="blue-input" placeholder="GUID пользователя" />
+                    <label class="input-label">Пользователь</label>
+                    <select class="blue-input" @bind="editingDriver.UserId">
+                        <option value="">-- Выберите пользователя --</option>
+                        @foreach (var user in currentUsers)
+                        {
+                            <option value="@user.Id">
+                                @user.UserName (@user.Email)
+                            </option>
+                        }
+                    </select>
                 </div>
             </div>
             <div style="margin-top:18px;">

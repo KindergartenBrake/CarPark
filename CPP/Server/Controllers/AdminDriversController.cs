@@ -46,4 +46,18 @@ public class AdminDriversController : ControllerBase
         if (driver == null) return NotFound();
         return Ok(driver);
     }
+
+    [HttpGet("users")]
+    public async Task<ActionResult<List<UserLookupDto>>> GetAvailableUsers()
+    {
+        var users = await _service.GetAvailableUsersAsync();
+        return Ok(users);
+    }
+
+    [HttpGet("all-users")]
+    public async Task<ActionResult<List<UserLookupDto>>> GetAllUsers()
+    {
+        var users = await _service.GetAllUsersAsync();
+        return Ok(users);
+    }
 }
