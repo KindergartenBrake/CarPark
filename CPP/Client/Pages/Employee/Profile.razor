@@ -1,7 +1,8 @@
 @page "/employee/profile"
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize(Roles = "Employee")]
-
+@using System.Net.Http.Json
+@inject HttpClient Http
 <PageTitle>Employee - Профиль</PageTitle>
 
 <div style="min-height: 100vh; background: linear-gradient(135deg, #081120 0%, #0d1f3e 45%, #13376b 100%); padding: 24px;">
@@ -401,6 +402,21 @@
 
 @code {
 
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var result =
+                await Http.GetFromJsonAsync<EmployeeProfileModel>(
+                    "api/profile");
+
+            if (result != null)
+                profile = result;
+        }
+        catch
+        {
+        }
+    }
     private EmployeeProfileModel profile = new()
     {
         UserName = "ivan.petrov",
@@ -413,16 +429,27 @@
 
     private async Task SavePhone()
     {
-        await Task.Delay(300);
+        var response =
+            await Http.PutAsJsonAsync(
+                "api/profile",
+                profile);
 
-        // save logic
+        response.EnsureSuccessStatusCode();
     }
 
     private async Task ChangePassword()
     {
-        await Task.Delay(300);
+        if (passwordModel.NewPassword != passwordModel.ConfirmPassword)
+            return;
 
-        // password change logic
+        var response =
+            await Http.PostAsJsonAsync(
+                "api/profile/change-password",
+                passwordModel);
+
+        response.EnsureSuccessStatusCode();
+
+        passwordModel = new();
     }
 
     private string GetInitials()
