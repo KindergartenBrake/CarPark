@@ -2,6 +2,8 @@
 @using Microsoft.AspNetCore.Authorization
 @using System.ComponentModel.DataAnnotations
 @using System.Net.Http.Json
+@using CP.Client
+@using CP.Server.DTO
 @inject HttpClient Http
 
 <PageTitle>Профиль водителя</PageTitle>
@@ -146,30 +148,40 @@
 </style>
 
 @code {
-    private DriverProfileModel profile = new();
+    [Inject] protected CarParkService CarParkService { get; set; } = default!;
+    [Inject] protected NotificationService NotificationService { get; set; } = default!;
+
+    private DriverProfileDto profile = new();  // ← это из CP.Server.DTO
     private DriverProfileEditModel editModel = new();
     private ChangePasswordModel passwordModel = new();
+    private bool isLoading = true;
 
     protected override async Task OnInitializedAsync()
     {
+        await LoadProfile();
+    }
+
+    private async Task LoadProfile()
+    {
         try
         {
-            var result = await Http.GetFromJsonAsync<DriverProfileModel>("api/driver/profile");
-            if (result != null) 
+            isLoading = true;
+            profile = await CarParkService.GetDriverProfileAsync();
+            editModel = new DriverProfileEditModel
             {
-                profile = result;
-                editModel.FullName = result.FullName;
-                editModel.Email = result.Email;
-                editModel.Phone = result.Phone;
-                editModel.DriverLicenseNumber = result.DriverLicenseNumber;
-                editModel.LicenseExpiration = result.LicenseExpiration;
-                editModel.IsActive = result.IsActive;
-            }
+                FullName = profile.FullName,
+                Email = profile.Email,
+                Phone = profile.Phone,
+                DriverLicenseNumber = profile.DriverLicenseNumber,
+                LicenseExpiration = profile.LicenseExpiration,
+                IsActive = profile.IsActive
+            };
         }
-        catch
+        catch (Exception ex)
         {
+            Console.WriteLine($"Ошибка загрузки профиля: {ex.Message}");
             // Заглушка
-            profile = new DriverProfileModel
+            profile = new DriverProfileDto
             {
                 FullName = "Александр Воронов",
                 Email = "driver@fleet.local",
@@ -178,12 +190,11 @@
                 LicenseExpiration = DateTime.Today.AddYears(3),
                 IsActive = true
             };
-            editModel.FullName = profile.FullName;
-            editModel.Email = profile.Email;
-            editModel.Phone = profile.Phone;
-            editModel.DriverLicenseNumber = profile.DriverLicenseNumber;
-            editModel.LicenseExpiration = profile.LicenseExpiration;
-            editModel.IsActive = profile.IsActive;
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
         }
     }
 
@@ -191,24 +202,39 @@
     {
         try
         {
-            // Обновляем только то, что можно менять
+            profile.Phone = editModel.Phone;
             profile.DriverLicenseNumber = editModel.DriverLicenseNumber;
             profile.LicenseExpiration = editModel.LicenseExpiration;
             
-            await Http.PutAsJsonAsync("api/driver/profile", profile);
+            await CarParkService.UpdateDriverProfileAsync(profile);
+            
+            NotificationService.Notify(NotificationSeverity.Success, "Успех", "Профиль обновлён", duration: 3000);
         }
-        catch { }
+        catch (Exception ex)
+        {
+            NotificationService.Notify(NotificationSeverity.Error, "Ошибка", $"Не удалось сохранить: {ex.Message}", duration: 5000);
+        }
     }
 
     private async Task ChangePassword()
     {
-        if (passwordModel.NewPassword != passwordModel.ConfirmPassword) return;
+        if (passwordModel.NewPassword != passwordModel.ConfirmPassword)
+        {
+            NotificationService.Notify(NotificationSeverity.Warning, "Ошибка", "Пароли не совпадают", duration: 3000);
+            return;
+        }
+
         try
         {
-            await Http.PostAsJsonAsync("api/driver/profile/change-password", new { passwordModel.OldPassword, passwordModel.NewPassword });
-            passwordModel = new();
+            await CarParkService.ChangeDriverPasswordAsync(passwordModel.OldPassword, passwordModel.NewPassword);
+            
+            NotificationService.Notify(NotificationSeverity.Success, "Успех", "Пароль изменён", duration: 3000);
+            passwordModel = new ChangePasswordModel();
         }
-        catch { }
+        catch (Exception ex)
+        {
+            NotificationService.Notify(NotificationSeverity.Error, "Ошибка", $"Не удалось сменить пароль: {ex.Message}", duration: 5000);
+        }
     }
 
     private string GetInitials()
@@ -219,16 +245,7 @@
         return $"{parts[0][0]}{parts[1][0]}".ToUpper();
     }
 
-    public class DriverProfileModel
-    {
-        public string FullName { get; set; } = "";
-        public string Email { get; set; } = "";
-        public string Phone { get; set; } = "";
-        public string DriverLicenseNumber { get; set; } = "";
-        public DateTime LicenseExpiration { get; set; } = DateTime.Today.AddYears(3);
-        public bool IsActive { get; set; } = true;
-    }
-
+    // Только для формы редактирования (не DTO)
     public class DriverProfileEditModel
     {
         public string FullName { get; set; } = "";

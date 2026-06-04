@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
 using System.Net.Http.Json;
 using Radzen;
+using CP.Client.Pages.Driver;
+
 
 using CP.Server.DTO;
 
@@ -970,5 +972,34 @@ namespace CP.Client
             var response = await httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
         }
+
+        public async Task<DriverProfileDto> GetDriverProfileAsync()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, "api/profile/driver");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<DriverProfileDto>() ?? new DriverProfileDto();
+        }
+
+        public async Task UpdateDriverProfileAsync(DriverProfileDto dto)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Put, "api/profile/driver")
+            {
+                Content = JsonContent.Create(dto)
+            };
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+        }
+
+        public async Task ChangeDriverPasswordAsync(string oldPassword, string newPassword)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post, "api/profile/change-password")
+            {
+                Content = JsonContent.Create(new { OldPassword = oldPassword, NewPassword = newPassword })  // ← заглавные буквы
+            };
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+        }
+     
     }
 }
