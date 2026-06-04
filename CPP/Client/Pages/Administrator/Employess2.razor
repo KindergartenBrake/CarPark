@@ -111,7 +111,7 @@
                         </th>
 
                         <th class="tbl-head">
-                            Статус
+                        Статус
                         </th>
 
                         <th class="tbl-head">
@@ -183,43 +183,34 @@
                                     <div class="status-inactive">
                                         ● Деактивирован
                                     </div>
-                                }
-                            </td>
+                                }     
+                            </td>                       
+
                             <td class="tbl-cell">
 
-    <div style="display:flex;
-                gap:10px;
-                flex-wrap:wrap;">
+                                <div style="display:flex;
+                                            gap:10px;
+                                            flex-wrap:wrap;">
 
-        <button class="details-btn"
-                @onclick="() => OpenDetails(employee)">
+                                    <button class="details-btn"
+                                            @onclick="() => OpenDetails(employee)">
 
-            Детали
+                                        Детали
 
-        </button>
+                                    </button>
+                                    @if (employee.IsActive)
+                                    {
+                                        <button class="deactivate-btn"
+                                                @onclick="() => Deactivate(employee)">
 
-        @if (employee.IsActive)
-        {
-            <button class="deactivate-btn"
-                    @onclick="() => Deactivate(employee)">
+                                            Деактивировать
 
-                Деактивировать
+                                        </button>
+                                    }
 
-            </button>
-        }
-        else
-{
-        <button class="activate-btn"
-            @onclick="ActivateStub">
+                                </div>
 
-        Активировать
-
-    </button>
-}
-
-    </div>
-
-</td>
+                            </td>
 
                         </tr>
                     }
@@ -262,8 +253,9 @@
             </div>
         }
 
-
-</div>
+        @if (selectedEmployee is not null)
+        {
+            
             <div style="margin-top:30px;
                         background:#0c1b31;
                         border:1px solid #1d3f73;
@@ -425,7 +417,7 @@
 
     </div>
 
-
+</div>
 
 <style>
 
@@ -570,6 +562,7 @@
         color:#8ba8d4;
         font-size:14px;
     }
+
 .activate-btn{
     background:#163c21;
     border:none;

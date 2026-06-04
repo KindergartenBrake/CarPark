@@ -242,11 +242,11 @@ namespace CP.Client
             await Task.Delay(500);
             
             if (IsInRole("Admin"))
-                navigation.NavigateTo("/admin", true);
+                navigation.NavigateTo("/admin/dashboard2", true);
             else if (IsInRole("Employee"))
                 navigation.NavigateTo("/employee/dashboard", true);
             else if (IsInRole("Driver"))
-                navigation.NavigateTo("/driver/dashboard", true);
+                navigation.NavigateTo("/driver/dashboard1", true);
             else
                 navigation.NavigateTo("/", true);
         }
