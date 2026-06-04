@@ -36,10 +36,19 @@ namespace CP.Client.Pages
         protected Dictionary<string, string> userRoles = new Dictionary<string, string>();
         protected string error = "";
         protected bool errorVisible;
+        
+        // Dialog properties
+        protected bool showAddDialog = false;
+        protected string dialogEmail = "";
+        protected string dialogPassword = "";
+        protected string dialogConfirmPassword = "";
+        protected string selectedRole = "";
+        protected IEnumerable<CP.Server.Models.ApplicationRole> roles = new List<CP.Server.Models.ApplicationRole>();
 
         protected override async Task OnInitializedAsync()
         {
             await LoadUsers();
+            roles = await Security.GetRoles();
         }
 
         protected async Task LoadUsers()
@@ -48,7 +57,6 @@ namespace CP.Client.Pages
             {
                 users = await Security.GetUsers();
                 
-                // Загружаем роли для каждого пользователя
                 foreach (var user in users)
                 {
                     if (user?.Id != null && !userRoles.ContainsKey(user.Id))
@@ -71,11 +79,9 @@ namespace CP.Client.Pages
         {
             try
             {
-                // Получаем пользователя с ролями через OData
                 var userWithRoles = await Security.GetUserById(userId);
                 var role = userWithRoles?.Roles?.FirstOrDefault()?.Name ?? "Employee";
                 
-                // Преобразуем для отображения
                 return role switch
                 {
                     "Administrator" => "Администратор",
@@ -94,14 +100,86 @@ namespace CP.Client.Pages
         protected string GetUserRole(CP.Server.Models.ApplicationUser user)
         {
             if (user?.Id == null) return "Сотрудник";
-            
             return userRoles.GetValueOrDefault(user.Id, "Сотрудник");
         }
 
-        protected async Task AddClick()
+        protected void OpenAddDialog()
         {
-            await DialogService.OpenAsync<AddApplicationUser>("Добавление пользователя");
-            await LoadUsers();
+            dialogEmail = "";
+            dialogPassword = "";
+            dialogConfirmPassword = "";
+            selectedRole = "";
+            showAddDialog = true;
+            StateHasChanged();
+        }
+
+        protected void CloseAddDialog()
+        {
+            showAddDialog = false;
+            StateHasChanged();
+        }
+        
+        protected void CloseAddDialogIfClickedOutside()
+        {
+            CloseAddDialog();
+        }
+
+        protected async Task SaveNewUser()
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(dialogEmail))
+                {
+                    error = "Email обязателен";
+                    errorVisible = true;
+                    return;
+                }
+                
+                if (string.IsNullOrWhiteSpace(dialogPassword))
+                {
+                    error = "Пароль обязателен";
+                    errorVisible = true;
+                    return;
+                }
+                
+                if (dialogPassword != dialogConfirmPassword)
+                {
+                    error = "Пароли не совпадают";
+                    errorVisible = true;
+                    return;
+                }
+                
+                if (string.IsNullOrWhiteSpace(selectedRole))
+                {
+                    error = "Выберите роль";
+                    errorVisible = true;
+                    return;
+                }
+                
+                var userToCreate = new CP.Server.Models.ApplicationUser
+                {
+                    Email = dialogEmail,
+                    Password = dialogPassword,
+                    ConfirmPassword = dialogConfirmPassword
+                };
+                
+                // Назначаем выбранную роль
+                var selectedRoleObj = roles.FirstOrDefault(r => r.Id == selectedRole);
+                if (selectedRoleObj != null)
+                {
+                    userToCreate.Roles = new List<CP.Server.Models.ApplicationRole> { selectedRoleObj };
+                }
+                
+                await Security.CreateUser(userToCreate);
+                showAddDialog = false;
+                await LoadUsers();
+                StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+                errorVisible = true;
+                error = ex.Message;
+            }
         }
 
         protected async Task RowSelect(CP.Server.Models.ApplicationUser user)
@@ -128,12 +206,6 @@ namespace CP.Client.Pages
                 errorVisible = true;
                 error = ex.Message;
             }
-        }
-
-        protected string GetShortId(string? id)
-        {
-            if (string.IsNullOrEmpty(id)) return "—";
-            return id.Length > 8 ? id.Substring(0, 8) + "..." : id;
         }
     }
 }

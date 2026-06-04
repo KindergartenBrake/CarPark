@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 
-                <button class="add-btn" @onclick="AddClick">
+                <button class="add-btn" @onclick="OpenAddDialog">
                     + ДОБАВИТЬ
                 </button>
                 
@@ -62,8 +62,6 @@
                 
                 <thead style="background:#11284b;">
                     <tr>
-                        <th class="tbl-head">ID</th>
-                        <th class="tbl-head">GUID</th>
                         <th class="tbl-head">Имя пользователя</th>
                         <th class="tbl-head">Email</th>
                         <th class="tbl-head">Роль</th>
@@ -75,8 +73,6 @@
                     @foreach (var user in users)
                     {
                         <tr class="table-row" @onclick="() => RowSelect(user)" style="cursor:pointer;">
-                            <td class="tbl-cell">@GetShortId(user.Id)</td>
-                            <td class="tbl-cell" style="font-family:monospace; font-size:12px;">@user.Id</td>
                             <td class="tbl-cell">@user.UserName</td>
                             <td class="tbl-cell">@user.Email</td>
                             <td class="tbl-cell">
@@ -95,7 +91,7 @@
                                     </button>
                                 </div>
                             </td>
-                        </tr>
+                         </tr>
                     }
                 </tbody>
                 
@@ -122,8 +118,56 @@
         }
         
     </div>
-    
 </div>
+
+<!-- ADD USER DIALOG -->
+@if (showAddDialog)
+{
+    <div class="dialog-overlay" @onclick="CloseAddDialogIfClickedOutside">
+        <div class="dialog-container" @onclick:stopPropagation="true">
+            
+            <div class="dialog-header">
+                ДОБАВЛЕНИЕ ПОЛЬЗОВАТЕЛЯ
+            </div>
+            
+            <div class="dialog-fields">
+                
+                <div>
+                    <label class="dialog-label">EMAIL</label>
+                    <input @bind="dialogEmail" type="email" class="dialog-input" />
+                </div>
+                
+                <div>
+                    <label class="dialog-label">РОЛЬ</label>
+                    <select @bind="selectedRole" class="dialog-input">
+                        <option value="">-- Выберите роль --</option>
+                        @foreach (var role in roles)
+                        {
+                            <option value="@role.Id">@role.Name</option>
+                        }
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="dialog-label">ПАРОЛЬ</label>
+                    <input @bind="dialogPassword" type="password" class="dialog-input" />
+                </div>
+                
+                <div>
+                    <label class="dialog-label">ПОДТВЕРЖДЕНИЕ ПАРОЛЯ</label>
+                    <input @bind="dialogConfirmPassword" type="password" class="dialog-input" />
+                </div>
+                
+            </div>
+            
+            <div class="dialog-buttons">
+                <button class="dialog-cancel-btn" @onclick="CloseAddDialog">Отмена</button>
+                <button class="dialog-save-btn" @onclick="SaveNewUser">Сохранить</button>
+            </div>
+            
+        </div>
+    </div>
+}
 
 <style>
     .tbl-head {
@@ -211,5 +255,98 @@
         border-radius: 20px;
         font-size: 13px;
         font-weight: 700;
+    }
+    
+    /* Dialog styles */
+    .dialog-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+    }
+    
+    .dialog-container {
+        width: 500px;
+        background: #0c1b31;
+        border: 1px solid #24529a;
+        border-radius: 18px;
+        padding: 28px;
+    }
+    
+    .dialog-header {
+        font-size: 24px;
+        color: #f2f7ff;
+        font-weight: 800;
+        margin-bottom: 24px;
+    }
+    
+    .dialog-fields {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+    
+    .dialog-label {
+        display: block;
+        color: #8fb7f0;
+        margin-bottom: 8px;
+        font-size: 13px;
+        font-weight: 700;
+    }
+    
+    .dialog-input {
+        width: 100%;
+        background: #08111f;
+        border: 1px solid #24529a;
+        border-radius: 10px;
+        padding: 12px;
+        color: #e7f0ff;
+        font-size: 14px;
+    }
+    
+    .dialog-input:focus {
+        outline: none;
+        border-color: #3b82f6;
+    }
+    
+    .dialog-buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 14px;
+        margin-top: 28px;
+    }
+    
+    .dialog-save-btn {
+        background: #2979ff;
+        border: none;
+        color: white;
+        padding: 10px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 700;
+    }
+    
+    .dialog-save-btn:hover {
+        transform: translateY(-2px);
+        opacity: 0.93;
+    }
+    
+    .dialog-cancel-btn {
+        background: #17263d;
+        border: none;
+        color: #8fb7f0;
+        padding: 10px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 700;
+    }
+    
+    .dialog-cancel-btn:hover {
+        transform: translateY(-2px);
+        opacity: 0.93;
     }
 </style>
