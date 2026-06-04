@@ -14,10 +14,10 @@
         --text-primary: #edf4ff;
         --text-secondary: #8aa8cc;
         --text-muted: #5f82b5;
-        --menu-color: #5f7ea8;
+        --menu-color: #08111f;
         --menu-hover: #8aa8cc;
         --menu-active: #3b82f6;
-        --sidebar-bg: linear-gradient(135deg, #0a121a 0%, #0d1620 100%);
+        --sidebar-bg: linear-gradient(180deg, #050b16 0%, #0a1222 100%);
         --header-bg: linear-gradient(90deg, #0d1c34 0%, #0a1628 100%);
     }
     
@@ -38,7 +38,33 @@
         font-weight: 500 !important;
         font-size: 14px !important;
     }
-    
+    .rz-sidebar .rz-panel-menu,
+.rz-sidebar .rz-navigation-menu {
+    background: linear-gradient(180deg, #050b16 0%, #0a1222 100%) !important;
+}
+
+/* текст пунктов */
+.rz-sidebar .rz-navigation-item-link {
+    color: #ccc !important;
+}
+
+/* иконки */
+.rz-sidebar .rz-navigation-item-link .rz-icon {
+    color: #08111f !important;
+}
+
+/* hover */
+.rz-sidebar .rz-navigation-item-link:hover {
+    color: #8aa8cc !important;
+    background: rgba(59, 130, 246, 0.08) !important;
+}
+
+/* активный пункт */
+.rz-sidebar .rz-navigation-item-active .rz-navigation-item-link {
+    color: #3b82f6 !important;
+    background: rgba(59, 130, 246, 0.12) !important;
+    border-left: 3px solid #3b82f6 !important;
+}
     .rz-panel-menu-item .rz-button-text {
         color: var(--menu-color) !important;
     }
