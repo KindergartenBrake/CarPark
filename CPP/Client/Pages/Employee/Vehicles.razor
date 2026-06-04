@@ -42,8 +42,9 @@
                            cursor: pointer;">
                     
                     <div style="text-align: center; margin-bottom: 20px; padding: 20px; background: rgba(42, 74, 142, 0.2); border-radius: 12px;">
-                        <div style="font-size: 64px;">@GetCarIcon(vehicle.VehicleType)</div>
-                    </div>
+                        <img src="@GetImage(vehicle.VehicleId)"
+     style="width: 100%; max-height: 180px; object-fit: contain;" /></div>
+                  
 
                     <div style="margin-bottom: 16px;">
                         <div style="color: #e0e8f0; font-size: 20px; font-weight: 700;">@vehicle.Brand @vehicle.Model</div>
@@ -108,10 +109,3 @@
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
 </style>
-
-@code {
-    private string GetCarIcon(string type) => type switch
-    {
-        _ => "LADA"
-    };
-}
