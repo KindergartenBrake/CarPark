@@ -134,25 +134,25 @@ public partial class Trips2
         }
     }
 
+    
+    private async Task RestoreTrip(TripDto trip)
+    {
+        try
+        {
+            await CarParkService.RestoreTripAsync(trip.TripId);
+            await LoadTrips();
+            
+            if (selectedTrip?.TripId == trip.TripId)
+            {
+                CloseDetails();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка восстановления поездки: {ex.Message}");
+        }
+    }
+
     private string GetStartTimeString(DateTime? time) => time?.ToString("HH:mm") ?? "—";
     private string GetEndTimeString(DateTime? time) => time?.ToString("HH:mm") ?? "—";
-private Task RestoreTripStub()
-{
-    return Task.CompletedTask;
-}
-    //private async Task RestoreTrip(TripDto trip)
-//{
-  //  trip.Status = "Scheduled";
-
-    // если есть связанная заявка
-  //  var request = Requests.FirstOrDefault(x => x.Id == trip.RequestId);
-  //  if (request != null)
-  //  {
-  //      request.Status = "Approved"; // или нужный статус
-   // }
-
-   // await TripService.UpdateTripAsync(trip);
-
-   // StateHasChanged();
-//}
 }

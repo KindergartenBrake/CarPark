@@ -153,10 +153,9 @@
                                     }
                                     @if (trip.Status == "Cancelled")
                                     {
-                                        <button class="restore-btn"
-                                        @onclick="RestoreTripStub">
-                                        Вернуть
-                                        </button>
+                                         <button class="restore-btn" @onclick="() => RestoreTrip(trip)">
+                                             Вернуть
+                                         </button>
                                     }
                                 </div>
                             </td>

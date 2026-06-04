@@ -51,6 +51,11 @@ public class AdminTripsController : ControllerBase
         await _service.CancelTripAsync(id);
         return Ok();
     }
-
+    [HttpPut("{id}/restore")]
+    public async Task<IActionResult> RestoreTrip(int id)
+    {
+        await _service.RestoreTripAsync(id);
+        return Ok();
+    }
     
 }

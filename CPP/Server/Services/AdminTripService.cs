@@ -10,6 +10,7 @@ public interface IAdminTripService
     Task CancelTripAsync(int tripId);
     Task<List<string>> GetAvailableDriversAsync();
     Task<List<string>> GetAvailableVehiclesAsync();
+    Task RestoreTripAsync(int tripId);
 }
 
 public class AdminTripService : IAdminTripService
@@ -17,15 +18,19 @@ public class AdminTripService : IAdminTripService
     private readonly ITripRepository _tripRepo;
     private readonly IDriverRepository _driverRepo;
     private readonly IVehicleRepository _vehicleRepo;
+    private readonly ITripRequestRepository _tripRequestRepo;
 
     public AdminTripService(
         ITripRepository tripRepo,
         IDriverRepository driverRepo,
-        IVehicleRepository vehicleRepo)
+        IVehicleRepository vehicleRepo,
+        ITripRequestRepository tripRequestRepo)
+        
     {
         _tripRepo = tripRepo;
         _driverRepo = driverRepo;
         _vehicleRepo = vehicleRepo;
+        _tripRequestRepo = tripRequestRepo; 
     }
 
     public async Task<List<TripDto>> GetAllTripsAsync()
@@ -78,5 +83,37 @@ public class AdminTripService : IAdminTripService
     {
         var vehicles = await _vehicleRepo.GetAllAsync();
         return vehicles.Select(v => $"{v.Brand} {v.Model}").ToList();
+    }
+
+    public async Task RestoreTripAsync(int tripId)
+    {
+        var trip = await _tripRepo.GetByIdAsync(tripId);
+        if (trip == null) 
+            throw new Exception("Поездка не найдена");
+        
+        if (trip.Status != "Cancelled")
+            throw new Exception("Можно восстановить только отменённые поездки");
+        
+        // Возвращаем статус в "Запланирована"
+        trip.Status = "Scheduled";
+        
+        // Обновляем статус связанной заявки
+        var request = await _tripRequestRepo.GetByIdAsync(trip.RequestId);
+        if (request != null)
+        {
+            request.Status = "Approved";
+        }
+        
+        // Освобождаем автомобиль, если он был занят
+        if (trip.VehicleId > 0)
+        {
+            var vehicle = await _vehicleRepo.GetByIdAsync(trip.VehicleId);
+            if (vehicle != null && vehicle.Status == "Busy")
+            {
+                vehicle.Status = "Available";
+            }
+        }
+        
+        await _tripRepo.SaveChangesAsync();
     }
 }
