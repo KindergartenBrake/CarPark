@@ -38,4 +38,9 @@ public class TripRepository : Repository<Trip>, ITripRepository
             .OrderByDescending(t => t.TripDate)
             .ToListAsync();
     }
+    public async Task<Trip?> GetByRequestIdAsync(int requestId)
+    {
+        return await _dbSet
+            .FirstOrDefaultAsync(t => t.RequestId == requestId);
+    }
 }

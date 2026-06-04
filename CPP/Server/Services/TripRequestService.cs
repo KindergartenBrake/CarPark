@@ -141,31 +141,52 @@ public class TripRequestService : ITripRequestService
     public async Task<bool> AssignTripAsync(int requestId, int vehicleId, int driverId)
     {
         var request = await _tripRequestRepo.GetByIdAsync(requestId);
-        if (request == null || request.Status != "Pending")
-            return false;
+        if (request == null) return false;
 
         var vehicle = await _vehicleRepo.GetByIdAsync(vehicleId);
         var driver = await _driverRepo.GetByIdAsync(driverId);
-        if (vehicle == null || driver == null)
-            return false;
 
-        request.Status = "Approved";
+        if (vehicle == null || driver == null) return false;
+        
+        // Проверка, что машина доступна
+        if (vehicle.Status != "Available") return false;
+        
+        // Проверка, что водитель активен и не занят в другой поездке
+        // var activeTrip = await _tripRepo.GetActiveTripByDriverId(driverId);
+        // if (activeTrip != null) return false;
+
+        // Освобождаем старую машину, если была назначена
+        if (request.VehicleId.HasValue)
+        {
+            var oldVehicle = await _vehicleRepo.GetByIdAsync(request.VehicleId.Value);
+            if (oldVehicle != null) oldVehicle.Status = "Available";
+        }
+
         request.VehicleId = vehicleId;
         request.DriverId = driverId;
+        request.Status = "Approved";
+        
+        vehicle.Status = "InUse"; // или "Busy"
 
-        var trip = new Trip
+        // Обновляем или создаём Trip
+        var trip = await _tripRepo.GetByRequestIdAsync(requestId);
+        if (trip == null)
         {
-            RequestId = requestId,
-            VehicleId = vehicleId,
-            DriverId = driverId,
-            TripDate = request.TripDate,
-            StartTime = request.StartTime,
-            EndTime = request.EndTime,
-            Status = "Scheduled"
-        };
-
-        await _tripRepo.AddAsync(trip);
-        vehicle.Status = "InUse";
+            trip = new Trip
+            {
+                RequestId = requestId,
+                VehicleId = vehicleId,
+                DriverId = driverId,
+                TripDate = request.TripDate,
+                Status = "Scheduled"
+            };
+            await _tripRepo.AddAsync(trip);
+        }
+        else
+        {
+            trip.VehicleId = vehicleId;
+            trip.DriverId = driverId;
+        }
 
         await _tripRequestRepo.SaveChangesAsync();
         return true;

@@ -466,9 +466,13 @@
     private void OpenAssignModal(TripRequestForAdmin request)
     {
         selectedRequest = request;
+        
+        // Устанавливаем значения по умолчанию (первые доступные)
+        selectedVehicleId = availableVehicles.FirstOrDefault()?.Id ?? 0;
+        selectedDriverId = availableDrivers.FirstOrDefault()?.Id ?? 0;
+        
         showAssignModal = true;
     }
-
     private void OpenRejectModal(TripRequestForAdmin request)
     {
         selectedRequest = request;
