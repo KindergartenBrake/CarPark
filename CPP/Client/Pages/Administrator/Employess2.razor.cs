@@ -54,15 +54,37 @@ public partial class Employess2
     }
 
     private async Task Deactivate(EmployeeDto employee)
+{
+    try
     {
-        try
+        await CarParkService.DeactivateEmployeeAsync(employee.UserId);
+        await LoadEmployees();
+
+        if (selectedEmployee?.UserId == employee.UserId)
         {
-            await CarParkService.DeactivateEmployeeAsync(employee.UserId);
-            await LoadEmployees();
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Ошибка деактивации: {ex.Message}");
+            selectedEmployee = await CarParkService.GetEmployeeByIdAsync(employee.UserId);
         }
     }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Ошибка деактивации: {ex.Message}");
+    }
+}
+    private async Task Activate(EmployeeDto employee)
+{
+    try
+    {
+        await CarParkService.ActivateEmployeeAsync(employee.UserId);
+        await LoadEmployees();
+
+        if (selectedEmployee?.UserId == employee.UserId)
+        {
+            selectedEmployee = await CarParkService.GetEmployeeByIdAsync(employee.UserId);
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Ошибка активации: {ex.Message}");
+    }
+}
 }

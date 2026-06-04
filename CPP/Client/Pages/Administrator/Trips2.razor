@@ -151,6 +151,13 @@
                                     {
                                         <button class="cancel-btn" @onclick="() => CancelTrip(trip)">Отменить</button>
                                     }
+                                    @if (trip.Status == "Cancelled")
+{
+    <button class="restore-btn"
+            @onclick="() => RestoreTrip(trip)">
+        Вернуть
+    </button>
+}
                                 </div>
                             </td>
                         </tr>
@@ -277,11 +284,29 @@
     .status-progress { background:rgba(255,152,0,0.14); color:#ffbe5c; }
     .status-completed { background:rgba(76,175,80,0.14); color:#6dff9b; }
     .status-cancelled { background:rgba(180,180,180,0.14); color:#b0b0b0; }
-    .details-btn, .force-btn, .cancel-btn { border:none; padding:10px 14px; border-radius:8px; cursor:pointer; font-size:13px; font-weight:700; transition:0.2s; }
+    .details-btn, .force-btn, .cancel-btn, .restore-btn {
+    border:none;
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:13px;
+    font-weight:700;
+    transition:0.2s;
+}
     .details-btn { background:#1565c0; color:white; }
     .force-btn { background:#5a4314; color:#ffc46b; }
     .cancel-btn { background:#5c1f1f; color:#ff9a9a; }
-    .details-btn:hover, .force-btn:hover, .cancel-btn:hover { transform:translateY(-2px); opacity:0.92; }
+    .restore-btn {
+    background:#1f5c2f;
+    color:#8fffaa;
+}
+    .details-btn:hover,
+.force-btn:hover,
+.cancel-btn:hover,
+.restore-btn:hover {
+    transform:translateY(-2px);
+    opacity:0.92;
+}
     .info-card { background:#08111f; border:1px solid #18345f; border-radius:16px; padding:22px; }
     .info-title { color:#edf4ff; font-size:18px; font-weight:800; margin-bottom:18px; }
     .info-row { display:flex; justify-content:space-between; margin-bottom:12px; color:#8ca9d5; }
