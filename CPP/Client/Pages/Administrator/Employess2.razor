@@ -110,7 +110,7 @@
                             Активных заявок
                         </th>
 
-                        <th class="tbl-head status-column">
+                        <th class="tbl-head">
                             Статус
                         </th>
 
@@ -171,39 +171,55 @@
 
                             </td>
 
-                            <td class="tbl-cell status-column">
-
-    @if (employee.IsActive)
-    {
-        <div class="status-active">
-            ● Активен
-        </div>
-    }
-    else
-    {
-        <div class="status-inactive">
-            ● Деактивирован
-        </div>
-    }
-
-</td>
-
+                            <td class="tbl-cell">
+                                @if (employee.IsActive)
+                                {
+                                    <div class="status-active">
+                                        ● Активен
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="status-inactive">
+                                        ● Деактивирован
+                                    </div>
+                                }
+                            </td>
                             <td class="tbl-cell">
 
-                                <div style="display:flex;
-                                            gap:10px;
-                                            flex-wrap:wrap;">
+    <div style="display:flex;
+                gap:10px;
+                flex-wrap:wrap;">
 
-                                    <button class="details-btn"
-                                            @onclick="() => OpenDetails(employee)">
+        <button class="details-btn"
+                @onclick="() => OpenDetails(employee)">
 
-                                        Детали
+            Детали
 
-                                    </button>
+        </button>
 
-                                </div>
+        @if (employee.IsActive)
+        {
+            <button class="deactivate-btn"
+                    @onclick="() => Deactivate(employee)">
 
-                            </td>
+                Деактивировать
+
+            </button>
+        }
+        else
+{
+        <button class="activate-btn"
+            @onclick="ActivateStub">
+
+        Активировать
+
+    </button>
+}
+
+    </div>
+
+</td>
 
                         </tr>
                     }
@@ -246,29 +262,6 @@
             </div>
         }
 
-        @if (selectedEmployee is not null)
-        {
-
-            <div style="margin-top:20px;">
-
-    @if (selectedEmployee.IsActive)
-    {
-        <button class="deactivate-btn"
-                @onclick="() => Deactivate(selectedEmployee)">
-
-            Деактивировать
-
-        </button>
-    }
-    else
-    {
-        <button class="activate-btn"
-        type="button">
-
-    Активировать
-
-</button>
-    }
 
 </div>
             <div style="margin-top:30px;
@@ -432,7 +425,7 @@
 
     </div>
 
-</div>
+
 
 <style>
 
