@@ -152,12 +152,12 @@
                                         <button class="cancel-btn" @onclick="() => CancelTrip(trip)">Отменить</button>
                                     }
                                     @if (trip.Status == "Cancelled")
-{
-    <button class="restore-btn"
-            @onclick="() => RestoreTrip(trip)">
-        Вернуть
-    </button>
-}
+                                    {
+                                        <button class="restore-btn"
+                                        @onclick="RestoreTripStub">
+                                        Вернуть
+                                        </button>
+                                    }
                                 </div>
                             </td>
                         </tr>

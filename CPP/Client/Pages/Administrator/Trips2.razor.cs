@@ -136,20 +136,23 @@ public partial class Trips2
 
     private string GetStartTimeString(DateTime? time) => time?.ToString("HH:mm") ?? "—";
     private string GetEndTimeString(DateTime? time) => time?.ToString("HH:mm") ?? "—";
-
-    private async Task RestoreTrip(TripDto trip)
+private Task RestoreTripStub()
 {
-    trip.Status = "Scheduled";
+    return Task.CompletedTask;
+}
+    //private async Task RestoreTrip(TripDto trip)
+//{
+  //  trip.Status = "Scheduled";
 
     // если есть связанная заявка
-    var request = Requests.FirstOrDefault(x => x.Id == trip.RequestId);
-    if (request != null)
-    {
-        request.Status = "Approved"; // или нужный статус
-    }
+  //  var request = Requests.FirstOrDefault(x => x.Id == trip.RequestId);
+  //  if (request != null)
+  //  {
+  //      request.Status = "Approved"; // или нужный статус
+   // }
 
-    await TripService.UpdateTripAsync(trip);
+   // await TripService.UpdateTripAsync(trip);
 
-    StateHasChanged();
-}
+   // StateHasChanged();
+//}
 }
