@@ -84,11 +84,13 @@
                             </div>
                             <div>
                                 <label style="display: block; color: #8aa8cc; font-size: 12px; margin-bottom: 8px; letter-spacing: 0.6px;">ТЕЛЕФОН</label>
-                                <InputText @bind-Value="profile.Phone" disabled style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid #1f3f74; border-radius: 12px; color: #8aa8cc; padding: 14px; font-size: 14px;" />
+                                <InputText @bind-Value="editModel.Phone" style="width:100%;background:rgba(0,0,0,0.30);border:1px solid #214d91;border-radius:12px;color:#f1f5ff;padding:14px;font-size:14px;transition:all 0.25s ease;" />
                             </div>
                             <div>
                                 <label style="display: block; color: #8aa8cc; font-size: 12px; margin-bottom: 8px; letter-spacing: 0.6px;">ВОДИТЕЛЬСКОЕ УДОСТОВЕРЕНИЕ</label>
-                                <InputText @bind-Value="editModel.DriverLicenseNumber" style="width: 100%; background: rgba(0,0,0,0.30); border: 1px solid #214d91; border-radius: 12px; color: #f1f5ff; padding: 14px; font-size: 14px; transition: all 0.25s ease;" />
+                                <InputText @bind-Value="editModel.DriverLicenseNumber"
+           disabled
+           style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid #1f3f74; border-radius: 12px; color: #8aa8cc; padding: 14px; font-size: 14px;" />
                             </div>
                             <div>
                                 <label style="display: block; color: #8aa8cc; font-size: 12px; margin-bottom: 8px; letter-spacing: 0.6px;">СРОК ДЕЙСТВИЯ ПРАВ</label>
