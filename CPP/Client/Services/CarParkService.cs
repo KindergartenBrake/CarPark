@@ -964,5 +964,11 @@ namespace CP.Client
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadFromJsonAsync<List<UserLookupDto>>() ?? new();
         }
+        public async Task RestoreTripAsync(int tripId)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Put, $"api/admin/trips/{tripId}/restore");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+        }
     }
 }
