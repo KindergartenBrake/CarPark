@@ -711,14 +711,19 @@ namespace CP.Client
             return await response.Content.ReadFromJsonAsync<List<CP.Server.DTO.TripRequestDto>>() ?? new();
         }
 
-        public async Task CreateTripRequestAsync(CP.Server.DTO.CreateTripRequestDto dto)
+        public async Task CreateTripRequestAsync(CreateTripRequestDto dto)
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, "api/triprequests")
+            var request = new HttpRequestMessage(HttpMethod.Post, "api/trip-requests")
             {
                 Content = JsonContent.Create(dto)
             };
             var response = await httpClient.SendAsync(request);
-            response.EnsureSuccessStatusCode();
+            
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                throw new Exception(error);
+            }
         }
 
         public async Task<List<AdminVehicleDto>> GetAdminVehiclesAsync(string? search = null)

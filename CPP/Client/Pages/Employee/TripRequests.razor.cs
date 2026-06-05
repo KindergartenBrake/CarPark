@@ -1,12 +1,14 @@
 using Microsoft.AspNetCore.Components;
 using CP.Server.DTO;
 using System.ComponentModel.DataAnnotations;
+using Radzen;
 
 namespace CP.Client.Pages.Employee;
 
 public partial class TripRequests
 {
     [Inject] protected CP.Client.CarParkService CarParkService { get; set; } = default!;
+    [Inject] protected DialogService DialogService { get; set; } = default!;
 
     private List<string> statuses = new() { "Все", "Pending", "Approved", "Completed", "Rejected" };
     private List<string> vehicleTypes = new() { "легковой", "спецтехника", "грузовой" };
@@ -52,8 +54,24 @@ public partial class TripRequests
 
     private async Task SubmitRequest()
     {
-        if (newRequest.TripDate < DateTime.Now || newRequest.EndTime <= newRequest.StartTime)
+        // Валидация на клиенте
+        if (string.IsNullOrWhiteSpace(newRequest.VehicleType))
+        {
+            await DialogService.Alert("Выберите тип автомобиля", "Ошибка");
             return;
+        }
+        
+        if (newRequest.TripDate < DateTime.Now.Date)
+        {
+            await DialogService.Alert("Дата поездки не может быть в прошлом", "Ошибка");
+            return;
+        }
+        
+        if (newRequest.EndTime <= newRequest.StartTime)
+        {
+            await DialogService.Alert("Время окончания должно быть позже времени начала", "Ошибка");
+            return;
+        }
 
         try
         {
@@ -67,11 +85,12 @@ public partial class TripRequests
             };
 
             await CarParkService.CreateTripRequestAsync(dto);
-            showCreateModal = false;
+            CloseCreateModal();
             await LoadRequests();
         }
-        catch
+        catch (Exception ex)
         {
+            await DialogService.Alert($"Ошибка: {ex.Message}", "Ошибка");
         }
     }
 

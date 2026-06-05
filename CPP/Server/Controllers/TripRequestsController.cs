@@ -45,8 +45,19 @@ public class TripRequestsController : ControllerBase
         if (string.IsNullOrEmpty(userId))
             return Unauthorized();
 
-        var result = await _service.CreateAsync(dto, userId);
-        return CreatedAtAction(nameof(GetById), new { id = result.RequestId }, result);
+        try
+        {
+            var result = await _service.CreateAsync(dto, userId);
+            return CreatedAtAction(nameof(GetById), new { id = result.RequestId }, result);
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { error = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { error = "Внутренняя ошибка сервера" });
+        }
     }
 
     [HttpGet("dashboard")]

@@ -86,6 +86,15 @@ public class TripRequestService : ITripRequestService
 
     public async Task<TripRequestDto> CreateAsync(CreateTripRequestDto dto, string userId)
     {
+        if (string.IsNullOrWhiteSpace(dto.VehicleType))
+            throw new ArgumentException("Тип автомобиля обязателен");
+        
+        if (dto.TripDate == default)
+            throw new ArgumentException("Дата поездки обязательна");
+        
+        if (dto.TripDate < DateTime.UtcNow)
+            throw new ArgumentException("Дата поездки не может быть в прошлом");
+
         var entity = new TripRequest
         {
             UserId = userId,
