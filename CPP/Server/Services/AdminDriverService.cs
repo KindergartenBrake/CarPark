@@ -78,8 +78,26 @@ public class AdminDriverService : IAdminDriverService
         };
     }
 
+    // Создане нового водителя
     public async Task<AdminDriverDto> CreateAsync(CreateDriverDto dto)
     {
+        // Валидация обязательных полей
+        if (string.IsNullOrWhiteSpace(dto.FirstName))
+            throw new ArgumentException("Имя обязательно");
+        if (string.IsNullOrWhiteSpace(dto.LastName))
+            throw new ArgumentException("Фамилия обязательна");
+        if (string.IsNullOrWhiteSpace(dto.MiddleName))
+            throw new ArgumentException("Отчество обязательно");
+
+        // Проверка уникальности прав
+        var driverLicense = await _driverRepo.FindAsync(d => d.LicenseNumber == dto.LicenseNumber);
+        if (driverLicense.Any())
+            throw new InvalidOperationException("Такой номер водительского удостоверения уже существует");
+
+        // Проверка на просроченные права
+        if (dto.LicenseExpireDate < DateTime.UtcNow)
+            throw new ArgumentException("Нельзя добавить водителя с просроченными прававми");
+
         var entity = new Driver
         {
             FirstName = dto.FirstName,
@@ -108,7 +126,7 @@ public class AdminDriverService : IAdminDriverService
                 await _vehicleRepo.SaveChangesAsync();
             }
         }
-        
+
         return (await GetByIdAsync(entity.DriverId))!;
     }
 

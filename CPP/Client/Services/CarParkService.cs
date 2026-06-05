@@ -789,6 +789,12 @@ namespace CP.Client
             };
             var response = await httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = await GetErrorMessageAsync(response);
+                throw new Exception(error);
+            }
         }
 
         public async Task UpdateDriverAsync(int id, CreateDriverDto dto)
@@ -1000,6 +1006,21 @@ namespace CP.Client
             var response = await httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
         }
+
+        private async Task<string> GetErrorMessageAsync(HttpResponseMessage response)
+        {
+            try
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                var error = JsonSerializer.Deserialize<Dictionary<string, string>>(content);
+                return error?.GetValueOrDefault("error") ?? content;
+            }
+            catch
+            {
+                return response.ReasonPhrase ?? "Неизвестная ошибка";
+            }
+        }
+
      
     }
 }

@@ -1,11 +1,14 @@
 using Microsoft.AspNetCore.Components;
 using CP.Server.DTO;
+using Radzen;
 
 namespace CP.Client.Pages.Administrator;
 
 public partial class Drivers2
 {
     [Inject] protected CP.Client.CarParkService CarParkService { get; set; } = default!;
+    [Inject] protected DialogService DialogService { get; set; } = default!;
+
 
     private string search = "";
     private bool showModal;
@@ -151,7 +154,13 @@ public partial class Drivers2
             showModal = false;
             await LoadDrivers();
         }
-        catch { }
+        catch (Exception ex)
+        {
+            var errorMessage = ex.Message;
+            Console.WriteLine($"Ошибка: {errorMessage}");
+            // показать пользователю
+            await DialogService.Alert(errorMessage, "Ошибка", new AlertOptions());
+        }
     }
 
     private void OpenDetails(AdminDriverDto driver)
