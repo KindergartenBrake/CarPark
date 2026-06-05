@@ -71,8 +71,21 @@ public partial class Employess2
         }
     }
   
-    private Task ActivateStub()
+    private async Task ActivateStub(EmployeeDto employee)
     {
-        return Task.CompletedTask;
+        try
+        {
+            await CarParkService.ActivateEmployeeAsync(employee.UserId);
+            await LoadEmployees();
+
+            if (selectedEmployee?.UserId == employee.UserId)
+            {
+                selectedEmployee = await CarParkService.GetEmployeeByIdAsync(employee.UserId);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка активации: {ex.Message}");
+        }
     }
 }

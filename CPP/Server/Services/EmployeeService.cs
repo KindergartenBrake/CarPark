@@ -15,6 +15,8 @@ public interface IEmployeeService
     Task<List<EmployeeDto>> GetAllEmployeesAsync(string? search = null);
     Task<EmployeeDto?> GetEmployeeByIdAsync(string userId);
     Task DeactivateEmployeeAsync(string userId);
+
+    Task ActivateAsync(string userId);
 }
 
 public class EmployeeService : IEmployeeService
@@ -116,5 +118,16 @@ public class EmployeeService : IEmployeeService
             user.LockoutEnd = DateTime.UtcNow.AddYears(100);
             await _userManager.UpdateAsync(user);
         }
+    }
+
+    public async Task ActivateAsync(string userId)
+    {
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null) return;
+        
+        // Разблокируем пользователя
+        user.LockoutEnabled = false;
+        user.LockoutEnd = null;
+        await _userManager.UpdateAsync(user);
     }
 }

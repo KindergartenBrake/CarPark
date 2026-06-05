@@ -1074,6 +1074,12 @@ namespace CP.Client
             }
         }
 
-     
+        public async Task ActivateEmployeeAsync(string userId)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Put, $"api/admin/employees/{userId}/activate");
+            var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+        }
+            
     }
 }

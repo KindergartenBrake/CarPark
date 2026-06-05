@@ -38,4 +38,11 @@ public class AdminEmployeesController : ControllerBase
         await _service.DeactivateEmployeeAsync(userId);
         return Ok();
     }
+
+    [HttpPut("{userId}/activate")]
+    public async Task<IActionResult> Activate(string userId)
+    {
+        await _service.ActivateAsync(userId);
+        return Ok();
+    }
 }
