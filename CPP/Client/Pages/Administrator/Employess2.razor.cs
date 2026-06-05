@@ -70,25 +70,9 @@ public partial class Employess2
             Console.WriteLine($"Ошибка деактивации: {ex.Message}");
         }
     }
-    //private async Task Activate(EmployeeDto employee)
-    //{
-    //try
-    // {
-    //await CarParkService.ActivateEmployeeAsync(employee.UserId);
-    //   await LoadEmployees();
-
-    //    if (selectedEmployee?.UserId == employee.UserId)
-    //   {
-    //        selectedEmployee = await CarParkService.GetEmployeeByIdAsync(employee.UserId);
-    //    }
-    //}
-    // catch (Exception ex)
-    // {
-    //      Console.WriteLine($"Ошибка активации: {ex.Message}");
-    // }
-    //}
-private Task ActivateStub()
-{
-    return Task.CompletedTask;
-}
+  
+    private Task ActivateStub()
+    {
+        return Task.CompletedTask;
+    }
 }
