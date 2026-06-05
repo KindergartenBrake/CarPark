@@ -1,6 +1,6 @@
 @page "/administrator/trip-requests2"
 @using Microsoft.AspNetCore.Authorization
-@attribute [Authorize]
+@attribute [Authorize(Roles="Admin")]
 
 <PageTitle>Administrator - Заявки на поездки</PageTitle>
 

@@ -1,6 +1,6 @@
 @page "/administrator/dashboard2"
 @using Microsoft.AspNetCore.Authorization
-@attribute [Authorize]
+@attribute [Authorize(Roles="Admin")]
 
 <PageTitle>Fleet Dashboard</PageTitle>
 

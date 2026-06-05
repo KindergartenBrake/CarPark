@@ -2,6 +2,7 @@
 @using Microsoft.AspNetCore.Authorization
 @using System.ComponentModel.DataAnnotations
 @using System.Net.Http.Json
+@attribute [Authorize(Roles="Admin")]
 @inject HttpClient Http
 
 <PageTitle>Admin - Профиль</PageTitle>

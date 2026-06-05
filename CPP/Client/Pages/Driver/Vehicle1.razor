@@ -1,6 +1,6 @@
 @page "/driver/vehicle1"
 @using Microsoft.AspNetCore.Authorization
-@attribute [Authorize]
+@attribute [Authorize(Roles="Driver")]
 
 <PageTitle>Мой автомобиль</PageTitle>
 
