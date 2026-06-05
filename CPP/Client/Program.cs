@@ -18,5 +18,6 @@ builder.Services.AddHttpClient("CP.Server", client => client.BaseAddress = new U
 builder.Services.AddTransient(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("CP.Server"));
 builder.Services.AddScoped<CP.Client.SecurityService>();
 builder.Services.AddScoped<AuthenticationStateProvider, CP.Client.ApplicationAuthenticationStateProvider>();
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 var host = builder.Build();
 await host.RunAsync();

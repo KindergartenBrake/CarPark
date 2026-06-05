@@ -15,7 +15,6 @@ public interface ITripRequestService
     Task<List<AvailableVehicleDto>> GetAvailableVehiclesAsync();
     Task<List<AvailableDriverDto>> GetAvailableDriversAsync();
     Task<EmployeeDashboardDto> GetEmployeeDashboardAsync(string userId);
-
 }
 
 public class TripRequestService : ITripRequestService
@@ -46,8 +45,8 @@ public class TripRequestService : ITripRequestService
             RequestId = r.RequestId,
             CreatedAt = r.CreatedAt,
             TripDate = r.TripDate,
-            StartTime = r.StartTime,
-            EndTime = r.EndTime,
+            StartTime = r.StartTime,      // TimeSpan? напрямую
+            EndTime = r.EndTime,          // TimeSpan? напрямую
             VehicleType = r.VehicleType,
             Status = r.Status,
             Description = r.Description,
@@ -70,8 +69,8 @@ public class TripRequestService : ITripRequestService
             RequestId = r.RequestId,
             CreatedAt = r.CreatedAt,
             TripDate = r.TripDate,
-            StartTime = r.StartTime,
-            EndTime = r.EndTime,
+            StartTime = r.StartTime,      // TimeSpan? напрямую
+            EndTime = r.EndTime,          // TimeSpan? напрямую
             VehicleType = r.VehicleType,
             Status = r.Status,
             Description = r.Description,
@@ -86,22 +85,22 @@ public class TripRequestService : ITripRequestService
 
     public async Task<TripRequestDto> CreateAsync(CreateTripRequestDto dto, string userId)
     {
-        if (string.IsNullOrWhiteSpace(dto.VehicleType))
-            throw new ArgumentException("Тип автомобиля обязателен");
+        // if (string.IsNullOrWhiteSpace(dto.VehicleType))
+        //     throw new ArgumentException("Тип автомобиля обязателен");
         
-        if (dto.TripDate == default)
-            throw new ArgumentException("Дата поездки обязательна");
+        // if (dto.TripDate == default)
+        //     throw new ArgumentException("Дата поездки обязательна");
         
-        if (dto.TripDate < DateTime.UtcNow)
-            throw new ArgumentException("Дата поездки не может быть в прошлом");
+        // if (dto.TripDate < DateTime.UtcNow.Date)
+        //     throw new ArgumentException("Дата поездки не может быть в прошлом");
 
         var entity = new TripRequest
         {
             UserId = userId,
             VehicleType = dto.VehicleType,
             TripDate = DateTime.SpecifyKind(dto.TripDate, DateTimeKind.Utc),
-            StartTime = dto.StartTime.HasValue ? DateTime.SpecifyKind(dto.StartTime.Value, DateTimeKind.Utc) : null,
-            EndTime = dto.EndTime.HasValue ? DateTime.SpecifyKind(dto.EndTime.Value, DateTimeKind.Utc) : null,
+            StartTime = dto.StartTime,   // TimeSpan? напрямую
+            EndTime = dto.EndTime,       // TimeSpan? напрямую
             Description = dto.Description,
             Status = "Pending",
             CreatedAt = DateTime.UtcNow
@@ -115,8 +114,8 @@ public class TripRequestService : ITripRequestService
             RequestId = entity.RequestId,
             CreatedAt = entity.CreatedAt,
             TripDate = entity.TripDate,
-            StartTime = entity.StartTime,
-            EndTime = entity.EndTime,
+            StartTime = entity.StartTime,   // TimeSpan? напрямую
+            EndTime = entity.EndTime,       // TimeSpan? напрямую
             VehicleType = entity.VehicleType,
             Status = entity.Status,
             Description = entity.Description
@@ -157,14 +156,8 @@ public class TripRequestService : ITripRequestService
 
         if (vehicle == null || driver == null) return false;
         
-        // Проверка, что машина доступна
         if (vehicle.Status != "Available") return false;
-        
-        // Проверка, что водитель активен и не занят в другой поездке
-        // var activeTrip = await _tripRepo.GetActiveTripByDriverId(driverId);
-        // if (activeTrip != null) return false;
 
-        // Освобождаем старую машину, если была назначена
         if (request.VehicleId.HasValue)
         {
             var oldVehicle = await _vehicleRepo.GetByIdAsync(request.VehicleId.Value);
@@ -175,9 +168,8 @@ public class TripRequestService : ITripRequestService
         request.DriverId = driverId;
         request.Status = "Approved";
         
-        vehicle.Status = "InUse"; // или "Busy"
+        vehicle.Status = "InUse";
 
-        // Обновляем или создаём Trip
         var trip = await _tripRepo.GetByRequestIdAsync(requestId);
         if (trip == null)
         {
@@ -244,39 +236,39 @@ public class TripRequestService : ITripRequestService
     }
 
     public async Task<EmployeeDashboardDto> GetEmployeeDashboardAsync(string userId)
-{
-    var requests = await _tripRequestRepo.GetByUserIdAsync(userId);
-    
-    var upcomingTrip = requests
-        .Where(r => r.Status == "Approved" && r.TripDate >= DateTime.UtcNow)
-        .OrderBy(r => r.TripDate)
-        .Select(r => new UpcomingTripDto
-        {
-            RequestId = r.RequestId,
-            TripDate = r.TripDate,
-            VehicleName = r.Vehicle != null ? $"{r.Vehicle.Brand} {r.Vehicle.Model}" : r.VehicleType ?? "—",
-            DriverName = r.Driver != null ? $"{r.Driver.LastName} {r.Driver.FirstName}" : "Не назначен",
-            Status = r.Status
-        })
-        .FirstOrDefault();
-    
-    return new EmployeeDashboardDto
     {
-        PendingRequests = requests.Count(r => r.Status == "Pending"),
-        ApprovedRequests = requests.Count(r => r.Status == "Approved"),
-        CompletedRequests = requests.Count(r => r.Status == "Completed"),
-        RejectedRequests = requests.Count(r => r.Status == "Rejected"),
-        UpcomingTrip = upcomingTrip,
-        RecentRequests = requests
-            .OrderByDescending(r => r.CreatedAt)
-            .Take(5)
-            .Select(r => new RecentRequestDto
+        var requests = await _tripRequestRepo.GetByUserIdAsync(userId);
+        
+        var upcomingTrip = requests
+            .Where(r => r.Status == "Approved" && r.TripDate >= DateTime.UtcNow)
+            .OrderBy(r => r.TripDate)
+            .Select(r => new UpcomingTripDto
             {
                 RequestId = r.RequestId,
                 TripDate = r.TripDate,
-                VehicleType = r.VehicleType ?? "—",
-                Status = r.Status ?? "Pending"
-            }).ToList()
-    };
-}
+                VehicleName = r.Vehicle != null ? $"{r.Vehicle.Brand} {r.Vehicle.Model}" : r.VehicleType ?? "—",
+                DriverName = r.Driver != null ? $"{r.Driver.LastName} {r.Driver.FirstName}" : "Не назначен",
+                Status = r.Status
+            })
+            .FirstOrDefault();
+        
+        return new EmployeeDashboardDto
+        {
+            PendingRequests = requests.Count(r => r.Status == "Pending"),
+            ApprovedRequests = requests.Count(r => r.Status == "Approved"),
+            CompletedRequests = requests.Count(r => r.Status == "Completed"),
+            RejectedRequests = requests.Count(r => r.Status == "Rejected"),
+            UpcomingTrip = upcomingTrip,
+            RecentRequests = requests
+                .OrderByDescending(r => r.CreatedAt)
+                .Take(5)
+                .Select(r => new RecentRequestDto
+                {
+                    RequestId = r.RequestId,
+                    TripDate = r.TripDate,
+                    VehicleType = r.VehicleType ?? "—",
+                    Status = r.Status ?? "Pending"
+                }).ToList()
+        };
+    }
 }

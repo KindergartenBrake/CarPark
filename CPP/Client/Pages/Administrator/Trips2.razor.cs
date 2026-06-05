@@ -153,6 +153,6 @@ public partial class Trips2
         }
     }
 
-    private string GetStartTimeString(DateTime? time) => time?.ToString("HH:mm") ?? "—";
-    private string GetEndTimeString(DateTime? time) => time?.ToString("HH:mm") ?? "—";
+    private string GetStartTimeString(TimeSpan? time) => time?.ToString(@"hh\:mm") ?? "—";
+    private string GetEndTimeString(TimeSpan? time) => time?.ToString(@"hh\:mm") ?? "—";
 }

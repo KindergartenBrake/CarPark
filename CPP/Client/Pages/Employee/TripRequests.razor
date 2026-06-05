@@ -1,6 +1,6 @@
 @page "/employee/trip-requests"
 @using Microsoft.AspNetCore.Authorization
-@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Components.Forms
 @attribute [Authorize(Roles = "Employee")]
 
 <PageTitle>Employee - Мои заявки</PageTitle>
@@ -33,9 +33,9 @@
                                    font-weight: 700;
                                    transition: all 0.3s ease;">
                         @(currentStatus == "Pending" ? "Ожидают" :
-                           currentStatus == "Approved" ? "Одобрены" :
-                           currentStatus == "Completed" ? "Завершены" :
-                           currentStatus == "Rejected" ? "Отклонены" : "Все")
+                          currentStatus == "Approved" ? "Одобрены" :
+                          currentStatus == "Completed" ? "Завершены" :
+                          currentStatus == "Rejected" ? "Отклонены" : "Все")
                     </button>
                 }
             </div>
@@ -66,6 +66,8 @@
                         <th style="padding: 18px; color: #dfefff; text-align: left;">Дата создания</th>
                         <th style="padding: 18px; color: #dfefff; text-align: left;">Дата поездки</th>
                         <th style="padding: 18px; color: #dfefff; text-align: left;">Тип авто</th>
+                        <th style="padding: 18px; color: #dfefff; text-align: left;">Время начала</th>
+                        <th style="padding: 18px; color: #dfefff; text-align: left;">Время окончания</th>
                         <th style="padding: 18px; color: #dfefff; text-align: left;">Статус</th>
                         <th style="padding: 18px; color: #dfefff; text-align: center;">Действия</th>
                     </tr>
@@ -73,40 +75,25 @@
                 <tbody>
                     @foreach (var req in filteredRequests)
                     {
-                        <tr style="border-bottom: 1px solid rgba(46,94,167,0.25);
-                                   transition: all 0.3s ease;">
-                            <td style="padding: 18px; color: #e8f2ff; font-weight: 700;">
-                                #@req.RequestId
-                            </td>
-                            <td style="padding: 18px; color: #9bbbe8;">
-                                @req.CreatedAt.ToString("dd.MM.yyyy HH:mm")
-                            </td>
-                            <td style="padding: 18px; color: #9bbbe8;">
-                                @req.TripDate.ToString("dd.MM.yyyy HH:mm")
-                            </td>
-                            <td style="padding: 18px; color: #dfefff;">
-                                @req.VehicleType
-                            </td>
+                        <tr style="border-bottom: 1px solid rgba(46,94,167,0.25); transition: all 0.3s ease;">
+                            <td style="padding: 18px; color: #e8f2ff; font-weight: 700;">#@req.RequestId</td>
+                            <td style="padding: 18px; color: #9bbbe8;">@req.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
+                            <td style="padding: 18px; color: #9bbbe8;">@req.TripDate.ToString("dd.MM.yyyy")</td>
+                            <td style="padding: 18px; color: #dfefff;">@req.VehicleType</td>
+                            <td style="padding: 18px; color: #9bbbe8;">@(req.StartTime.HasValue ? req.StartTime.Value.ToString(@"hh\:mm") : "-")</td>
+                            <td style="padding: 18px; color: #9bbbe8;">@(req.EndTime.HasValue ? req.EndTime.Value.ToString(@"hh\:mm") : "-")</td>
                             <td style="padding: 18px;">
-                                <span style="padding: 6px 14px;
-                                            border-radius: 20px;
-                                            font-size: 12px;
-                                            font-weight: 700;
-                                            background: @GetStatusBackground(req.Status);
-                                            color: @GetStatusColor(req.Status);">
+                                <span style="padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700;
+                                             background: @GetStatusBackground(req.Status);
+                                             color: @GetStatusColor(req.Status);">
                                     @(req.Status == "Pending" ? "Ожидает" :
-                                       req.Status == "Approved" ? "Одобрена" :
-                                       req.Status == "Completed" ? "Завершена" : "Отклонена")
+                                      req.Status == "Approved" ? "Одобрена" :
+                                      req.Status == "Completed" ? "Завершена" : "Отклонена")
                                 </span>
                             </td>
                             <td style="padding: 18px; text-align: center;">
                                 <button @onclick="() => OpenDetails(req)"
-                                        style="background: transparent;
-                                               border: 1px solid #2f6edb;
-                                               color: #8fb5e8;
-                                               padding: 8px 14px;
-                                               border-radius: 8px;
-                                               cursor: pointer;">
+                                        style="background: transparent; border: 1px solid #2f6edb; color: #8fb5e8; padding: 8px 14px; border-radius: 8px; cursor: pointer;">
                                     Подробнее
                                 </button>
                             </td>
@@ -118,13 +105,9 @@
             @if (!filteredRequests.Any())
             {
                 <div style="padding: 60px; text-align: center;">
-                    <div style="font-size: 64px;">"NULL"</div>
-                    <div style="color: #dfefff; font-size: 20px; font-weight: 700;">
-                        Заявки отсутствуют
-                    </div>
-                    <div style="color: #7fa6d9; margin-top: 8px;">
-                        Создайте новую заявку для поездки
-                    </div>
+                    <div style="font-size: 64px;">📋</div>
+                    <div style="color: #dfefff; font-size: 20px; font-weight: 700;">Заявки отсутствуют</div>
+                    <div style="color: #7fa6d9; margin-top: 8px;">Создайте новую заявку для поездки</div>
                 </div>
             }
         </div>
@@ -136,48 +119,46 @@
 {
     <div style="position: fixed; inset: 0; background: rgba(0,0,0,0.75); display: flex; justify-content: center; align-items: center; z-index: 999;">
         <div style="background: linear-gradient(135deg, #0b1f3d, #07111f); border: 1px solid #2e5ea7; border-radius: 14px; padding: 30px; width: 100%; max-width: 650px; color: white;">
-            <h2>Создание заявки</h2>
+            <h2 style="margin-top: 0;">Создание заявки</h2>
 
-            <EditForm Model="newRequest" OnValidSubmit="SubmitRequest">
-                <DataAnnotationsValidator />
-                <ValidationSummary />
+            <div style="margin-bottom: 16px;">
+                <label style="display: block; margin-bottom: 6px; color: #8aa8cc;">Тип автомобиля</label>
+                <select @bind="newRequest.VehicleType" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #2e5ea7; background: #10284d; color: white;">
+                    <option value="">Выберите тип</option>
+                    @foreach (var type in vehicleTypes)
+                    {
+                        <option value="@type">@type</option>
+                    }
+                </select>
+            </div>
 
-                <div style="margin-bottom: 16px;">
-                    <label>Тип автомобиля</label>
-                    <InputSelect @bind-Value="newRequest.VehicleType" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #2e5ea7; background: #10284d; color: white;">
-                        <option value="">Выберите тип</option>
-                        @foreach (var type in vehicleTypes)
-                        {
-                            <option value="@type">@type</option>
-                        }
-                    </InputSelect>
-                </div>
+            <div style="margin-bottom: 16px;">
+                <label style="display: block; margin-bottom: 6px; color: #8aa8cc;">Дата поездки</label>
+                <input type="date" @bind="newRequest.TripDate" @bind:format="yyyy-MM-dd"
+                       style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #2e5ea7; background: #10284d; color: white;" />
+            </div>
 
-                <div style="margin-bottom: 16px;">
-                    <label>Дата поездки</label>
-                    <InputDate @bind-Value="newRequest.TripDate" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #2e5ea7; background: #10284d; color: white;" />
-                </div>
+            <div style="margin-bottom: 16px;">
+                <label style="display: block; margin-bottom: 6px; color: #8aa8cc;">Время начала</label>
+                <input type="time" value="@startTimeString" @onchange="(ChangeEventArgs e) => startTimeString = e.Value?.ToString()"
+                    style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #2e5ea7; background: #10284d; color: white;" />
+            </div>
 
-                <div style="margin-bottom: 16px;">
-                    <label>Время начала</label>
-                    <InputDate @bind-Value="newRequest.StartTime" Type="InputDateType.DateTimeLocal" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #2e5ea7; background: #10284d; color: white;" />
-                </div>
+            <div style="margin-bottom: 16px;">
+                <label style="display: block; margin-bottom: 6px; color: #8aa8cc;">Время окончания</label>
+                <input type="time" value="@endTimeString" @onchange="(ChangeEventArgs e) => endTimeString = e.Value?.ToString()"
+                    style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #2e5ea7; background: #10284d; color: white;" />
+            </div>
+            <div style="margin-bottom: 16px;">
+                <label style="display: block; margin-bottom: 6px; color: #8aa8cc;">Описание</label>
+                <textarea @bind="newRequest.Description" rows="3"
+                          style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #2e5ea7; background: #10284d; color: white;"></textarea>
+            </div>
 
-                <div style="margin-bottom: 16px;">
-                    <label>Время окончания</label>
-                    <InputDate @bind-Value="newRequest.EndTime" Type="InputDateType.DateTimeLocal" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #2e5ea7; background: #10284d; color: white;" />
-                </div>
-
-                <div style="margin-bottom: 16px;">
-                    <label>Описание</label>
-                    <InputTextArea @bind-Value="newRequest.Description" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #2e5ea7; background: #10284d; color: white;" />
-                </div>
-
-                <div style="display:flex; gap:12px; margin-top:20px;">
-                    <button type="submit" style="background: #2f6edb; color: white; border: none; padding: 12px 18px; border-radius: 8px; cursor: pointer;">Отправить</button>
-                    <button type="button" @onclick="CloseCreateModal" style="background: #243b5e; color: white; border: none; padding: 12px 18px; border-radius: 8px; cursor: pointer;">Отмена</button>
-                </div>
-            </EditForm>
+            <div style="display: flex; gap: 12px; margin-top: 20px; justify-content: flex-end;">
+                <button @onclick="CloseCreateModal" style="background: #1e293b; border: none; color: #8aa8cc; padding: 10px 20px; border-radius: 8px; cursor: pointer;">Отмена</button>
+                <button @onclick="SubmitRequest" style="background: #2f6edb; border: none; color: white; padding: 10px 20px; border-radius: 8px; cursor: pointer;">Отправить</button>
+            </div>
         </div>
     </div>
 }
@@ -186,41 +167,41 @@
 {
     <div style="position: fixed; inset: 0; background: rgba(0,0,0,0.75); display: flex; justify-content: center; align-items: center; z-index: 999;">
         <div style="background: linear-gradient(135deg, #0b1f3d, #07111f); border: 1px solid #2e5ea7; border-radius: 14px; padding: 30px; width: 100%; max-width: 650px; color: white;">
-            <h2>Детали заявки #@selectedRequest.RequestId</h2>
+            <h2 style="margin-top: 0;">Детали заявки #@selectedRequest.RequestId</h2>
 
-            <div style="display: grid; gap: 12px; margin-top: 20px;">
-                <div><strong>Тип авто:</strong> @selectedRequest.VehicleType</div>
-                <div><strong>Дата поездки:</strong> @selectedRequest.TripDate.ToString("dd.MM.yyyy")</div>
-                <div><strong>Начало:</strong> @selectedRequest.StartTime?.ToString("HH:mm")</div>
-                <div><strong>Окончание:</strong> @selectedRequest.EndTime?.ToString("HH:mm")</div>
-                <div><strong>Описание:</strong> @selectedRequest.Description</div>
+            <div style="display: grid; gap: 12px;">
+                <div><strong style="color: #8aa8cc;">Тип авто:</strong> <span style="color: white;">@selectedRequest.VehicleType</span></div>
+                <div><strong style="color: #8aa8cc;">Дата поездки:</strong> <span style="color: white;">@selectedRequest.TripDate.ToString("dd.MM.yyyy")</span></div>
+                <div><strong style="color: #8aa8cc;">Начало:</strong> <span style="color: white;">@(selectedRequest.StartTime.HasValue ? selectedRequest.StartTime.Value.ToString(@"hh\:mm") : "-")</span></div>
+                <div><strong style="color: #8aa8cc;">Окончание:</strong> <span style="color: white;">@(selectedRequest.EndTime.HasValue ? selectedRequest.EndTime.Value.ToString(@"hh\:mm") : "-")</span></div>
+                <div><strong style="color: #8aa8cc;">Описание:</strong> <span style="color: white;">@selectedRequest.Description</span></div>
                 <div>
-                    <strong>Статус:</strong>
-                    <span style="padding: 4px 12px; border-radius: 20px; font-weight: 700;
+                    <strong style="color: #8aa8cc;">Статус:</strong>
+                    <span style="padding: 4px 12px; border-radius: 20px; font-weight: 700; margin-left: 8px;
                                  background: @GetStatusBackground(selectedRequest.Status);
                                  color: @GetStatusColor(selectedRequest.Status);">
                         @(selectedRequest.Status == "Pending" ? "Ожидает" :
-                           selectedRequest.Status == "Approved" ? "Одобрена" :
-                           selectedRequest.Status == "Completed" ? "Завершена" : "Отклонена")
+                          selectedRequest.Status == "Approved" ? "Одобрена" :
+                          selectedRequest.Status == "Completed" ? "Завершена" : "Отклонена")
                     </span>
                 </div>
                 @if (!string.IsNullOrEmpty(selectedRequest.RejectionReason))
                 {
-                    <div><strong>Причина отказа:</strong> @selectedRequest.RejectionReason</div>
+                    <div><strong style="color: #8aa8cc;">Причина отказа:</strong> <span style="color: white;">@selectedRequest.RejectionReason</span></div>
                 }
             </div>
 
             @if (selectedRequest.Status == "Approved")
             {
-                <div style="margin-top:20px; padding:16px; background: rgba(47,110,219,0.1); border-left: 4px solid #2f6edb; border-radius: 8px;">
-                    <div><strong>Автомобиль:</strong> @selectedRequest.VehicleBrand @selectedRequest.VehicleModel</div>
-                    <div><strong>Госномер:</strong> @selectedRequest.LicensePlate</div>
-                    <div><strong>Водитель:</strong> @selectedRequest.DriverName</div>
-                    <div><strong>Телефон:</strong> @selectedRequest.DriverPhone</div>
+                <div style="margin-top: 20px; padding: 16px; background: rgba(47,110,219,0.1); border-left: 4px solid #2f6edb; border-radius: 8px;">
+                    <div><strong style="color: #8aa8cc;">Автомобиль:</strong> <span style="color: white;">@selectedRequest.VehicleBrand @selectedRequest.VehicleModel</span></div>
+                    <div><strong style="color: #8aa8cc;">Госномер:</strong> <span style="color: white;">@selectedRequest.LicensePlate</span></div>
+                    <div><strong style="color: #8aa8cc;">Водитель:</strong> <span style="color: white;">@selectedRequest.DriverName</span></div>
+                    <div><strong style="color: #8aa8cc;">Телефон:</strong> <span style="color: white;">@selectedRequest.DriverPhone</span></div>
                 </div>
             }
 
-            <button @onclick="CloseDetails" style="background: #243b5e; color: white; border: none; padding: 12px 18px; border-radius: 8px; cursor: pointer; margin-top: 20px;">Закрыть</button>
+            <button @onclick="CloseDetails" style="background: #2f6edb; border: none; color: white; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-top: 20px; width: 100%;">Закрыть</button>
         </div>
     </div>
 }
@@ -230,4 +211,3 @@
         background: rgba(47,110,219,0.08);
     }
 </style>
-

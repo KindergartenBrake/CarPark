@@ -5,8 +5,8 @@ public class TripRequestDto
     public int RequestId { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime TripDate { get; set; }
-    public DateTime? StartTime { get; set; }
-    public DateTime? EndTime { get; set; }
+    public TimeSpan? StartTime { get; set; }
+    public TimeSpan? EndTime { get; set; }
     public string? VehicleType { get; set; }
     public string Status { get; set; } = "Pending";
     public string? Description { get; set; }

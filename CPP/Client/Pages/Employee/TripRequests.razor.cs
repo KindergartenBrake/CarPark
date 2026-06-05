@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Components;
 using CP.Server.DTO;
-using System.ComponentModel.DataAnnotations;
 using Radzen;
 
 namespace CP.Client.Pages.Employee;
@@ -15,6 +14,8 @@ public partial class TripRequests
 
     private string selectedStatus = "Все";
     private bool showCreateModal = false;
+    private string startTimeString = "09:00";
+    private string endTimeString = "18:00";
 
     private List<TripRequestDto> requests = new();
     private TripRequestDto? selectedRequest;
@@ -35,6 +36,7 @@ public partial class TripRequests
         try
         {
             requests = await CarParkService.GetMyTripRequestsAsync();
+            StateHasChanged();
         }
         catch
         {
@@ -47,6 +49,8 @@ public partial class TripRequests
     private void OpenCreateModal()
     {
         newRequest = new CreateTripRequestForm();
+        startTimeString = "09:00";
+        endTimeString = "18:00";
         showCreateModal = true;
     }
 
@@ -54,7 +58,6 @@ public partial class TripRequests
 
     private async Task SubmitRequest()
     {
-        // Валидация на клиенте
         if (string.IsNullOrWhiteSpace(newRequest.VehicleType))
         {
             await DialogService.Alert("Выберите тип автомобиля", "Ошибка");
@@ -67,7 +70,19 @@ public partial class TripRequests
             return;
         }
         
-        if (newRequest.EndTime <= newRequest.StartTime)
+        if (!TimeSpan.TryParse(startTimeString, out var startTime))
+        {
+            await DialogService.Alert("Неверный формат времени начала", "Ошибка");
+            return;
+        }
+        
+        if (!TimeSpan.TryParse(endTimeString, out var endTime))
+        {
+            await DialogService.Alert("Неверный формат времени окончания", "Ошибка");
+            return;
+        }
+        
+        if (endTime <= startTime)
         {
             await DialogService.Alert("Время окончания должно быть позже времени начала", "Ошибка");
             return;
@@ -79,14 +94,15 @@ public partial class TripRequests
             {
                 VehicleType = newRequest.VehicleType,
                 TripDate = newRequest.TripDate,
-                StartTime = newRequest.StartTime,
-                EndTime = newRequest.EndTime,
+                StartTime = startTime,
+                EndTime = endTime,
                 Description = newRequest.Description
             };
 
             await CarParkService.CreateTripRequestAsync(dto);
             CloseCreateModal();
             await LoadRequests();
+            await DialogService.Alert("Заявка успешно создана!", "Успех");
         }
         catch (Exception ex)
         {
@@ -118,17 +134,7 @@ public partial class TripRequests
 
 public class CreateTripRequestForm
 {
-    [Required(ErrorMessage = "Выберите тип автомобиля")]
     public string VehicleType { get; set; } = string.Empty;
-
-    [Required(ErrorMessage = "Укажите дату поездки")]
     public DateTime TripDate { get; set; } = DateTime.Now.Date.AddDays(1);
-
-    [Required(ErrorMessage = "Укажите время начала")]
-    public DateTime StartTime { get; set; } = DateTime.Now.Date.AddDays(1).AddHours(9);
-
-    [Required(ErrorMessage = "Укажите время окончания")]
-    public DateTime EndTime { get; set; } = DateTime.Now.Date.AddDays(1).AddHours(18);
-
     public string? Description { get; set; }
 }

@@ -52,7 +52,6 @@
                     <div class="card-title">Ожидают назначения</div>
                 </div>
                 <div class="card-value">@PendingRequests</div>
-                <div class="card-subtitle">Pending заявки</div>
             </div>
 
             <!-- Active Trips -->
@@ -61,7 +60,6 @@
                     <div class="card-title">Активных поездок</div>
                 </div>
                 <div class="card-value">@ActiveTrips</div>
-                <div class="card-subtitle">Статус InProgress</div>
             </div>
 
             <!-- Free Vehicles -->
@@ -70,7 +68,6 @@
                     <div class="card-title">Свободных автомобилей</div>
                 </div>
                 <div class="card-value">@AvailableVehicles</div>
-                <div class="card-subtitle">Доступны к назначению</div>
             </div>
 
             <!-- Active Drivers -->
@@ -79,7 +76,6 @@
                     <div class="card-title">Активных водителей</div>
                 </div>
                 <div class="card-value">@ActiveDrivers</div>
-                <div class="card-subtitle">Scheduled / InProgress</div>
             </div>
 
         </div>
@@ -137,13 +133,13 @@
                                         @switch (request.Status)
                                         {
                                             case "Pending":
-                                                <div class="status-pending">● Pending</div>
+                                                <div class="status-pending">● В ожидании</div>
                                                 break;
                                             case "Approved":
-                                                <div class="status-approved">● Approved</div>
+                                                <div class="status-approved">● Одобрена</div>
                                                 break;
                                             case "Rejected":
-                                                <div class="status-rejected">● Rejected</div>
+                                                <div class="status-rejected">● Отклонена</div>
                                                 break;
                                         }
                                     </td>

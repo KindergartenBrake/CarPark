@@ -25,12 +25,11 @@ public class AdminTripService : IAdminTripService
         IDriverRepository driverRepo,
         IVehicleRepository vehicleRepo,
         ITripRequestRepository tripRequestRepo)
-        
     {
         _tripRepo = tripRepo;
         _driverRepo = driverRepo;
         _vehicleRepo = vehicleRepo;
-        _tripRequestRepo = tripRequestRepo; 
+        _tripRequestRepo = tripRequestRepo;
     }
 
     public async Task<List<TripDto>> GetAllTripsAsync()
@@ -44,8 +43,9 @@ public class AdminTripService : IAdminTripService
             DriverName = t.Driver != null ? $"{t.Driver.LastName} {t.Driver.FirstName}" : "—",
             VehicleName = t.Vehicle != null ? $"{t.Vehicle.Brand} {t.Vehicle.Model}" : "—",
             TripDate = t.TripDate,
-            StartTime = t.StartTime,
-            EndTime = t.EndTime,
+            // Преобразуем DateTime? в TimeSpan? (только время)
+            StartTime = t.StartTime.HasValue ? TimeOnly.FromDateTime(t.StartTime.Value).ToTimeSpan() : (TimeSpan?)null,
+            EndTime = t.EndTime.HasValue ? TimeOnly.FromDateTime(t.EndTime.Value).ToTimeSpan() : (TimeSpan?)null,
             StartOdometer = t.StartOdometer,
             EndOdometer = t.EndOdometer,
             Status = t.Status ?? "Scheduled",
@@ -73,18 +73,6 @@ public class AdminTripService : IAdminTripService
         await _tripRepo.SaveChangesAsync();
     }
 
-    public async Task<List<string>> GetAvailableDriversAsync()
-    {
-        var drivers = await _driverRepo.GetActiveDriversAsync();
-        return drivers.Select(d => $"{d.LastName} {d.FirstName}").ToList();
-    }
-
-    public async Task<List<string>> GetAvailableVehiclesAsync()
-    {
-        var vehicles = await _vehicleRepo.GetAllAsync();
-        return vehicles.Select(v => $"{v.Brand} {v.Model}").ToList();
-    }
-
     public async Task RestoreTripAsync(int tripId)
     {
         var trip = await _tripRepo.GetByIdAsync(tripId);
@@ -94,17 +82,14 @@ public class AdminTripService : IAdminTripService
         if (trip.Status != "Cancelled")
             throw new Exception("Можно восстановить только отменённые поездки");
         
-        // Возвращаем статус в "Запланирована"
         trip.Status = "Scheduled";
         
-        // Обновляем статус связанной заявки
         var request = await _tripRequestRepo.GetByIdAsync(trip.RequestId);
         if (request != null)
         {
             request.Status = "Approved";
         }
         
-        // Освобождаем автомобиль, если он был занят
         if (trip.VehicleId > 0)
         {
             var vehicle = await _vehicleRepo.GetByIdAsync(trip.VehicleId);
@@ -115,5 +100,17 @@ public class AdminTripService : IAdminTripService
         }
         
         await _tripRepo.SaveChangesAsync();
+    }
+
+    public async Task<List<string>> GetAvailableDriversAsync()
+    {
+        var drivers = await _driverRepo.GetActiveDriversAsync();
+        return drivers.Select(d => $"{d.LastName} {d.FirstName}").ToList();
+    }
+
+    public async Task<List<string>> GetAvailableVehiclesAsync()
+    {
+        var vehicles = await _vehicleRepo.GetAllAsync();
+        return vehicles.Select(v => $"{v.Brand} {v.Model}").ToList();
     }
 }

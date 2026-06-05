@@ -118,8 +118,8 @@
                             <td class="tbl-cell">@trip.DriverName</td>
                             <td class="tbl-cell">@trip.VehicleName</td>
                             <td class="tbl-cell">@trip.TripDate.ToShortDateString()</td>
-                            <td class="tbl-cell">@GetStartTimeString(trip.StartTime)</td>
-                            <td class="tbl-cell">@GetEndTimeString(trip.EndTime)</td>
+                            <td class="tbl-cell">@(trip.StartTime.HasValue ? trip.StartTime.Value.ToString(@"hh\:mm") : "—")</td>
+                            <td class="tbl-cell">@(trip.EndTime.HasValue ? trip.EndTime.Value.ToString(@"hh\:mm") : "—")</td>
                             <td class="tbl-cell">
                                 <div class="mileage-box">@((int)((trip.EndOdometer ?? 0) - (trip.StartOdometer ?? 0))) KM</div>
                             </td>

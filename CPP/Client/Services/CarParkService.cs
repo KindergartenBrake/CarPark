@@ -713,7 +713,7 @@ namespace CP.Client
 
         public async Task CreateTripRequestAsync(CreateTripRequestDto dto)
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, "api/trip-requests")
+            var request = new HttpRequestMessage(HttpMethod.Post, "api/TripRequests")  // ← заглавная R
             {
                 Content = JsonContent.Create(dto)
             };

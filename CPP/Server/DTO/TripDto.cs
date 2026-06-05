@@ -7,8 +7,8 @@ public class TripDto
     public string DriverName { get; set; } = string.Empty;
     public string VehicleName { get; set; } = string.Empty;
     public DateTime TripDate { get; set; }
-    public DateTime? StartTime { get; set; }
-    public DateTime? EndTime { get; set; }
+    public TimeSpan? StartTime { get; set; }
+    public TimeSpan? EndTime { get; set; }
     public decimal? StartOdometer { get; set; }
     public decimal? EndOdometer { get; set; }
     public string Status { get; set; } = string.Empty;
