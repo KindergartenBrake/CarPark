@@ -1,15 +1,15 @@
-@inject NavigationManager NavigationManager
+@* @inject NavigationManager NavigationManager
+@inject SecurityService Security
 
 @code {
-    [Parameter]
-    public bool IsAuthenticated { get; set; }
-
     protected override async Task OnInitializedAsync()
     {
-        if (!IsAuthenticated)
+        var isAuthenticated = Security.IsAuthenticated();
+        
+        if (!isAuthenticated)
         {
             var redirectUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
-            if (!string.IsNullOrEmpty(redirectUrl))
+            if (!string.IsNullOrEmpty(redirectUrl) && redirectUrl != "login")
             {
                 NavigationManager.NavigateTo($"Login?redirectUrl={Uri.EscapeDataString(redirectUrl)}", true);
             }
@@ -20,7 +20,8 @@
         }
         else
         {
-            NavigationManager.NavigateTo("Unauthorized");
+            // Перенаправляем на дашборд по роли
+            await Security.RedirectByRole(NavigationManager);
         }
     }
-}
+} *@

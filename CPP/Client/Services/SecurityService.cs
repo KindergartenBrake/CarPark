@@ -241,8 +241,14 @@ namespace CP.Client
         {
             await Task.Delay(500);
             
-            if (IsInRole("Admin"))
-                navigation.NavigateTo("/admin/dashboard2", true);
+            // Диагностика
+            Console.WriteLine($"IsInRole Administrator: {IsInRole("Administrator")}");
+            Console.WriteLine($"IsInRole Admin: {IsInRole("Admin")}");
+            Console.WriteLine($"IsInRole Employee: {IsInRole("Employee")}");
+            Console.WriteLine($"IsInRole Driver: {IsInRole("Driver")}");
+            
+            if (IsInRole("Administrator") || IsInRole("Admin"))
+                navigation.NavigateTo("/administrator/dashboard2", true);
             else if (IsInRole("Employee"))
                 navigation.NavigateTo("/employee/dashboard", true);
             else if (IsInRole("Driver"))

@@ -61,32 +61,56 @@ namespace CP.Server.Controllers
         {
             redirectUrl = string.IsNullOrEmpty(redirectUrl) ? "~/" : redirectUrl.StartsWith("/") ? redirectUrl : $"~/{redirectUrl}";
 
+            // Разработческий режим для admin/admin
             if (env.EnvironmentName == "Development" && userName == "admin" && password == "admin")
             {
                 var claims = new List<Claim>()
                 {
                     new Claim(ClaimTypes.Name, "admin"),
-                    new Claim(ClaimTypes.Email, "admin")
+                    new Claim(ClaimTypes.Email, "admin"),
+                    new Claim(ClaimTypes.Role, "Administrator")
                 };
 
-                roleManager.Roles.ToList().ForEach(r => claims.Add(new Claim(ClaimTypes.Role, r.Name)));
                 await signInManager.SignInWithClaimsAsync(new ApplicationUser { UserName = userName, Email = userName }, isPersistent: false, claims);
 
-                return Redirect(redirectUrl);
+                // Редирект на дашборд админа
+                return Redirect("/administrator/dashboard2");
             }
 
+            // Обычная аутентификация
             if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password))
             {
                 var result = await signInManager.PasswordSignInAsync(userName, password, false, false);
 
                 if (result.Succeeded)
                 {
+                    var user = await userManager.FindByNameAsync(userName);
+                    if (user != null)
+                    {
+                        var roles = await userManager.GetRolesAsync(user);
+                        var role = roles.FirstOrDefault() ?? "Employee";
+                        
+                        return Redirect(GetDashboardUrlByRole(role));
+                    }
+                    
                     return Redirect(redirectUrl);
                 }
             }
 
             return RedirectWithError("Invalid user or password", redirectUrl);
         }
+        
+        private string GetDashboardUrlByRole(string role)
+        {
+            return role switch
+            {
+                "Admin" => "/administrator/dashboard2",
+                "Driver" => "/driver/dashboard1",
+                "Employee" => "/employee/dashboard",
+                _ => "/"
+            };
+        }
+
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> ChangePassword(string oldPassword, string newPassword)
@@ -131,15 +155,10 @@ namespace CP.Server.Controllers
             
             var claims = new List<ApplicationClaim>();
             
-            // Добавляем стандартные claims
             claims.Add(new ApplicationClaim { Type = ClaimTypes.Name, Value = user.UserName ?? "" });
             claims.Add(new ApplicationClaim { Type = ClaimTypes.NameIdentifier, Value = user.Id ?? "" });
             claims.Add(new ApplicationClaim { Type = ClaimTypes.Email, Value = user.Email ?? "" });
-            
-            // Добавляем роль (важно!)
             claims.Add(new ApplicationClaim { Type = ClaimTypes.Role, Value = role });
-            
-            // Добавляем все остальные claims пользователя
             claims.AddRange(User.Claims.Select(c => new ApplicationClaim { Type = c.Type, Value = c.Value }));
             
             return new ApplicationAuthenticationState
@@ -153,7 +172,6 @@ namespace CP.Server.Controllers
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
-
             return Redirect("~/");
         }
     }

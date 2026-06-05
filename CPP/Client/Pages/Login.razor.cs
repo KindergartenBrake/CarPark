@@ -1,58 +1,59 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.JSInterop;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using Radzen;
-using Radzen.Blazor;
+using Microsoft.JSInterop;
 
 namespace CP.Client.Pages
 {
     public partial class Login
     {
         [Inject]
-        protected IJSRuntime JSRuntime { get; set; }
+        protected IJSRuntime JSRuntime { get; set; } = default!;
 
         [Inject]
-        protected NavigationManager NavigationManager { get; set; }
+        protected NavigationManager NavigationManager { get; set; } = default!;
 
         [Inject]
-        protected DialogService DialogService { get; set; }
+        protected DialogService DialogService { get; set; } = default!;
 
         [Inject]
-        protected TooltipService TooltipService { get; set; }
+        protected TooltipService TooltipService { get; set; } = default!;
 
         [Inject]
-        protected ContextMenuService ContextMenuService { get; set; }
+        protected ContextMenuService ContextMenuService { get; set; } = default!;
 
         [Inject]
-        protected NotificationService NotificationService { get; set; }
-
-        protected string redirectUrl; // Куда перенаправить после входа
-        protected string error; // Текст ошибки (если есть)
-        protected string info; // Информационное сообщение
-        protected bool errorVisible;  // Показывать ли ошибку
-        protected bool infoVisible; // Показывать ли информацию
+        protected NotificationService NotificationService { get; set; } = default!;
 
         [Inject]
-        protected SecurityService Security { get; set; }
+        protected SecurityService Security { get; set; } = default!;
 
-        // Получаем текущий URL и парсим его параметры
+        protected string redirectUrl = "";
+        protected string error = "";
+        protected string info = "";
+        protected bool errorVisible;
+        protected bool infoVisible;
+
         protected override async Task OnInitializedAsync()
         {
-            var query = System.Web.HttpUtility.ParseQueryString(new Uri(NavigationManager.ToAbsoluteUri(NavigationManager.Uri).ToString()).Query);
-
-            error = query.Get("error"); // Получаем параметр "error"
-
-            info = query.Get("info"); // Получаем параметр "info"
-
-            redirectUrl = query.Get("redirectUrl"); // Получаем параметр "redirectUrl"
-
-            errorVisible = !string.IsNullOrEmpty(error); // Есть ли ошибка
-
-            infoVisible = !string.IsNullOrEmpty(info); // Есть ли информация
+            try
+            {
+                var uri = new Uri(NavigationManager.ToAbsoluteUri(NavigationManager.Uri).ToString());
+                var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+                
+                error = query.Get("error") ?? "";
+                info = query.Get("info") ?? "";
+                redirectUrl = query.Get("redirectUrl") ?? "";
+                
+                errorVisible = !string.IsNullOrEmpty(error);
+                infoVisible = !string.IsNullOrEmpty(info);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error parsing query: {ex.Message}");
+            }
         }
+        
     }
 }

@@ -1,6 +1,7 @@
 @layout CP.Client.Layout.LoginLayout
 @page "/login"
 @using CP.Client
+
 @inject NavigationManager Navigation
 
 <PageTitle>Login</PageTitle>
@@ -14,17 +15,3 @@
         </RadzenTemplateForm>
     </RadzenColumn>
 </RadzenRow>
-
-@code {
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            // Проверяем, если пользователь уже авторизован - редиректим по роли
-            if (Security.IsAuthenticated())
-            {
-                await Security.RedirectByRole(Navigation);
-            }
-        }
-    }
-}
