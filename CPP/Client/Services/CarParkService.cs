@@ -788,12 +788,27 @@ namespace CP.Client
                 Content = JsonContent.Create(dto)
             };
             var response = await httpClient.SendAsync(request);
-            response.EnsureSuccessStatusCode();
 
             if (!response.IsSuccessStatusCode)
             {
-                var error = await GetErrorMessageAsync(response);
-                throw new Exception(error);
+                // Читаем тело ответа с ошибкой до того как выбросить исключение
+                var errorContent = await response.Content.ReadAsStringAsync();
+                
+                try
+                {
+                    // Пытаемся распарсить ошибку с сервера (формат { "error": "текст" })
+                    var errorObj = JsonSerializer.Deserialize<Dictionary<string, string>>(errorContent);
+                    if (errorObj != null && errorObj.TryGetValue("error", out var errorMessage))
+                    {
+                        throw new Exception(errorMessage);
+                    }
+                }
+                catch (JsonException)
+                {
+                    throw new Exception($"Ошибка {response.StatusCode}: {errorContent}");
+                }
+                
+                throw new Exception($"Ошибка сервера: {response.StatusCode}");
             }
         }
 

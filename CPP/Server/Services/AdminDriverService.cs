@@ -98,6 +98,19 @@ public class AdminDriverService : IAdminDriverService
         if (dto.LicenseExpireDate < DateTime.UtcNow)
             throw new ArgumentException("Нельзя добавить водителя с просроченными прававми");
 
+
+        // Валидация телефона
+        if (!string.IsNullOrWhiteSpace(dto.Phone))
+        {
+            var digitsOnly = new string(dto.Phone.Where(char.IsDigit).ToArray());
+
+            if (digitsOnly.Length != 10)
+                throw new ArgumentException("Номер телефона должен содержать ровно 10 цифр");
+
+            if (dto.Phone.Any(char.IsLetter))
+                throw new ArgumentException("Номер телефона не должен содержать буквы");
+        }
+        
         var entity = new Driver
         {
             FirstName = dto.FirstName,
