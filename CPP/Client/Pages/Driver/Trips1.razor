@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <!-- TABS -->
+      
         <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; border-bottom: 2px solid #1f4781;">
             @foreach (var filter in tripFilters)
             {
@@ -39,7 +39,7 @@
             }
         </div>
 
-        <!-- TABLE -->
+       
         <div style="background: rgba(12, 28, 51, 0.95);
                     border: 1px solid #1f4781;
                     border-radius: 20px;
@@ -124,7 +124,7 @@
     </div>
 </div>
 
-<!-- START MODAL -->
+
 @if (showStartModal && selectedTrip is not null)
 {
     <div class="modal-overlay">
@@ -144,7 +144,7 @@
     </div>
 }
 
-<!-- END MODAL -->
+
 @if (showEndModal && selectedTrip is not null)
 {
     <div class="modal-overlay">

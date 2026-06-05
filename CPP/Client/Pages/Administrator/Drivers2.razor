@@ -2,7 +2,7 @@
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize(Roles="Admin")]
 
-<PageTitle>Drivers Management</PageTitle>
+<PageTitle>Управление водителями</PageTitle>
 
 <div style="min-height: 100vh; background: linear-gradient(135deg, #071120 0%, #0b1d38 100%); padding: 24px;">
 
@@ -90,7 +90,7 @@
         {
             <div style="margin-top:30px; background:#0c1b31; border:1px solid #1d3f73; border-radius:16px; padding:28px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px;">
-                    <div style="color:#f2f7ff; font-size:24px; font-weight:800;">DRIVER DETAILS</div>
+                    <div style="color:#f2f7ff; font-size:24px; font-weight:800;">Детали водителя</div>
                     <button @onclick="CloseDetails" style="background:#152842; border:none; color:#9abfff; padding:10px 16px; border-radius:8px; cursor:pointer;">Закрыть</button>
                 </div>
                 <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:20px;">

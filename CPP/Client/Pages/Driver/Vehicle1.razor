@@ -16,21 +16,20 @@
         {
             <div style="display:grid; grid-template-columns:420px 1fr; gap:28px; align-items:start;">
                 
-                <!-- LEFT -->
                 <div style="background:linear-gradient(145deg,#0c1b32 0%,#091524 100%); border:1px solid #21467c; border-radius:22px; padding:24px;">
                     
                     <div style="height:280px; background:rgba(42,74,142,0.18); border:1px solid #21467c; border-radius:18px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
-                        @if (!string.IsNullOrWhiteSpace(vehicle.ImageUrl))
-                        {
-                            <img src="@vehicle.ImageUrl" style="width:100%; height:100%; object-fit:cover; border-radius:18px;" />
-                        }
-                        else
+                        <div style="height:280px; background:rgba(42,74,142,0.18); border:1px solid #21467c; border-radius:18px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
+    <img src="@GetImage(vehicle.VehicleId)"
+         style="width:100%; height:100%; object-fit:cover; border-radius:18px;" />
+</div>
+                        @* else
                         {
                             <div style="text-align:center;">
                                 <div style="font-size:96px;">@GetVehicleIcon(vehicle.VehicleType)</div>
                                 <div style="margin-top:12px; color:#7fa4d6; font-size:14px;">Фото отсутствует</div>
                             </div>
-                        }
+                        } *@
                     </div>
 
                     <div style="display:flex; justify-content:space-between; align-items:center; background:#08111d; border:1px solid #1e3f6d; border-radius:16px; padding:18px;">
@@ -45,7 +44,7 @@
                                 <div style="margin-top:8px; color:#ffb74d; font-size:18px; font-weight:800;">● В РЕМОНТЕ</div>
                             }
                         </div>
-                        <div style="font-size:42px;">🚘</div>
+                        <div style="font-size:42px;"></div>
                     </div>
 
                     @if (vehicle.InsuranceExpiration.HasValue)
@@ -57,7 +56,6 @@
                     }
                 </div>
 
-                <!-- RIGHT -->
                 <div style="display:flex; flex-direction:column; gap:24px;">
                     
                     <div style="background:linear-gradient(145deg,#0d1c34 0%,#091423 100%); border:1px solid #21467c; border-radius:22px; padding:28px;">
@@ -110,7 +108,7 @@
         else
         {
             <div style="background:linear-gradient(145deg,#0c1b32 0%,#091423 100%); border:2px dashed #2a4a8e; border-radius:24px; padding:90px 40px; text-align:center;">
-                <div style="font-size:110px; margin-bottom:24px;">🚫</div>
+                <div style="font-size:110px; margin-bottom:24px;">Пусто</div>
                 <div style="color:#edf4ff; font-size:30px; font-weight:900;">АВТОМОБИЛЬ НЕ ЗАКРЕПЛЁН</div>
                 <div style="margin-top:18px; color:#89a7cf; font-size:17px; max-width:700px; margin-left:auto; margin-right:auto; line-height:1.7;">
                     За вами не закреплён постоянный автомобиль. Обратитесь к администратору для назначения транспортного средства.

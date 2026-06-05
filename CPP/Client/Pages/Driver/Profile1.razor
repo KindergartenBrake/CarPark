@@ -11,7 +11,7 @@
 
 <div style="min-height: 100vh; background: linear-gradient(135deg, #081120 0%, #0d1f3e 45%, #13376b 100%); padding: 24px;">
     <div style="max-width: 1400px; margin: 0 auto;">
-        <!-- HEADER -->
+      
         <div style="margin-bottom: 32px;">
             <div style="color: #f1f5ff; font-size: 34px; font-weight: 800; letter-spacing: 1px;">
                 ПРОФИЛЬ ВОДИТЕЛЯ
@@ -21,9 +21,9 @@
             </div>
         </div>
 
-        <!-- MAIN GRID -->
+       
         <div style="display: grid; grid-template-columns: 380px 1fr; gap: 24px;">
-            <!-- LEFT PANEL -->
+           
             <div style="background: linear-gradient(180deg, #102544 0%, #0a1628 100%); border: 1px solid #214d91; border-radius: 18px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.45);">
                 <div style="padding: 40px 20px; border-bottom: 1px solid #1d3d72; background: linear-gradient(135deg, rgba(58,123,213,0.22), rgba(0,0,0,0));">
                     <div style="width: 120px; height: 120px; margin: 0 auto; border-radius: 50%; background: linear-gradient(135deg, #3a7bd5, #1f56a5); display: flex; align-items: center; justify-content: center; font-size: 42px; font-weight: 800; color: white; border: 4px solid rgba(255,255,255,0.08); box-shadow: 0 0 24px rgba(58,123,213,0.45);">
@@ -69,9 +69,9 @@
                 </div>
             </div>
 
-            <!-- RIGHT CONTENT -->
+        
             <div style="display: flex; flex-direction: column; gap: 24px;">
-                <!-- PROFILE FORM -->
+            
                 <div style="background: linear-gradient(180deg, #102544 0%, #0a1628 100%); border: 1px solid #214d91; border-radius: 18px; padding: 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.45);">
                     <div style="color: #f1f5ff; font-size: 24px; font-weight: 700; margin-bottom: 28px;">ЛИЧНЫЕ ДАННЫЕ</div>
                     <EditForm Model="@editModel" OnValidSubmit="SaveProfile">
@@ -106,7 +106,7 @@
                     </EditForm>
                 </div>
 
-                <!-- PASSWORD CHANGE -->
+              
                 <div style="background: linear-gradient(180deg, #102544 0%, #0a1628 100%); border: 1px solid #214d91; border-radius: 18px; padding: 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.45);">
                     <div style="color: #f1f5ff; font-size: 24px; font-weight: 700; margin-bottom: 28px;">СМЕНА ПАРОЛЯ</div>
                     <EditForm Model="@passwordModel" OnValidSubmit="ChangePassword">
@@ -131,7 +131,7 @@
                     </EditForm>
                 </div>
 
-                <!-- SECURITY INFO -->
+           
                 <div style="background: rgba(58,123,213,0.12); border-left: 4px solid #3a7bd5; border-radius: 12px; padding: 18px 20px;">
                     <div style="color: #dce8ff; font-size: 14px; line-height: 1.6;">
                         <strong>Безопасность:</strong> После изменения пароля рекомендуется завершить все активные сессии и повторно авторизоваться.

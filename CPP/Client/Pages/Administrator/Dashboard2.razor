@@ -11,7 +11,6 @@
         <div style="width:100%;">
 
 
-        <!-- HEADER -->
         <div style="display:flex;
                     justify-content:space-between;
                     align-items:center;
@@ -40,13 +39,11 @@
 
         </div>
 
-        <!-- STAT CARDS -->
         <div style="display:grid;
                     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
                     gap:22px;
                     margin-bottom:32px;">
 
-            <!-- Pending -->
             <div class="dashboard-card">
                 <div class="card-top">
                     <div class="card-title">Ожидают назначения</div>
@@ -54,7 +51,6 @@
                 <div class="card-value">@PendingRequests</div>
             </div>
 
-            <!-- Active Trips -->
             <div class="dashboard-card">
                 <div class="card-top">
                     <div class="card-title">Активных поездок</div>
@@ -62,7 +58,6 @@
                 <div class="card-value">@ActiveTrips</div>
             </div>
 
-            <!-- Free Vehicles -->
             <div class="dashboard-card">
                 <div class="card-top">
                     <div class="card-title">Свободных автомобилей</div>
@@ -70,7 +65,6 @@
                 <div class="card-value">@AvailableVehicles</div>
             </div>
 
-            <!-- Active Drivers -->
             <div class="dashboard-card">
                 <div class="card-top">
                     <div class="card-title">Активных водителей</div>
@@ -80,13 +74,12 @@
 
         </div>
 
-        <!-- MAIN GRID -->
         <div style="display:grid;
                     grid-template-columns:2fr 1fr;
                     gap:24px;
                     align-items:start;">
 
-            <!-- REQUEST TABLE -->
+
             <div style="background:#0c1c33;
                         border:1px solid #1d4278;
                         border-radius:20px;
@@ -168,10 +161,9 @@
 
             </div>
 
-            <!-- ACTIVITY -->
+
             <div style="display:flex; flex-direction:column; gap:24px;">
 
-                <!-- CHART -->
                 <div style="background:#0c1c33;
                             border:1px solid #1d4278;
                             border-radius:20px;
@@ -216,7 +208,6 @@
 
                 </div>
 
-                <!-- QUICK STATS -->
                 <div style="background:#0c1c33;
                             border:1px solid #1d4278;
                             border-radius:20px;
@@ -259,7 +250,6 @@
 
 </div>
 
-<!-- REJECT MODAL -->
 @if (showRejectModal && selectedRequest is not null)
 {
     <div style="position:fixed;
