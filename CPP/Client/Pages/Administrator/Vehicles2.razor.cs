@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Components;
 using CP.Server.DTO;
+using Radzen;
 
 namespace CP.Client.Pages.Administrator;
 
 public partial class Vehicles2
 {
     [Inject] protected CP.Client.CarParkService CarParkService { get; set; } = default!;
+    [Inject] protected DialogService DialogService { get; set; } = default!;
 
     private string search = "";
     private bool showModal;
@@ -57,7 +59,7 @@ public partial class Vehicles2
 
     private void OpenCreateModal()
     {
-        editingVehicleId = null;  // ← новая запись
+        editingVehicleId = null;
         editingVehicle = new CreateVehicleDto
         {
             Year = DateTime.Now.Year,
@@ -70,7 +72,7 @@ public partial class Vehicles2
 
     private void OpenEditModal(AdminVehicleDto vehicle)
     {
-        editingVehicleId = vehicle.VehicleId;  // ← запомнили ID
+        editingVehicleId = vehicle.VehicleId;
         editingVehicle = new CreateVehicleDto
         {
             Brand = vehicle.Brand,
@@ -104,7 +106,12 @@ public partial class Vehicles2
             showModal = false;
             await LoadVehicles();
         }
-        catch { }
+        catch (Exception ex)
+        {
+            var errorMessage = ex.Message;
+            Console.WriteLine($"Ошибка: {errorMessage}");
+            await DialogService.Alert(errorMessage, "Ошибка", new AlertOptions());
+        }
     }
 
     private async Task DeleteVehicle(AdminVehicleDto vehicle)
@@ -114,7 +121,10 @@ public partial class Vehicles2
             await CarParkService.DeleteVehicleAsync(vehicle.VehicleId);
             await LoadVehicles();
         }
-        catch { }
+        catch (Exception ex)
+        {
+            await DialogService.Alert(ex.Message, "Ошибка", new AlertOptions());
+        }
     }
 
     private async Task DeactivateVehicle(AdminVehicleDto vehicle)
@@ -124,7 +134,10 @@ public partial class Vehicles2
             await CarParkService.DeactivateVehicleAsync(vehicle.VehicleId);
             await LoadVehicles();
         }
-        catch { }
+        catch (Exception ex)
+        {
+            await DialogService.Alert(ex.Message, "Ошибка", new AlertOptions());
+        }
     }
 
     private void OpenDetails(AdminVehicleDto vehicle)

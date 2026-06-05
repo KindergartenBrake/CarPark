@@ -101,6 +101,41 @@ public class AdminVehicleService : IAdminVehicleService
 
     public async Task<AdminVehicleDto> CreateAsync(CreateVehicleDto dto)
     {
+
+        // Валидация обязательных полей
+        if (string.IsNullOrWhiteSpace(dto.Brand))
+            throw new ArgumentException("Марка обязательна");
+        if (string.IsNullOrWhiteSpace(dto.Model))
+            throw new ArgumentException("Модель обязательна");
+        if (string.IsNullOrWhiteSpace(dto.LicensePlate))
+            throw new ArgumentException("Госномер обязателен");
+
+        // Проверка уникальности госномера
+        var existingVehicle = await _vehicleRepo.FindAsync(v => v.LicensePlate == dto.LicensePlate);
+        if (existingVehicle.Any())
+            throw new InvalidOperationException("Автомобиль с таким госномером уже существует");
+
+        // Проверка VIN (если нужен)
+        if (string.IsNullOrWhiteSpace(dto.Vin))
+            throw new ArgumentException("VIN обязателен");
+
+        // Проверка уникальности VIN
+        var existingVin = await _vehicleRepo.FindAsync(v => v.Vin == dto.Vin);
+        if (existingVin.Any())
+            throw new InvalidOperationException("Автомобиль с таким VIN уже существует");
+
+        // Проверка года выпуска
+        if (dto.Year < 1900 || dto.Year > DateTime.UtcNow.Year + 1)
+            throw new ArgumentException("Некорректный год выпуска");
+
+        // Проверка пробега
+        if (dto.Mileage < 0)
+            throw new ArgumentException("Пробег не может быть отрицательным");
+
+        // Проверка страховки
+        if (dto.InsuranceExpire < DateTime.UtcNow.Date)
+            throw new ArgumentException("Страховка не может быть просрочена");   
+        
         var entity = new Vehicle
         {
             Brand = dto.Brand,
@@ -127,6 +162,8 @@ public class AdminVehicleService : IAdminVehicleService
         var entity = await _vehicleRepo.GetByIdAsync(id);
         if (entity == null) return;
 
+        var oldDriverId = entity.DriverId;
+
         entity.Brand = dto.Brand;
         entity.Model = dto.Model;
         entity.Year = dto.Year;
@@ -140,6 +177,32 @@ public class AdminVehicleService : IAdminVehicleService
         entity.DriverId = dto.DriverId;
 
         await _vehicleRepo.SaveChangesAsync();
+
+        // Обновляем связь с водителем
+        if (oldDriverId != dto.DriverId)
+        {
+            // Очищаем VehicleId у старого водителя
+            if (oldDriverId.HasValue)
+            {
+                var oldDriver = await _driverRepo.GetByIdAsync(oldDriverId.Value);
+                if (oldDriver != null)
+                {
+                    oldDriver.VehicleId = null;
+                    await _driverRepo.SaveChangesAsync();
+                }
+            }
+
+            // Назначаем VehicleId у нового водителя
+            if (dto.DriverId.HasValue)
+            {
+                var newDriver = await _driverRepo.GetByIdAsync(dto.DriverId.Value);
+                if (newDriver != null)
+                {
+                    newDriver.VehicleId = id;
+                    await _driverRepo.SaveChangesAsync();
+                }
+            }
+        }
     }
 
     public async Task DeleteAsync(int id)

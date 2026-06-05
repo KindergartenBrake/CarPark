@@ -31,20 +31,50 @@ public class AdminVehiclesController : ControllerBase
         return Ok(vehicle);
     }
 
-    [HttpPost]
+   [HttpPost]
     public async Task<ActionResult<AdminVehicleDto>> Create([FromBody] CreateVehicleDto dto)
     {
-        var result = await _service.CreateAsync(dto);
-        return CreatedAtAction(nameof(GetById), new { id = result.VehicleId }, result);
+        try
+        {
+            var result = await _service.CreateAsync(dto);
+            return CreatedAtAction(nameof(GetById), new { id = result.VehicleId }, result);
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { error = ex.Message });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return Conflict(new { error = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { error = "Внутренняя ошибка сервера" });
+        }
     }
 
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(int id, [FromBody] CreateVehicleDto dto)
     {
-        await _service.UpdateAsync(id, dto);
-        return Ok();
+        try
+        {
+            await _service.UpdateAsync(id, dto);
+            return Ok();
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { error = ex.Message });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return Conflict(new { error = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { error = "Внутренняя ошибка сервера" });
+        }
     }
-
+    
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {

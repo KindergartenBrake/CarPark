@@ -730,14 +730,33 @@ namespace CP.Client
             return await response.Content.ReadFromJsonAsync<List<AdminVehicleDto>>() ?? new();
         }
 
-        public async Task CreateVehicleAsync(CreateVehicleDto dto)
+       public async Task CreateVehicleAsync(CreateVehicleDto dto)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, "api/admin/vehicles")
             {
                 Content = JsonContent.Create(dto)
             };
             var response = await httpClient.SendAsync(request);
-            response.EnsureSuccessStatusCode();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                
+                try
+                {
+                    var errorObj = JsonSerializer.Deserialize<Dictionary<string, string>>(errorContent);
+                    if (errorObj != null && errorObj.TryGetValue("error", out var errorMessage))
+                    {
+                        throw new Exception(errorMessage);
+                    }
+                }
+                catch (JsonException)
+                {
+                    throw new Exception($"Ошибка {response.StatusCode}: {errorContent}");
+                }
+                
+                throw new Exception($"Ошибка сервера: {response.StatusCode}");
+            }
         }
 
         public async Task UpdateVehicleAsync(int id, CreateVehicleDto dto)
@@ -747,7 +766,26 @@ namespace CP.Client
                 Content = JsonContent.Create(dto)
             };
             var response = await httpClient.SendAsync(request);
-            response.EnsureSuccessStatusCode();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                
+                try
+                {
+                    var errorObj = JsonSerializer.Deserialize<Dictionary<string, string>>(errorContent);
+                    if (errorObj != null && errorObj.TryGetValue("error", out var errorMessage))
+                    {
+                        throw new Exception(errorMessage);
+                    }
+                }
+                catch (JsonException)
+                {
+                    throw new Exception($"Ошибка {response.StatusCode}: {errorContent}");
+                }
+                
+                throw new Exception($"Ошибка сервера: {response.StatusCode}");
+            }
         }
 
         public async Task DeleteVehicleAsync(int id)
