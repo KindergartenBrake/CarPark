@@ -1009,7 +1009,7 @@ namespace CP.Client
 
         public async Task<EmployeeDashboardDto> GetEmployeeDashboardAsync()
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, "api/trip-requests/dashboard");
+            var request = new HttpRequestMessage(HttpMethod.Get, "api/TripRequests/dashboard");
             var response = await httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadFromJsonAsync<EmployeeDashboardDto>() ?? new();

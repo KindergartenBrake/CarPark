@@ -21,6 +21,7 @@ public class RecentRequestDto
     public DateTime TripDate { get; set; }
     public string VehicleType { get; set; } = string.Empty;
     public string Status { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
 }
 
 public class ActivityPointDto
