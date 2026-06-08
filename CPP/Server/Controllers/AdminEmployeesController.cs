@@ -7,7 +7,7 @@ namespace CP.Server.Controllers;
 
 [ApiController]
 [Route("api/admin/employees")]
-[Authorize]
+[Authorize(Roles = "Admin")]
 public class AdminEmployeesController : ControllerBase
 {
     private readonly IEmployeeService _service;

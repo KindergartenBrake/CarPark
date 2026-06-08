@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
+// Модель для роли пользователя
 namespace CP.Server.Models.CarPark
 {
     [Table("AspNetRoles", Schema = "public")]

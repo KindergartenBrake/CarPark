@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using System.Net.Http.Json;
+using CP.Server.DTO;
 
 namespace CP.Client.Pages.Driver
 {
@@ -17,8 +18,8 @@ namespace CP.Client.Pages.Driver
         private bool showStartModal;
         private bool showEndModal;
         private DriverTripDto? selectedTrip;
-        private StartTripModel startModel = new();
-        private EndTripModel endModel = new();
+        private StartTripDto startModel = new();
+        private EndTripDto endModel = new();
 
         private List<string> tripFilters = new() { "All", "Scheduled", "InProgress", "Completed" };
 
@@ -170,26 +171,6 @@ namespace CP.Client.Pages.Driver
         {
             // TODO: Открыть модалку с деталями
             Console.WriteLine($"Show details for trip {trip.Id}");
-        }
-
-        public class DriverTripDto
-        {
-            public int Id { get; set; }
-            public DateTime ScheduledDate { get; set; }
-            public string VehicleName { get; set; } = "";
-            public string Status { get; set; } = "";
-            public decimal? StartOdometer { get; set; }
-            public decimal? EndOdometer { get; set; }
-        }
-
-        public class StartTripModel
-        {
-            public decimal StartOdometer { get; set; }
-        }
-
-        public class EndTripModel
-        {
-            public decimal EndOdometer { get; set; }
         }
     }
 }

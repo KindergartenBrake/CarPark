@@ -809,7 +809,7 @@ namespace CP.Client
 
         public async Task<List<AvailableDriverDto>> GetAvailableDriversAsync()
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, "api/admin/trip-requests/drivers");
+            var request = new HttpRequestMessage(HttpMethod.Get, "api/admin/triprequests/available-drivers");
             var response = await httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadFromJsonAsync<List<AvailableDriverDto>>() ?? new();
@@ -892,7 +892,7 @@ namespace CP.Client
 
         public async Task RejectTripRequestAsync(int requestId, RejectTripRequestDto dto)
         {
-            var request = new HttpRequestMessage(HttpMethod.Put, $"api/admin/trip-requests/{requestId}/reject")
+            var request = new HttpRequestMessage(HttpMethod.Put, $"api/admin/triprequests/{requestId}/reject")
             {
                 Content = JsonContent.Create(dto)
             };
@@ -902,7 +902,7 @@ namespace CP.Client
 
         public async Task AssignTripRequestAsync(int requestId, AssignTripDto dto)
         {
-            var request = new HttpRequestMessage(HttpMethod.Put, $"api/admin/trip-requests/{requestId}/assign")
+            var request = new HttpRequestMessage(HttpMethod.Put, $"api/admin/triprequests/{requestId}/assign")
             {
                 Content = JsonContent.Create(dto)
             };

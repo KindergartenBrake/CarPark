@@ -34,7 +34,7 @@ public class AdminTripRequestsController : ControllerBase
     }
 
     [HttpPut("{id}/reject")]
-    public async Task<ActionResult> RejectTrip(int id, [FromBody] RejectTripDto dto)
+    public async Task<ActionResult> RejectTrip(int id, [FromBody] RejectTripRequestDto dto)
     {
         var result = await _service.RejectTripAsync(id, dto.Reason);
         if (!result)

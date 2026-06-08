@@ -7,7 +7,7 @@ namespace CP.Server.Controllers;
 
 [ApiController]
 [Route("api/admin/vehicles")]
-[Authorize]
+[Authorize(Roles = "Admin")]
 public class AdminVehiclesController : ControllerBase
 {
     private readonly IAdminVehicleService _service;

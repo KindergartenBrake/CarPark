@@ -7,7 +7,7 @@ namespace CP.Server.Controllers;
 
 [ApiController]
 [Route("api/admin/trips")]
-[Authorize]
+[Authorize(Roles = "Admin")]
 public class AdminTripsController : ControllerBase
 {
     private readonly IAdminTripService _service;

@@ -16,9 +16,8 @@ namespace CP.Server.Migrations
             migrationBuilder.EnsureSchema(
                 name: "public");
 
-            // ========== ТОЛЬКО ДОМЕННЫЕ ТАБЛИЦЫ ==========
-            // (Identity таблицы уже существуют в БД)
-
+            // Создание таблиц для доменных сущностей
+            // Создание таблицы для водителей
             migrationBuilder.CreateTable(
                 name: "drivers",
                 schema: "public",
@@ -51,6 +50,7 @@ namespace CP.Server.Migrations
                         onDelete: ReferentialAction.SetNull);
                 });
 
+            // Создание таблицы для транспортных средств
             migrationBuilder.CreateTable(
                 name: "vehicles",
                 schema: "public",
@@ -83,6 +83,7 @@ namespace CP.Server.Migrations
                         onDelete: ReferentialAction.SetNull);
                 });
 
+            // Создание таблицы для заявок на поездку
             migrationBuilder.CreateTable(
                 name: "trip_requests",
                 schema: "public",
@@ -128,6 +129,7 @@ namespace CP.Server.Migrations
                         onDelete: ReferentialAction.SetNull);
                 });
 
+            // Создание таблицы для поездок
             migrationBuilder.CreateTable(
                 name: "trips",
                 schema: "public",
@@ -240,6 +242,7 @@ namespace CP.Server.Migrations
         }
 
         /// <inheritdoc />
+        // Удаление таблиц для доменных сущностей
        protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

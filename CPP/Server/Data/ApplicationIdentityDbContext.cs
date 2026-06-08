@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 
 using CP.Server.Models;
 
+// Контекст для Identity
 namespace CP.Server.Data
 {
     public partial class ApplicationIdentityDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>

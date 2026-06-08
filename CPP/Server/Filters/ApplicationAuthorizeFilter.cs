@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace CP.Server.Filters
 {
+    // Фильтр авторизации для приложения
     public class ApplicationAuthorizeFilter : AuthorizeFilter
     {
         public ApplicationAuthorizeFilter(AuthorizationPolicy policy): base(policy)

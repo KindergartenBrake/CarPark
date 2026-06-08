@@ -7,7 +7,7 @@ namespace CP.Server.Controllers;
 
 [ApiController]
 [Route("api/admin/[controller]")]
-[Authorize]
+[Authorize(Roles = "Admin")]
 public class DashboardController : ControllerBase
 {
     private readonly IAdminDashboardService _service;

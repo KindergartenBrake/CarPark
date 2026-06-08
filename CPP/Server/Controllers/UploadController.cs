@@ -1,15 +1,19 @@
 using System;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 
 namespace CP.Server.Controllers
+//контроллер для работы с загрузкой файлов (вероятно не используется)
 {
+    [Authorize(Roles = "Admin")]
     public partial class UploadController : Controller
     {
+        //переменная для хранения окружения
         private readonly IWebHostEnvironment environment;
-
+        //конструктор для инициализации окружения
         public UploadController(IWebHostEnvironment environment)
         {
             this.environment = environment;

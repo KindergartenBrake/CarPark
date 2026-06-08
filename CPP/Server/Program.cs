@@ -108,8 +108,10 @@ else
 
 app.UseStatusCodePagesWithReExecute("/not-found");
 app.UseHttpsRedirection();
-app.MapControllers();
 app.UseHeaderPropagation();
+app.UseAuthentication();
+app.UseAuthorization();
+app.MapControllers();
 app.MapStaticAssets();
 var dbContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<ApplicationIdentityDbContext>();
 if (dbContext.Database.CanConnect())
@@ -121,7 +123,6 @@ else
     Console.WriteLine("Нет подключения к базе данных");
 }
 
-app.UseAuthorization();
 app.UseAntiforgery();
 app.MapRazorComponents<App>().AddInteractiveWebAssemblyRenderMode().AddAdditionalAssemblies(typeof(CP.Client._Imports).Assembly);
 //app.Services.CreateScope().ServiceProvider.GetRequiredService<ApplicationIdentityDbContext>().Database.Migrate();

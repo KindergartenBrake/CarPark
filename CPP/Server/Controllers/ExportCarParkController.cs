@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ using CP.Server.Data;
 
 namespace CP.Server.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public partial class ExportCarParkController : ExportController
     {
         private readonly CarParkContext context;

@@ -1,5 +1,6 @@
 @page "/administrator/trip-requests2"
 @using Microsoft.AspNetCore.Authorization
+@using CP.Server.DTO
 @attribute [Authorize(Roles="Admin")]
 
 <PageTitle>Administrator - Заявки на поездки</PageTitle>
@@ -398,13 +399,13 @@
     private int selectedVehicleId;
     private int selectedDriverId;
 
-    private TripRequestForAdmin? selectedRequest;
+    private TripRequestForAdminDto? selectedRequest;
 
-    private List<TripRequestForAdmin> requests = new();
-    private List<AvailableVehicle> availableVehicles = new();
-    private List<AvailableDriver> availableDrivers = new();
+    private List<TripRequestForAdminDto> requests = new();
+    private List<AvailableVehicleDto> availableVehicles = new();
+    private List<AvailableDriverDto> availableDrivers = new();
 
-    private IEnumerable<TripRequestForAdmin> FilteredRequests =>
+    private IEnumerable<TripRequestForAdminDto> FilteredRequests =>
         selectedTab == "Все"
             ? requests
             : requests.Where(x => x.Status == selectedTab);
@@ -425,7 +426,7 @@
     {
         try
         {
-            requests = await Http.GetFromJsonAsync<List<TripRequestForAdmin>>("api/admin/triprequests/all") ?? new();
+            requests = await Http.GetFromJsonAsync<List<TripRequestForAdminDto>>("api/admin/triprequests/all") ?? new();
             StateHasChanged();
         }
         catch (Exception ex)
@@ -438,7 +439,7 @@
     {
         try
         {
-            availableVehicles = await Http.GetFromJsonAsync<List<AvailableVehicle>>("api/admin/triprequests/available-vehicles") ?? new();
+            availableVehicles = await Http.GetFromJsonAsync<List<AvailableVehicleDto>>("api/admin/triprequests/available-vehicles") ?? new();
         }
         catch (Exception ex)
         {
@@ -450,7 +451,7 @@
     {
         try
         {
-            availableDrivers = await Http.GetFromJsonAsync<List<AvailableDriver>>("api/admin/triprequests/available-drivers") ?? new();
+            availableDrivers = await Http.GetFromJsonAsync<List<AvailableDriverDto>>("api/admin/triprequests/available-drivers") ?? new();
         }
         catch (Exception ex)
         {
@@ -463,7 +464,7 @@
         selectedTab = tab;
     }
 
-    private void OpenAssignModal(TripRequestForAdmin request)
+    private void OpenAssignModal(TripRequestForAdminDto request)
     {
         selectedRequest = request;
         
@@ -473,13 +474,13 @@
         
         showAssignModal = true;
     }
-    private void OpenRejectModal(TripRequestForAdmin request)
+    private void OpenRejectModal(TripRequestForAdminDto request)
     {
         selectedRequest = request;
         showRejectModal = true;
     }
 
-    private void OpenDetailsModal(TripRequestForAdmin request)
+    private void OpenDetailsModal(TripRequestForAdminDto request)
     {
         selectedRequest = request;
         showDetailsModal = true;
@@ -499,7 +500,7 @@
 
         try
         {
-            var dto = new { VehicleId = selectedVehicleId, DriverId = selectedDriverId };
+            var dto = new AssignTripDto { VehicleId = selectedVehicleId, DriverId = selectedDriverId };
             await Http.PutAsJsonAsync($"api/admin/triprequests/{selectedRequest.Id}/assign", dto);
             CloseModals();
             await LoadRequests();
@@ -516,7 +517,7 @@
 
         try
         {
-            var dto = new { Reason = rejectReason };
+            var dto = new RejectTripRequestDto { Reason = rejectReason };
             await Http.PutAsJsonAsync($"api/admin/triprequests/{selectedRequest.Id}/reject", dto);
             CloseModals();
             await LoadRequests();
@@ -544,43 +545,4 @@
         "Rejected" => "Отклонена",
         _ => status
     };
-
-    public class TripRequestForAdmin
-    {
-        public int Id { get; set; }
-        public string EmployeeName { get; set; } = "";
-        public string EmployeeEmail { get; set; } = "";
-        public DateTime CreatedAt { get; set; }
-        public DateTime PlannedTripDate { get; set; }
-        public string VehicleType { get; set; } = "";
-        public string Status { get; set; } = "";
-        public string? DriverName { get; set; }
-        public string? VehicleName { get; set; }
-        public string? VehicleBrand { get; set; }
-        public string? VehicleModel { get; set; }
-        public string? LicensePlate { get; set; }
-        public bool TripStarted { get; set; }
-        public int? TripId { get; set; }
-        public string? Description { get; set; }
-    }
-
-    public class AvailableVehicle
-    {
-        public int Id { get; set; }
-        public string Brand { get; set; } = "";
-        public string Model { get; set; } = "";
-        public string LicensePlate { get; set; } = "";
-        public string VehicleType { get; set; } = "";
-        public string PrimaryDriverName { get; set; } = "";
-        public bool IsAvailable { get; set; }
-    }
-
-    public class AvailableDriver
-    {
-        public int Id { get; set; }
-        public string FullName { get; set; } = "";
-        public string? Phone { get; set; }
-        public string? Email { get; set; }
-        public bool IsAvailable { get; set; }
-    }
 }

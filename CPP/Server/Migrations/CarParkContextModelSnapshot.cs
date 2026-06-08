@@ -22,6 +22,7 @@ namespace CP.Server.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            // Создание таблицы для ролей пользователей
             modelBuilder.Entity("CP.Server.Models.CarPark.AspNetRole", b =>
                 {
                     b.Property<string>("Id")
@@ -43,6 +44,7 @@ namespace CP.Server.Migrations
                     b.ToTable("AspNetRoles", "public");
                 });
 
+            // Создание таблицы для claims пользователей
             modelBuilder.Entity("CP.Server.Models.CarPark.AspNetRoleClaim", b =>
                 {
                     b.Property<int>("Id")
@@ -68,6 +70,7 @@ namespace CP.Server.Migrations
                     b.ToTable("AspNetRoleClaims", "public");
                 });
 
+            // Создание таблицы для пользователей
             modelBuilder.Entity("CP.Server.Models.CarPark.AspNetUser", b =>
                 {
                     b.Property<string>("Id")
@@ -124,6 +127,7 @@ namespace CP.Server.Migrations
                     b.ToTable("AspNetUsers", "public");
                 });
 
+            // Создание таблицы для claims пользователей
             modelBuilder.Entity("CP.Server.Models.CarPark.AspNetUserClaim", b =>
                 {
                     b.Property<int>("Id")
@@ -149,6 +153,7 @@ namespace CP.Server.Migrations
                     b.ToTable("AspNetUserClaims", "public");
                 });
 
+            // Создание таблицы для логинов пользователей
             modelBuilder.Entity("CP.Server.Models.CarPark.AspNetUserLogin", b =>
                 {
                     b.Property<string>("LoginProvider")
@@ -171,6 +176,7 @@ namespace CP.Server.Migrations
                     b.ToTable("AspNetUserLogins", "public");
                 });
 
+            // Создание таблицы для ролей пользователей
             modelBuilder.Entity("CP.Server.Models.CarPark.AspNetUserRole", b =>
                 {
                     b.Property<string>("UserId")
@@ -186,6 +192,7 @@ namespace CP.Server.Migrations
                     b.ToTable("AspNetUserRoles", "public");
                 });
 
+            // Создание таблицы для токенов пользователей
             modelBuilder.Entity("CP.Server.Models.CarPark.AspNetUserToken", b =>
                 {
                     b.Property<string>("UserId")
@@ -205,6 +212,7 @@ namespace CP.Server.Migrations
                     b.ToTable("AspNetUserTokens", "public");
                 });
 
+            // Создание таблицы для водителей
             modelBuilder.Entity("CP.Server.Models.CarPark.Driver", b =>
                 {
                     b.Property<int>("DriverId")
@@ -282,6 +290,7 @@ namespace CP.Server.Migrations
                     b.ToTable("drivers", "public");
                 });
 
+            // Создание таблицы для поездок
             modelBuilder.Entity("CP.Server.Models.CarPark.Trip", b =>
                 {
                     b.Property<int>("TripId")
@@ -344,6 +353,7 @@ namespace CP.Server.Migrations
                     b.ToTable("trips", "public");
                 });
 
+            // Создание таблицы для заявок на поездку
             modelBuilder.Entity("CP.Server.Models.CarPark.TripRequest", b =>
                 {
                     b.Property<int>("RequestId")
@@ -414,6 +424,7 @@ namespace CP.Server.Migrations
                     b.ToTable("trip_requests", "public");
                 });
 
+            // Создание таблицы для транспортных средств
             modelBuilder.Entity("CP.Server.Models.CarPark.Vehicle", b =>
                 {
                     b.Property<int>("VehicleId")
@@ -494,6 +505,7 @@ namespace CP.Server.Migrations
                     b.ToTable("vehicles", "public");
                 });
 
+            // Создание внешних ключей для ролей пользователей
             modelBuilder.Entity("CP.Server.Models.CarPark.AspNetRoleClaim", b =>
                 {
                     b.HasOne("CP.Server.Models.CarPark.AspNetRole", "AspNetRole")
@@ -505,6 +517,7 @@ namespace CP.Server.Migrations
                     b.Navigation("AspNetRole");
                 });
 
+            // Создание внешних ключей для claims пользователей
             modelBuilder.Entity("CP.Server.Models.CarPark.AspNetUserClaim", b =>
                 {
                     b.HasOne("CP.Server.Models.CarPark.AspNetUser", "AspNetUser")
@@ -516,6 +529,7 @@ namespace CP.Server.Migrations
                     b.Navigation("AspNetUser");
                 });
 
+            // Создание внешних ключей для логинов пользователей
             modelBuilder.Entity("CP.Server.Models.CarPark.AspNetUserLogin", b =>
                 {
                     b.HasOne("CP.Server.Models.CarPark.AspNetUser", "AspNetUser")
@@ -527,6 +541,7 @@ namespace CP.Server.Migrations
                     b.Navigation("AspNetUser");
                 });
 
+            // Создание внешних ключей для ролей пользователей
             modelBuilder.Entity("CP.Server.Models.CarPark.AspNetUserRole", b =>
                 {
                     b.HasOne("CP.Server.Models.CarPark.AspNetRole", "AspNetRole")
@@ -546,6 +561,7 @@ namespace CP.Server.Migrations
                     b.Navigation("AspNetUser");
                 });
 
+            // Создание внешних ключей для токенов пользователей
             modelBuilder.Entity("CP.Server.Models.CarPark.AspNetUserToken", b =>
                 {
                     b.HasOne("CP.Server.Models.CarPark.AspNetUser", "AspNetUser")
@@ -557,6 +573,7 @@ namespace CP.Server.Migrations
                     b.Navigation("AspNetUser");
                 });
 
+            // Создание внешних ключей для водителей
             modelBuilder.Entity("CP.Server.Models.CarPark.Driver", b =>
                 {
                     b.HasOne("CP.Server.Models.CarPark.AspNetUser", "User")
@@ -574,6 +591,7 @@ namespace CP.Server.Migrations
                     b.Navigation("Vehicle");
                 });
 
+            // Создание внешних ключей для поездок
             modelBuilder.Entity("CP.Server.Models.CarPark.Trip", b =>
                 {
                     b.HasOne("CP.Server.Models.CarPark.Driver", "Driver")
@@ -601,6 +619,7 @@ namespace CP.Server.Migrations
                     b.Navigation("Vehicle");
                 });
 
+            // Создание внешних ключей для заявок на поездку
             modelBuilder.Entity("CP.Server.Models.CarPark.TripRequest", b =>
                 {
                     b.HasOne("CP.Server.Models.CarPark.AspNetUser", "CreatedByUser")
@@ -625,6 +644,7 @@ namespace CP.Server.Migrations
                     b.Navigation("Vehicle");
                 });
 
+            // Создание внешних ключей для транспортных средств
             modelBuilder.Entity("CP.Server.Models.CarPark.Vehicle", b =>
                 {
                     b.HasOne("CP.Server.Models.CarPark.Driver", "Driver")
@@ -635,6 +655,7 @@ namespace CP.Server.Migrations
                     b.Navigation("Driver");
                 });
 
+            // Создание внешних ключей для ролей пользователей
             modelBuilder.Entity("CP.Server.Models.CarPark.AspNetRole", b =>
                 {
                     b.Navigation("AspNetRoleClaims");
@@ -642,6 +663,7 @@ namespace CP.Server.Migrations
                     b.Navigation("AspNetUserRoles");
                 });
 
+            // Создание внешних ключей для пользователей
             modelBuilder.Entity("CP.Server.Models.CarPark.AspNetUser", b =>
                 {
                     b.Navigation("AspNetUserClaims");
@@ -653,6 +675,7 @@ namespace CP.Server.Migrations
                     b.Navigation("AspNetUserTokens");
                 });
 
+            // Создание внешних ключей для водителей
             modelBuilder.Entity("CP.Server.Models.CarPark.Driver", b =>
                 {
                     b.Navigation("TripRequests");
@@ -660,11 +683,13 @@ namespace CP.Server.Migrations
                     b.Navigation("Trips");
                 });
 
+            // Создание внешних ключей для заявок на поездку
             modelBuilder.Entity("CP.Server.Models.CarPark.TripRequest", b =>
                 {
                     b.Navigation("Trip");
                 });
 
+            // Создание внешних ключей для транспортных средств
             modelBuilder.Entity("CP.Server.Models.CarPark.Vehicle", b =>
                 {
                     b.Navigation("Drivers");

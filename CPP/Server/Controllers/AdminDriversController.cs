@@ -7,7 +7,7 @@ namespace CP.Server.Controllers;
 
 [ApiController]
 [Route("api/admin/drivers")]
-[Authorize]
+[Authorize(Roles = "Admin")]
 public class AdminDriversController : ControllerBase
 {
     private readonly IAdminDriverService _service;

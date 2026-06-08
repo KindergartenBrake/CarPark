@@ -3,6 +3,7 @@ using System.Net;
 using System.Data;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 using Microsoft.AspNetCore.OData.Query;
@@ -16,6 +17,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace CP.Server.Controllers.CarPark
 {
+    [Authorize(Roles = "Admin")]
     [Route("odata/CarPark/AspNetUserTokens")]
     public partial class AspNetUserTokensController : ODataController
     {
