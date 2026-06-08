@@ -1,12 +1,9 @@
 using CP.Server.DTO;
 using CP.Server.Data.Repositories;
+using CP.Server.Services.Interfaces;
 
 namespace CP.Server.Services;
 
-public interface IAdminDashboardService
-{
-    Task<AdminDashboardDto> GetStatsAsync();
-}
 
 public class AdminDashboardService : IAdminDashboardService
 {

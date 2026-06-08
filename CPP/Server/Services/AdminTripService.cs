@@ -1,17 +1,9 @@
 using CP.Server.DTO;
 using CP.Server.Data.Repositories;
-
+using CP.Server.Services.Interfaces;
 namespace CP.Server.Services;
 
-public interface IAdminTripService
-{
-    Task<List<TripDto>> GetAllTripsAsync();
-    Task ForceCompleteTripAsync(int tripId, string comment);
-    Task CancelTripAsync(int tripId);
-    Task<List<string>> GetAvailableDriversAsync();
-    Task<List<string>> GetAvailableVehiclesAsync();
-    Task RestoreTripAsync(int tripId);
-}
+
 
 public class AdminTripService : IAdminTripService
 {

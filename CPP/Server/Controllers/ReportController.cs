@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
-
+using CP.Server.Services.Interfaces;
 namespace CP.Server.Controllers
 {
     [Authorize(Roles = "Admin")]

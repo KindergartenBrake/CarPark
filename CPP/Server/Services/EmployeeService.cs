@@ -7,17 +7,9 @@ using Microsoft.AspNetCore.Identity;
 using CP.Server.DTO;
 using CP.Server.Data;
 using CP.Server.Models;
-
+using CP.Server.Services.Interfaces;
 namespace CP.Server.Services;
 
-public interface IEmployeeService
-{
-    Task<List<EmployeeDto>> GetAllEmployeesAsync(string? search = null);
-    Task<EmployeeDto?> GetEmployeeByIdAsync(string userId);
-    Task DeactivateEmployeeAsync(string userId);
-
-    Task ActivateAsync(string userId);
-}
 
 public class EmployeeService : IEmployeeService
 {

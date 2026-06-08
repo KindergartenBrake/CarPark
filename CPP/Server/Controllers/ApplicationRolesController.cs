@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
 using CP.Server.Models;
-
+using CP.Server.Services.Interfaces;
 namespace CP.Server.Controllers
 {
     [Authorize]

@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using CP.Server.Models;
+using CP.Server.Services.Interfaces;
 
 namespace CP.Server.Controllers
 {

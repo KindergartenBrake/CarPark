@@ -3,20 +3,10 @@ using CP.Server.Data.Repositories;
 using CP.Server.Models.CarPark;
 using Microsoft.AspNetCore.Identity;
 using CP.Server.Models;
+using CP.Server.Services.Interfaces;
 
 namespace CP.Server.Services;
 
-public interface IAdminDriverService
-{
-    Task<List<AdminDriverDto>> GetAllAsync(string? search = null);
-    Task<AdminDriverDto?> GetByIdAsync(int id);
-    Task<AdminDriverDto> CreateAsync(CreateDriverDto dto);
-    Task UpdateAsync(int id, CreateDriverDto dto);
-    Task DeactivateAsync(int id);
-    Task<List<UserLookupDto>> GetAvailableUsersAsync();
-    Task<List<UserLookupDto>> GetAllUsersAsync();
-
-}
 
 public class AdminDriverService : IAdminDriverService
 {

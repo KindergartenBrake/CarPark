@@ -3,44 +3,108 @@
   "WorkspaceRootPath": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\carparkcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\carparkcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\services\\interfaces\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\services\\interfaces\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\repository\\driverrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\repository\\driverrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\services\\interfaces\\iadmintripservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\services\\interfaces\\iadmintripservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\models\\carpark\\triprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\models\\carpark\\triprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\services\\interfaces\\iadminvehicleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\services\\interfaces\\iadminvehicleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\services\\vehicleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\services\\vehicleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\services\\interfaces\\ivehicleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\services\\interfaces\\ivehicleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\services\\triprequestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\services\\triprequestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\services\\interfaces\\itriprequestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\services\\interfaces\\itriprequestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\services\\drivertripservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\services\\drivertripservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\services\\carparkservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\services\\carparkservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\migrations\\carparkcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\migrations\\carparkcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\services\\adminvehicleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\services\\adminvehicleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\migrations\\20260503101325_initialcreate_carpark.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\migrations\\20260503101325_initialcreate_carpark.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\services\\admintripservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\services\\admintripservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\interfaces\\ivehiclerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\interfaces\\ivehiclerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\services\\admindriverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\services\\admindriverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\interfaces\\ivehicleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\interfaces\\ivehicleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\services\\admindashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\services\\admindashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\services\\interfaces\\iadmindriverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\services\\interfaces\\iadmindriverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\services\\interfaces\\iadmindashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\services\\interfaces\\iadmindashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\services\\interfaces\\idrivertripservise.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\services\\interfaces\\idrivertripservise.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\admindashboarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\admindashboarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\vehiclescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\vehiclescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\repositories\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\repositories\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\repositories\\idriverrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\repositories\\idriverrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\models\\carpark\\vehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\models\\carpark\\vehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\models\\carpark\\triprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\models\\carpark\\triprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\models\\carpark\\trip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\models\\carpark\\trip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\models\\carpark\\driver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\models\\carpark\\driver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -53,6 +117,242 @@
     {
       "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\models\\applicationauthenticationstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\models\\applicationauthenticationstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\models\\carpark\\aspnetrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\models\\carpark\\aspnetrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\filters\\applicationauthorizefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\filters\\applicationauthorizefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\vehicledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\vehicledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\userlookupdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\userlookupdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\triprequestforadmindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\triprequestforadmindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\triprequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\triprequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\tripdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\tripdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\rejecttriprequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\rejecttriprequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\profiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\profiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\forcecompletedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\forcecompletedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\employeedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\employeedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\employeedashboarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\employeedashboarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\drivervehicledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\drivervehicledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\drivertripdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\drivertripdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\driverprofiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\driverprofiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\driverdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\driverdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\driverdashboarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\driverdashboarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\createtriprequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\createtriprequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\changepassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\changepassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\availablevehicledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\availablevehicledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\availabledriverdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\availabledriverdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\assigntripdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\assigntripdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\adminvehicledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\adminvehicledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\admindriverdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\admindriverdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\xlsdatacontractserializeroutputformatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\xlsdatacontractserializeroutputformatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\outputformatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\outputformatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\entitypatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\entitypatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\csvdatacontractserializeroutputformatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\csvdatacontractserializeroutputformatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\carparkcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\carparkcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\blanktriggeraddingconvention.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\blanktriggeraddingconvention.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\applicationidentitydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\applicationidentitydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\repositories\\vehiclerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\repositories\\vehiclerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\repositories\\triprequestrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\repositories\\triprequestrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\repositories\\triprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\repositories\\triprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\repositories\\ivehiclerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\repositories\\ivehiclerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\repositories\\itriprequestrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\repositories\\itriprequestrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\repositories\\itriprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\repositories\\itriprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\repositories\\driverrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\repositories\\driverrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\uploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\uploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\triprequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\triprequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\exportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\exportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\exportcarparkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\exportcarparkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\drivertripscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\drivertripscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\applicationuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\applicationuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\applicationrolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\applicationrolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\adminvehiclescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\adminvehiclescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\admintripscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\admintripscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\admintriprequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\admintriprequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\adminemployeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\adminemployeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\admindriverscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\admindriverscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\admindashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\admindashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\carpark\\aspnetusertokenscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\carpark\\aspnetusertokenscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\carpark\\aspnetroleclaimscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\carpark\\aspnetroleclaimscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\migrations\\carparkcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\migrations\\carparkcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\models\\carpark\\aspnetusertoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -79,112 +379,12 @@
       "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\models\\carpark\\aspnetroleclaim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\models\\carpark\\aspnetrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\models\\carpark\\aspnetrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\interfaces\\itriprequestrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\interfaces\\itriprequestrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\interfaces\\itriprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\interfaces\\itriprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\interfaces\\idriverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\interfaces\\idriverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\interfaces\\idriverrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\interfaces\\idriverrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\filters\\applicationauthorizefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\filters\\applicationauthorizefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\vehicledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\vehicledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\triprequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\triprequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\tripdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\tripdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\dto\\driverdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\dto\\driverdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\xlsdatacontractserializeroutputformatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\xlsdatacontractserializeroutputformatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\outputformatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\outputformatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\entitypatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\entitypatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\csvdatacontractserializeroutputformatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\csvdatacontractserializeroutputformatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\blanktriggeraddingconvention.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\blanktriggeraddingconvention.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\applicationidentitydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\applicationidentitydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\migrations\\identitymodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\migrations\\identitymodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\data\\migrations\\00000000000000_createidentityschema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\data\\migrations\\00000000000000_createidentityschema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\uploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\uploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\exportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\exportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\exportcarparkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\exportcarparkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\applicationuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\applicationuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\applicationrolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\applicationrolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\carpark\\aspnetusertokenscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\carpark\\aspnetusertokenscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\carpark\\aspnetuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -203,10 +403,6 @@
       "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\carpark\\aspnetuserclaimscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\carpark\\aspnetroleclaimscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\carpark\\aspnetroleclaimscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\controllers\\carpark\\aspnetrolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\controllers\\carpark\\aspnetrolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -217,6 +413,42 @@
     {
       "AbsoluteMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|c:\\users\\user\\desktop\\carpark\\cpp\\server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{DC356996-97F8-4316-A9B9-F77CD73874FC}|Server\\CP.Server.csproj|solutionrelative:server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repository\\DriverRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Server\\Data\\Repository\\DriverRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Migrations\\20260503101325_InitialCreate_CarPark.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Server\\Migrations\\20260503101325_InitialCreate_CarPark.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Interfaces\\IVehicleService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Server\\Interfaces\\IVehicleService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Interfaces\\IVehicleRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Server\\Interfaces\\IVehicleRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Interfaces\\ITripRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Server\\Interfaces\\ITripRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Interfaces\\ITripRequestRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Server\\Interfaces\\ITripRequestRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Interfaces\\IRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Server\\Interfaces\\IRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Interfaces\\IDriverService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Server\\Interfaces\\IDriverService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Interfaces\\IDriverRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Server\\Interfaces\\IDriverRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -226,115 +458,349 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DriverRepository.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repository\\DriverRepository.cs",
-              "RelativeDocumentMoniker": "Server\\Data\\Repository\\DriverRepository.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repository\\DriverRepository.cs*",
-              "RelativeToolTip": "Server\\Data\\Repository\\DriverRepository.cs*",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBEAAABPAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "VehicleService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\VehicleService.cs",
+              "RelativeDocumentMoniker": "Server\\Services\\VehicleService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\VehicleService.cs",
+              "RelativeToolTip": "Server\\Services\\VehicleService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-15T19:16:36.988Z",
+              "WhenOpened": "2026-06-08T19:24:43.416Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IAdminVehicleService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\Interfaces\\IAdminVehicleService.cs",
+              "RelativeDocumentMoniker": "Server\\Services\\Interfaces\\IAdminVehicleService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\Interfaces\\IAdminVehicleService.cs",
+              "RelativeToolTip": "Server\\Services\\Interfaces\\IAdminVehicleService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T20:39:20.608Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IAdminTripService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\Interfaces\\IAdminTripService.cs",
+              "RelativeDocumentMoniker": "Server\\Services\\Interfaces\\IAdminTripService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\Interfaces\\IAdminTripService.cs",
+              "RelativeToolTip": "Server\\Services\\Interfaces\\IAdminTripService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T20:35:40.009Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IEmployeeService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\Interfaces\\IEmployeeService.cs",
+              "RelativeDocumentMoniker": "Server\\Services\\Interfaces\\IEmployeeService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\Interfaces\\IEmployeeService.cs",
+              "RelativeToolTip": "Server\\Services\\Interfaces\\IEmployeeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T20:40:57.031Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "CarParkContextModelSnapshot.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Migrations\\CarParkContextModelSnapshot.cs",
-              "RelativeDocumentMoniker": "Server\\Migrations\\CarParkContextModelSnapshot.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Migrations\\CarParkContextModelSnapshot.cs",
-              "RelativeToolTip": "Server\\Migrations\\CarParkContextModelSnapshot.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAABLAAAAAAAAAA==",
+              "Title": "IVehicleService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\Interfaces\\IVehicleService.cs",
+              "RelativeDocumentMoniker": "Server\\Services\\Interfaces\\IVehicleService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\Interfaces\\IVehicleService.cs",
+              "RelativeToolTip": "Server\\Services\\Interfaces\\IVehicleService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:14:44.177Z",
+              "WhenOpened": "2026-06-08T19:00:00.44Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "20260503101325_InitialCreate_CarPark.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Migrations\\20260503101325_InitialCreate_CarPark.cs",
-              "RelativeDocumentMoniker": "Server\\Migrations\\20260503101325_InitialCreate_CarPark.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Migrations\\20260503101325_InitialCreate_CarPark.cs",
-              "RelativeToolTip": "Server\\Migrations\\20260503101325_InitialCreate_CarPark.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwAwAAABFAAAAAAAAAA==",
+              "Title": "TripRequestService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\TripRequestService.cs",
+              "RelativeDocumentMoniker": "Server\\Services\\TripRequestService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\TripRequestService.cs",
+              "RelativeToolTip": "Server\\Services\\TripRequestService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:14:39.917Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IVehicleService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Interfaces\\IVehicleService.cs",
-              "RelativeDocumentMoniker": "Server\\Interfaces\\IVehicleService.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Interfaces\\IVehicleService.cs",
-              "RelativeToolTip": "Server\\Interfaces\\IVehicleService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-15T19:20:38.403Z",
+              "WhenOpened": "2026-06-08T19:24:39.352Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "IVehicleRepository.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Interfaces\\IVehicleRepository.cs",
-              "RelativeDocumentMoniker": "Server\\Interfaces\\IVehicleRepository.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Interfaces\\IVehicleRepository.cs",
-              "RelativeToolTip": "Server\\Interfaces\\IVehicleRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Title": "EmployeeService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\EmployeeService.cs",
+              "RelativeDocumentMoniker": "Server\\Services\\EmployeeService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\EmployeeService.cs",
+              "RelativeToolTip": "Server\\Services\\EmployeeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-15T19:22:05.563Z",
+              "WhenOpened": "2026-06-08T19:24:34.856Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
+              "Title": "ITripRequestService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\Interfaces\\ITripRequestService.cs",
+              "RelativeDocumentMoniker": "Server\\Services\\Interfaces\\ITripRequestService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\Interfaces\\ITripRequestService.cs",
+              "RelativeToolTip": "Server\\Services\\Interfaces\\ITripRequestService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T20:41:42.762Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DriverTripService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\DriverTripService.cs",
+              "RelativeDocumentMoniker": "Server\\Services\\DriverTripService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\DriverTripService.cs",
+              "RelativeToolTip": "Server\\Services\\DriverTripService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:24:29.944Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "CarParkService.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\CarParkService.cs",
               "RelativeDocumentMoniker": "Server\\Services\\CarParkService.cs",
               "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\CarParkService.cs",
               "RelativeToolTip": "Server\\Services\\CarParkService.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB0AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAA4BAAAAAAAAAAAYwLsEAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-15T19:03:15.636Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CarParkContext.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\CarParkContext.cs",
-              "RelativeDocumentMoniker": "Server\\Data\\CarParkContext.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\CarParkContext.cs*",
-              "RelativeToolTip": "Server\\Data\\CarParkContext.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFsAAAA8AAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "AdminVehicleService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\AdminVehicleService.cs",
+              "RelativeDocumentMoniker": "Server\\Services\\AdminVehicleService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\AdminVehicleService.cs",
+              "RelativeToolTip": "Server\\Services\\AdminVehicleService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:04:12.826Z",
+              "WhenOpened": "2026-06-08T19:24:19.123Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 11,
+              "Title": "AdminTripService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\AdminTripService.cs",
+              "RelativeDocumentMoniker": "Server\\Services\\AdminTripService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\AdminTripService.cs",
+              "RelativeToolTip": "Server\\Services\\AdminTripService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:24:09.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AdminDriverService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\AdminDriverService.cs",
+              "RelativeDocumentMoniker": "Server\\Services\\AdminDriverService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\AdminDriverService.cs",
+              "RelativeToolTip": "Server\\Services\\AdminDriverService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:00:02.252Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AdminDashboardService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\AdminDashboardService.cs",
+              "RelativeDocumentMoniker": "Server\\Services\\AdminDashboardService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\AdminDashboardService.cs",
+              "RelativeToolTip": "Server\\Services\\AdminDashboardService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:00:01.549Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IAdminDriverService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\Interfaces\\IAdminDriverService.cs",
+              "RelativeDocumentMoniker": "Server\\Services\\Interfaces\\IAdminDriverService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\Interfaces\\IAdminDriverService.cs",
+              "RelativeToolTip": "Server\\Services\\Interfaces\\IAdminDriverService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T20:34:41.065Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IAdminDashboardService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\Interfaces\\IAdminDashboardService.cs",
+              "RelativeDocumentMoniker": "Server\\Services\\Interfaces\\IAdminDashboardService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\Interfaces\\IAdminDashboardService.cs",
+              "RelativeToolTip": "Server\\Services\\Interfaces\\IAdminDashboardService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T20:31:01.236Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IDriverTripServise.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\Interfaces\\IDriverTripServise.cs",
+              "RelativeDocumentMoniker": "Server\\Services\\Interfaces\\IDriverTripServise.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Services\\Interfaces\\IDriverTripServise.cs",
+              "RelativeToolTip": "Server\\Services\\Interfaces\\IDriverTripServise.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:57:41.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "VehiclesController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\VehiclesController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\VehiclesController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\VehiclesController.cs",
+              "RelativeToolTip": "Server\\Controllers\\VehiclesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:04:14.763Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "AdminDashboardDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\AdminDashboardDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\AdminDashboardDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\AdminDashboardDto.cs",
+              "RelativeToolTip": "Server\\DTO\\AdminDashboardDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:58:15.693Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "IRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repositories\\IRepository.cs",
+              "RelativeDocumentMoniker": "Server\\Data\\Repositories\\IRepository.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repositories\\IRepository.cs",
+              "RelativeToolTip": "Server\\Data\\Repositories\\IRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:05:16.076Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "IDriverRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repositories\\IDriverRepository.cs",
+              "RelativeDocumentMoniker": "Server\\Data\\Repositories\\IDriverRepository.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repositories\\IDriverRepository.cs",
+              "RelativeToolTip": "Server\\Data\\Repositories\\IDriverRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:05:11.835Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Program.cs",
+              "RelativeDocumentMoniker": "Server\\Program.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Program.cs",
+              "RelativeToolTip": "Server\\Program.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAYwHkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T16:09:23.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Vehicle.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\CarPark\\Vehicle.cs",
+              "RelativeDocumentMoniker": "Server\\Models\\CarPark\\Vehicle.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\CarPark\\Vehicle.cs",
+              "RelativeToolTip": "Server\\Models\\CarPark\\Vehicle.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAcwCoAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:59:31.008Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
               "Title": "TripRequest.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\CarPark\\TripRequest.cs",
               "RelativeDocumentMoniker": "Server\\Models\\CarPark\\TripRequest.cs",
               "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\CarPark\\TripRequest.cs",
               "RelativeToolTip": "Server\\Models\\CarPark\\TripRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAADwvy0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-15T18:55:58.094Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 24,
+              "Title": "Trip.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\CarPark\\Trip.cs",
+              "RelativeDocumentMoniker": "Server\\Models\\CarPark\\Trip.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\CarPark\\Trip.cs",
+              "RelativeToolTip": "Server\\Models\\CarPark\\Trip.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:59:39.53Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Driver.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\CarPark\\Driver.cs",
+              "RelativeDocumentMoniker": "Server\\Models\\CarPark\\Driver.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\CarPark\\Driver.cs",
+              "RelativeToolTip": "Server\\Models\\CarPark\\Driver.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAkwCoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:59:42.327Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
               "Title": "ApplicationUser.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "Server\\Models\\ApplicationUser.cs",
@@ -342,23 +808,839 @@
               "RelativeToolTip": "Server\\Models\\ApplicationUser.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAowCQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:16:09.803Z"
+              "WhenOpened": "2026-05-16T16:16:09.803Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 27,
               "Title": "ApplicationRole.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\ApplicationRole.cs",
               "RelativeDocumentMoniker": "Server\\Models\\ApplicationRole.cs",
               "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\ApplicationRole.cs",
               "RelativeToolTip": "Server\\Models\\ApplicationRole.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:16:05.36Z"
+              "WhenOpened": "2026-05-16T16:16:05.36Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 28,
+              "Title": "ApplicationAuthenticationState.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\ApplicationAuthenticationState.cs",
+              "RelativeDocumentMoniker": "Server\\Models\\ApplicationAuthenticationState.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\ApplicationAuthenticationState.cs",
+              "RelativeToolTip": "Server\\Models\\ApplicationAuthenticationState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T16:16:00.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "AspNetRole.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\CarPark\\AspNetRole.cs",
+              "RelativeDocumentMoniker": "Server\\Models\\CarPark\\AspNetRole.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\CarPark\\AspNetRole.cs",
+              "RelativeToolTip": "Server\\Models\\CarPark\\AspNetRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T16:14:48.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "ApplicationAuthorizeFilter.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Filters\\ApplicationAuthorizeFilter.cs",
+              "RelativeDocumentMoniker": "Server\\Filters\\ApplicationAuthorizeFilter.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Filters\\ApplicationAuthorizeFilter.cs",
+              "RelativeToolTip": "Server\\Filters\\ApplicationAuthorizeFilter.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T16:14:07.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "VehicleDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\VehicleDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\VehicleDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\VehicleDto.cs",
+              "RelativeToolTip": "Server\\DTO\\VehicleDto.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAwwB8AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T18:54:47.455Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "UserLookupDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\UserLookupDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\UserLookupDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\UserLookupDto.cs",
+              "RelativeToolTip": "Server\\DTO\\UserLookupDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:59:12.759Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "TripRequestForAdminDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\TripRequestForAdminDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\TripRequestForAdminDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\TripRequestForAdminDto.cs",
+              "RelativeToolTip": "Server\\DTO\\TripRequestForAdminDto.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAkwCMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:59:11.962Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "TripRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\TripRequestDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\TripRequestDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\TripRequestDto.cs",
+              "RelativeToolTip": "Server\\DTO\\TripRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T18:54:18.252Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "TripDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\TripDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\TripDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\TripDto.cs",
+              "RelativeToolTip": "Server\\DTO\\TripDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T18:54:32.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "RejectTripRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\RejectTripRequestDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\RejectTripRequestDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\RejectTripRequestDto.cs",
+              "RelativeToolTip": "Server\\DTO\\RejectTripRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:59:09.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "ProfileDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\ProfileDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\ProfileDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\ProfileDto.cs",
+              "RelativeToolTip": "Server\\DTO\\ProfileDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:59:07.999Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "ForceCompleteDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\ForceCompleteDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\ForceCompleteDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\ForceCompleteDto.cs",
+              "RelativeToolTip": "Server\\DTO\\ForceCompleteDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:59:07.025Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "EmployeeDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\EmployeeDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\EmployeeDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\EmployeeDto.cs",
+              "RelativeToolTip": "Server\\DTO\\EmployeeDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:59:04.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "EmployeeDashboardDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\EmployeeDashboardDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\EmployeeDashboardDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\EmployeeDashboardDto.cs",
+              "RelativeToolTip": "Server\\DTO\\EmployeeDashboardDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:59:02.477Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "DriverVehicleDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\DriverVehicleDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\DriverVehicleDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\DriverVehicleDto.cs",
+              "RelativeToolTip": "Server\\DTO\\DriverVehicleDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:58:59.16Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "DriverTripDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\DriverTripDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\DriverTripDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\DriverTripDto.cs",
+              "RelativeToolTip": "Server\\DTO\\DriverTripDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:58:57.088Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "DriverProfileDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\DriverProfileDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\DriverProfileDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\DriverProfileDto.cs",
+              "RelativeToolTip": "Server\\DTO\\DriverProfileDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:58:56.27Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "DriverDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\DriverDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\DriverDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\DriverDto.cs",
+              "RelativeToolTip": "Server\\DTO\\DriverDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T18:54:02.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "DriverDashboardDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\DriverDashboardDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\DriverDashboardDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\DriverDashboardDto.cs",
+              "RelativeToolTip": "Server\\DTO\\DriverDashboardDto.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAADwvzgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:18:47.634Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "ChangePasswordDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\ChangePasswordDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\ChangePasswordDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\ChangePasswordDto.cs",
+              "RelativeToolTip": "Server\\DTO\\ChangePasswordDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:58:53.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "AvailableVehicleDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\AvailableVehicleDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\AvailableVehicleDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\AvailableVehicleDto.cs",
+              "RelativeToolTip": "Server\\DTO\\AvailableVehicleDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:58:52.159Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "AvailableDriverDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\AvailableDriverDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\AvailableDriverDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\AvailableDriverDto.cs",
+              "RelativeToolTip": "Server\\DTO\\AvailableDriverDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:58:50.275Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "CreateTripRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\CreateTripRequestDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\CreateTripRequestDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\CreateTripRequestDto.cs",
+              "RelativeToolTip": "Server\\DTO\\CreateTripRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:58:54.43Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "AssignTripDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\AssignTripDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\AssignTripDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\AssignTripDto.cs",
+              "RelativeToolTip": "Server\\DTO\\AssignTripDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:58:48.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "AdminVehicleDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\AdminVehicleDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\AdminVehicleDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\AdminVehicleDto.cs",
+              "RelativeToolTip": "Server\\DTO\\AdminVehicleDto.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAswEoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:58:44.661Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "AdminDriverDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\AdminDriverDto.cs",
+              "RelativeDocumentMoniker": "Server\\DTO\\AdminDriverDto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\AdminDriverDto.cs",
+              "RelativeToolTip": "Server\\DTO\\AdminDriverDto.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAswC4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T18:58:40.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "XlsDataContractSerializerOutputFormatter.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\XlsDataContractSerializerOutputFormatter.cs",
+              "RelativeDocumentMoniker": "Server\\Data\\XlsDataContractSerializerOutputFormatter.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\XlsDataContractSerializerOutputFormatter.cs",
+              "RelativeToolTip": "Server\\Data\\XlsDataContractSerializerOutputFormatter.cs",
+              "ViewState": "AgIAANQAAAAAAAAAAAAAwAABAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T16:13:47.686Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "OutputFormatter.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\OutputFormatter.cs",
+              "RelativeDocumentMoniker": "Server\\Data\\OutputFormatter.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\OutputFormatter.cs",
+              "RelativeToolTip": "Server\\Data\\OutputFormatter.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAuwFAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T16:13:43.883Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "EntityPatch.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\EntityPatch.cs",
+              "RelativeDocumentMoniker": "Server\\Data\\EntityPatch.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\EntityPatch.cs",
+              "RelativeToolTip": "Server\\Data\\EntityPatch.cs",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAmwIkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T16:13:40.298Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "CsvDataContractSerializerOutputFormatter.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\CsvDataContractSerializerOutputFormatter.cs",
+              "RelativeDocumentMoniker": "Server\\Data\\CsvDataContractSerializerOutputFormatter.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\CsvDataContractSerializerOutputFormatter.cs",
+              "RelativeToolTip": "Server\\Data\\CsvDataContractSerializerOutputFormatter.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAmwDgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T16:08:43.302Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "CarParkContext.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\CarParkContext.cs",
+              "RelativeDocumentMoniker": "Server\\Data\\CarParkContext.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\CarParkContext.cs",
+              "RelativeToolTip": "Server\\Data\\CarParkContext.cs",
+              "ViewState": "AgIAALgAAAAAAAAAAAAqwN0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T16:04:12.826Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "BlankTriggerAddingConvention.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\BlankTriggerAddingConvention.cs",
+              "RelativeDocumentMoniker": "Server\\Data\\BlankTriggerAddingConvention.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\BlankTriggerAddingConvention.cs",
+              "RelativeToolTip": "Server\\Data\\BlankTriggerAddingConvention.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T16:13:26.934Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "ApplicationIdentityDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\ApplicationIdentityDbContext.cs",
+              "RelativeDocumentMoniker": "Server\\Data\\ApplicationIdentityDbContext.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\ApplicationIdentityDbContext.cs",
+              "RelativeToolTip": "Server\\Data\\ApplicationIdentityDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T16:13:21.392Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "VehicleRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repositories\\VehicleRepository.cs",
+              "RelativeDocumentMoniker": "Server\\Data\\Repositories\\VehicleRepository.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repositories\\VehicleRepository.cs",
+              "RelativeToolTip": "Server\\Data\\Repositories\\VehicleRepository.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAA9wCoAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:06:10.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "TripRequestRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repositories\\TripRequestRepository.cs",
+              "RelativeDocumentMoniker": "Server\\Data\\Repositories\\TripRequestRepository.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repositories\\TripRequestRepository.cs",
+              "RelativeToolTip": "Server\\Data\\Repositories\\TripRequestRepository.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA2wCsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:06:05.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "TripRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repositories\\TripRepository.cs",
+              "RelativeDocumentMoniker": "Server\\Data\\Repositories\\TripRepository.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repositories\\TripRepository.cs",
+              "RelativeToolTip": "Server\\Data\\Repositories\\TripRepository.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAqwDMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:05:49.946Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "Repository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repositories\\Repository.cs",
+              "RelativeDocumentMoniker": "Server\\Data\\Repositories\\Repository.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repositories\\Repository.cs",
+              "RelativeToolTip": "Server\\Data\\Repositories\\Repository.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAIwDUAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:05:34.915Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "IVehicleRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repositories\\IVehicleRepository.cs",
+              "RelativeDocumentMoniker": "Server\\Data\\Repositories\\IVehicleRepository.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repositories\\IVehicleRepository.cs",
+              "RelativeToolTip": "Server\\Data\\Repositories\\IVehicleRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:05:30.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "ITripRequestRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repositories\\ITripRequestRepository.cs",
+              "RelativeDocumentMoniker": "Server\\Data\\Repositories\\ITripRequestRepository.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repositories\\ITripRequestRepository.cs",
+              "RelativeToolTip": "Server\\Data\\Repositories\\ITripRequestRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:05:25.792Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "ITripRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repositories\\ITripRepository.cs",
+              "RelativeDocumentMoniker": "Server\\Data\\Repositories\\ITripRepository.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repositories\\ITripRepository.cs",
+              "RelativeToolTip": "Server\\Data\\Repositories\\ITripRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:05:21.308Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "DriverRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repositories\\DriverRepository.cs",
+              "RelativeDocumentMoniker": "Server\\Data\\Repositories\\DriverRepository.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repositories\\DriverRepository.cs",
+              "RelativeToolTip": "Server\\Data\\Repositories\\DriverRepository.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAswCUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:04:34.053Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "TripRequestsController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\TripRequestsController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\TripRequestsController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\TripRequestsController.cs",
+              "RelativeToolTip": "Server\\Controllers\\TripRequestsController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAYwEcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:04:06.652Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
+              "Title": "ProfileController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ProfileController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\ProfileController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ProfileController.cs",
+              "RelativeToolTip": "Server\\Controllers\\ProfileController.cs",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAkwIIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:03:57.772Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 73,
+              "Title": "ExportCarParkController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ExportCarParkController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\ExportCarParkController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ExportCarParkController.cs",
+              "RelativeToolTip": "Server\\Controllers\\ExportCarParkController.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAA8wHoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T16:12:51.487Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "UploadController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\UploadController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\UploadController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\UploadController.cs",
+              "RelativeToolTip": "Server\\Controllers\\UploadController.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAYwFMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T19:19:17.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 74,
+              "Title": "DriverTripsController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\DriverTripsController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\DriverTripsController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\DriverTripsController.cs",
+              "RelativeToolTip": "Server\\Controllers\\DriverTripsController.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAzwFUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:03:39.257Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
+              "Title": "ReportController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ReportController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\ReportController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ReportController.cs",
+              "RelativeToolTip": "Server\\Controllers\\ReportController.cs",
+              "ViewState": "AgIAANAAAAAAAAAAAAAswPUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T16:13:00.011Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 76,
+              "Title": "ApplicationRolesController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ApplicationRolesController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\ApplicationRolesController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ApplicationRolesController.cs",
+              "RelativeToolTip": "Server\\Controllers\\ApplicationRolesController.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAYwFUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T19:19:21.554Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 72,
+              "Title": "ExportController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ExportController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\ExportController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ExportController.cs",
+              "RelativeToolTip": "Server\\Controllers\\ExportController.cs",
+              "ViewState": "AgIAAFoBAAAAAAAAAAAswH8BAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T16:12:55.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 77,
+              "Title": "AdminVehiclesController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\AdminVehiclesController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\AdminVehiclesController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\AdminVehiclesController.cs",
+              "RelativeToolTip": "Server\\Controllers\\AdminVehiclesController.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAAwFoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:01:50.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 75,
+              "Title": "ApplicationUsersController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ApplicationUsersController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\ApplicationUsersController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ApplicationUsersController.cs",
+              "RelativeToolTip": "Server\\Controllers\\ApplicationUsersController.cs",
+              "ViewState": "AgIAAIYAAAAAAAAAAAAYwKkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T16:12:46.753Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 78,
+              "Title": "AdminTripsController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\AdminTripsController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\AdminTripsController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\AdminTripsController.cs",
+              "RelativeToolTip": "Server\\Controllers\\AdminTripsController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAmwDwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:01:45.582Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 79,
+              "Title": "AdminTripRequestController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\AdminTripRequestController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\AdminTripRequestController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\AdminTripRequestController.cs",
+              "RelativeToolTip": "Server\\Controllers\\AdminTripRequestController.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAuwDkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:01:40.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 80,
+              "Title": "AdminEmployeesController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\AdminEmployeesController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\AdminEmployeesController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\AdminEmployeesController.cs",
+              "RelativeToolTip": "Server\\Controllers\\AdminEmployeesController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAmwC8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:01:35.386Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 81,
+              "Title": "AdminDriversController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\AdminDriversController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\AdminDriversController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\AdminDriversController.cs",
+              "RelativeToolTip": "Server\\Controllers\\AdminDriversController.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAA8wE0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:01:29.871Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 82,
+              "Title": "AdminDashboardController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\AdminDashboardController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\AdminDashboardController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\AdminDashboardController.cs",
+              "RelativeToolTip": "Server\\Controllers\\AdminDashboardController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T19:01:25.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 85,
+              "Title": "AspNetRoleClaimsController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\CarPark\\AspNetRoleClaimsController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\CarPark\\AspNetRoleClaimsController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\CarPark\\AspNetRoleClaimsController.cs",
+              "RelativeToolTip": "Server\\Controllers\\CarPark\\AspNetRoleClaimsController.cs",
+              "ViewState": "AgIAAKUAAAAAAAAAAAAuwMoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T19:19:15.051Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 84,
+              "Title": "AspNetUserTokensController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\CarPark\\AspNetUserTokensController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\CarPark\\AspNetUserTokensController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\CarPark\\AspNetUserTokensController.cs",
+              "RelativeToolTip": "Server\\Controllers\\CarPark\\AspNetUserTokensController.cs",
+              "ViewState": "AgIAAKUAAAAAAAAAAAAuwMoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T16:12:30.517Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 83,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Server\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Server\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAkwLEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T19:19:20.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 103,
+              "Title": "DriverRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repository\\DriverRepository.cs",
+              "RelativeDocumentMoniker": "Server\\Data\\Repository\\DriverRepository.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Repository\\DriverRepository.cs",
+              "RelativeToolTip": "Server\\Data\\Repository\\DriverRepository.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBEAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T19:16:36.988Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 86,
+              "Title": "CarParkContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Migrations\\CarParkContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "Server\\Migrations\\CarParkContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Migrations\\CarParkContextModelSnapshot.cs",
+              "RelativeToolTip": "Server\\Migrations\\CarParkContextModelSnapshot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T16:14:44.177Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 104,
+              "Title": "20260503101325_InitialCreate_CarPark.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Migrations\\20260503101325_InitialCreate_CarPark.cs",
+              "RelativeDocumentMoniker": "Server\\Migrations\\20260503101325_InitialCreate_CarPark.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Migrations\\20260503101325_InitialCreate_CarPark.cs",
+              "RelativeToolTip": "Server\\Migrations\\20260503101325_InitialCreate_CarPark.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwAwAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-16T16:14:39.917Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 105,
+              "Title": "IVehicleService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Interfaces\\IVehicleService.cs",
+              "RelativeDocumentMoniker": "Server\\Interfaces\\IVehicleService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Interfaces\\IVehicleService.cs",
+              "RelativeToolTip": "Server\\Interfaces\\IVehicleService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T19:20:38.403Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 106,
+              "Title": "IVehicleRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Interfaces\\IVehicleRepository.cs",
+              "RelativeDocumentMoniker": "Server\\Interfaces\\IVehicleRepository.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Interfaces\\IVehicleRepository.cs",
+              "RelativeToolTip": "Server\\Interfaces\\IVehicleRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T19:22:05.563Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 87,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\appsettings.Development.json",
               "RelativeDocumentMoniker": "Server\\appsettings.Development.json",
@@ -370,31 +1652,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Program.cs",
-              "RelativeDocumentMoniker": "Server\\Program.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Program.cs",
-              "RelativeToolTip": "Server\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFgAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:09:23.709Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ApplicationAuthenticationState.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\ApplicationAuthenticationState.cs",
-              "RelativeDocumentMoniker": "Server\\Models\\ApplicationAuthenticationState.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\ApplicationAuthenticationState.cs",
-              "RelativeToolTip": "Server\\Models\\ApplicationAuthenticationState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:16:00.873Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 88,
               "Title": "AspNetUserToken.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\CarPark\\AspNetUserToken.cs",
               "RelativeDocumentMoniker": "Server\\Models\\CarPark\\AspNetUserToken.cs",
@@ -406,7 +1664,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 90,
               "Title": "AspNetUserLogin.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\CarPark\\AspNetUserLogin.cs",
               "RelativeDocumentMoniker": "Server\\Models\\CarPark\\AspNetUserLogin.cs",
@@ -418,7 +1676,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 91,
               "Title": "AspNetUserClaim.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\CarPark\\AspNetUserClaim.cs",
               "RelativeDocumentMoniker": "Server\\Models\\CarPark\\AspNetUserClaim.cs",
@@ -430,7 +1688,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 92,
               "Title": "AspNetUser.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\CarPark\\AspNetUser.cs",
               "RelativeDocumentMoniker": "Server\\Models\\CarPark\\AspNetUser.cs",
@@ -442,7 +1700,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 89,
               "Title": "AspNetUserRole.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\CarPark\\AspNetUserRole.cs",
               "RelativeDocumentMoniker": "Server\\Models\\CarPark\\AspNetUserRole.cs",
@@ -454,7 +1712,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 93,
               "Title": "AspNetRoleClaim.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\CarPark\\AspNetRoleClaim.cs",
               "RelativeDocumentMoniker": "Server\\Models\\CarPark\\AspNetRoleClaim.cs",
@@ -466,19 +1724,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "AspNetRole.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\CarPark\\AspNetRole.cs",
-              "RelativeDocumentMoniker": "Server\\Models\\CarPark\\AspNetRole.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Models\\CarPark\\AspNetRole.cs",
-              "RelativeToolTip": "Server\\Models\\CarPark\\AspNetRole.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:14:48.706Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 107,
               "Title": "ITripRepository.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Interfaces\\ITripRepository.cs",
               "RelativeDocumentMoniker": "Server\\Interfaces\\ITripRepository.cs",
@@ -490,7 +1736,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 108,
               "Title": "ITripRequestRepository.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Interfaces\\ITripRequestRepository.cs",
               "RelativeDocumentMoniker": "Server\\Interfaces\\ITripRequestRepository.cs",
@@ -502,7 +1748,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 109,
               "Title": "IRepository.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Interfaces\\IRepository.cs",
               "RelativeDocumentMoniker": "Server\\Interfaces\\IRepository.cs",
@@ -514,7 +1760,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 110,
               "Title": "IDriverService.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Interfaces\\IDriverService.cs",
               "RelativeDocumentMoniker": "Server\\Interfaces\\IDriverService.cs",
@@ -526,7 +1772,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 111,
               "Title": "IDriverRepository.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Interfaces\\IDriverRepository.cs",
               "RelativeDocumentMoniker": "Server\\Interfaces\\IDriverRepository.cs",
@@ -538,139 +1784,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "ApplicationAuthorizeFilter.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Filters\\ApplicationAuthorizeFilter.cs",
-              "RelativeDocumentMoniker": "Server\\Filters\\ApplicationAuthorizeFilter.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Filters\\ApplicationAuthorizeFilter.cs",
-              "RelativeToolTip": "Server\\Filters\\ApplicationAuthorizeFilter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:14:07.847Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "TripRequestDto.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\TripRequestDto.cs",
-              "RelativeDocumentMoniker": "Server\\DTO\\TripRequestDto.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\TripRequestDto.cs",
-              "RelativeToolTip": "Server\\DTO\\TripRequestDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-15T18:54:18.252Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "TripDto.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\TripDto.cs",
-              "RelativeDocumentMoniker": "Server\\DTO\\TripDto.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\TripDto.cs",
-              "RelativeToolTip": "Server\\DTO\\TripDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-15T18:54:32.077Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "DriverDto.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\DriverDto.cs",
-              "RelativeDocumentMoniker": "Server\\DTO\\DriverDto.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\DriverDto.cs",
-              "RelativeToolTip": "Server\\DTO\\DriverDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-15T18:54:02.03Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "VehicleDto.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\VehicleDto.cs",
-              "RelativeDocumentMoniker": "Server\\DTO\\VehicleDto.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\DTO\\VehicleDto.cs",
-              "RelativeToolTip": "Server\\DTO\\VehicleDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-15T18:54:47.455Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "XlsDataContractSerializerOutputFormatter.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\XlsDataContractSerializerOutputFormatter.cs",
-              "RelativeDocumentMoniker": "Server\\Data\\XlsDataContractSerializerOutputFormatter.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\XlsDataContractSerializerOutputFormatter.cs",
-              "RelativeToolTip": "Server\\Data\\XlsDataContractSerializerOutputFormatter.cs",
-              "ViewState": "AgIAANsAAAAAAAAAAAAuwAABAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:13:47.686Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "OutputFormatter.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\OutputFormatter.cs",
-              "RelativeDocumentMoniker": "Server\\Data\\OutputFormatter.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\OutputFormatter.cs",
-              "RelativeToolTip": "Server\\Data\\OutputFormatter.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAuwFAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:13:43.883Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "EntityPatch.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\EntityPatch.cs",
-              "RelativeDocumentMoniker": "Server\\Data\\EntityPatch.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\EntityPatch.cs",
-              "RelativeToolTip": "Server\\Data\\EntityPatch.cs",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAcwIkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:13:40.298Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "BlankTriggerAddingConvention.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\BlankTriggerAddingConvention.cs",
-              "RelativeDocumentMoniker": "Server\\Data\\BlankTriggerAddingConvention.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\BlankTriggerAddingConvention.cs",
-              "RelativeToolTip": "Server\\Data\\BlankTriggerAddingConvention.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:13:26.934Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "CsvDataContractSerializerOutputFormatter.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\CsvDataContractSerializerOutputFormatter.cs",
-              "RelativeDocumentMoniker": "Server\\Data\\CsvDataContractSerializerOutputFormatter.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\CsvDataContractSerializerOutputFormatter.cs",
-              "RelativeToolTip": "Server\\Data\\CsvDataContractSerializerOutputFormatter.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAuwDgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:08:43.302Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "ApplicationIdentityDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\ApplicationIdentityDbContext.cs",
-              "RelativeDocumentMoniker": "Server\\Data\\ApplicationIdentityDbContext.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\ApplicationIdentityDbContext.cs",
-              "RelativeToolTip": "Server\\Data\\ApplicationIdentityDbContext.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAwwCQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:13:21.392Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 94,
               "Title": "IdentityModelSnapshot.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Migrations\\IdentityModelSnapshot.cs",
               "RelativeDocumentMoniker": "Server\\Data\\Migrations\\IdentityModelSnapshot.cs",
@@ -682,7 +1796,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 95,
               "Title": "00000000000000_CreateIdentitySchema.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Data\\Migrations\\00000000000000_CreateIdentitySchema.cs",
               "RelativeDocumentMoniker": "Server\\Data\\Migrations\\00000000000000_CreateIdentitySchema.cs",
@@ -694,103 +1808,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "ReportController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ReportController.cs",
-              "RelativeDocumentMoniker": "Server\\Controllers\\ReportController.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ReportController.cs",
-              "RelativeToolTip": "Server\\Controllers\\ReportController.cs",
-              "ViewState": "AgIAAM4AAAAAAAAAAAAAwPMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:13:00.011Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "ExportController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ExportController.cs",
-              "RelativeDocumentMoniker": "Server\\Controllers\\ExportController.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ExportController.cs",
-              "RelativeToolTip": "Server\\Controllers\\ExportController.cs",
-              "ViewState": "AgIAAFoBAAAAAAAAAAAAwH8BAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:12:55.796Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "ExportCarParkController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ExportCarParkController.cs",
-              "RelativeDocumentMoniker": "Server\\Controllers\\ExportCarParkController.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ExportCarParkController.cs",
-              "RelativeToolTip": "Server\\Controllers\\ExportCarParkController.cs",
-              "ViewState": "AgIAAFYAAAAAAAAAAAAwwHgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:12:51.487Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "UploadController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\UploadController.cs",
-              "RelativeDocumentMoniker": "Server\\Controllers\\UploadController.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\UploadController.cs",
-              "RelativeToolTip": "Server\\Controllers\\UploadController.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAuwFgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-15T19:19:17.73Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "ApplicationUsersController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ApplicationUsersController.cs",
-              "RelativeDocumentMoniker": "Server\\Controllers\\ApplicationUsersController.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ApplicationUsersController.cs",
-              "RelativeToolTip": "Server\\Controllers\\ApplicationUsersController.cs",
-              "ViewState": "AgIAAIUAAAAAAAAAAAAmwKkAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:12:46.753Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 45,
-              "Title": "AspNetUserTokensController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\CarPark\\AspNetUserTokensController.cs",
-              "RelativeDocumentMoniker": "Server\\Controllers\\CarPark\\AspNetUserTokensController.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\CarPark\\AspNetUserTokensController.cs",
-              "RelativeToolTip": "Server\\Controllers\\CarPark\\AspNetUserTokensController.cs",
-              "ViewState": "AgIAAKUAAAAAAAAAAAAuwMoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T16:12:30.517Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Server\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Server\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAmwIQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-15T19:19:20.312Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
-              "Title": "ApplicationRolesController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ApplicationRolesController.cs",
-              "RelativeDocumentMoniker": "Server\\Controllers\\ApplicationRolesController.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\ApplicationRolesController.cs",
-              "RelativeToolTip": "Server\\Controllers\\ApplicationRolesController.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAmwFUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-15T19:19:21.554Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 97,
               "Title": "AspNetUserRolesController.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\CarPark\\AspNetUserRolesController.cs",
               "RelativeDocumentMoniker": "Server\\Controllers\\CarPark\\AspNetUserRolesController.cs",
@@ -802,7 +1820,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 98,
               "Title": "AspNetUserLoginsController.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\CarPark\\AspNetUserLoginsController.cs",
               "RelativeDocumentMoniker": "Server\\Controllers\\CarPark\\AspNetUserLoginsController.cs",
@@ -814,7 +1832,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 96,
               "Title": "AspNetUsersController.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\CarPark\\AspNetUsersController.cs",
               "RelativeDocumentMoniker": "Server\\Controllers\\CarPark\\AspNetUsersController.cs",
@@ -826,7 +1844,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 99,
               "Title": "AspNetUserClaimsController.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\CarPark\\AspNetUserClaimsController.cs",
               "RelativeDocumentMoniker": "Server\\Controllers\\CarPark\\AspNetUserClaimsController.cs",
@@ -838,7 +1856,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 100,
               "Title": "AspNetRolesController.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\CarPark\\AspNetRolesController.cs",
               "RelativeDocumentMoniker": "Server\\Controllers\\CarPark\\AspNetRolesController.cs",
@@ -850,7 +1868,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 101,
               "Title": "_Imports.razor",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Components\\_Imports.razor",
               "RelativeDocumentMoniker": "Server\\Components\\_Imports.razor",
@@ -862,19 +1880,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
-              "Title": "AspNetRoleClaimsController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\CarPark\\AspNetRoleClaimsController.cs",
-              "RelativeDocumentMoniker": "Server\\Controllers\\CarPark\\AspNetRoleClaimsController.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\Controllers\\CarPark\\AspNetRoleClaimsController.cs",
-              "RelativeToolTip": "Server\\Controllers\\CarPark\\AspNetRoleClaimsController.cs",
-              "ViewState": "AgIAAKUAAAAAAAAAAAAuwMoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-15T19:19:15.051Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 102,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\CarPark\\CPP\\Server\\appsettings.json",
               "RelativeDocumentMoniker": "Server\\appsettings.json",

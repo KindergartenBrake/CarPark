@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.OData.Results;
 using Microsoft.AspNetCore.OData.Deltas;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using CP.Server.Services.Interfaces;
 using CP.Server.Data;
 using CP.Server.Models;
 

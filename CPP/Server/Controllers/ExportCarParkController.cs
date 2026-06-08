@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-
+using CP.Server.Services.Interfaces;
 using CP.Server.Data;
 
 namespace CP.Server.Controllers

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CP.Server.Data;
-
+using CP.Server.Services.Interfaces;
 namespace CP.Server.Controllers;
 
 [ApiController]
